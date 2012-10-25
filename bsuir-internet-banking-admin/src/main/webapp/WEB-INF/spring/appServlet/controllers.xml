@@ -15,5 +15,8 @@
 	<mvc:view-controller path="/errors-validations" view-name="errors-validations"/>	  
 	<mvc:view-controller path="/misc" view-name="misc"/>	  
 	<mvc:view-controller path="/faq" view-name="faq"/>
+	<mvc:view-controller path="/create-operator" view-name="create-operator"/>
+	<mvc:view-controller path="/view-operator" view-name="view-operator"/>
+	<mvc:view-controller path="/admin" view-name="admin"/>
 
 </beans>
