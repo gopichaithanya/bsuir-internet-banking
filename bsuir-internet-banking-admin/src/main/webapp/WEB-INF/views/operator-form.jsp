@@ -7,8 +7,7 @@
 <body>
 </c:if>
 <div id="formsContent">
-	<form:form id="form" method="post"
-		class="form-horizontal">
+	<form:form id="form" method="post" class="form-horizontal" modelAttribute="operator">
 		<div>
 			<c:if test="${not empty message}">
 				<div id="message" class="success">${message}</div>
@@ -20,7 +19,7 @@
 			</s:bind>
 		</div>
 		<div class="control-group">
-			<form:label class="control-label" path="firstName"> 
+			<form:label class="control-label" path="firstName" > 
 						First Name <form:errors class="error" path="firstName" />
 			</form:label>
 			<div class="controls">

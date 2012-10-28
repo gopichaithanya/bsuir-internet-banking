@@ -15,4 +15,16 @@ public class AdminUtils {
 			logger.info(msg + ".");
 		}
 	}
+	
+	public static void logDebug(Logger logger, String msg, String details){
+		if(logger.isDebugEnabled()){
+			logger.debug(msg + ": " + details + ".");
+		}
+	}
+	
+	public static void logDebug(Logger logger, String msg){
+		if(logger.isDebugEnabled()){
+			logger.debug(msg + ".");
+		}
+	}
 }
