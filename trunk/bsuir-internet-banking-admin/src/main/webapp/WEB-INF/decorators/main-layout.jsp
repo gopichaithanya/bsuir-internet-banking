@@ -12,8 +12,8 @@
 <meta name="author" content="">
 <link href="<c:url value="/resources/css/bootstrap_spacelab.min.css" />"
 	rel="stylesheet" type="text/css" />
-<link href="<c:url value="/resources/css/main.css" />"
-	rel="stylesheet" type="text/css" />
+<link href="<c:url value="/resources/css/main.css" />" rel="stylesheet"
+	type="text/css" />
 
 <style type="text/css">
 body {
@@ -46,8 +46,8 @@ body {
 	<div class="container-fluid">
 		<div class="row-fluid">
 			<div class="span2">
-				<div id="logo"  align="center">
-					<img src="resources/img/bguir_logo.jpg"
+				<div id="logo" align="center">
+					<img src="<c:url value="/resources/img/bguir_logo.jpg" />"
 						alt="Logo">
 				</div>
 			</div>
@@ -83,14 +83,14 @@ body {
 
 	<!-- Placed at the end of the document so the pages load faster -->
 	<script type="text/javascript"
-		src="<c:url value="/resources/js/jquery-1.8.0-min.js" />"></script>
+		src="<c:url value="/resources/js/jquery-1.8.0-min.js" />" ></script>
 	<script type="text/javascript"
-		src="<c:url value="/resources/js/bootstrap.js" />"></script>
+		src="<c:url value="/resources/js/bootstrap.js" />" ></script>
 	<script type="text/javascript"
-		src="<c:url value="/resources/js/demo.js" />"></script>
+		src="<c:url value="/resources/js/demo.js" />" ></script>
 	<script type="text/javascript"
-		src="<c:url value="/resources/js/json2.js" />"></script>
+		src="<c:url value="/resources/js/json2.js" />" ></script>
 	<script type="text/javascript"
-		src="<c:url value="/resources/js/date.format.js" />"></script>
+		src="<c:url value="/resources/js/date.format.js" />" ></script>
 </body>
 </html>

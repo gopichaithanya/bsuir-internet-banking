@@ -167,6 +167,14 @@
 			<version>2.1.7</version>
 		</dependency>
 
+		<!-- Excluding -->
+		<dependency>
+			<groupId>javax.activation</groupId>
+			<artifactId>activation</artifactId>
+			<version>1.1</version>
+			<scope>provided</scope>
+		</dependency>
+
 	</dependencies>
 	<repositories>
 		<!-- For testing against latest Spring snapshots -->
@@ -206,7 +214,7 @@
 			<!-- <plugin> <groupId>org.apache.axis2</groupId> <artifactId>axis2-wsdl2code-maven-plugin</artifactId> 
 				<version>1.6.2</version> <executions> <execution> <goals> <goal>wsdl2code</goal> 
 				</goals> <configuration> <packageName>by.bsuir.banking.generated</packageName> 
-				<outputDirectory>target/generated</outputDirectory> <wsdlFile>http://localhost:8732/HelloWorldService/?wsdl</wsdlFile> 
+				<outputDirectory>target/generated</outputDirectory> < <wsdlFile>http://localhost:8732/InternetBanking.Services.Implementations/AdministrationService/?wsdl</wsdlFile> 
 				<databindingName>xmlbeans</databindingName> </configuration> </execution> 
 				</executions> </plugin> -->
 			<plugin>
@@ -214,12 +222,17 @@
 				<artifactId>jaxws-maven-plugin</artifactId>
 				<version>1.12</version>
 				<executions>
-					<!-- <execution> <goals> <goal>wsimport</goal> </goals> </execution> -->
+					<!-- <execution>
+						<goals>
+							<goal>wsimport</goal>
+						</goals>
+					</execution> -->
 				</executions>
 				<configuration>
-					<packageName>by.bsuir.banking.dotnetclient</packageName>
+					<packageName>by.bsuir.banking.firstservice</packageName>
 					<wsdlUrls>
-						<wsdlUrl>http://localhost:8732/HelloWorldService/?wsdl</wsdlUrl>
+						<wsdlUrl>http://localhost:8732/InternetBanking.Services.Implementations/AdministrationService/?wsdl</wsdlUrl>
+						<!-- <wsdlUrl>http://localhost:8733/AuthenticationService/?wsdl</wsdlUrl> -->
 					</wsdlUrls>
 					<extension>true</extension>
 				</configuration>

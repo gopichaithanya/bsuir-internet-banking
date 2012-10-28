@@ -7,34 +7,46 @@
 <body>
 </c:if>
 <div id="formsContent">
-	<form:form id="form" method="post" modelAttribute="user"
-		class="form-horizontal">
-		<div>
-			<c:if test="${not empty message}">
-				<div id="message" class="success">${message}</div>
-			</c:if>
+	<form:form id="form" method="post" modelAttribute="user">
+		<%-- <div class="control-group error">
 			<s:bind path="*">
 				<c:if test="${status.error}">
-					<div id="message" class="error">Form has errors</div>
+					<div id="controls" class="help-inline">Form has errors</div>
 				</c:if>
 			</s:bind>
-		</div>
+		</div> --%>
+		<s:bind path="*">
+			<c:if test="${status.error}">
+				<c:set var="usernameErrors">
+					<form:errors path="username" />
+				</c:set>
+				<c:set var="passwordErrors">
+					<form:errors path="password" />
+				</c:set>
+			</c:if>
+		</s:bind>
 		<div class="control-group">
-			<form:label class="control-label" path="username"> 
-						Username <form:errors class="error" path="username" />
-			</form:label>
+			<h4>Please enter username and password</h4>
+			<br>
+		</div>
+		<div id="divUsername" class="control-group">
+			<%-- <form:label class="control-label" path="username"> 
+						Username 
+			</form:label> --%>
 			<div class="controls">
 				<form:input path="username" id="inputUsername"
 					placeholder="Username" />
+				<form:errors class="help-inline" path="username" />
 			</div>
 		</div>
-		<div class="control-group">
-			<form:label class="control-label" path="password"> 
-						Password <form:errors path="password" />
-			</form:label>
+		<div id="divPassword" class="control-group">
+			<%-- <form:label class="control-label" path="password"> 
+						Password 
+			</form:label> --%>
 			<div class="controls">
 				<form:input path="password" id="inputPassword"
 					placeholder="Password" />
+				<form:errors class="help-inline" path="password" />
 			</div>
 		</div>
 		<div class="control-group">
@@ -60,6 +72,16 @@
 							});
 				});
 	</script>
+	<c:if test="${not empty usernameErrors}">
+		<script type="text/javascript">
+			$('#divUsername').addClass('error');
+		</script>
+	</c:if>
+	<c:if test="${not empty passwordErrors}">
+		<script type="text/javascript">
+			$('#divPassword').addClass('error');
+		</script>
+	</c:if>
 </div>
 <c:if test="${!ajaxRequest}">
 	</body>
