@@ -18,7 +18,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import by.bsuir.banking.admin.domain.AdministratorWrapper;
 import by.bsuir.banking.admin.utils.AdminUtils;
 import by.bsuir.banking.admin.utils.MessageConstants;
-import by.bsuir.banking.dotnetclient.AdministrationService;
 import by.bsuir.banking.dotnetclient.IAdministrationService;
 import by.bsuir.banking.dotnetclient.IAdministrationServiceCreateNewAdministratorAuthorizationFaultFaultFaultMessage;
 import by.bsuir.banking.dotnetclient.IAdministrationServiceCreateNewAdministratorDomainFaultFaultFaultMessage;
@@ -31,7 +30,7 @@ import by.bsuir.banking.dotnetclient.IAdministrationServiceCreateNewAdministrato
  * 
  */
 @Controller
-@RequestMapping("/admin")
+@RequestMapping("/admin/create")
 @SessionAttributes("admin")
 public class CreateAdminController extends EntityController{
 	
@@ -51,24 +50,30 @@ public class CreateAdminController extends EntityController{
 	}
 	
 	/**
+	 * Constructor which gets service for this controller
+	 */
+	public CreateAdminController(){
+		service = ServiceProvider.getAdministrationService();
+		AdminUtils.logInfo(logger, MessageConstants.ADMIN_SERVICE_CREATED);
+		
+	}
+	
+	/**
 	 * Invoked initially to create the "admin" attribute Once created the "form"
 	 * attribute comes from the HTTP session (see @SessionAttributes)
 	 */
 	@ModelAttribute("admin")
 	public AdministratorWrapper createForm() {
-		AdministrationService endpoint = new AdministrationService();
-		service = endpoint.getBasicHttpBindingIAdministrationService();
-		AdminUtils.logInfo(logger, MessageConstants.ADMIN_SERVICE_CREATED);
 		AdminUtils.logInfo(logger, MessageConstants.MODEL_BEAN_CREATED, "admin");
 		return new AdministratorWrapper();
 	}
 	
-	@RequestMapping(value={"/create"}, method=RequestMethod.GET)
+	@RequestMapping( method=RequestMethod.GET)
 	public String formCreate(){
 		return VIEW_NAME;
 	}
 	
-	@RequestMapping(value={"/create"}, method=RequestMethod.POST)
+	@RequestMapping(method=RequestMethod.POST)
 	public String submitForm(@Valid @ModelAttribute("admin") AdministratorWrapper admin, BindingResult result,
 			@ModelAttribute("ajaxRequest") boolean ajaxRequest, Model model,
 			RedirectAttributes redirectAttrs, HttpSession session){

@@ -251,19 +251,6 @@
 				</configuration>
 			</plugin>
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-dependency-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>install</id>
-						<phase>install</phase>
-						<goals>
-							<goal>sources</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>aspectj-maven-plugin</artifactId>
 				<!-- Have to use version 1.2 since version 1.3 does not appear to work 
@@ -315,7 +302,7 @@
 					</connectors>
 				</configuration>
 				<executions>
-					<execution>
+					<!-- <execution>
 						<id>start-jetty</id>
 						<phase>pre-integration-test</phase>
 						<goals>
@@ -334,7 +321,7 @@
 							<goal>stop</goal>
 						</goals>
 					</execution>
-				</executions>
+ -->				</executions>
 			</plugin>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>

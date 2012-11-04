@@ -7,7 +7,62 @@
 <body>
 </c:if>
 <div id="formsContent">
-	
+	<div>
+		<h3 align="left">Administrators list</h3>
+	</div>
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>Username</th>
+				<th>Name</th>
+			</tr>
+		</thead>
+		<tbody>
+		<c:set var="i" value="1"/>
+			<c:forEach var="adminitem" items="${adminlist}">
+				<tr>
+					<td><c:out value="${i}" /></td>
+					<td><c:out value="${adminitem.login}" /></td>
+					<td>${adminitem.firstName} ${adminitem.middleName} ${adminitem.lastName}</td>
+				</tr>
+				<c:set var="i" value="${i + 1}"/>
+			</c:forEach>
+		</tbody>
+	</table>
+
+	<div class="pagination pagination-small pagination-centered ">
+		<ul>
+			<c:choose>
+				<c:when test="${page == 1}">
+					<li class="disabled"><a href='#'>Prev</a></li>
+				</c:when>
+				<c:otherwise>
+					<li><a href='<c:url value="/admin/list/${page - 1}"/>'>Prev</a></li>
+				</c:otherwise>
+			</c:choose>
+			<c:forEach begin="1" end="${pagecount}" var="i">
+				<c:choose>
+					<c:when test="${page == i}">
+						<li class="active"><a
+							href='<c:url value="/admin/list/${i}"/>'><c:out value="${i}" /></a></li>
+					</c:when>
+					<c:otherwise>
+						<li><a href='<c:url value="/admin/list/${i}"/>'><c:out
+									value="${i}" /></a></li>
+					</c:otherwise>
+				</c:choose>
+			</c:forEach>
+			<c:choose>
+				<c:when test="${page == pagecount}">
+					<li class="disabled"><a href='#'>Next</a></li>
+				</c:when>
+				<c:otherwise>
+					<li><a href='<c:url value="/admin/list/${page + 1}"/>'>Next</a></li>
+				</c:otherwise>
+			</c:choose>
+		</ul>
+	</div>
 	<script type="text/javascript">
 		$(document).ready(
 				function() {

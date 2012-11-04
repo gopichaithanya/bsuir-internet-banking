@@ -15,6 +15,8 @@ public class MessageConstants {
 	public static final String WRONG_ROLE_REASON = "User is not authorized for this action (wrong role)";
 	public static final String FORM_VALIDATION_ERROR = "Object was not created/updated due to validation errors";
 	public static final String OBJECT_SAVING_FAILED_ON_SERVER = "Object instance was not created/updated on server";
+	public static final String SERVICE_ERROR = "Operation cannot be completed because of service error";
+	
 	/*
 	 * Session attributes
 	 */

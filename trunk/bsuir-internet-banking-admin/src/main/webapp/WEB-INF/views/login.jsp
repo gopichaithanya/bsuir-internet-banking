@@ -17,6 +17,7 @@
 		</div> --%>
 		<s:bind path="*">
 			<c:if test="${status.error}">
+
 				<c:set var="usernameErrors">
 					<form:errors path="username" />
 				</c:set>
@@ -24,11 +25,14 @@
 					<form:errors path="password" />
 				</c:set>
 			</c:if>
-		</s:bind>
+		
 		<div class="control-group">
 			<h4>Please enter username and password</h4>
 			<br>
 		</div>
+		<c:if test="${status.error}">
+			<div id="controls" >Username or password is invalid</div><br>
+		</c:if>
 		<div id="divUsername" class="control-group">
 			<%-- <form:label class="control-label" path="username"> 
 						Username 
@@ -44,7 +48,7 @@
 						Password 
 			</form:label> --%>
 			<div class="controls">
-				<form:input path="password" id="inputPassword"
+				<form:password path="password" id="inputPassword"
 					placeholder="Password" />
 				<form:errors class="help-inline" path="password" />
 			</div>
@@ -54,6 +58,7 @@
 				<button type="submit" class="btn">Sign in</button>
 			</div>
 		</div>
+		</s:bind>
 	</form:form>
 
 	<script type="text/javascript">

@@ -19,6 +19,10 @@ public class OperatorWrapper{
 		operator = factory.createOperator();
 	}
 	
+	public OperatorWrapper(Operator operator) {
+		this.operator = operator;
+	}
+
 	/**
 	 * Getting operator instance for this wrapper
 	 * @return

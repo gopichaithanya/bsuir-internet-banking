@@ -60,7 +60,17 @@ body {
 		<div class="row-fluid">
 			<div class="span2">
 				<div class="well sidebar-nav">
-					<c:import url="/WEB-INF/views/tags/menu-admin.jsp" />
+					<c:choose>
+						<c:when test="${user.role == 'admin' }">
+							<c:import url="/WEB-INF/views/tags/menu-admin.jsp" />
+						</c:when>
+						<c:when test="${user.role == 'operator' }">
+							<c:import url="/WEB-INF/views/tags/menu-operator.jsp" />
+						</c:when>
+						<c:otherwise>
+							<c:import url="/WEB-INF/views/tags/menu-unauthorized.jsp" />
+						</c:otherwise>
+					</c:choose>
 				</div>
 			</div>
 			<div class="span10">
@@ -83,14 +93,14 @@ body {
 
 	<!-- Placed at the end of the document so the pages load faster -->
 	<script type="text/javascript"
-		src="<c:url value="/resources/js/jquery-1.8.0-min.js" />" ></script>
+		src="<c:url value="/resources/js/jquery-1.8.0-min.js" />"></script>
 	<script type="text/javascript"
-		src="<c:url value="/resources/js/bootstrap.js" />" ></script>
+		src="<c:url value="/resources/js/bootstrap.js" />"></script>
 	<script type="text/javascript"
-		src="<c:url value="/resources/js/demo.js" />" ></script>
+		src="<c:url value="/resources/js/demo.js" />"></script>
 	<script type="text/javascript"
-		src="<c:url value="/resources/js/json2.js" />" ></script>
+		src="<c:url value="/resources/js/json2.js" />"></script>
 	<script type="text/javascript"
-		src="<c:url value="/resources/js/date.format.js" />" ></script>
+		src="<c:url value="/resources/js/date.format.js" />"></script>
 </body>
 </html>
