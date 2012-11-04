@@ -4,8 +4,8 @@
 	<li><a href="<c:url value="/" />">Currency exchange rates</a></li>
 
 	 <li class="nav-header">Administrators</li>
-  <li><a href="<c:url value="/administrator/create" />">Create administrator</a></li>
-  <li><a href="<c:url value="/administrator/list" />">View administrators</a></li>
+  <li><a href="<c:url value="/admin/create" />">Create administrator</a></li>
+  <li><a href="<c:url value="/admin/list" />">View administrators</a></li>
  
   <li class="nav-header">Operators</li>
   <li><a href="<c:url value="/operator/create"/>">Create operator</a></li>

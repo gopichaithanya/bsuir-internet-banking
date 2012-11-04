@@ -16,7 +16,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import by.bsuir.banking.admin.domain.OperatorWrapper;
 import by.bsuir.banking.admin.utils.AdminUtils;
 import by.bsuir.banking.admin.utils.MessageConstants;
-import by.bsuir.banking.dotnetclient.AdministrationService;
 import by.bsuir.banking.dotnetclient.IAdministrationService;
 import by.bsuir.banking.dotnetclient.IAdministrationServiceCreateNewOperatorAuthorizationFaultFaultFaultMessage;
 import by.bsuir.banking.dotnetclient.IAdministrationServiceCreateNewOperatorDomainFaultFaultFaultMessage;
@@ -35,15 +34,18 @@ public class CreateOperatorController extends EntityController{
 	private static IAdministrationService service;
 	private static final String VIEW_NAME="operator-form";
 	
+	public CreateOperatorController(){
+		service = ServiceProvider.getAdministrationService();
+		AdminUtils.logInfo(logger, MessageConstants.ADMIN_SERVICE_CREATED);
+		
+	}
+	
 	/**
 	 * Invoked initially to create the "operator" attribute Once created the
 	 * "form" attribute comes from the HTTP session (see @SessionAttributes)
 	 */
 	@ModelAttribute("operator")
 	public OperatorWrapper createOperator() {
-		AdministrationService endpoint = new AdministrationService();
-		service = endpoint.getBasicHttpBindingIAdministrationService();
-		AdminUtils.logInfo(logger, MessageConstants.ADMIN_SERVICE_CREATED);
 		AdminUtils.logInfo(logger, MessageConstants.MODEL_BEAN_CREATED,
 				"operator");
 		return new OperatorWrapper();

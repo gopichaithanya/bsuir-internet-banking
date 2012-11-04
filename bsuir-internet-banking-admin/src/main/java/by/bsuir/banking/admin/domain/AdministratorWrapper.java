@@ -21,6 +21,10 @@ public class AdministratorWrapper {
 		administrator = factory.createAdministrator();
 	}
 	
+	public AdministratorWrapper(Administrator administrator){
+		this.administrator = administrator;
+	}
+	
 	/**
 	 * Getting administrator instance
 	 */

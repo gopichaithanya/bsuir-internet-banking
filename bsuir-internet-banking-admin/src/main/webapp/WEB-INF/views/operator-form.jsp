@@ -7,47 +7,60 @@
 <body>
 </c:if>
 <div id="formsContent">
-	<form:form id="form" method="post" class="form-horizontal" modelAttribute="operator">
-		<div>
-			<c:if test="${not empty message}">
-				<div id="message" class="success">${message}</div>
+	<form:form id="form" method="post" class="form"
+		modelAttribute="operator">
+		<s:bind path="*">
+			<c:if test="${status.error}">
+				<div id="message" class="error">Form has errors</div>
 			</c:if>
-			<s:bind path="*">
-				<c:if test="${status.error}">
-					<div id="message" class="error">Form has errors</div>
-				</c:if>
-			</s:bind>
+		</s:bind>
+		<div class="control-group">
+			<div class="controls">
+				<form:input path="login" id="inputLogin"
+					placeholder="Username" />
+				<form:errors class="help-inline" path="login" />
+			</div>
 		</div>
 		<div class="control-group">
-			<form:label class="control-label" path="firstName" > 
+			<div class="controls">
+				<form:input path="password" id="inputPassword"
+					placeholder="Password" />
+				<form:errors class="help-inline" path="password" />
+			</div>
+		</div>
+		<div class="control-group">
+			<%-- <form:label class="control-label" path="firstName" > 
 						First Name <form:errors class="error" path="firstName" />
-			</form:label>
+			</form:label> --%>
 			<div class="controls">
 				<form:input path="firstName" id="inputFirstName"
 					placeholder="First Name" />
+				<form:errors class="help-inline" path="firstName" />
 			</div>
 		</div>
 		<div class="control-group">
-			<form:label class="control-label" path="middleName"> 
+			<%-- <form:label class="control-label" path="middleName"> 
 						Middle Name <form:errors path="middleName" />
-			</form:label>
+			</form:label> --%>
 			<div class="controls">
 				<form:input path="middleName" id="inputMiddleName"
 					placeholder="Middle Name" />
+				<form:errors class="help-inline" path="middleName" />
 			</div>
 		</div>
 		<div class="control-group">
-			<form:label class="control-label" path="lastName"> 
+			<%-- <form:label class="control-label" path="lastName"> 
 						Last Name <form:errors path="lastName" />
-			</form:label>
+			</form:label> --%>
 			<div class="controls">
 				<form:input path="lastName" id="inputLastName"
 					placeholder="Last Name" />
+				<form:errors class="help-inline" path="lastName" />
 			</div>
 		</div>
 		<div class="control-group">
 			<div class="controls">
-				<button type="submit" class="btn">Sign in</button>
+				<button type="submit" class="btn">Submit</button>
 			</div>
 		</div>
 	</form:form>

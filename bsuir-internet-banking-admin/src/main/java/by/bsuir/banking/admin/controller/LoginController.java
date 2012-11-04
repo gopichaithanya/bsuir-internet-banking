@@ -16,7 +16,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import by.bsuir.banking.admin.domain.User;
 import by.bsuir.banking.admin.utils.AdminUtils;
 import by.bsuir.banking.admin.utils.MessageConstants;
-import by.bsuir.banking.dotnetclient.AuthenticationService;
 import by.bsuir.banking.dotnetclient.IAuthenticationService;
 import by.bsuir.banking.dotnetclient.IAuthenticationServiceAuthenticateAuthenticationFaultFaultFaultMessage;
 
@@ -80,9 +79,7 @@ public class LoginController extends EntityController{
 
 		// Web-service calling
 		try {
-			AuthenticationService endpoint = new AuthenticationService();
-			IAuthenticationService service = endpoint
-					.getBasicHttpBindingIAuthenticationService();
+			IAuthenticationService service = ServiceProvider.getAuthenticationService();
 			String securityToken;
 			securityToken = service.authenticate(user.getUsername(),
 					user.getPassword());
@@ -97,7 +94,7 @@ public class LoginController extends EntityController{
 		} catch (IAuthenticationServiceAuthenticateAuthenticationFaultFaultFaultMessage e) {
 			result.reject(e.getMessage());
 			AdminUtils.logInfo(logger, MessageConstants.USER_AUTH_FAILED_SERVER);
-			return VIEW_NAME;
+			return null;
 		}
 
 	}
