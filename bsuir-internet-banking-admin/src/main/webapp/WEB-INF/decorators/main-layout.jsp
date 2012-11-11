@@ -45,26 +45,26 @@ body {
 
 	<div class="container-fluid">
 		<div class="row-fluid">
-			<div class="span2">
+			<div class="span3">
 				<div id="logo" align="center">
 					<img src="<c:url value="/resources/img/bguir_logo.jpg" />"
 						alt="Logo">
 				</div>
 			</div>
-			<div class="span10">
+			<div class="span9">
 				<div class="page-header">
 					<c:import url="/WEB-INF/views/tags/banner.jsp" />
 				</div>
 			</div>
 		</div>
 		<div class="row-fluid">
-			<div class="span2">
+			<div class="span3">
 				<div class="well sidebar-nav">
 					<c:choose>
-						<c:when test="${user.role == 'admin' }">
+						<c:when test="${user.role == 'Administrator' }">
 							<c:import url="/WEB-INF/views/tags/menu-admin.jsp" />
 						</c:when>
-						<c:when test="${user.role == 'operator' }">
+						<c:when test="${user.role == 'Operator' }">
 							<c:import url="/WEB-INF/views/tags/menu-operator.jsp" />
 						</c:when>
 						<c:otherwise>
@@ -73,7 +73,7 @@ body {
 					</c:choose>
 				</div>
 			</div>
-			<div class="span10">
+			<div class="span9">
 				<div class="row-fluid">
 					<div class="span12">
 						<decorator:body />

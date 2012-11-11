@@ -229,10 +229,12 @@
 					</execution> -->
 				</executions>
 				<configuration>
-					<packageName>by.bsuir.banking.firstservice</packageName>
+					<packageName>by.bsuir.banking.proxy.currency</packageName>
 					<wsdlUrls>
-						<wsdlUrl>http://localhost:8732/InternetBanking.Services.Implementations/AdministrationService/?wsdl</wsdlUrl>
+						<!-- <wsdlUrl>http://localhost:8732/InternetBanking.Services.Implementations/AdministrationService/?wsdl</wsdlUrl> -->
 						<!-- <wsdlUrl>http://localhost:8733/AuthenticationService/?wsdl</wsdlUrl> -->
+						<wsdlUrls>http://localhost:8734/CurrencyService/?wsdl</wsdlUrls>
+						<!-- <wsdlUrls>http://localhost:8735/OperatorService/?wsdl</wsdlUrls> -->
 					</wsdlUrls>
 					<extension>true</extension>
 				</configuration>

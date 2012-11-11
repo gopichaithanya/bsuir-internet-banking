@@ -7,32 +7,18 @@
 <body>
 </c:if>
 <div id="formsContent">
-	<form:form id="form" method="post" modelAttribute="user">
-		<%-- <div class="control-group error">
-			<s:bind path="*">
-				<c:if test="${status.error}">
-					<div id="controls" class="help-inline">Form has errors</div>
-				</c:if>
-			</s:bind>
-		</div> --%>
-		<s:bind path="*">
-			<c:if test="${status.error}">
-
-				<c:set var="usernameErrors">
-					<form:errors path="username" />
-				</c:set>
-				<c:set var="passwordErrors">
-					<form:errors path="password" />
-				</c:set>
-			</c:if>
-		
+	<form:form id="form" method="post" class="form span5 well" modelAttribute="userInfo">
 		<div class="control-group">
 			<h4>Please enter username and password</h4>
 			<br>
 		</div>
-		<c:if test="${status.error}">
-			<div id="controls" >Username or password is invalid</div><br>
-		</c:if>
+		<div class="control-group error">
+			<s:bind path="*">
+				<c:if test="${status.error}">
+					<div id="controls" class="alert alert-error">Username and/or password is invalid</div>
+				</c:if>
+			</s:bind>
+		</div>
 		<div id="divUsername" class="control-group">
 			<%-- <form:label class="control-label" path="username"> 
 						Username 
@@ -40,7 +26,7 @@
 			<div class="controls">
 				<form:input path="username" id="inputUsername"
 					placeholder="Username" />
-				<form:errors class="help-inline" path="username" />
+				<form:errors class="help-inline error" path="username" />
 			</div>
 		</div>
 		<div id="divPassword" class="control-group">
@@ -58,7 +44,6 @@
 				<button type="submit" class="btn">Sign in</button>
 			</div>
 		</div>
-		</s:bind>
 	</form:form>
 
 	<script type="text/javascript">
