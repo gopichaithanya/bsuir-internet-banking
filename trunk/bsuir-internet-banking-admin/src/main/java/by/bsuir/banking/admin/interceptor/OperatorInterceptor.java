@@ -7,7 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.log4j.Logger;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-import by.bsuir.banking.admin.domain.User;
+import by.bsuir.banking.admin.domain.UserInfo;
 import by.bsuir.banking.admin.utils.AdminUtils;
 import by.bsuir.banking.admin.utils.MessageConstants;
 
@@ -25,12 +25,12 @@ private static Logger logger = Logger.getLogger(AdminInterceptor.class);
 		Object userObj = session.getAttribute(MessageConstants.USER_ATTR);
 		if(userObj == null){
 			AdminUtils.logDebug(logger, MessageConstants.AUTHORIZATION_ERROR, MessageConstants.NOT_AUTHENTICATED_REASON);
-			response.sendRedirect(request.getContextPath() + "/auth/failed");
+			response.sendRedirect(request.getContextPath() + MessageConstants.AUTH_FAILED_VIEW);
 			return false;
 		}
-		if(((User)userObj).getRole() != MessageConstants.OPERATOR_ROLE){
+		if(!((UserInfo)userObj).getRole().equalsIgnoreCase(MessageConstants.OPERATOR_ROLE)){
 			AdminUtils.logDebug(logger, MessageConstants.AUTHORIZATION_ERROR, MessageConstants.WRONG_ROLE_REASON);
-			response.sendRedirect(request.getContextPath() + "/auth/failedr");
+			response.sendRedirect(request.getContextPath() + MessageConstants.AUTH_FAILED_VIEW);
 			return false;
 		}
 		return true;

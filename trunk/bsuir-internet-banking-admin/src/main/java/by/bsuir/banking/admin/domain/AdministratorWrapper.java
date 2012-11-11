@@ -2,8 +2,8 @@ package by.bsuir.banking.admin.domain;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
-import by.bsuir.banking.dotnetclient.Administrator;
-import by.bsuir.banking.dotnetclient.ObjectFactory;
+import by.bsuir.banking.proxy.administration.Administrator;
+import by.bsuir.banking.proxy.administration.ObjectFactory;
 
 /**
  * Class that wraps Administrator proxy,

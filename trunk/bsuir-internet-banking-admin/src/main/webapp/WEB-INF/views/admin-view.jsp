@@ -7,7 +7,38 @@
 <body>
 </c:if>
 <div id="formsContent">
-	
+	<div id="adminInfo" class="well">
+		<c:choose>
+			<c:when test="${not empty error}">
+				<p class="text-error">${error}</p>
+			</c:when>
+			<c:when test="${not empty admin}">
+				<dl class="dl-horizontal">
+					<dt>Login</dt>
+					<dd>
+						<c:out value="${admin.login}" />
+					</dd>
+					<dt>First name</dt>
+					<dd>
+						<c:out value="${admin.firstName}" />
+					</dd>
+					<dt>Middle name</dt>
+					<dd>
+						<c:out value="${admin.middleName}" />
+					</dd>
+					<dt>Last name</dt>
+					<dd>
+						<c:out value="${admin.lastName}" />
+					</dd>
+				</dl>
+				<div id="adminButtons">
+					<a href="<c:url value="/admin/edit/${admin.id}" />" class="btn">Edit</a>
+					<a href="<c:url value="/admin/delete/${admin.id}" />" class="btn">Delete</a>
+				</div>
+			</c:when>
+		</c:choose>
+	</div>
+
 	<script type="text/javascript">
 		$(document).ready(
 				function() {

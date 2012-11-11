@@ -23,7 +23,7 @@
 			<c:forEach var="adminitem" items="${adminlist}">
 				<tr>
 					<td><c:out value="${i}" /></td>
-					<td><c:out value="${adminitem.login}" /></td>
+					<td><a href="<c:url value="/admin/edit/${adminitem.id}"/>"><c:out value="${adminitem.login}" /></a></td>
 					<td>${adminitem.firstName} ${adminitem.middleName} ${adminitem.lastName}</td>
 				</tr>
 				<c:set var="i" value="${i + 1}"/>
