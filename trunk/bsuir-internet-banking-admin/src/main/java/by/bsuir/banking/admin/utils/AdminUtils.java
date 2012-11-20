@@ -27,4 +27,9 @@ public class AdminUtils {
 			logger.debug(msg + ".");
 		}
 	}
+
+	public static void logError(Logger logger, String string) {
+		logger.error(string + ".");
+		
+	}
 }

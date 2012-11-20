@@ -28,7 +28,9 @@
 		<mvc:interceptor>
 			<!-- This one only runs for a specific URL pattern -->
 			<mvc:mapping path="/account/*" />
+			<mvc:mapping path="/account/*/*" />
 			<mvc:mapping path="/client/*" />
+			<mvc:mapping path="/client/*/*" />
 			<bean class="by.bsuir.banking.admin.interceptor.OperatorInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>

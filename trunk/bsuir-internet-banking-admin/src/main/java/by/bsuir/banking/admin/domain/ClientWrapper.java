@@ -1,5 +1,6 @@
 package by.bsuir.banking.admin.domain;
 
+import java.util.Date;
 import java.util.GregorianCalendar;
 
 import javax.xml.datatype.DatatypeConfigurationException;
@@ -61,8 +62,8 @@ public class ClientWrapper {
 	 * Getting birthday
 	 * @return
 	 */
-	public GregorianCalendar getBirthdayDate(){
-		return (client.getBirthdayDate() == null) ? null : client.getBirthdayDate().toGregorianCalendar();
+	public Date getBirthdayDate(){
+		return (client.getBirthdayDate() == null) ? null : client.getBirthdayDate().toGregorianCalendar().getTime();
 	}
 	
 	/**
@@ -70,8 +71,10 @@ public class ClientWrapper {
 	 * @param value
 	 * @throws DatatypeConfigurationException
 	 */
-	public void setBirthdayDate(GregorianCalendar value) throws DatatypeConfigurationException{
-		client.setBirthdayDate(DatatypeFactory.newInstance().newXMLGregorianCalendar(value));
+	public void setBirthdayDate(Date value) throws DatatypeConfigurationException{
+		GregorianCalendar calendar  = new GregorianCalendar();
+		calendar.setTime(value);
+		client.setBirthdayDate(DatatypeFactory.newInstance().newXMLGregorianCalendar(calendar));
 	}
 	
 	/**
@@ -186,5 +189,20 @@ public class ClientWrapper {
 	 */
 	public Integer getPassportId(){
 		return client.getPassportId();
+	}
+	
+	/**
+	 * Getting phone number
+	 */
+	@NotEmpty
+	public String getPhoneNumber(){
+		return (client.getPhoneNumber() == null) ? null : client.getPhoneNumber().getValue();
+	}
+	
+	/**
+	 * Setting phone number
+	 */
+	public void setPhoneNumber(String value){
+		client.setPhoneNumber(factory.createClientPhoneNumber(value));
 	}
 }

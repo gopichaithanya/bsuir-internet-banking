@@ -20,7 +20,7 @@
 				<div id="message" class="alert alert-error">Form has errors</div>
 			</c:if>
 		</s:bind>
-		<div class="control-group">
+		<%-- <div class="control-group">
 			<div class="controls">
 				<form:input path="login" id="inputLogin"
 					placeholder="Username" />
@@ -33,7 +33,7 @@
 					placeholder="Password" />
 				<form:errors class="help-inline" path="password" />
 			</div>
-		</div>
+		</div> --%>
 		<div class="control-group">
 			<%-- <form:label class="control-label" path="firstName" > 
 						First Name <form:errors class="error" path="firstName" />
@@ -65,15 +65,45 @@
 			</div>
 		</div>
 		<div class="control-group">
+			<%-- <form:label class="control-label" path="lastName"> 
+						Last Name <form:errors path="lastName" />
+			</form:label> --%>
+			<div class="controls">
+				<form:input path="birthdayDate" id="inputBirthdyDate"
+					placeholder="Birthday (mm/dd/yyyy)" />
+				<form:errors class="help-inline" path="birthdayDate" />
+			</div>
+		</div>
+		<div class="control-group">
+			<%-- <form:label class="control-label" path="lastName"> 
+						Last Name <form:errors path="lastName" />
+			</form:label> --%>
+			<div class="controls">
+				<form:input  path="address" id="inputAddress"
+					placeholder="Address" />
+				<form:errors class="help-inline" path="address" />
+			</div>
+		</div>
+		<div class="control-group">
+			<%-- <form:label class="control-label" path="lastName"> 
+						Last Name <form:errors path="lastName" />
+			</form:label> --%>
+			<div class="controls">
+				<form:input  path="phoneNumber" id="inputPhoneNumber"
+					placeholder="Phone Number" />
+				<form:errors class="help-inline" path="phoneNumber" />
+			</div>
+		</div>
+		<div class="control-group">
 			<div class="controls">
 				<button type="submit" class="btn">Submit</button>
 			</div>
 		</div>
 	</form:form>
 	</div>
-	<div class="span6 well">
+	<!-- <div class="span6 well">
 	
-	</div>
+	</div> -->
 	<script type="text/javascript">
 		$(document).ready(
 				function() {

@@ -1,9 +1,12 @@
 package by.bsuir.banking.admin.domain;
 
+import java.util.Date;
 import java.util.GregorianCalendar;
 
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 import by.bsuir.banking.proxy.operator.ObjectFactory;
 import by.bsuir.banking.proxy.operator.Passport;
@@ -38,6 +41,7 @@ public class PassportWrapper {
 	 * Getting authority
 	 * @return
 	 */
+	@NotEmpty
 	public String getAuthority(){
 		return (passport.getAuthority() == null) ? null : passport.getAuthority().getValue();
 	}
@@ -54,8 +58,9 @@ public class PassportWrapper {
 	 * Getting date of expiry
 	 * @return
 	 */
-	public GregorianCalendar getDateOfExpiry(){
-		return (passport.getDateOfExpiry() == null) ? null : passport.getDateOfExpiry().toGregorianCalendar();
+	//@NotEmpty
+	public Date getDateOfExpiry(){
+		return (passport.getDateOfExpiry() == null) ? null : passport.getDateOfExpiry().toGregorianCalendar().getTime();
 	}
 	
 	/**
@@ -63,16 +68,19 @@ public class PassportWrapper {
 	 * @param value
 	 * @throws DatatypeConfigurationException
 	 */
-	public void setDateOfExpiry(GregorianCalendar value) throws DatatypeConfigurationException{
-		passport.setDateOfExpiry(DatatypeFactory.newInstance().newXMLGregorianCalendar(value));
+	public void setDateOfExpiry(Date value) throws DatatypeConfigurationException{
+		GregorianCalendar calendar = new GregorianCalendar();
+		calendar.setTime(value);
+		passport.setDateOfExpiry(DatatypeFactory.newInstance().newXMLGregorianCalendar(calendar));
 	}
 	
 	/**
 	 * Getting date of issue
 	 * @return
 	 */
-	public GregorianCalendar getDateOfIssue(){
-		return (passport.getDateOfIssue() == null) ? null : passport.getDateOfIssue().toGregorianCalendar();
+	//@NotEmpty
+	public Date getDateOfIssue(){
+		return (passport.getDateOfIssue() == null) ? null : passport.getDateOfIssue().toGregorianCalendar().getTime();
 	}
 	
 	/**
@@ -80,8 +88,10 @@ public class PassportWrapper {
 	 * @param value
 	 * @throws DatatypeConfigurationException
 	 */
-	public void setDateOfIssue(GregorianCalendar value) throws DatatypeConfigurationException{
-		passport.setDateOfIssue(DatatypeFactory.newInstance().newXMLGregorianCalendar(value));
+	public void setDateOfIssue(Date value) throws DatatypeConfigurationException{
+		GregorianCalendar calendar = new GregorianCalendar();
+		calendar.setTime(value);
+		passport.setDateOfIssue(DatatypeFactory.newInstance().newXMLGregorianCalendar(calendar));
 	}
 	
 	/**
@@ -96,6 +106,7 @@ public class PassportWrapper {
 	 * Getting number
 	 * @return
 	 */
+	@NotEmpty
 	public String getNumber(){
 		return (passport.getNumber() == null) ? null : passport.getNumber().getValue();
 	}
@@ -112,6 +123,7 @@ public class PassportWrapper {
 	 * Getting seria
 	 * @return
 	 */
+	@NotEmpty
 	public String getSeria(){
 		return (passport.getSeria() == null) ? null : passport.getSeria().getValue();
 	}
