@@ -60,6 +60,8 @@ public interface ICurrencyService {
      * 
      * @param securityToken
      * @param sellCurrencyRates
+     * @throws ICurrencyServiceUpdateSellCurrencyRatesAuthorizationFaultFaultFaultMessage
+     * @throws ICurrencyServiceUpdateSellCurrencyRatesDomainFaultFaultFaultMessage
      */
     @WebMethod(operationName = "UpdateSellCurrencyRates", action = "http://tempuri.org/ICurrencyService/UpdateSellCurrencyRates")
     @RequestWrapper(localName = "UpdateSellCurrencyRates", targetNamespace = "http://tempuri.org/", className = "by.bsuir.banking.proxy.currency.UpdateSellCurrencyRates")
@@ -68,12 +70,16 @@ public interface ICurrencyService {
         @WebParam(name = "sellCurrencyRates", targetNamespace = "http://tempuri.org/")
         ArrayOfSellCurrencyRate sellCurrencyRates,
         @WebParam(name = "securityToken", targetNamespace = "http://tempuri.org/")
-        String securityToken);
+        String securityToken)
+        throws ICurrencyServiceUpdateSellCurrencyRatesAuthorizationFaultFaultFaultMessage, ICurrencyServiceUpdateSellCurrencyRatesDomainFaultFaultFaultMessage
+    ;
 
     /**
      * 
      * @param securityToken
      * @param purchaseCurrencyRates
+     * @throws ICurrencyServiceUpdatePurchaseCurrencyRatesAuthorizationFaultFaultFaultMessage
+     * @throws ICurrencyServiceUpdatePurchaseCurrencyRatesDomainFaultFaultFaultMessage
      */
     @WebMethod(operationName = "UpdatePurchaseCurrencyRates", action = "http://tempuri.org/ICurrencyService/UpdatePurchaseCurrencyRates")
     @RequestWrapper(localName = "UpdatePurchaseCurrencyRates", targetNamespace = "http://tempuri.org/", className = "by.bsuir.banking.proxy.currency.UpdatePurchaseCurrencyRates")
@@ -82,6 +88,8 @@ public interface ICurrencyService {
         @WebParam(name = "purchaseCurrencyRates", targetNamespace = "http://tempuri.org/")
         ArrayOfPurchaseCurrencyRate purchaseCurrencyRates,
         @WebParam(name = "securityToken", targetNamespace = "http://tempuri.org/")
-        String securityToken);
+        String securityToken)
+        throws ICurrencyServiceUpdatePurchaseCurrencyRatesAuthorizationFaultFaultFaultMessage, ICurrencyServiceUpdatePurchaseCurrencyRatesDomainFaultFaultFaultMessage
+    ;
 
 }

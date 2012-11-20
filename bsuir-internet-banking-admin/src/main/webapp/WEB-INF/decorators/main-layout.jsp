@@ -33,6 +33,7 @@ body {
 
 </head>
 
+
 <body>
 
 	<div class="navbar navbar-inverse navbar-fixed-top">
@@ -91,7 +92,7 @@ body {
 		<c:import url="/WEB-INF/views/tags/footer.jsp" />
 	</footer>
 
-	<!-- Placed at the end of the document so the pages load faster -->
+<!-- Placed at the end of the document so the pages load faster -->
 	<script type="text/javascript"
 		src="<c:url value="/resources/js/jquery-1.8.0-min.js" />"></script>
 	<script type="text/javascript"
@@ -102,5 +103,6 @@ body {
 		src="<c:url value="/resources/js/json2.js" />"></script>
 	<script type="text/javascript"
 		src="<c:url value="/resources/js/date.format.js" />"></script>
+	
 </body>
 </html>

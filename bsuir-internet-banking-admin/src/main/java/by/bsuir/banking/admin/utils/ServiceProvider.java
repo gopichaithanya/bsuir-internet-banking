@@ -4,8 +4,12 @@ import by.bsuir.banking.proxy.administration.AdministrationService;
 import by.bsuir.banking.proxy.authentication.AuthenticationService;
 import by.bsuir.banking.proxy.administration.IAdministrationService;
 import by.bsuir.banking.proxy.authentication.IAuthenticationService;
+import by.bsuir.banking.proxy.card.CardService;
+import by.bsuir.banking.proxy.card.ICardService;
 import by.bsuir.banking.proxy.currency.CurrencyService;
 import by.bsuir.banking.proxy.currency.ICurrencyService;
+import by.bsuir.banking.proxy.lockcard.ILockCardService;
+import by.bsuir.banking.proxy.lockcard.LockCardService;
 import by.bsuir.banking.proxy.operator.IOperatorService;
 import by.bsuir.banking.proxy.operator.OperatorService;
 
@@ -15,6 +19,8 @@ public class ServiceProvider {
 	private static IAdministrationService adminInstance;
 	private static IOperatorService operInstance;
 	private static ICurrencyService currencyInstance;
+	private static ICardService cardInstance;
+	private static ILockCardService lockCardInstance;
 	
 	public static IAuthenticationService getAuthenticationService(){
 		if(authInstance == null){
@@ -47,5 +53,20 @@ public class ServiceProvider {
 		}
 		return currencyInstance;
 	}
-
+	
+	public static ICardService getCardService(){
+		if(cardInstance == null){
+			CardService endpoint = new CardService();
+			cardInstance = endpoint.getBasicHttpBindingICardService();
+		}
+		return cardInstance;
+	}
+	
+	public static ILockCardService getLockCardService(){
+		if(lockCardInstance == null){
+			LockCardService endpoint = new LockCardService();
+			lockCardInstance = endpoint.getBasicHttpBindingILockCardService();
+		}
+		return lockCardInstance;
+	}
 }

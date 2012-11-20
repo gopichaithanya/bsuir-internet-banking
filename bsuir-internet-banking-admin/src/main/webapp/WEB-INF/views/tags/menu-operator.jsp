@@ -4,5 +4,6 @@
 	<li><a href="<c:url value="/" />">Currency exchange rates</a></li>
 
 	<li class="nav-header">Accounts</li>
-	<li><a href="<c:url value="/account/create" />">Create account</a></li>
+	<li><a href="<c:url value="/client/create/common" />">Create client</a></li>
+	<%-- <li><a href="<c:url value="/account/create" />">Create account</a></li> --%>
 </ul>

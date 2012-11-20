@@ -21,8 +21,11 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="Amount" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
+ *         &lt;element name="Cards" type="{http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model}ArrayOfCard" minOccurs="0"/>
  *         &lt;element name="Client" type="{http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model}Client" minOccurs="0"/>
  *         &lt;element name="ClientId" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *         &lt;element name="CurrencyType" type="{http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model}CurrencyType" minOccurs="0"/>
+ *         &lt;element name="CurrencyTypeId" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element name="Id" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element name="Number" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
@@ -36,8 +39,11 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Account", namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", propOrder = {
     "amount",
+    "cards",
     "client",
     "clientId",
+    "currencyType",
+    "currencyTypeId",
     "id",
     "number"
 })
@@ -45,10 +51,16 @@ public class Account {
 
     @XmlElement(name = "Amount")
     protected BigDecimal amount;
+    @XmlElementRef(name = "Cards", namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", type = JAXBElement.class)
+    protected JAXBElement<ArrayOfCard> cards;
     @XmlElementRef(name = "Client", namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", type = JAXBElement.class)
     protected JAXBElement<Client> client;
     @XmlElement(name = "ClientId")
     protected Integer clientId;
+    @XmlElementRef(name = "CurrencyType", namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", type = JAXBElement.class)
+    protected JAXBElement<CurrencyType> currencyType;
+    @XmlElement(name = "CurrencyTypeId")
+    protected Integer currencyTypeId;
     @XmlElement(name = "Id")
     protected Integer id;
     @XmlElementRef(name = "Number", namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", type = JAXBElement.class)
@@ -76,6 +88,30 @@ public class Account {
      */
     public void setAmount(BigDecimal value) {
         this.amount = value;
+    }
+
+    /**
+     * Gets the value of the cards property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link ArrayOfCard }{@code >}
+     *     
+     */
+    public JAXBElement<ArrayOfCard> getCards() {
+        return cards;
+    }
+
+    /**
+     * Sets the value of the cards property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link ArrayOfCard }{@code >}
+     *     
+     */
+    public void setCards(JAXBElement<ArrayOfCard> value) {
+        this.cards = ((JAXBElement<ArrayOfCard> ) value);
     }
 
     /**
@@ -124,6 +160,54 @@ public class Account {
      */
     public void setClientId(Integer value) {
         this.clientId = value;
+    }
+
+    /**
+     * Gets the value of the currencyType property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link CurrencyType }{@code >}
+     *     
+     */
+    public JAXBElement<CurrencyType> getCurrencyType() {
+        return currencyType;
+    }
+
+    /**
+     * Sets the value of the currencyType property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link CurrencyType }{@code >}
+     *     
+     */
+    public void setCurrencyType(JAXBElement<CurrencyType> value) {
+        this.currencyType = ((JAXBElement<CurrencyType> ) value);
+    }
+
+    /**
+     * Gets the value of the currencyTypeId property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *     
+     */
+    public Integer getCurrencyTypeId() {
+        return currencyTypeId;
+    }
+
+    /**
+     * Sets the value of the currencyTypeId property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *     
+     */
+    public void setCurrencyTypeId(Integer value) {
+        this.currencyTypeId = value;
     }
 
     /**

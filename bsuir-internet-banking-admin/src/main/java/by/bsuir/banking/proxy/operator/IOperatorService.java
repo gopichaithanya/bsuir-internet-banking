@@ -104,6 +104,20 @@ public interface IOperatorService {
 
     /**
      * 
+     * @param securityToken
+     * @return
+     *     returns java.lang.Integer
+     */
+    @WebMethod(operationName = "GetClientsCount", action = "http://tempuri.org/IOperatorService/GetClientsCount")
+    @WebResult(name = "GetClientsCountResult", targetNamespace = "http://tempuri.org/")
+    @RequestWrapper(localName = "GetClientsCount", targetNamespace = "http://tempuri.org/", className = "by.bsuir.banking.proxy.operator.GetClientsCount")
+    @ResponseWrapper(localName = "GetClientsCountResponse", targetNamespace = "http://tempuri.org/", className = "by.bsuir.banking.proxy.operator.GetClientsCountResponse")
+    public Integer getClientsCount(
+        @WebParam(name = "securityToken", targetNamespace = "http://tempuri.org/")
+        String securityToken);
+
+    /**
+     * 
      * @param middleName
      * @param lastName
      * @param securityToken
