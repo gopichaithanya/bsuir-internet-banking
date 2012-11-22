@@ -60,7 +60,6 @@ public class ListOperatorController extends EntityController{
 		Integer adminsCount = 0;
 		try {
 			adminsCount = service.getOperatorsCount(securityToken);
-			System.out.println("Operators count from service: " + adminsCount);
 		} catch (IAdministrationServiceGetOperatorsCountAuthorizationFaultFaultFaultMessage e) {
 			AdminUtils.logDebug(logger, MessageConstants.AUTHORIZATION_ERROR);
 			response.sendRedirect(MessageConstants.AUTH_FAILED_VIEW);
@@ -79,7 +78,6 @@ public class ListOperatorController extends EntityController{
 			ArrayOfOperator operators;
 			try {
 				operators = service.getAllOperators(1, itemsonpage, securityToken);
-				System.out.println("Operators count form list: " + operators.getOperator().size());
 				List<OperatorWrapper> wrappedList = new ArrayList<OperatorWrapper>();
 				for (Operator operator:operators.getOperator()){
 					wrappedList.add(new OperatorWrapper(operator));
@@ -104,7 +102,6 @@ public class ListOperatorController extends EntityController{
 		ArrayOfOperator operators;
 		try {
 			operators = service.getAllOperators(page, itemsonpage, securityToken);
-			System.out.println("Operators count form list: " + operators.getOperator().size());
 			List<OperatorWrapper> wrappedList = new ArrayList<OperatorWrapper>();
 			for (Operator operator:operators.getOperator()){
 				wrappedList.add(new OperatorWrapper(operator));

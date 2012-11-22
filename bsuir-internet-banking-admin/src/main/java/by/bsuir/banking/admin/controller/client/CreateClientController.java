@@ -1,5 +1,7 @@
 package by.bsuir.banking.admin.controller.client;
 
+import java.math.BigInteger;
+import java.security.SecureRandom;
 import java.util.GregorianCalendar;
 
 import javax.servlet.http.HttpServletRequest;
@@ -42,6 +44,8 @@ public class CreateClientController extends EntityController {
 	private static IOperatorService service;
 	private static final String VIEW_NAME_COMMON = "client-create";
 	private static final String VIEW_NAME_PASSPORT = "passport-create";
+	private static SecureRandom random = new SecureRandom();
+    
 	
 	/**
 	 * Constructor which gets service for this controller
@@ -103,11 +107,13 @@ public class CreateClientController extends EntityController {
 		String securityToken = getSecurityToken(session);
 		client.setPassport(passport);
 		//generating login and password
-		client.setLogin("testLogin");
-		client.setPassword("testPasssword");
+		String login = new BigInteger(50, random).toString(32);
+	    String password = new BigInteger(50, random).toString(32);
+		client.setLogin(login);
+		client.setPassword(password);
 		service.createClient(client.getClient(), securityToken);
 		redirectAttrs.addFlashAttribute("message", "Client was created successfully");
-		return "redirect:/home";
+		return "redirect:/client/list";
 	}
 	
 	

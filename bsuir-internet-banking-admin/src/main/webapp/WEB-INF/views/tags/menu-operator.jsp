@@ -5,5 +5,6 @@
 
 	<li class="nav-header">Accounts</li>
 	<li><a href="<c:url value="/client/create/common" />">Create client</a></li>
+	<li><a href="<c:url value="/client/list" />">View clients</a></li>
 	<%-- <li><a href="<c:url value="/account/create" />">Create account</a></li> --%>
 </ul>
