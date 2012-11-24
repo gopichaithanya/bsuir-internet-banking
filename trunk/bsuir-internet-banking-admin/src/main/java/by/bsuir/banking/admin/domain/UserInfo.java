@@ -1,5 +1,7 @@
 package by.bsuir.banking.admin.domain;
 
+import javax.validation.constraints.Size;
+
 import org.hibernate.validator.constraints.NotEmpty;
 
 
@@ -16,6 +18,7 @@ public class UserInfo {
 	 * TODO add other constraints
 	 */
 	@NotEmpty
+	@Size(min = 1, max = 20)
 	protected String username;
 	
 	/**
@@ -23,6 +26,7 @@ public class UserInfo {
 	 * TODO add other constraints
 	 */
 	@NotEmpty
+	@Size(min = 1, max = 20)
 	protected String password;
 	
 	/**

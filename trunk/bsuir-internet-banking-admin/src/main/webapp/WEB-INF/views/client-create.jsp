@@ -96,7 +96,7 @@
 		</div>
 		<div class="control-group">
 			<div class="controls">
-				<button type="submit" class="btn">Submit</button>
+				<button type="submit" class="btn">Next</button>
 			</div>
 		</div>
 	</form:form>
