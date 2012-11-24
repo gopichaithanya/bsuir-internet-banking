@@ -33,6 +33,7 @@ public class MessageConstants {
 	public static final String OPERATOR_ENTITY = "operator";
 	public static final String CLIENT_ENTITY = "client";
 	public static final String PASSPORT_ENTITY = "passport";
+	public static final String CURRENCY_ENTITY = "currency";
 	
 	/*
 	 * Roles (temporary)

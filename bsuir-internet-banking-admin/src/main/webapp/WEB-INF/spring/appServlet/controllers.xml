@@ -31,6 +31,7 @@
 			<mvc:mapping path="/account/*/*" />
 			<mvc:mapping path="/client/*" />
 			<mvc:mapping path="/client/*/*" />
+			<mvc:mapping path="/currency/rates/set" />
 			<bean class="by.bsuir.banking.admin.interceptor.OperatorInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>

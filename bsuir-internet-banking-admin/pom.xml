@@ -229,7 +229,7 @@
 					</execution> -->
 				</executions>
 				<configuration>
-					<packageName>by.bsuir.banking.proxy.lockcard</packageName>
+					<packageName>by.nbrb.currency</packageName>
 					<wsdlUrls>
 						<!-- <wsdlUrl>http://localhost:8732/InternetBanking.Services.Implementations/AdministrationService/?wsdl</wsdlUrl> -->
 						<!-- <wsdlUrl>http://localhost:8733/AuthenticationService/?wsdl</wsdlUrl> -->
@@ -237,8 +237,10 @@
 						<!-- <wsdlUrls>http://localhost:8735/OperatorService/?wsdl</wsdlUrls> -->
 						<!-- <wsdlUrls>http://www.nbrb.by/Services/ExRates.asmx?wsdl</wsdlUrls> -->
 						<!-- <wsdlUrls>http://localhost:8736/CardService/?wsdl</wsdlUrls> -->
-						<wsdlUrls>http://localhost:8737/LockCardService/?wsdl</wsdlUrls>
+						<!-- <wsdlUrls>http://localhost:8737/LockCardService/?wsdl</wsdlUrls> -->
 					</wsdlUrls>
+					<wsdlDirectory>c:\Users\Katherine\Documents\banking\</wsdlDirectory>
+					<!-- <wsdlFiles>ExRates.wsdl</wsdlFiles> -->
 					<extension>true</extension>
 				</configuration>
 			</plugin>
