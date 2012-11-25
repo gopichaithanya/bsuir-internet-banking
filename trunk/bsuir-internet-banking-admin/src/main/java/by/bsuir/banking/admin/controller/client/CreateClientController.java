@@ -2,17 +2,18 @@ package by.bsuir.banking.admin.controller.client;
 
 import java.math.BigInteger;
 import java.security.SecureRandom;
-import java.util.GregorianCalendar;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.ServletRequestDataBinder;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +21,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import by.bsuir.banking.admin.controller.DatePropertyEditor;
 import by.bsuir.banking.admin.controller.EntityController;
 import by.bsuir.banking.admin.domain.ClientWrapper;
 import by.bsuir.banking.admin.domain.PassportWrapper;
@@ -66,8 +66,10 @@ public class CreateClientController extends EntityController {
 	}
 	
 	@InitBinder
-	public void initBinder(HttpServletRequest req, ServletRequestDataBinder binder){
-		binder.registerCustomEditor(GregorianCalendar.class, new DatePropertyEditor());
+	protected void initBinder(WebDataBinder binder) {
+		String format = "MM/dd/yyyy";
+		SimpleDateFormat dateFormat = new SimpleDateFormat(format);
+	    binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, false));
 	}
 	
 	@RequestMapping(value={"","/common"}, method=RequestMethod.GET)
@@ -92,7 +94,10 @@ public class CreateClientController extends EntityController {
 	}
 	
 	@RequestMapping(value={"/passport"}, method=RequestMethod.GET)
-	public String passportCreate(){
+	public String passportCreate(Model model){
+		if(!model.containsAttribute("passport")){
+			return "redirect:/client/create/common";
+		}
 		return VIEW_NAME_PASSPORT;
 	}
 	
@@ -112,8 +117,10 @@ public class CreateClientController extends EntityController {
 		client.setLogin(login);
 		client.setPassword(password);
 		service.createClient(client.getClient(), securityToken);
+		//getting id for newly created entity
+		Integer id = service.getClientByPassportData(passport.getSeria(), passport.getNumber(), securityToken).getId();
 		redirectAttrs.addFlashAttribute("message", "Client was created successfully");
-		return "redirect:/client/list";
+		return "redirect:/client/view/" + id;
 	}
 	
 	

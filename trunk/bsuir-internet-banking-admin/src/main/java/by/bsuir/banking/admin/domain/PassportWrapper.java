@@ -58,7 +58,7 @@ public class PassportWrapper {
 	 * Getting date of expiry
 	 * @return
 	 */
-	//@NotEmpty
+	@NotEmpty
 	public Date getDateOfExpiry(){
 		return (passport.getDateOfExpiry() == null) ? null : passport.getDateOfExpiry().toGregorianCalendar().getTime();
 	}
@@ -78,7 +78,7 @@ public class PassportWrapper {
 	 * Getting date of issue
 	 * @return
 	 */
-	//@NotEmpty
+	@NotEmpty
 	public Date getDateOfIssue(){
 		return (passport.getDateOfIssue() == null) ? null : passport.getDateOfIssue().toGregorianCalendar().getTime();
 	}
