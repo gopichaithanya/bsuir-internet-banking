@@ -17,9 +17,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import by.bsuir.banking.admin.controller.DatePropertyEditor;
 import by.bsuir.banking.admin.controller.EntityController;
 import by.bsuir.banking.admin.domain.ClientWrapper;
+import by.bsuir.banking.admin.utils.AdminUtils;
+import by.bsuir.banking.admin.utils.MessageConstants;
 import by.bsuir.banking.admin.utils.ServiceProvider;
 import by.bsuir.banking.proxy.operator.Client;
 import by.bsuir.banking.proxy.operator.IOperatorService;
+import by.bsuir.banking.proxy.operator.IOperatorServiceGetClientAuthorizationFaultFaultFaultMessage;
+import by.bsuir.banking.proxy.operator.IOperatorServiceGetClientDomainFaultFaultFaultMessage;
 
 /**
  * Controller for viewing client
@@ -47,7 +51,16 @@ public class ViewClientController extends EntityController {
     @RequestMapping(method=RequestMethod.GET)
     public String viewClient(@PathVariable("id") Integer id, HttpSession session, Model model){
     	String securityToken = getSecurityToken(session);
-    	Client client = service.getClient(id, securityToken);
+    	Client client;
+		try {
+			client = service.getClient(id, securityToken);
+		} catch (IOperatorServiceGetClientAuthorizationFaultFaultFaultMessage e) {
+			AdminUtils.logDebug(logger, MessageConstants.AUTHORIZATION_ERROR);
+			return "redirect:" + MessageConstants.AUTH_FAILED_VIEW;
+		} catch (IOperatorServiceGetClientDomainFaultFaultFaultMessage e) {
+			AdminUtils.logDebug(logger, MessageConstants.GETTING_OBJECT_FAILED_ON_SERVER, MessageConstants.CLIENT_ENTITY);
+			return "redirect:" + MessageConstants.ERROR_VIEW;
+		}
     	ClientWrapper wrapper = new ClientWrapper(client);
     	model.addAttribute("client", wrapper);
     	

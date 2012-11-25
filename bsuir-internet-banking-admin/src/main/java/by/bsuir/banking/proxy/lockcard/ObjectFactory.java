@@ -37,8 +37,8 @@ public class ObjectFactory {
     private final static QName _Int_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "int");
     private final static QName _QName_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "QName");
     private final static QName _UnsignedShort_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "unsignedShort");
-    private final static QName _Decimal_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "decimal");
     private final static QName _Float_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "float");
+    private final static QName _Decimal_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "decimal");
     private final static QName _Double_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "double");
     private final static QName _Long_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "long");
     private final static QName _Short_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "short");
@@ -46,34 +46,21 @@ public class ObjectFactory {
     private final static QName _Base64Binary_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "base64Binary");
     private final static QName _Duration_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "duration");
     private final static QName _Byte_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "byte");
+    private final static QName _AuthorizationFault_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.Services.Interfaces.FaultContracts", "AuthorizationFault");
     private final static QName _String_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "string");
     private final static QName _UnsignedLong_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "unsignedLong");
     private final static QName _Boolean_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "boolean");
-    private final static QName _LockCardSecretWord_QNAME = new QName("http://tempuri.org/", "secretWord");
-    private final static QName _LockCardSecurityToken_QNAME = new QName("http://tempuri.org/", "securityToken");
-    private final static QName _LockCardNumber_QNAME = new QName("http://tempuri.org/", "number");
+    private final static QName _DomainFault_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.Services.Interfaces.FaultContracts", "DomainFault");
+    private final static QName _UnlockCardSecretWord_QNAME = new QName("http://tempuri.org/", "secretWord");
+    private final static QName _UnlockCardNumber_QNAME = new QName("http://tempuri.org/", "number");
+    private final static QName _LockCardByIdSecurityToken_QNAME = new QName("http://tempuri.org/", "securityToken");
+    private final static QName _AuthorizationFaultMessage_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.Services.Interfaces.FaultContracts", "Message");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: by.bsuir.banking.proxy.lockcard
      * 
      */
     public ObjectFactory() {
-    }
-
-    /**
-     * Create an instance of {@link LockCardResponse }
-     * 
-     */
-    public LockCardResponse createLockCardResponse() {
-        return new LockCardResponse();
-    }
-
-    /**
-     * Create an instance of {@link LockCard }
-     * 
-     */
-    public LockCard createLockCard() {
-        return new LockCard();
     }
 
     /**
@@ -90,6 +77,70 @@ public class ObjectFactory {
      */
     public UnlockCardResponse createUnlockCardResponse() {
         return new UnlockCardResponse();
+    }
+
+    /**
+     * Create an instance of {@link LockCardById }
+     * 
+     */
+    public LockCardById createLockCardById() {
+        return new LockCardById();
+    }
+
+    /**
+     * Create an instance of {@link UnlockCardByIdResponse }
+     * 
+     */
+    public UnlockCardByIdResponse createUnlockCardByIdResponse() {
+        return new UnlockCardByIdResponse();
+    }
+
+    /**
+     * Create an instance of {@link AuthorizationFault }
+     * 
+     */
+    public AuthorizationFault createAuthorizationFault() {
+        return new AuthorizationFault();
+    }
+
+    /**
+     * Create an instance of {@link LockCard }
+     * 
+     */
+    public LockCard createLockCard() {
+        return new LockCard();
+    }
+
+    /**
+     * Create an instance of {@link DomainFault }
+     * 
+     */
+    public DomainFault createDomainFault() {
+        return new DomainFault();
+    }
+
+    /**
+     * Create an instance of {@link UnlockCardById }
+     * 
+     */
+    public UnlockCardById createUnlockCardById() {
+        return new UnlockCardById();
+    }
+
+    /**
+     * Create an instance of {@link LockCardResponse }
+     * 
+     */
+    public LockCardResponse createLockCardResponse() {
+        return new LockCardResponse();
+    }
+
+    /**
+     * Create an instance of {@link LockCardByIdResponse }
+     * 
+     */
+    public LockCardByIdResponse createLockCardByIdResponse() {
+        return new LockCardByIdResponse();
     }
 
     /**
@@ -174,21 +225,21 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://schemas.microsoft.com/2003/10/Serialization/", name = "decimal")
-    public JAXBElement<BigDecimal> createDecimal(BigDecimal value) {
-        return new JAXBElement<BigDecimal>(_Decimal_QNAME, BigDecimal.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Float }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://schemas.microsoft.com/2003/10/Serialization/", name = "float")
     public JAXBElement<Float> createFloat(Float value) {
         return new JAXBElement<Float>(_Float_QNAME, Float.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.microsoft.com/2003/10/Serialization/", name = "decimal")
+    public JAXBElement<BigDecimal> createDecimal(BigDecimal value) {
+        return new JAXBElement<BigDecimal>(_Decimal_QNAME, BigDecimal.class, null, value);
     }
 
     /**
@@ -255,6 +306,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AuthorizationFault }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.Services.Interfaces.FaultContracts", name = "AuthorizationFault")
+    public JAXBElement<AuthorizationFault> createAuthorizationFault(AuthorizationFault value) {
+        return new JAXBElement<AuthorizationFault>(_AuthorizationFault_QNAME, AuthorizationFault.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
@@ -282,30 +342,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link DomainFault }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "secretWord", scope = LockCard.class)
-    public JAXBElement<String> createLockCardSecretWord(String value) {
-        return new JAXBElement<String>(_LockCardSecretWord_QNAME, String.class, LockCard.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = LockCard.class)
-    public JAXBElement<String> createLockCardSecurityToken(String value) {
-        return new JAXBElement<String>(_LockCardSecurityToken_QNAME, String.class, LockCard.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "number", scope = LockCard.class)
-    public JAXBElement<String> createLockCardNumber(String value) {
-        return new JAXBElement<String>(_LockCardNumber_QNAME, String.class, LockCard.class, value);
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.Services.Interfaces.FaultContracts", name = "DomainFault")
+    public JAXBElement<DomainFault> createDomainFault(DomainFault value) {
+        return new JAXBElement<DomainFault>(_DomainFault_QNAME, DomainFault.class, null, value);
     }
 
     /**
@@ -314,16 +356,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://tempuri.org/", name = "secretWord", scope = UnlockCard.class)
     public JAXBElement<String> createUnlockCardSecretWord(String value) {
-        return new JAXBElement<String>(_LockCardSecretWord_QNAME, String.class, UnlockCard.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = UnlockCard.class)
-    public JAXBElement<String> createUnlockCardSecurityToken(String value) {
-        return new JAXBElement<String>(_LockCardSecurityToken_QNAME, String.class, UnlockCard.class, value);
+        return new JAXBElement<String>(_UnlockCardSecretWord_QNAME, String.class, UnlockCard.class, value);
     }
 
     /**
@@ -332,7 +365,61 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://tempuri.org/", name = "number", scope = UnlockCard.class)
     public JAXBElement<String> createUnlockCardNumber(String value) {
-        return new JAXBElement<String>(_LockCardNumber_QNAME, String.class, UnlockCard.class, value);
+        return new JAXBElement<String>(_UnlockCardNumber_QNAME, String.class, UnlockCard.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = LockCardById.class)
+    public JAXBElement<String> createLockCardByIdSecurityToken(String value) {
+        return new JAXBElement<String>(_LockCardByIdSecurityToken_QNAME, String.class, LockCardById.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.Services.Interfaces.FaultContracts", name = "Message", scope = AuthorizationFault.class)
+    public JAXBElement<String> createAuthorizationFaultMessage(String value) {
+        return new JAXBElement<String>(_AuthorizationFaultMessage_QNAME, String.class, AuthorizationFault.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "secretWord", scope = LockCard.class)
+    public JAXBElement<String> createLockCardSecretWord(String value) {
+        return new JAXBElement<String>(_UnlockCardSecretWord_QNAME, String.class, LockCard.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "number", scope = LockCard.class)
+    public JAXBElement<String> createLockCardNumber(String value) {
+        return new JAXBElement<String>(_UnlockCardNumber_QNAME, String.class, LockCard.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.Services.Interfaces.FaultContracts", name = "Message", scope = DomainFault.class)
+    public JAXBElement<String> createDomainFaultMessage(String value) {
+        return new JAXBElement<String>(_AuthorizationFaultMessage_QNAME, String.class, DomainFault.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = UnlockCardById.class)
+    public JAXBElement<String> createUnlockCardByIdSecurityToken(String value) {
+        return new JAXBElement<String>(_LockCardByIdSecurityToken_QNAME, String.class, UnlockCardById.class, value);
     }
 
 }

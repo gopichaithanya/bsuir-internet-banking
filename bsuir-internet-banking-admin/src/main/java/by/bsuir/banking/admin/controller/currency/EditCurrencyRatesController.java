@@ -1,8 +1,11 @@
 package by.bsuir.banking.admin.controller.currency;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -18,7 +21,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import by.bsuir.banking.admin.controller.EntityController;
 import by.bsuir.banking.admin.domain.CurrencyRatesWrapper;
-import by.bsuir.banking.admin.domain.OperatorWrapper;
 import by.bsuir.banking.admin.domain.PurchaseRateWrapper;
 import by.bsuir.banking.admin.domain.SellRateWrapper;
 import by.bsuir.banking.admin.utils.AdminUtils;
@@ -27,6 +29,8 @@ import by.bsuir.banking.admin.utils.ServiceProvider;
 import by.bsuir.banking.proxy.currency.ArrayOfPurchaseCurrencyRate;
 import by.bsuir.banking.proxy.currency.ArrayOfSellCurrencyRate;
 import by.bsuir.banking.proxy.currency.ICurrencyService;
+import by.bsuir.banking.proxy.currency.ICurrencyServiceGetPurchaseCurrencyRatesDomainFaultFaultFaultMessage;
+import by.bsuir.banking.proxy.currency.ICurrencyServiceGetSellCurrencyRatesDomainFaultFaultFaultMessage;
 import by.bsuir.banking.proxy.currency.ICurrencyServiceUpdatePurchaseCurrencyRatesAuthorizationFaultFaultFaultMessage;
 import by.bsuir.banking.proxy.currency.ICurrencyServiceUpdatePurchaseCurrencyRatesDomainFaultFaultFaultMessage;
 import by.bsuir.banking.proxy.currency.ICurrencyServiceUpdateSellCurrencyRatesAuthorizationFaultFaultFaultMessage;
@@ -54,15 +58,25 @@ public class EditCurrencyRatesController extends EntityController{
 	}
 	
 	@ModelAttribute("rates")
-	public CurrencyRatesWrapper createPurchaseRates(){
+	public CurrencyRatesWrapper createPurchaseRates(HttpServletRequest request, HttpServletResponse response) throws IOException{
 		List<PurchaseRateWrapper> purchaseRates = new ArrayList<PurchaseRateWrapper>();
-		for(PurchaseCurrencyRate rate: service.getPurchaseCurrencyRates().getPurchaseCurrencyRate()){
-			purchaseRates.add(new PurchaseRateWrapper(rate));
+		try {
+			for(PurchaseCurrencyRate rate: service.getPurchaseCurrencyRates().getPurchaseCurrencyRate()){
+				purchaseRates.add(new PurchaseRateWrapper(rate));
+			}
+		} catch (ICurrencyServiceGetPurchaseCurrencyRatesDomainFaultFaultFaultMessage e) {
+			AdminUtils.logDebug(logger, MessageConstants.GETTING_OBJECT_FAILED_ON_SERVER, MessageConstants.CURRENCY_ENTITY);
+			response.sendRedirect(request.getContextPath() + MessageConstants.ERROR_VIEW);
 		}
 		
 		List<SellRateWrapper> sellRates = new ArrayList<SellRateWrapper>();
-		for(SellCurrencyRate rate: service.getSellCurrencyRates().getSellCurrencyRate()){
-			sellRates.add(new SellRateWrapper(rate));
+		try {
+			for(SellCurrencyRate rate: service.getSellCurrencyRates().getSellCurrencyRate()){
+				sellRates.add(new SellRateWrapper(rate));
+			}
+		} catch (ICurrencyServiceGetSellCurrencyRatesDomainFaultFaultFaultMessage e) {
+			AdminUtils.logDebug(logger, MessageConstants.GETTING_OBJECT_FAILED_ON_SERVER, MessageConstants.CURRENCY_ENTITY);
+			response.sendRedirect(request.getContextPath() + MessageConstants.ERROR_VIEW);
 		}
 		CurrencyRatesWrapper wrapper = new CurrencyRatesWrapper(purchaseRates, sellRates);
 		return wrapper;

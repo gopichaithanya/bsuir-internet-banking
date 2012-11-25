@@ -29,6 +29,8 @@ public interface IOperatorService {
      * @param clientId
      * @return
      *     returns by.bsuir.banking.proxy.operator.Client
+     * @throws IOperatorServiceGetClientAuthorizationFaultFaultFaultMessage
+     * @throws IOperatorServiceGetClientDomainFaultFaultFaultMessage
      */
     @WebMethod(operationName = "GetClient", action = "http://tempuri.org/IOperatorService/GetClient")
     @WebResult(name = "GetClientResult", targetNamespace = "http://tempuri.org/")
@@ -38,12 +40,16 @@ public interface IOperatorService {
         @WebParam(name = "clientId", targetNamespace = "http://tempuri.org/")
         Integer clientId,
         @WebParam(name = "securityToken", targetNamespace = "http://tempuri.org/")
-        String securityToken);
+        String securityToken)
+        throws IOperatorServiceGetClientAuthorizationFaultFaultFaultMessage, IOperatorServiceGetClientDomainFaultFaultFaultMessage
+    ;
 
     /**
      * 
      * @param client
      * @param securityToken
+     * @throws IOperatorServiceCreateClientDomainFaultFaultFaultMessage
+     * @throws IOperatorServiceCreateClientAuthorizationFaultFaultFaultMessage
      */
     @WebMethod(operationName = "CreateClient", action = "http://tempuri.org/IOperatorService/CreateClient")
     @RequestWrapper(localName = "CreateClient", targetNamespace = "http://tempuri.org/", className = "by.bsuir.banking.proxy.operator.CreateClient")
@@ -52,12 +58,16 @@ public interface IOperatorService {
         @WebParam(name = "client", targetNamespace = "http://tempuri.org/")
         Client client,
         @WebParam(name = "securityToken", targetNamespace = "http://tempuri.org/")
-        String securityToken);
+        String securityToken)
+        throws IOperatorServiceCreateClientAuthorizationFaultFaultFaultMessage, IOperatorServiceCreateClientDomainFaultFaultFaultMessage
+    ;
 
     /**
      * 
      * @param client
      * @param securityToken
+     * @throws IOperatorServiceUpdateClientAuthorizationFaultFaultFaultMessage
+     * @throws IOperatorServiceUpdateClientDomainFaultFaultFaultMessage
      */
     @WebMethod(operationName = "UpdateClient", action = "http://tempuri.org/IOperatorService/UpdateClient")
     @RequestWrapper(localName = "UpdateClient", targetNamespace = "http://tempuri.org/", className = "by.bsuir.banking.proxy.operator.UpdateClient")
@@ -66,12 +76,16 @@ public interface IOperatorService {
         @WebParam(name = "client", targetNamespace = "http://tempuri.org/")
         Client client,
         @WebParam(name = "securityToken", targetNamespace = "http://tempuri.org/")
-        String securityToken);
+        String securityToken)
+        throws IOperatorServiceUpdateClientAuthorizationFaultFaultFaultMessage, IOperatorServiceUpdateClientDomainFaultFaultFaultMessage
+    ;
 
     /**
      * 
      * @param securityToken
      * @param clientId
+     * @throws IOperatorServiceDeleteClientDomainFaultFaultFaultMessage
+     * @throws IOperatorServiceDeleteClientAuthorizationFaultFaultFaultMessage
      */
     @WebMethod(operationName = "DeleteClient", action = "http://tempuri.org/IOperatorService/DeleteClient")
     @RequestWrapper(localName = "DeleteClient", targetNamespace = "http://tempuri.org/", className = "by.bsuir.banking.proxy.operator.DeleteClient")
@@ -80,7 +94,9 @@ public interface IOperatorService {
         @WebParam(name = "clientId", targetNamespace = "http://tempuri.org/")
         Integer clientId,
         @WebParam(name = "securityToken", targetNamespace = "http://tempuri.org/")
-        String securityToken);
+        String securityToken)
+        throws IOperatorServiceDeleteClientAuthorizationFaultFaultFaultMessage, IOperatorServiceDeleteClientDomainFaultFaultFaultMessage
+    ;
 
     /**
      * 
@@ -89,6 +105,8 @@ public interface IOperatorService {
      * @param pageNumber
      * @return
      *     returns by.bsuir.banking.proxy.operator.ArrayOfClient
+     * @throws IOperatorServiceGetPageofClientsAuthorizationFaultFaultFaultMessage
+     * @throws IOperatorServiceGetPageofClientsDomainFaultFaultFaultMessage
      */
     @WebMethod(operationName = "GetPageofClients", action = "http://tempuri.org/IOperatorService/GetPageofClients")
     @WebResult(name = "GetPageofClientsResult", targetNamespace = "http://tempuri.org/")
@@ -100,13 +118,17 @@ public interface IOperatorService {
         @WebParam(name = "count", targetNamespace = "http://tempuri.org/")
         Integer count,
         @WebParam(name = "securityToken", targetNamespace = "http://tempuri.org/")
-        String securityToken);
+        String securityToken)
+        throws IOperatorServiceGetPageofClientsAuthorizationFaultFaultFaultMessage, IOperatorServiceGetPageofClientsDomainFaultFaultFaultMessage
+    ;
 
     /**
      * 
      * @param securityToken
      * @return
      *     returns java.lang.Integer
+     * @throws IOperatorServiceGetClientsCountAuthorizationFaultFaultFaultMessage
+     * @throws IOperatorServiceGetClientsCountDomainFaultFaultFaultMessage
      */
     @WebMethod(operationName = "GetClientsCount", action = "http://tempuri.org/IOperatorService/GetClientsCount")
     @WebResult(name = "GetClientsCountResult", targetNamespace = "http://tempuri.org/")
@@ -114,7 +136,9 @@ public interface IOperatorService {
     @ResponseWrapper(localName = "GetClientsCountResponse", targetNamespace = "http://tempuri.org/", className = "by.bsuir.banking.proxy.operator.GetClientsCountResponse")
     public Integer getClientsCount(
         @WebParam(name = "securityToken", targetNamespace = "http://tempuri.org/")
-        String securityToken);
+        String securityToken)
+        throws IOperatorServiceGetClientsCountAuthorizationFaultFaultFaultMessage, IOperatorServiceGetClientsCountDomainFaultFaultFaultMessage
+    ;
 
     /**
      * 
@@ -124,6 +148,8 @@ public interface IOperatorService {
      * @param firstName
      * @return
      *     returns by.bsuir.banking.proxy.operator.ArrayOfClient
+     * @throws IOperatorServiceGetClientsByNameAuthorizationFaultFaultFaultMessage
+     * @throws IOperatorServiceGetClientsByNameDomainFaultFaultFaultMessage
      */
     @WebMethod(operationName = "GetClientsByName", action = "http://tempuri.org/IOperatorService/GetClientsByName")
     @WebResult(name = "GetClientsByNameResult", targetNamespace = "http://tempuri.org/")
@@ -137,7 +163,9 @@ public interface IOperatorService {
         @WebParam(name = "lastName", targetNamespace = "http://tempuri.org/")
         String lastName,
         @WebParam(name = "securityToken", targetNamespace = "http://tempuri.org/")
-        String securityToken);
+        String securityToken)
+        throws IOperatorServiceGetClientsByNameAuthorizationFaultFaultFaultMessage, IOperatorServiceGetClientsByNameDomainFaultFaultFaultMessage
+    ;
 
     /**
      * 
@@ -146,6 +174,8 @@ public interface IOperatorService {
      * @param number
      * @return
      *     returns by.bsuir.banking.proxy.operator.Client
+     * @throws IOperatorServiceGetClientByPassportDataDomainFaultFaultFaultMessage
+     * @throws IOperatorServiceGetClientByPassportDataAuthorizationFaultFaultFaultMessage
      */
     @WebMethod(operationName = "GetClientByPassportData", action = "http://tempuri.org/IOperatorService/GetClientByPassportData")
     @WebResult(name = "GetClientByPassportDataResult", targetNamespace = "http://tempuri.org/")
@@ -157,57 +187,8 @@ public interface IOperatorService {
         @WebParam(name = "number", targetNamespace = "http://tempuri.org/")
         String number,
         @WebParam(name = "securityToken", targetNamespace = "http://tempuri.org/")
-        String securityToken);
-
-    /**
-     * 
-     * @param numberAccount
-     * @param securityToken
-     * @return
-     *     returns by.bsuir.banking.proxy.operator.Account
-     */
-    @WebMethod(operationName = "GetAccount", action = "http://tempuri.org/IOperatorService/GetAccount")
-    @WebResult(name = "GetAccountResult", targetNamespace = "http://tempuri.org/")
-    @RequestWrapper(localName = "GetAccount", targetNamespace = "http://tempuri.org/", className = "by.bsuir.banking.proxy.operator.GetAccount")
-    @ResponseWrapper(localName = "GetAccountResponse", targetNamespace = "http://tempuri.org/", className = "by.bsuir.banking.proxy.operator.GetAccountResponse")
-    public Account getAccount(
-        @WebParam(name = "numberAccount", targetNamespace = "http://tempuri.org/")
-        Integer numberAccount,
-        @WebParam(name = "securityToken", targetNamespace = "http://tempuri.org/")
-        String securityToken);
-
-    /**
-     * 
-     * @param securityToken
-     * @param secretWord
-     * @param numberCard
-     */
-    @WebMethod(operationName = "LockCard", action = "http://tempuri.org/IOperatorService/LockCard")
-    @RequestWrapper(localName = "LockCard", targetNamespace = "http://tempuri.org/", className = "by.bsuir.banking.proxy.operator.LockCard")
-    @ResponseWrapper(localName = "LockCardResponse", targetNamespace = "http://tempuri.org/", className = "by.bsuir.banking.proxy.operator.LockCardResponse")
-    public void lockCard(
-        @WebParam(name = "secretWord", targetNamespace = "http://tempuri.org/")
-        String secretWord,
-        @WebParam(name = "numberCard", targetNamespace = "http://tempuri.org/")
-        Integer numberCard,
-        @WebParam(name = "securityToken", targetNamespace = "http://tempuri.org/")
-        String securityToken);
-
-    /**
-     * 
-     * @param securityToken
-     * @param secretWord
-     * @param numberCard
-     */
-    @WebMethod(operationName = "UnlockCard", action = "http://tempuri.org/IOperatorService/UnlockCard")
-    @RequestWrapper(localName = "UnlockCard", targetNamespace = "http://tempuri.org/", className = "by.bsuir.banking.proxy.operator.UnlockCard")
-    @ResponseWrapper(localName = "UnlockCardResponse", targetNamespace = "http://tempuri.org/", className = "by.bsuir.banking.proxy.operator.UnlockCardResponse")
-    public void unlockCard(
-        @WebParam(name = "secretWord", targetNamespace = "http://tempuri.org/")
-        String secretWord,
-        @WebParam(name = "numberCard", targetNamespace = "http://tempuri.org/")
-        Integer numberCard,
-        @WebParam(name = "securityToken", targetNamespace = "http://tempuri.org/")
-        String securityToken);
+        String securityToken)
+        throws IOperatorServiceGetClientByPassportDataAuthorizationFaultFaultFaultMessage, IOperatorServiceGetClientByPassportDataDomainFaultFaultFaultMessage
+    ;
 
 }

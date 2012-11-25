@@ -28,6 +28,10 @@ import by.bsuir.banking.admin.utils.AdminUtils;
 import by.bsuir.banking.admin.utils.MessageConstants;
 import by.bsuir.banking.admin.utils.ServiceProvider;
 import by.bsuir.banking.proxy.operator.IOperatorService;
+import by.bsuir.banking.proxy.operator.IOperatorServiceCreateClientAuthorizationFaultFaultFaultMessage;
+import by.bsuir.banking.proxy.operator.IOperatorServiceCreateClientDomainFaultFaultFaultMessage;
+import by.bsuir.banking.proxy.operator.IOperatorServiceGetClientByPassportDataAuthorizationFaultFaultFaultMessage;
+import by.bsuir.banking.proxy.operator.IOperatorServiceGetClientByPassportDataDomainFaultFaultFaultMessage;
 
 /**
  * Controller for client creation. Model - decorator of proxy class from .Net
@@ -116,10 +120,29 @@ public class CreateClientController extends EntityController {
 	    String password = new BigInteger(50, random).toString(32);
 		client.setLogin(login);
 		client.setPassword(password);
-		service.createClient(client.getClient(), securityToken);
-		//getting id for newly created entity
-		Integer id = service.getClientByPassportData(passport.getSeria(), passport.getNumber(), securityToken).getId();
-		redirectAttrs.addFlashAttribute("message", "Client was created successfully");
+		Integer id = 0;
+		try {
+			service.createClient(client.getClient(), securityToken);
+			//getting id for newly created entity
+			id = service.getClientByPassportData(passport.getSeria(), passport.getNumber(), securityToken).getId();
+			redirectAttrs.addFlashAttribute("message", "Client was created successfully");
+		} catch (IOperatorServiceCreateClientAuthorizationFaultFaultFaultMessage e) {
+			AdminUtils.logDebug(logger, MessageConstants.AUTHORIZATION_ERROR);
+			result.reject(e.getMessage());
+			return "redirect:" + MessageConstants.AUTH_FAILED_VIEW;
+		} catch (IOperatorServiceCreateClientDomainFaultFaultFaultMessage e) {
+			AdminUtils.logDebug(logger, MessageConstants.OBJECT_SAVING_FAILED_ON_SERVER, MessageConstants.CLIENT_ENTITY);
+			result.reject(e.getMessage());
+			return VIEW_NAME_PASSPORT;
+		} catch (IOperatorServiceGetClientByPassportDataAuthorizationFaultFaultFaultMessage e) {
+			AdminUtils.logDebug(logger, MessageConstants.AUTHORIZATION_ERROR);
+			result.reject(e.getMessage());
+			return "redirect:" + MessageConstants.AUTH_FAILED_VIEW;
+		} catch (IOperatorServiceGetClientByPassportDataDomainFaultFaultFaultMessage e) {
+			AdminUtils.logDebug(logger, MessageConstants.GETTING_OBJECT_FAILED_ON_SERVER, MessageConstants.CLIENT_ENTITY);
+			return "redirect:/client/list";
+		}
+		
 		return "redirect:/client/view/" + id;
 	}
 	

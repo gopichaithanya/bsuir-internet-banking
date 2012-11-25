@@ -14,6 +14,8 @@ import by.bsuir.banking.admin.utils.AdminUtils;
 import by.bsuir.banking.admin.utils.MessageConstants;
 import by.bsuir.banking.admin.utils.ServiceProvider;
 import by.bsuir.banking.proxy.operator.IOperatorService;
+import by.bsuir.banking.proxy.operator.IOperatorServiceDeleteClientAuthorizationFaultFaultFaultMessage;
+import by.bsuir.banking.proxy.operator.IOperatorServiceDeleteClientDomainFaultFaultFaultMessage;
 
 /**
  * Controller for deleting clients
@@ -43,7 +45,17 @@ public class DeleteClientController extends EntityController {
 		if (referrer == null || referrer == "") {
 			referrer = "/client/list";
 		}
-		service.deleteClient(id, securityToken);
+		try {
+			service.deleteClient(id, securityToken);
+		} catch (IOperatorServiceDeleteClientAuthorizationFaultFaultFaultMessage e) {
+			AdminUtils.logDebug(logger, MessageConstants.AUTHORIZATION_ERROR);
+			return "redirect:" + MessageConstants.AUTH_FAILED_VIEW;
+		} catch (IOperatorServiceDeleteClientDomainFaultFaultFaultMessage e) {
+			AdminUtils.logDebug(logger, MessageConstants.DELETING_OBJECT_FAILED_ON_SERVER, MessageConstants.CLIENT_ENTITY);
+			redirectAttrs.addFlashAttribute("message",
+					"Client could not be deleted");
+			return "redirect:" + referrer;
+		}
 		redirectAttrs.addFlashAttribute("message",
 				"Client was successfully deleted");
 		return "redirect:/client/list";
