@@ -20,20 +20,6 @@
 				<div id="message" class="alert alert-error">Form has errors</div>
 			</c:if>
 		</s:bind>
-		<%-- <div class="control-group">
-			<div class="controls">
-				<form:input path="login" id="inputLogin"
-					placeholder="Username" />
-				<form:errors class="help-inline" path="login" />
-			</div>
-		</div>
-		<div class="control-group">
-			<div class="controls">
-				<form:input path="password" id="inputPassword"
-					placeholder="Password" />
-				<form:errors class="help-inline" path="password" />
-			</div>
-		</div> --%>
 		<div class="control-group">
 			<%-- <form:label class="control-label" path="firstName" > 
 						First Name <form:errors class="error" path="firstName" />

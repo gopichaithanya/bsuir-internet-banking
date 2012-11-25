@@ -25,7 +25,7 @@
 			<c:forEach var="clientitem" items="${clientlist}">
 				<tr>
 					<td><c:out value="${i}" /></td>
-					<td><a href="<c:url value="/client/edit/${clientitem.id}"/>"><c:out value="${clientitem.firstName} ${clientitem.middleName} ${clientitem.lastName}" /></a></td>
+					<td><a href="<c:url value="/client/view/${clientitem.id}"/>"><c:out value="${clientitem.firstName} ${clientitem.middleName} ${clientitem.lastName}" /></a></td>
 					<td>${clientitem.birthdayDate}</td>
 					<td>${clientitem.address}</td>
 					<td>${clientitem.phoneNumber}</td>
