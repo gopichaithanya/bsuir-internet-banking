@@ -24,9 +24,9 @@ public interface ILockCardService {
 
     /**
      * 
-     * @param securityToken
      * @param secretWord
      * @param number
+     * @throws ILockCardServiceLockCardDomainFaultFaultFaultMessage
      */
     @WebMethod(operationName = "LockCard", action = "http://tempuri.org/ILockCardService/LockCard")
     @RequestWrapper(localName = "LockCard", targetNamespace = "http://tempuri.org/", className = "by.bsuir.banking.proxy.lockcard.LockCard")
@@ -35,15 +35,15 @@ public interface ILockCardService {
         @WebParam(name = "number", targetNamespace = "http://tempuri.org/")
         String number,
         @WebParam(name = "secretWord", targetNamespace = "http://tempuri.org/")
-        String secretWord,
-        @WebParam(name = "securityToken", targetNamespace = "http://tempuri.org/")
-        String securityToken);
+        String secretWord)
+        throws ILockCardServiceLockCardDomainFaultFaultFaultMessage
+    ;
 
     /**
      * 
-     * @param securityToken
      * @param secretWord
      * @param number
+     * @throws ILockCardServiceUnlockCardDomainFaultFaultFaultMessage
      */
     @WebMethod(operationName = "UnlockCard", action = "http://tempuri.org/ILockCardService/UnlockCard")
     @RequestWrapper(localName = "UnlockCard", targetNamespace = "http://tempuri.org/", className = "by.bsuir.banking.proxy.lockcard.UnlockCard")
@@ -52,8 +52,44 @@ public interface ILockCardService {
         @WebParam(name = "number", targetNamespace = "http://tempuri.org/")
         String number,
         @WebParam(name = "secretWord", targetNamespace = "http://tempuri.org/")
-        String secretWord,
+        String secretWord)
+        throws ILockCardServiceUnlockCardDomainFaultFaultFaultMessage
+    ;
+
+    /**
+     * 
+     * @param cardId
+     * @param securityToken
+     * @throws ILockCardServiceLockCardByIdAuthorizationFaultFaultFaultMessage
+     * @throws ILockCardServiceLockCardByIdDomainFaultFaultFaultMessage
+     */
+    @WebMethod(operationName = "LockCardById", action = "http://tempuri.org/ILockCardService/LockCardById")
+    @RequestWrapper(localName = "LockCardById", targetNamespace = "http://tempuri.org/", className = "by.bsuir.banking.proxy.lockcard.LockCardById")
+    @ResponseWrapper(localName = "LockCardByIdResponse", targetNamespace = "http://tempuri.org/", className = "by.bsuir.banking.proxy.lockcard.LockCardByIdResponse")
+    public void lockCardById(
+        @WebParam(name = "cardId", targetNamespace = "http://tempuri.org/")
+        Integer cardId,
         @WebParam(name = "securityToken", targetNamespace = "http://tempuri.org/")
-        String securityToken);
+        String securityToken)
+        throws ILockCardServiceLockCardByIdAuthorizationFaultFaultFaultMessage, ILockCardServiceLockCardByIdDomainFaultFaultFaultMessage
+    ;
+
+    /**
+     * 
+     * @param cardId
+     * @param securityToken
+     * @throws ILockCardServiceUnlockCardByIdAuthorizationFaultFaultFaultMessage
+     * @throws ILockCardServiceUnlockCardByIdDomainFaultFaultFaultMessage
+     */
+    @WebMethod(operationName = "UnlockCardById", action = "http://tempuri.org/ILockCardService/UnlockCardById")
+    @RequestWrapper(localName = "UnlockCardById", targetNamespace = "http://tempuri.org/", className = "by.bsuir.banking.proxy.lockcard.UnlockCardById")
+    @ResponseWrapper(localName = "UnlockCardByIdResponse", targetNamespace = "http://tempuri.org/", className = "by.bsuir.banking.proxy.lockcard.UnlockCardByIdResponse")
+    public void unlockCardById(
+        @WebParam(name = "cardId", targetNamespace = "http://tempuri.org/")
+        Integer cardId,
+        @WebParam(name = "securityToken", targetNamespace = "http://tempuri.org/")
+        String securityToken)
+        throws ILockCardServiceUnlockCardByIdAuthorizationFaultFaultFaultMessage, ILockCardServiceUnlockCardByIdDomainFaultFaultFaultMessage
+    ;
 
 }

@@ -1,11 +1,12 @@
 package by.bsuir.banking.admin.controller.client;
 
-import java.math.BigInteger;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -23,12 +24,15 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import by.bsuir.banking.admin.controller.EntityController;
 import by.bsuir.banking.admin.domain.ClientWrapper;
-import by.bsuir.banking.admin.domain.PassportWrapper;
 import by.bsuir.banking.admin.utils.AdminUtils;
 import by.bsuir.banking.admin.utils.MessageConstants;
 import by.bsuir.banking.admin.utils.ServiceProvider;
 import by.bsuir.banking.proxy.operator.Client;
 import by.bsuir.banking.proxy.operator.IOperatorService;
+import by.bsuir.banking.proxy.operator.IOperatorServiceGetClientAuthorizationFaultFaultFaultMessage;
+import by.bsuir.banking.proxy.operator.IOperatorServiceGetClientDomainFaultFaultFaultMessage;
+import by.bsuir.banking.proxy.operator.IOperatorServiceUpdateClientAuthorizationFaultFaultFaultMessage;
+import by.bsuir.banking.proxy.operator.IOperatorServiceUpdateClientDomainFaultFaultFaultMessage;
 
 /**
  * Controller for editing client entities
@@ -56,9 +60,18 @@ public class EditClientController extends EntityController {
 	}
 	
 	@ModelAttribute("client")
-	public ClientWrapper getClient(@PathVariable("id") Integer id, HttpSession session, Model model){
+	public ClientWrapper getClient(@PathVariable("id") Integer id, HttpSession session, Model model, HttpServletRequest request, HttpServletResponse response) throws IOException{
 		String securityToken = getSecurityToken(session);
-		Client client = service.getClient(id, securityToken);
+		Client client = null;
+		try {
+			client = service.getClient(id, securityToken);
+		} catch (IOperatorServiceGetClientAuthorizationFaultFaultFaultMessage e) {
+			AdminUtils.logDebug(logger, MessageConstants.AUTHORIZATION_ERROR);
+			response.sendRedirect(request.getContextPath() + MessageConstants.AUTH_FAILED_VIEW);
+		} catch (IOperatorServiceGetClientDomainFaultFaultFaultMessage e) {
+			AdminUtils.logDebug(logger, MessageConstants.GETTING_OBJECT_FAILED_ON_SERVER, MessageConstants.CLIENT_ENTITY);
+			return null;
+		}
 		ClientWrapper wrapper = new ClientWrapper(client);
 		return wrapper;
 	}
@@ -77,7 +90,17 @@ public class EditClientController extends EntityController {
 			return VIEW_NAME;
 		}
 		String securityToken = getSecurityToken(session);
-		service.updateClient(client.getClient(), securityToken);
+		try {
+			service.updateClient(client.getClient(), securityToken);
+		} catch (IOperatorServiceUpdateClientAuthorizationFaultFaultFaultMessage e) {
+			AdminUtils.logDebug(logger, MessageConstants.AUTHORIZATION_ERROR);
+			result.reject(e.getMessage());
+			return "redirect:" + MessageConstants.AUTH_FAILED_VIEW;
+		} catch (IOperatorServiceUpdateClientDomainFaultFaultFaultMessage e) {
+			AdminUtils.logDebug(logger, MessageConstants.OBJECT_SAVING_FAILED_ON_SERVER, MessageConstants.CLIENT_ENTITY);
+			result.reject(e.getMessage());
+			return VIEW_NAME;
+		}
 		//getting id for newly created entity
 		redirectAttrs.addFlashAttribute("message", "Client was saved successfully");
 		return "redirect:/client/view/" + client.getId();

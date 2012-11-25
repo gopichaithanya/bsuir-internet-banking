@@ -27,34 +27,43 @@ public interface ICurrencyService {
      * 
      * @return
      *     returns by.bsuir.banking.proxy.currency.ArrayOfCurrencyType
+     * @throws ICurrencyServiceGetCurrencyTypesDomainFaultFaultFaultMessage
      */
     @WebMethod(operationName = "GetCurrencyTypes", action = "http://tempuri.org/ICurrencyService/GetCurrencyTypes")
     @WebResult(name = "GetCurrencyTypesResult", targetNamespace = "http://tempuri.org/")
     @RequestWrapper(localName = "GetCurrencyTypes", targetNamespace = "http://tempuri.org/", className = "by.bsuir.banking.proxy.currency.GetCurrencyTypes")
     @ResponseWrapper(localName = "GetCurrencyTypesResponse", targetNamespace = "http://tempuri.org/", className = "by.bsuir.banking.proxy.currency.GetCurrencyTypesResponse")
-    public ArrayOfCurrencyType getCurrencyTypes();
+    public ArrayOfCurrencyType getCurrencyTypes()
+        throws ICurrencyServiceGetCurrencyTypesDomainFaultFaultFaultMessage
+    ;
 
     /**
      * 
      * @return
      *     returns by.bsuir.banking.proxy.currency.ArrayOfSellCurrencyRate
+     * @throws ICurrencyServiceGetSellCurrencyRatesDomainFaultFaultFaultMessage
      */
     @WebMethod(operationName = "GetSellCurrencyRates", action = "http://tempuri.org/ICurrencyService/GetSellCurrencyRates")
     @WebResult(name = "GetSellCurrencyRatesResult", targetNamespace = "http://tempuri.org/")
     @RequestWrapper(localName = "GetSellCurrencyRates", targetNamespace = "http://tempuri.org/", className = "by.bsuir.banking.proxy.currency.GetSellCurrencyRates")
     @ResponseWrapper(localName = "GetSellCurrencyRatesResponse", targetNamespace = "http://tempuri.org/", className = "by.bsuir.banking.proxy.currency.GetSellCurrencyRatesResponse")
-    public ArrayOfSellCurrencyRate getSellCurrencyRates();
+    public ArrayOfSellCurrencyRate getSellCurrencyRates()
+        throws ICurrencyServiceGetSellCurrencyRatesDomainFaultFaultFaultMessage
+    ;
 
     /**
      * 
      * @return
      *     returns by.bsuir.banking.proxy.currency.ArrayOfPurchaseCurrencyRate
+     * @throws ICurrencyServiceGetPurchaseCurrencyRatesDomainFaultFaultFaultMessage
      */
     @WebMethod(operationName = "GetPurchaseCurrencyRates", action = "http://tempuri.org/ICurrencyService/GetPurchaseCurrencyRates")
     @WebResult(name = "GetPurchaseCurrencyRatesResult", targetNamespace = "http://tempuri.org/")
     @RequestWrapper(localName = "GetPurchaseCurrencyRates", targetNamespace = "http://tempuri.org/", className = "by.bsuir.banking.proxy.currency.GetPurchaseCurrencyRates")
     @ResponseWrapper(localName = "GetPurchaseCurrencyRatesResponse", targetNamespace = "http://tempuri.org/", className = "by.bsuir.banking.proxy.currency.GetPurchaseCurrencyRatesResponse")
-    public ArrayOfPurchaseCurrencyRate getPurchaseCurrencyRates();
+    public ArrayOfPurchaseCurrencyRate getPurchaseCurrencyRates()
+        throws ICurrencyServiceGetPurchaseCurrencyRatesDomainFaultFaultFaultMessage
+    ;
 
     /**
      * 
@@ -78,8 +87,8 @@ public interface ICurrencyService {
      * 
      * @param securityToken
      * @param purchaseCurrencyRates
-     * @throws ICurrencyServiceUpdatePurchaseCurrencyRatesAuthorizationFaultFaultFaultMessage
      * @throws ICurrencyServiceUpdatePurchaseCurrencyRatesDomainFaultFaultFaultMessage
+     * @throws ICurrencyServiceUpdatePurchaseCurrencyRatesAuthorizationFaultFaultFaultMessage
      */
     @WebMethod(operationName = "UpdatePurchaseCurrencyRates", action = "http://tempuri.org/ICurrencyService/UpdatePurchaseCurrencyRates")
     @RequestWrapper(localName = "UpdatePurchaseCurrencyRates", targetNamespace = "http://tempuri.org/", className = "by.bsuir.banking.proxy.currency.UpdatePurchaseCurrencyRates")

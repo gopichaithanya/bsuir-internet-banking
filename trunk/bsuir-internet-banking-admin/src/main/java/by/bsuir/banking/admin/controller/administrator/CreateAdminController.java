@@ -74,7 +74,7 @@ public class CreateAdminController extends EntityController{
 		String securityToken = getSecurityToken(session);
 		try {
 			service.createNewAdministrator(admin.getAdministrator(), securityToken);
-			AdminUtils.logInfo(logger, MessageConstants.OBJECT_INSTANCE_SAVED, MessageConstants.OPERATOR_ENTITY);
+			AdminUtils.logInfo(logger, MessageConstants.OBJECT_INSTANCE_SAVED, MessageConstants.ADMIN_ENTITY);
 			return "redirect:/admin/list";
 		} catch (IAdministrationServiceCreateNewAdministratorAuthorizationFaultFaultFaultMessage e) {
 			AdminUtils.logDebug(logger, MessageConstants.AUTHORIZATION_ERROR);

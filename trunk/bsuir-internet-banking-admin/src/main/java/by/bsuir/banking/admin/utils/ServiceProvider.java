@@ -6,6 +6,8 @@ import by.bsuir.banking.proxy.administration.IAdministrationService;
 import by.bsuir.banking.proxy.authentication.IAuthenticationService;
 import by.bsuir.banking.proxy.card.CardService;
 import by.bsuir.banking.proxy.card.ICardService;
+import by.bsuir.banking.proxy.client.ClientService;
+import by.bsuir.banking.proxy.client.IClientService;
 import by.bsuir.banking.proxy.currency.CurrencyService;
 import by.bsuir.banking.proxy.currency.ICurrencyService;
 import by.bsuir.banking.proxy.lockcard.ILockCardService;
@@ -21,6 +23,7 @@ public class ServiceProvider {
 	private static ICurrencyService currencyInstance;
 	private static ICardService cardInstance;
 	private static ILockCardService lockCardInstance;
+	private static IClientService clientInstance;
 	
 	public static IAuthenticationService getAuthenticationService(){
 		if(authInstance == null){
@@ -68,5 +71,13 @@ public class ServiceProvider {
 			lockCardInstance = endpoint.getBasicHttpBindingILockCardService();
 		}
 		return lockCardInstance;
+	}
+	
+	public static IClientService getClientService(){
+		if(clientInstance == null){
+			ClientService endpoint = new ClientService();
+			clientInstance = endpoint.getBasicHttpBindingIClientService();
+		}
+		return clientInstance;
 	}
 }

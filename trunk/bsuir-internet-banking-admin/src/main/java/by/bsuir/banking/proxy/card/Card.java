@@ -20,9 +20,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="Account" type="{http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model}Account" minOccurs="0"/>
  *         &lt;element name="AccountId" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
- *         &lt;element name="CardType" type="{http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model}CardType" minOccurs="0"/>
  *         &lt;element name="CardTypeId" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element name="Id" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element name="IsLocked" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
@@ -40,9 +38,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Card", namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", propOrder = {
-    "account",
     "accountId",
-    "cardType",
     "cardTypeId",
     "id",
     "isLocked",
@@ -53,12 +49,8 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class Card {
 
-    @XmlElementRef(name = "Account", namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", type = JAXBElement.class)
-    protected JAXBElement<Account> account;
     @XmlElement(name = "AccountId")
     protected Integer accountId;
-    @XmlElementRef(name = "CardType", namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", type = JAXBElement.class)
-    protected JAXBElement<CardType> cardType;
     @XmlElement(name = "CardTypeId")
     protected Integer cardTypeId;
     @XmlElement(name = "Id")
@@ -73,30 +65,6 @@ public class Card {
     protected Integer operationsLimit;
     @XmlElementRef(name = "SecretWord", namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", type = JAXBElement.class)
     protected JAXBElement<String> secretWord;
-
-    /**
-     * Gets the value of the account property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link JAXBElement }{@code <}{@link Account }{@code >}
-     *     
-     */
-    public JAXBElement<Account> getAccount() {
-        return account;
-    }
-
-    /**
-     * Sets the value of the account property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link Account }{@code >}
-     *     
-     */
-    public void setAccount(JAXBElement<Account> value) {
-        this.account = ((JAXBElement<Account> ) value);
-    }
 
     /**
      * Gets the value of the accountId property.
@@ -120,30 +88,6 @@ public class Card {
      */
     public void setAccountId(Integer value) {
         this.accountId = value;
-    }
-
-    /**
-     * Gets the value of the cardType property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link JAXBElement }{@code <}{@link CardType }{@code >}
-     *     
-     */
-    public JAXBElement<CardType> getCardType() {
-        return cardType;
-    }
-
-    /**
-     * Sets the value of the cardType property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link CardType }{@code >}
-     *     
-     */
-    public void setCardType(JAXBElement<CardType> value) {
-        this.cardType = ((JAXBElement<CardType> ) value);
     }
 
     /**
