@@ -22,6 +22,7 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence>
  *         &lt;element name="Amount" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
  *         &lt;element name="ClientId" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *         &lt;element name="CurrencyType" type="{http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model}CurrencyType" minOccurs="0"/>
  *         &lt;element name="CurrencyTypeId" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element name="Id" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element name="Number" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
@@ -37,6 +38,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "Account", namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", propOrder = {
     "amount",
     "clientId",
+    "currencyType",
     "currencyTypeId",
     "id",
     "number"
@@ -47,6 +49,8 @@ public class Account {
     protected BigDecimal amount;
     @XmlElement(name = "ClientId")
     protected Integer clientId;
+    @XmlElementRef(name = "CurrencyType", namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", type = JAXBElement.class)
+    protected JAXBElement<CurrencyType> currencyType;
     @XmlElement(name = "CurrencyTypeId")
     protected Integer currencyTypeId;
     @XmlElement(name = "Id")
@@ -100,6 +104,30 @@ public class Account {
      */
     public void setClientId(Integer value) {
         this.clientId = value;
+    }
+
+    /**
+     * Gets the value of the currencyType property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link CurrencyType }{@code >}
+     *     
+     */
+    public JAXBElement<CurrencyType> getCurrencyType() {
+        return currencyType;
+    }
+
+    /**
+     * Sets the value of the currencyType property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link CurrencyType }{@code >}
+     *     
+     */
+    public void setCurrencyType(JAXBElement<CurrencyType> value) {
+        this.currencyType = ((JAXBElement<CurrencyType> ) value);
     }
 
     /**

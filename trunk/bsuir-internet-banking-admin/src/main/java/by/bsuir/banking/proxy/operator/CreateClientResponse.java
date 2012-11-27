@@ -3,6 +3,7 @@ package by.bsuir.banking.proxy.operator;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -17,6 +18,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
+ *         &lt;element name="CreateClientResult" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -26,9 +28,37 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "")
+@XmlType(name = "", propOrder = {
+    "createClientResult"
+})
 @XmlRootElement(name = "CreateClientResponse")
 public class CreateClientResponse {
 
+    @XmlElement(name = "CreateClientResult")
+    protected Integer createClientResult;
+
+    /**
+     * Gets the value of the createClientResult property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *     
+     */
+    public Integer getCreateClientResult() {
+        return createClientResult;
+    }
+
+    /**
+     * Sets the value of the createClientResult property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *     
+     */
+    public void setCreateClientResult(Integer value) {
+        this.createClientResult = value;
+    }
 
 }

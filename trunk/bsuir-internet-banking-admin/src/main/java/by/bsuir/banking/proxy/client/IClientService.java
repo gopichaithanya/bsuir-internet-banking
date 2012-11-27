@@ -50,8 +50,8 @@ public interface IClientService {
      * @param securityToken
      * @return
      *     returns by.bsuir.banking.proxy.client.ArrayOfCard
-     * @throws IClientServiceGetCardsAuthorizationFaultFaultFaultMessage
      * @throws IClientServiceGetCardsDomainFaultFaultFaultMessage
+     * @throws IClientServiceGetCardsAuthorizationFaultFaultFaultMessage
      */
     @WebMethod(operationName = "GetCards", action = "http://tempuri.org/IClientService/GetCards")
     @WebResult(name = "GetCardsResult", targetNamespace = "http://tempuri.org/")
@@ -110,8 +110,8 @@ public interface IClientService {
      * @param cardId
      * @param count
      * @param securityToken
-     * @throws IClientServiceSetOperationLimitDomainFaultFaultFaultMessage
      * @throws IClientServiceSetOperationLimitAuthorizationFaultFaultFaultMessage
+     * @throws IClientServiceSetOperationLimitDomainFaultFaultFaultMessage
      */
     @WebMethod(operationName = "SetOperationLimit", action = "http://tempuri.org/IClientService/SetOperationLimit")
     @RequestWrapper(localName = "SetOperationLimit", targetNamespace = "http://tempuri.org/", className = "by.bsuir.banking.proxy.client.SetOperationLimit")

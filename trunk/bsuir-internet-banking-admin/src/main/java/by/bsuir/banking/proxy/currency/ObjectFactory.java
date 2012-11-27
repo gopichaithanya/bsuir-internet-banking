@@ -28,6 +28,7 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
+    private final static QName _AuthorizationFaultMessage_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.Services.Interfaces.FaultContracts", "Message");
     private final static QName _AnyURI_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "anyURI");
     private final static QName _DateTime_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "dateTime");
     private final static QName _Char_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "char");
@@ -57,29 +58,20 @@ public class ObjectFactory {
     private final static QName _UnsignedLong_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "unsignedLong");
     private final static QName _ArrayOfSellCurrencyRate_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", "ArrayOfSellCurrencyRate");
     private final static QName _DomainFault_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.Services.Interfaces.FaultContracts", "DomainFault");
+    private final static QName _GetSellCurrencyRatesResponseGetSellCurrencyRatesResult_QNAME = new QName("http://tempuri.org/", "GetSellCurrencyRatesResult");
     private final static QName _GetPurchaseCurrencyRatesResponseGetPurchaseCurrencyRatesResult_QNAME = new QName("http://tempuri.org/", "GetPurchaseCurrencyRatesResult");
     private final static QName _CurrencyTypeName_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", "Name");
     private final static QName _CurrencyTypeShortName_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", "ShortName");
-    private final static QName _AuthorizationFaultMessage_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.Services.Interfaces.FaultContracts", "Message");
-    private final static QName _GetSellCurrencyRatesResponseGetSellCurrencyRatesResult_QNAME = new QName("http://tempuri.org/", "GetSellCurrencyRatesResult");
-    private final static QName _GetCurrencyTypesResponseGetCurrencyTypesResult_QNAME = new QName("http://tempuri.org/", "GetCurrencyTypesResult");
     private final static QName _UpdatePurchaseCurrencyRatesSecurityToken_QNAME = new QName("http://tempuri.org/", "securityToken");
     private final static QName _UpdatePurchaseCurrencyRatesPurchaseCurrencyRates_QNAME = new QName("http://tempuri.org/", "purchaseCurrencyRates");
     private final static QName _UpdateSellCurrencyRatesSellCurrencyRates_QNAME = new QName("http://tempuri.org/", "sellCurrencyRates");
+    private final static QName _GetCurrencyTypesResponseGetCurrencyTypesResult_QNAME = new QName("http://tempuri.org/", "GetCurrencyTypesResult");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: by.bsuir.banking.proxy.currency
      * 
      */
     public ObjectFactory() {
-    }
-
-    /**
-     * Create an instance of {@link GetPurchaseCurrencyRates }
-     * 
-     */
-    public GetPurchaseCurrencyRates createGetPurchaseCurrencyRates() {
-        return new GetPurchaseCurrencyRates();
     }
 
     /**
@@ -91,75 +83,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link PurchaseCurrencyRate }
-     * 
-     */
-    public PurchaseCurrencyRate createPurchaseCurrencyRate() {
-        return new PurchaseCurrencyRate();
-    }
-
-    /**
-     * Create an instance of {@link AuthorizationFault }
-     * 
-     */
-    public AuthorizationFault createAuthorizationFault() {
-        return new AuthorizationFault();
-    }
-
-    /**
-     * Create an instance of {@link CurrencyType }
-     * 
-     */
-    public CurrencyType createCurrencyType() {
-        return new CurrencyType();
-    }
-
-    /**
-     * Create an instance of {@link GetSellCurrencyRatesResponse }
-     * 
-     */
-    public GetSellCurrencyRatesResponse createGetSellCurrencyRatesResponse() {
-        return new GetSellCurrencyRatesResponse();
-    }
-
-    /**
-     * Create an instance of {@link GetCurrencyTypesResponse }
-     * 
-     */
-    public GetCurrencyTypesResponse createGetCurrencyTypesResponse() {
-        return new GetCurrencyTypesResponse();
-    }
-
-    /**
-     * Create an instance of {@link ArrayOfSellCurrencyRate }
-     * 
-     */
-    public ArrayOfSellCurrencyRate createArrayOfSellCurrencyRate() {
-        return new ArrayOfSellCurrencyRate();
-    }
-
-    /**
-     * Create an instance of {@link GetCurrencyTypes }
-     * 
-     */
-    public GetCurrencyTypes createGetCurrencyTypes() {
-        return new GetCurrencyTypes();
-    }
-
-    /**
      * Create an instance of {@link ArrayOfPurchaseCurrencyRate }
      * 
      */
     public ArrayOfPurchaseCurrencyRate createArrayOfPurchaseCurrencyRate() {
         return new ArrayOfPurchaseCurrencyRate();
-    }
-
-    /**
-     * Create an instance of {@link GetSellCurrencyRates }
-     * 
-     */
-    public GetSellCurrencyRates createGetSellCurrencyRates() {
-        return new GetSellCurrencyRates();
     }
 
     /**
@@ -171,27 +99,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ArrayOfCurrencyType }
+     * Create an instance of {@link PurchaseCurrencyRate }
      * 
      */
-    public ArrayOfCurrencyType createArrayOfCurrencyType() {
-        return new ArrayOfCurrencyType();
+    public PurchaseCurrencyRate createPurchaseCurrencyRate() {
+        return new PurchaseCurrencyRate();
     }
 
     /**
-     * Create an instance of {@link SellCurrencyRate }
+     * Create an instance of {@link CurrencyType }
      * 
      */
-    public SellCurrencyRate createSellCurrencyRate() {
-        return new SellCurrencyRate();
-    }
-
-    /**
-     * Create an instance of {@link UpdateSellCurrencyRatesResponse }
-     * 
-     */
-    public UpdateSellCurrencyRatesResponse createUpdateSellCurrencyRatesResponse() {
-        return new UpdateSellCurrencyRatesResponse();
+    public CurrencyType createCurrencyType() {
+        return new CurrencyType();
     }
 
     /**
@@ -203,11 +123,35 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DomainFault }
+     * Create an instance of {@link ArrayOfSellCurrencyRate }
      * 
      */
-    public DomainFault createDomainFault() {
-        return new DomainFault();
+    public ArrayOfSellCurrencyRate createArrayOfSellCurrencyRate() {
+        return new ArrayOfSellCurrencyRate();
+    }
+
+    /**
+     * Create an instance of {@link SellCurrencyRate }
+     * 
+     */
+    public SellCurrencyRate createSellCurrencyRate() {
+        return new SellCurrencyRate();
+    }
+
+    /**
+     * Create an instance of {@link GetPurchaseCurrencyRates }
+     * 
+     */
+    public GetPurchaseCurrencyRates createGetPurchaseCurrencyRates() {
+        return new GetPurchaseCurrencyRates();
+    }
+
+    /**
+     * Create an instance of {@link GetCurrencyTypesResponse }
+     * 
+     */
+    public GetCurrencyTypesResponse createGetCurrencyTypesResponse() {
+        return new GetCurrencyTypesResponse();
     }
 
     /**
@@ -216,6 +160,71 @@ public class ObjectFactory {
      */
     public UpdateSellCurrencyRates createUpdateSellCurrencyRates() {
         return new UpdateSellCurrencyRates();
+    }
+
+    /**
+     * Create an instance of {@link AuthorizationFault }
+     * 
+     */
+    public AuthorizationFault createAuthorizationFault() {
+        return new AuthorizationFault();
+    }
+
+    /**
+     * Create an instance of {@link GetSellCurrencyRatesResponse }
+     * 
+     */
+    public GetSellCurrencyRatesResponse createGetSellCurrencyRatesResponse() {
+        return new GetSellCurrencyRatesResponse();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfCurrencyType }
+     * 
+     */
+    public ArrayOfCurrencyType createArrayOfCurrencyType() {
+        return new ArrayOfCurrencyType();
+    }
+
+    /**
+     * Create an instance of {@link UpdateSellCurrencyRatesResponse }
+     * 
+     */
+    public UpdateSellCurrencyRatesResponse createUpdateSellCurrencyRatesResponse() {
+        return new UpdateSellCurrencyRatesResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetSellCurrencyRates }
+     * 
+     */
+    public GetSellCurrencyRates createGetSellCurrencyRates() {
+        return new GetSellCurrencyRates();
+    }
+
+    /**
+     * Create an instance of {@link GetCurrencyTypes }
+     * 
+     */
+    public GetCurrencyTypes createGetCurrencyTypes() {
+        return new GetCurrencyTypes();
+    }
+
+    /**
+     * Create an instance of {@link DomainFault }
+     * 
+     */
+    public DomainFault createDomainFault() {
+        return new DomainFault();
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.Services.Interfaces.FaultContracts", name = "Message", scope = AuthorizationFault.class)
+    public JAXBElement<String> createAuthorizationFaultMessage(String value) {
+        return new JAXBElement<String>(_AuthorizationFaultMessage_QNAME, String.class, AuthorizationFault.class, value);
     }
 
     /**
@@ -480,6 +489,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfSellCurrencyRate }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "GetSellCurrencyRatesResult", scope = GetSellCurrencyRatesResponse.class)
+    public JAXBElement<ArrayOfSellCurrencyRate> createGetSellCurrencyRatesResponseGetSellCurrencyRatesResult(ArrayOfSellCurrencyRate value) {
+        return new JAXBElement<ArrayOfSellCurrencyRate>(_GetSellCurrencyRatesResponseGetSellCurrencyRatesResult_QNAME, ArrayOfSellCurrencyRate.class, GetSellCurrencyRatesResponse.class, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfPurchaseCurrencyRate }{@code >}}
      * 
      */
@@ -519,42 +537,6 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.Services.Interfaces.FaultContracts", name = "Message", scope = AuthorizationFault.class)
-    public JAXBElement<String> createAuthorizationFaultMessage(String value) {
-        return new JAXBElement<String>(_AuthorizationFaultMessage_QNAME, String.class, AuthorizationFault.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfSellCurrencyRate }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "GetSellCurrencyRatesResult", scope = GetSellCurrencyRatesResponse.class)
-    public JAXBElement<ArrayOfSellCurrencyRate> createGetSellCurrencyRatesResponseGetSellCurrencyRatesResult(ArrayOfSellCurrencyRate value) {
-        return new JAXBElement<ArrayOfSellCurrencyRate>(_GetSellCurrencyRatesResponseGetSellCurrencyRatesResult_QNAME, ArrayOfSellCurrencyRate.class, GetSellCurrencyRatesResponse.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CurrencyType }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", name = "CurrencyType", scope = SellCurrencyRate.class)
-    public JAXBElement<CurrencyType> createSellCurrencyRateCurrencyType(CurrencyType value) {
-        return new JAXBElement<CurrencyType>(_CurrencyType_QNAME, CurrencyType.class, SellCurrencyRate.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfCurrencyType }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "GetCurrencyTypesResult", scope = GetCurrencyTypesResponse.class)
-    public JAXBElement<ArrayOfCurrencyType> createGetCurrencyTypesResponseGetCurrencyTypesResult(ArrayOfCurrencyType value) {
-        return new JAXBElement<ArrayOfCurrencyType>(_GetCurrencyTypesResponseGetCurrencyTypesResult_QNAME, ArrayOfCurrencyType.class, GetCurrencyTypesResponse.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
     @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = UpdatePurchaseCurrencyRates.class)
     public JAXBElement<String> createUpdatePurchaseCurrencyRatesSecurityToken(String value) {
         return new JAXBElement<String>(_UpdatePurchaseCurrencyRatesSecurityToken_QNAME, String.class, UpdatePurchaseCurrencyRates.class, value);
@@ -567,6 +549,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://tempuri.org/", name = "purchaseCurrencyRates", scope = UpdatePurchaseCurrencyRates.class)
     public JAXBElement<ArrayOfPurchaseCurrencyRate> createUpdatePurchaseCurrencyRatesPurchaseCurrencyRates(ArrayOfPurchaseCurrencyRate value) {
         return new JAXBElement<ArrayOfPurchaseCurrencyRate>(_UpdatePurchaseCurrencyRatesPurchaseCurrencyRates_QNAME, ArrayOfPurchaseCurrencyRate.class, UpdatePurchaseCurrencyRates.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CurrencyType }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", name = "CurrencyType", scope = SellCurrencyRate.class)
+    public JAXBElement<CurrencyType> createSellCurrencyRateCurrencyType(CurrencyType value) {
+        return new JAXBElement<CurrencyType>(_CurrencyType_QNAME, CurrencyType.class, SellCurrencyRate.class, value);
     }
 
     /**
@@ -594,6 +585,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://tempuri.org/", name = "sellCurrencyRates", scope = UpdateSellCurrencyRates.class)
     public JAXBElement<ArrayOfSellCurrencyRate> createUpdateSellCurrencyRatesSellCurrencyRates(ArrayOfSellCurrencyRate value) {
         return new JAXBElement<ArrayOfSellCurrencyRate>(_UpdateSellCurrencyRatesSellCurrencyRates_QNAME, ArrayOfSellCurrencyRate.class, UpdateSellCurrencyRates.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfCurrencyType }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "GetCurrencyTypesResult", scope = GetCurrencyTypesResponse.class)
+    public JAXBElement<ArrayOfCurrencyType> createGetCurrencyTypesResponseGetCurrencyTypesResult(ArrayOfCurrencyType value) {
+        return new JAXBElement<ArrayOfCurrencyType>(_GetCurrencyTypesResponseGetCurrencyTypesResult_QNAME, ArrayOfCurrencyType.class, GetCurrencyTypesResponse.class, value);
     }
 
 }

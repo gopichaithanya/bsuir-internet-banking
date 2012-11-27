@@ -24,7 +24,7 @@
 						Username 
 			</form:label> --%>
 			<div class="controls">
-				<form:input path="username" id="inputUsername"
+				<form:input path="username" autocomplete="off" id="inputUsername"
 					placeholder="Username" />
 				<form:errors class="help-inline error" path="username" />
 			</div>
@@ -34,7 +34,7 @@
 						Password 
 			</form:label> --%>
 			<div class="controls">
-				<form:password path="password" id="inputPassword"
+				<form:password path="password" autocomplete="off" id="inputPassword"
 					placeholder="Password" />
 				<form:errors class="help-inline" path="password" />
 			</div>

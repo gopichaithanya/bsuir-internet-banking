@@ -7,7 +7,9 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementRef;
+import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
@@ -21,7 +23,10 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="AccountId" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *         &lt;element name="CVV2" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="CardType" type="{http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model}CardType" minOccurs="0"/>
  *         &lt;element name="CardTypeId" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *         &lt;element name="ExpirationDate" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *         &lt;element name="Id" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element name="IsLocked" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="MoneyLimit" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
@@ -39,7 +44,10 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Card", namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", propOrder = {
     "accountId",
+    "cvv2",
+    "cardType",
     "cardTypeId",
+    "expirationDate",
     "id",
     "isLocked",
     "moneyLimit",
@@ -51,8 +59,15 @@ public class Card {
 
     @XmlElement(name = "AccountId")
     protected Integer accountId;
+    @XmlElementRef(name = "CVV2", namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", type = JAXBElement.class)
+    protected JAXBElement<String> cvv2;
+    @XmlElementRef(name = "CardType", namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", type = JAXBElement.class)
+    protected JAXBElement<CardType> cardType;
     @XmlElement(name = "CardTypeId")
     protected Integer cardTypeId;
+    @XmlElement(name = "ExpirationDate")
+    @XmlSchemaType(name = "dateTime")
+    protected XMLGregorianCalendar expirationDate;
     @XmlElement(name = "Id")
     protected Integer id;
     @XmlElement(name = "IsLocked")
@@ -91,6 +106,54 @@ public class Card {
     }
 
     /**
+     * Gets the value of the cvv2 property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
+     *     
+     */
+    public JAXBElement<String> getCVV2() {
+        return cvv2;
+    }
+
+    /**
+     * Sets the value of the cvv2 property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
+     *     
+     */
+    public void setCVV2(JAXBElement<String> value) {
+        this.cvv2 = ((JAXBElement<String> ) value);
+    }
+
+    /**
+     * Gets the value of the cardType property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link CardType }{@code >}
+     *     
+     */
+    public JAXBElement<CardType> getCardType() {
+        return cardType;
+    }
+
+    /**
+     * Sets the value of the cardType property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link CardType }{@code >}
+     *     
+     */
+    public void setCardType(JAXBElement<CardType> value) {
+        this.cardType = ((JAXBElement<CardType> ) value);
+    }
+
+    /**
      * Gets the value of the cardTypeId property.
      * 
      * @return
@@ -112,6 +175,30 @@ public class Card {
      */
     public void setCardTypeId(Integer value) {
         this.cardTypeId = value;
+    }
+
+    /**
+     * Gets the value of the expirationDate property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public XMLGregorianCalendar getExpirationDate() {
+        return expirationDate;
+    }
+
+    /**
+     * Sets the value of the expirationDate property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public void setExpirationDate(XMLGregorianCalendar value) {
+        this.expirationDate = value;
     }
 
     /**

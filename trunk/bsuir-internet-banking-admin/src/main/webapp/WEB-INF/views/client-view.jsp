@@ -73,7 +73,7 @@
 		<div class="row-fluid">
 			<a class="btn btn-info" href="<c:url value="/client/edit/${client.id}" />">Edit</a>
 			<a class="btn btn-info" href="<c:url value="/account/list/${client.id}" />">View Accounts</a>
-			<a class="btn btn-success" href="<c:url value="/account/create/${client.id}" />">Open Account</a>
+			<a class="btn btn-success" href="<c:url value="/account/open/${client.id}" />">Open Account</a>
 			<a class="btn btn-danger pull-right" href="<c:url value="/client/delete/${client.id}" />">Delete client</a>
 		</div>
 	</div>
