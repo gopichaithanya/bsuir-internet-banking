@@ -60,8 +60,8 @@ public interface ILockCardService {
      * 
      * @param cardId
      * @param securityToken
-     * @throws ILockCardServiceLockCardByIdAuthorizationFaultFaultFaultMessage
      * @throws ILockCardServiceLockCardByIdDomainFaultFaultFaultMessage
+     * @throws ILockCardServiceLockCardByIdAuthorizationFaultFaultFaultMessage
      */
     @WebMethod(operationName = "LockCardById", action = "http://tempuri.org/ILockCardService/LockCardById")
     @RequestWrapper(localName = "LockCardById", targetNamespace = "http://tempuri.org/", className = "by.bsuir.banking.proxy.lockcard.LockCardById")

@@ -77,7 +77,6 @@ public class LoginController extends EntityController{
 		if (result.hasErrors()) {
 			AdminUtils
 					.logDebug(logger, MessageConstants.USER_AUTH_FAILED_CLIENT);
-			System.out.println("!!!!!!!!!!!!!");
 			return VIEW_NAME;
 		}
 
@@ -86,11 +85,12 @@ public class LoginController extends EntityController{
 			IAuthenticationService service = ServiceProvider.getAuthenticationService();
 			AuthenticationCredential credential = service.authenticate(user.getUsername(),
 					user.getPassword());
-			
+			if(credential.getRole().getValue().equals("Client")){
+				result.reject("Wrong role");
+				return VIEW_NAME;
+			}
 			user.setSecurityToken(credential.getSecurityToken().getValue());
 			user.setRole(credential.getRole().getValue());
-			
-			System.out.print("Role is : " + user.getRole());
 			
 			session.setAttribute(MessageConstants.USER_ATTR, user);
 

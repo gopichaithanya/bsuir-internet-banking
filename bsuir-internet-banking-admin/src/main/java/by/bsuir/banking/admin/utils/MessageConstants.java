@@ -10,6 +10,8 @@ public class MessageConstants {
 	public static final String ADMIN_SERVICE_CREATED = "Administrator service was instantiated";
 	public static final String OPERATOR_SERVICE_CREATED = "Operator service was instantiated";
 	public static final String CURRENCY_SERVICE_CREATED = "Currency service was instantiated";
+	public static final String CLIENT_SERVICE_CREATED = "Client service was instantiated";
+	public static final String CARD_SERVICE_CREATED = "Card service was instantiated";
 	public static final String USER_AUTH_FAILED_SERVER = "Authentication failed on server";
 	public static final String SESSION_IS_NULL = "Session is null for some reasons";
 	public static final String AUTHORIZATION_ERROR = "Authorization error";
@@ -34,6 +36,8 @@ public class MessageConstants {
 	public static final String CLIENT_ENTITY = "client";
 	public static final String PASSPORT_ENTITY = "passport";
 	public static final String CURRENCY_ENTITY = "currency";
+	public static final String ACCOUNT_ENTITY = "account";
+	public static final String CARD_ENTITY = "card";
 	
 	/*
 	 * Roles (temporary)
@@ -46,5 +50,6 @@ public class MessageConstants {
 	 */
 	public static String AUTH_FAILED_VIEW = "/auth/failed";
 	public static String ERROR_VIEW = "/error";
+	public static String LOGIN_VIEW = "/login";
 	
 }

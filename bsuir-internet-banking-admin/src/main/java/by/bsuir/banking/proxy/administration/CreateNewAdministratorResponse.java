@@ -3,6 +3,7 @@ package by.bsuir.banking.proxy.administration;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -17,6 +18,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
+ *         &lt;element name="CreateNewAdministratorResult" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -26,9 +28,37 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "")
+@XmlType(name = "", propOrder = {
+    "createNewAdministratorResult"
+})
 @XmlRootElement(name = "CreateNewAdministratorResponse")
 public class CreateNewAdministratorResponse {
 
+    @XmlElement(name = "CreateNewAdministratorResult")
+    protected Integer createNewAdministratorResult;
+
+    /**
+     * Gets the value of the createNewAdministratorResult property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *     
+     */
+    public Integer getCreateNewAdministratorResult() {
+        return createNewAdministratorResult;
+    }
+
+    /**
+     * Sets the value of the createNewAdministratorResult property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *     
+     */
+    public void setCreateNewAdministratorResult(Integer value) {
+        this.createNewAdministratorResult = value;
+    }
 
 }

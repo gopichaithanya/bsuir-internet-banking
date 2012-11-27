@@ -70,13 +70,16 @@ public interface ICardService {
      * 
      * @param securityToken
      * @param account
+     * @return
+     *     returns java.lang.Integer
      * @throws ICardServiceOpenAccountDomainFaultFaultFaultMessage
      * @throws ICardServiceOpenAccountAuthorizationFaultFaultFaultMessage
      */
     @WebMethod(operationName = "OpenAccount", action = "http://tempuri.org/ICardService/OpenAccount")
+    @WebResult(name = "OpenAccountResult", targetNamespace = "http://tempuri.org/")
     @RequestWrapper(localName = "OpenAccount", targetNamespace = "http://tempuri.org/", className = "by.bsuir.banking.proxy.card.OpenAccount")
     @ResponseWrapper(localName = "OpenAccountResponse", targetNamespace = "http://tempuri.org/", className = "by.bsuir.banking.proxy.card.OpenAccountResponse")
-    public void openAccount(
+    public Integer openAccount(
         @WebParam(name = "account", targetNamespace = "http://tempuri.org/")
         Account account,
         @WebParam(name = "securityToken", targetNamespace = "http://tempuri.org/")
@@ -88,8 +91,8 @@ public interface ICardService {
      * 
      * @param accountId
      * @param securityToken
-     * @throws ICardServiceCloseAccountDomainFaultFaultFaultMessage
      * @throws ICardServiceCloseAccountAuthorizationFaultFaultFaultMessage
+     * @throws ICardServiceCloseAccountDomainFaultFaultFaultMessage
      */
     @WebMethod(operationName = "CloseAccount", action = "http://tempuri.org/ICardService/CloseAccount")
     @RequestWrapper(localName = "CloseAccount", targetNamespace = "http://tempuri.org/", className = "by.bsuir.banking.proxy.card.CloseAccount")
@@ -108,8 +111,8 @@ public interface ICardService {
      * @param securityToken
      * @return
      *     returns by.bsuir.banking.proxy.card.Card
-     * @throws ICardServiceGetCardAuthorizationFaultFaultFaultMessage
      * @throws ICardServiceGetCardDomainFaultFaultFaultMessage
+     * @throws ICardServiceGetCardAuthorizationFaultFaultFaultMessage
      */
     @WebMethod(operationName = "GetCard", action = "http://tempuri.org/ICardService/GetCard")
     @WebResult(name = "GetCardResult", targetNamespace = "http://tempuri.org/")
@@ -127,13 +130,16 @@ public interface ICardService {
      * 
      * @param securityToken
      * @param card
+     * @return
+     *     returns java.lang.Integer
      * @throws ICardServiceCreateCardAuthorizationFaultFaultFaultMessage
      * @throws ICardServiceCreateCardDomainFaultFaultFaultMessage
      */
     @WebMethod(operationName = "CreateCard", action = "http://tempuri.org/ICardService/CreateCard")
+    @WebResult(name = "CreateCardResult", targetNamespace = "http://tempuri.org/")
     @RequestWrapper(localName = "CreateCard", targetNamespace = "http://tempuri.org/", className = "by.bsuir.banking.proxy.card.CreateCard")
     @ResponseWrapper(localName = "CreateCardResponse", targetNamespace = "http://tempuri.org/", className = "by.bsuir.banking.proxy.card.CreateCardResponse")
-    public void createCard(
+    public Integer createCard(
         @WebParam(name = "card", targetNamespace = "http://tempuri.org/")
         Card card,
         @WebParam(name = "securityToken", targetNamespace = "http://tempuri.org/")
@@ -145,8 +151,8 @@ public interface ICardService {
      * 
      * @param cardId
      * @param securityToken
-     * @throws ICardServiceDeleteCardDomainFaultFaultFaultMessage
      * @throws ICardServiceDeleteCardAuthorizationFaultFaultFaultMessage
+     * @throws ICardServiceDeleteCardDomainFaultFaultFaultMessage
      */
     @WebMethod(operationName = "DeleteCard", action = "http://tempuri.org/ICardService/DeleteCard")
     @RequestWrapper(localName = "DeleteCard", targetNamespace = "http://tempuri.org/", className = "by.bsuir.banking.proxy.card.DeleteCard")
@@ -186,8 +192,8 @@ public interface ICardService {
      * @param securityToken
      * @return
      *     returns java.lang.Integer
-     * @throws ICardServiceGetOperationLimitAuthorizationFaultFaultFaultMessage
      * @throws ICardServiceGetOperationLimitDomainFaultFaultFaultMessage
+     * @throws ICardServiceGetOperationLimitAuthorizationFaultFaultFaultMessage
      */
     @WebMethod(operationName = "GetOperationLimit", action = "http://tempuri.org/ICardService/GetOperationLimit")
     @WebResult(name = "GetOperationLimitResult", targetNamespace = "http://tempuri.org/")
@@ -225,8 +231,8 @@ public interface ICardService {
      * @param clientId
      * @return
      *     returns by.bsuir.banking.proxy.card.ArrayOfAccount
-     * @throws ICardServiceGetAccountsForClientDomainFaultFaultFaultMessage
      * @throws ICardServiceGetAccountsForClientAuthorizationFaultFaultFaultMessage
+     * @throws ICardServiceGetAccountsForClientDomainFaultFaultFaultMessage
      */
     @WebMethod(operationName = "GetAccountsForClient", action = "http://tempuri.org/ICardService/GetAccountsForClient")
     @WebResult(name = "GetAccountsForClientResult", targetNamespace = "http://tempuri.org/")
@@ -246,8 +252,8 @@ public interface ICardService {
      * @param clientId
      * @return
      *     returns by.bsuir.banking.proxy.card.ArrayOfCard
-     * @throws ICardServiceGetCardsForClientDomainFaultFaultFaultMessage
      * @throws ICardServiceGetCardsForClientAuthorizationFaultFaultFaultMessage
+     * @throws ICardServiceGetCardsForClientDomainFaultFaultFaultMessage
      */
     @WebMethod(operationName = "GetCardsForClient", action = "http://tempuri.org/ICardService/GetCardsForClient")
     @WebResult(name = "GetCardsForClientResult", targetNamespace = "http://tempuri.org/")
