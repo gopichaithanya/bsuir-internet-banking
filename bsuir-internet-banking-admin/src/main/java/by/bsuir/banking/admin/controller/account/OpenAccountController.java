@@ -19,6 +19,7 @@ import by.bsuir.banking.admin.controller.EntityController;
 import by.bsuir.banking.admin.domain.AccountCardWrapper;
 import by.bsuir.banking.admin.utils.AdminUtils;
 import by.bsuir.banking.admin.utils.MessageConstants;
+import by.bsuir.banking.admin.utils.NumberGenerator;
 import by.bsuir.banking.admin.utils.ServiceProvider;
 import by.bsuir.banking.proxy.card.ICardService;
 import by.bsuir.banking.proxy.card.ICardServiceCreateCardAuthorizationFaultFaultFaultMessage;
@@ -75,7 +76,7 @@ public class OpenAccountController extends EntityController {
 		
 		try {
 			//generate account number
-			String accNumber = generateAccountNumber();
+			String accNumber = NumberGenerator.generateAccountNumber();
 			accountCard.setAccountNumber(accNumber);
 			accountCard.setClientId(id);
 			service.openAccount(accountCard.getAccount(), securityToken);
@@ -106,22 +107,7 @@ public class OpenAccountController extends EntityController {
 		return "redirect:/account/" + id + "/view/" + generatedId;
 	}
 	
-	private String generateAccountNumber(){
-		Random rand = new Random();
-		String characters = "0123456789";
-		String firstDigits = generateString(rand, characters, 4);
-		String seconDigits = generateString(rand, characters, 8);
-		String controlKey = generateString(rand, characters, 1);
-		return firstDigits + seconDigits + controlKey;
-	}
 	
-	private static String generateString(Random rng, String characters, int length)
-	{
-	    char[] text = new char[length];
-	    for (int i = 0; i < length; i++)
-	    {
-	        text[i] = characters.charAt(rng.nextInt(characters.length()));
-	    }
-	    return new String(text);
-	}
+	
+	
 }
