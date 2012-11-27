@@ -3,16 +3,16 @@ package by.bsuir.banking.app;
 import java.math.BigInteger;
 import java.security.SecureRandom;
 import java.util.Calendar;
-import java.util.GregorianCalendar;
 
 import org.hibernate.validator.xml.ObjectFactory;
 
+import by.bsuir.banking.admin.utils.NumberGenerator;
 import by.bsuir.banking.proxy.administration.AdministrationService;
 import by.bsuir.banking.proxy.administration.Administrator;
 import by.bsuir.banking.proxy.administration.ArrayOfAdministrator;
+import by.bsuir.banking.proxy.administration.IAdministrationService;
 import by.bsuir.banking.proxy.authentication.AuthenticationCredential;
 import by.bsuir.banking.proxy.authentication.AuthenticationService;
-import by.bsuir.banking.proxy.administration.IAdministrationService;
 import by.bsuir.banking.proxy.authentication.IAuthenticationService;
 
 public class TestApp {
@@ -22,6 +22,8 @@ public class TestApp {
 	 * @throws Exception
 	 */
 	public static void main(String[] args) throws Exception {
+		System.out.println(NumberGenerator.generateCardNumber("Visa"));
+		
 		SecureRandom random = new SecureRandom();
 		for (int i = 0; i < 10; i++) {
 			System.out.println(new BigInteger(50, random).toString(32));
