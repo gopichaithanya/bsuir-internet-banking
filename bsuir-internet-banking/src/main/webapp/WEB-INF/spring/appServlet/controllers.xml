@@ -6,30 +6,25 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 
-	<context:component-scan base-package="by.bsuir.banking.admin" />
+	<context:component-scan base-package="by.bsuir.banking" />
 	<context:component-scan base-package="org.springframework.samples.mvc" />
 
 	<!--Routes -->
 	<mvc:view-controller path="/" view-name="home" />
 	<mvc:view-controller path="/auth/failed" view-name="authorization-error"/>
 	<mvc:view-controller path="/getstarted" view-name="getstarted" />
+	<mvc:view-controller path="/main" view-name="main" />
 	<mvc:view-controller path="/errors-validations"
 		view-name="errors-validations" />
-	<mvc:view-controller path="/misc" view-name="misc" />
-	<mvc:view-controller path="/faq" view-name="faq" />
+	
  
 		
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<!-- This one only runs for a specific URL pattern -->
-			<mvc:mapping path="/admin/*" />
-			<mvc:mapping path="/operator/*"/>
-			<bean class="by.bsuir.banking.admin.interceptor.AdminInterceptor" />
-		</mvc:interceptor>
-		<mvc:interceptor>
-			<!-- This one only runs for a specific URL pattern -->
-			<mvc:mapping path="/account/*" />
-			<bean class="by.bsuir.banking.admin.interceptor.OperatorInterceptor" />
+			<mvc:mapping path="/client/*" />
+			<mvc:mapping path="/accaunt/*"/>
+			<bean class="by.bsuir.banking.interceptor.ClientInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>
 

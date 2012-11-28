@@ -297,28 +297,7 @@
 					<keystorePass>tomcat7</keystorePass>
 				</configuration> 
 				</plugin> 
-			<plugin>
-				<groupId>org.apache.tomcat.maven</groupId>
-				<artifactId>tomcat7-maven-plugin</artifactId>
-				<version>2.0</version>
-				 <configuration>
-					<addContextWarDependencies>true</addContextWarDependencies>
-					<fork>true</fork>
-					<path>/bsuir-banking</path>
-					<port>8088</port>
-					<httpsPort>8443</httpsPort>
-					<keystoreFile>${project.build.directory}/tomcat-ssl.keystore</keystoreFile>
-					<keystorePass>tomcat7</keystorePass>
-				</configuration>
-				<executions>
-					<execution>
-						<id>start-tomcat</id>
-						<goals>
-							<goal>run</goal>
-						</goals>
-					</execution>
-					</executions>
-			</plugin>
+			
 			
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
