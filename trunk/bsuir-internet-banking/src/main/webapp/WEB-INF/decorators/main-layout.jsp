@@ -62,7 +62,14 @@ body {
 			<div class="row-fluid">
 				<div class="span2">
 					<div class="well sidebar-nav">
-						<c:import url="/WEB-INF/views/tags/menu-client.jsp" />
+						<c:choose>
+						<c:when test="${user.role == 'Client' }">
+							<c:import url="/WEB-INF/views/tags/menu-client.jsp" />
+						</c:when>
+						<c:otherwise>
+							<c:import url="/WEB-INF/views/tags/menu-unauthorized.jsp" />
+						</c:otherwise>
+					</c:choose>
 					</div>
 				</div>
 				<div class="span10">
@@ -88,8 +95,6 @@ body {
 	<script type="text/javascript"
 		src="<c:url value="/resources/js/jquery-1.8.0-min.js" />"></script>
 		<script type="text/javascript"
-		src="<c:url value="/resources/js/main.js" />"></script>
-	<script type="text/javascript"
 		src="<c:url value="/resources/js/bootstrap.js" />"></script>
 	<script type="text/javascript"
 		src="<c:url value="/resources/js/demo.js" />"></script>
