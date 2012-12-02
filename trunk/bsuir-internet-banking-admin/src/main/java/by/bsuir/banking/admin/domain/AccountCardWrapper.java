@@ -1,10 +1,15 @@
 package by.bsuir.banking.admin.domain;
 
 import java.math.BigDecimal;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
-import by.bsuir.banking.proxy.card.Account;
-import by.bsuir.banking.proxy.card.Card;
-import by.bsuir.banking.proxy.card.ObjectFactory;
+import javax.xml.datatype.DatatypeConfigurationException;
+import javax.xml.datatype.DatatypeFactory;
+
+import by.bsuir.banking.proxy.internetbanking.Account;
+import by.bsuir.banking.proxy.internetbanking.Card;
+import by.bsuir.banking.proxy.internetbanking.ObjectFactory;
 
 /**
  * Wrapper for account and card
@@ -38,6 +43,14 @@ public class AccountCardWrapper {
 	/*
 	 * Account's properties
 	 */
+	
+	public CurrencyTypeWrapper getCurrencyType(){
+		return (account.getCurrencyType() == null) ? null : new CurrencyTypeWrapper (account.getCurrencyType().getValue());
+	}
+	
+	public void setCurrencyType(CurrencyTypeWrapper value){
+		account.setCurrencyType(factory.createAccountCurrencyType(value.getCurrencyType()));
+	}
 	
 	public Integer getCurrencyTypeId(){
 		return account.getCurrencyTypeId();
@@ -87,6 +100,14 @@ public class AccountCardWrapper {
 		card.setAccountId(id);
 	}
 	
+	public CardTypeWrapper getCardType(){
+		return(card.getCardType() == null) ? null : new CardTypeWrapper(card.getCardType().getValue());
+	}
+	
+	public void setCardtype(CardTypeWrapper value){
+		card.setCardType(factory.createCardCardType(value.getCardType()));
+	}
+	
 	public Integer getCardTypeId(){
 		return card.getCardTypeId();
 	}
@@ -133,5 +154,23 @@ public class AccountCardWrapper {
 	
 	public void setSecretWord(String value){
 		card.setSecretWord(factory.createCardSecretWord(value));
+	}
+	
+	public String getCVV2(){
+		return(card.getCVV2() == null) ?  null: card.getCVV2().getValue();
+	}
+	
+	public void setCVV2(String value){
+		card.setCVV2(factory.createCardCVV2(value));
+	}
+	
+	public Date getExpirationDate(){
+		return (card.getExpirationDate() == null) ? null : card.getExpirationDate().toGregorianCalendar().getTime();
+	}
+	
+	public void setExpirationDate(Date value) throws DatatypeConfigurationException{
+		GregorianCalendar calendar = new GregorianCalendar();
+		calendar.setTime(value);
+		card.setExpirationDate(DatatypeFactory.newInstance().newXMLGregorianCalendar(calendar));
 	}
 }

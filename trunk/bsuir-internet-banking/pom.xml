@@ -292,7 +292,7 @@
 					<server>tomcat7</server> 
 					<username>admin</username> 
 					<password>secret</password> 
-					<httpsPort>8443</httpsPort> 
+					<httpsPort>8444</httpsPort> 
 					<keystoreFile>${project.build.directory}/tomcat-ssl.keystore</keystoreFile> 
 					<keystorePass>tomcat7</keystorePass>
 				</configuration> 

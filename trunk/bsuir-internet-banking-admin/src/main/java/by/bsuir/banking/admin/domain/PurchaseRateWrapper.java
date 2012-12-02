@@ -4,8 +4,8 @@ import java.math.BigDecimal;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
-import by.bsuir.banking.proxy.currency.ObjectFactory;
-import by.bsuir.banking.proxy.currency.PurchaseCurrencyRate;
+import by.bsuir.banking.proxy.internetbanking.ObjectFactory;
+import by.bsuir.banking.proxy.internetbanking.PurchaseCurrencyRate;
 
 
 public class PurchaseRateWrapper {
