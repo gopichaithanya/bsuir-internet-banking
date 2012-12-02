@@ -26,18 +26,18 @@ import by.bsuir.banking.admin.domain.SellRateWrapper;
 import by.bsuir.banking.admin.utils.AdminUtils;
 import by.bsuir.banking.admin.utils.MessageConstants;
 import by.bsuir.banking.admin.utils.ServiceProvider;
-import by.bsuir.banking.proxy.currency.ArrayOfPurchaseCurrencyRate;
-import by.bsuir.banking.proxy.currency.ArrayOfSellCurrencyRate;
-import by.bsuir.banking.proxy.currency.ICurrencyService;
-import by.bsuir.banking.proxy.currency.ICurrencyServiceGetPurchaseCurrencyRatesDomainFaultFaultFaultMessage;
-import by.bsuir.banking.proxy.currency.ICurrencyServiceGetSellCurrencyRatesDomainFaultFaultFaultMessage;
-import by.bsuir.banking.proxy.currency.ICurrencyServiceUpdatePurchaseCurrencyRatesAuthorizationFaultFaultFaultMessage;
-import by.bsuir.banking.proxy.currency.ICurrencyServiceUpdatePurchaseCurrencyRatesDomainFaultFaultFaultMessage;
-import by.bsuir.banking.proxy.currency.ICurrencyServiceUpdateSellCurrencyRatesAuthorizationFaultFaultFaultMessage;
-import by.bsuir.banking.proxy.currency.ICurrencyServiceUpdateSellCurrencyRatesDomainFaultFaultFaultMessage;
-import by.bsuir.banking.proxy.currency.ObjectFactory;
-import by.bsuir.banking.proxy.currency.PurchaseCurrencyRate;
-import by.bsuir.banking.proxy.currency.SellCurrencyRate;
+import by.bsuir.banking.proxy.internetbanking.ArrayOfPurchaseCurrencyRate;
+import by.bsuir.banking.proxy.internetbanking.ArrayOfSellCurrencyRate;
+import by.bsuir.banking.proxy.internetbanking.IInternetBankingService;
+import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetPurchaseCurrencyRatesDomainFaultFaultFaultMessage;
+import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetSellCurrencyRatesDomainFaultFaultFaultMessage;
+import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceUpdatePurchaseCurrencyRatesAuthorizationFaultFaultFaultMessage;
+import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceUpdatePurchaseCurrencyRatesDomainFaultFaultFaultMessage;
+import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceUpdateSellCurrencyRatesAuthorizationFaultFaultFaultMessage;
+import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceUpdateSellCurrencyRatesDomainFaultFaultFaultMessage;
+import by.bsuir.banking.proxy.internetbanking.ObjectFactory;
+import by.bsuir.banking.proxy.internetbanking.PurchaseCurrencyRate;
+import by.bsuir.banking.proxy.internetbanking.SellCurrencyRate;
 
 /**
  * Controller for setting currency exchange rates
@@ -50,11 +50,11 @@ import by.bsuir.banking.proxy.currency.SellCurrencyRate;
 public class EditCurrencyRatesController extends EntityController{
 
 	private static Logger logger = Logger.getLogger(EditCurrencyRatesController.class);
-	private static ICurrencyService service;
+	private static IInternetBankingService service;
 	private static final String VIEW_NAME = "rates-edit";
 	
 	public EditCurrencyRatesController() {
-		service = ServiceProvider.getCurrencyService();
+		service = ServiceProvider.getInternetBankingInstance();
 	}
 	
 	@ModelAttribute("rates")
@@ -64,7 +64,7 @@ public class EditCurrencyRatesController extends EntityController{
 			for(PurchaseCurrencyRate rate: service.getPurchaseCurrencyRates().getPurchaseCurrencyRate()){
 				purchaseRates.add(new PurchaseRateWrapper(rate));
 			}
-		} catch (ICurrencyServiceGetPurchaseCurrencyRatesDomainFaultFaultFaultMessage e) {
+		} catch (IInternetBankingServiceGetPurchaseCurrencyRatesDomainFaultFaultFaultMessage e) {
 			AdminUtils.logDebug(logger, MessageConstants.GETTING_OBJECT_FAILED_ON_SERVER, MessageConstants.CURRENCY_ENTITY);
 			response.sendRedirect(request.getContextPath() + MessageConstants.ERROR_VIEW);
 		}
@@ -74,7 +74,7 @@ public class EditCurrencyRatesController extends EntityController{
 			for(SellCurrencyRate rate: service.getSellCurrencyRates().getSellCurrencyRate()){
 				sellRates.add(new SellRateWrapper(rate));
 			}
-		} catch (ICurrencyServiceGetSellCurrencyRatesDomainFaultFaultFaultMessage e) {
+		} catch (IInternetBankingServiceGetSellCurrencyRatesDomainFaultFaultFaultMessage e) {
 			AdminUtils.logDebug(logger, MessageConstants.GETTING_OBJECT_FAILED_ON_SERVER, MessageConstants.CURRENCY_ENTITY);
 			response.sendRedirect(request.getContextPath() + MessageConstants.ERROR_VIEW);
 		}
@@ -105,11 +105,11 @@ public class EditCurrencyRatesController extends EntityController{
 		}
 		try {
 			service.updatePurchaseCurrencyRates(purchaseList, securityToken);
-		} catch (ICurrencyServiceUpdatePurchaseCurrencyRatesAuthorizationFaultFaultFaultMessage e) {
+		} catch (IInternetBankingServiceUpdatePurchaseCurrencyRatesAuthorizationFaultFaultFaultMessage e) {
 			AdminUtils.logDebug(logger, MessageConstants.AUTHORIZATION_ERROR);
 			result.reject(e.getMessage());
 			return "redirect:" + MessageConstants.AUTH_FAILED_VIEW;
-		} catch (ICurrencyServiceUpdatePurchaseCurrencyRatesDomainFaultFaultFaultMessage e) {
+		} catch (IInternetBankingServiceUpdatePurchaseCurrencyRatesDomainFaultFaultFaultMessage e) {
 			AdminUtils.logDebug(logger, MessageConstants.OBJECT_SAVING_FAILED_ON_SERVER, MessageConstants.CURRENCY_ENTITY);
 			result.reject(e.getMessage());
 			return VIEW_NAME;
@@ -120,11 +120,11 @@ public class EditCurrencyRatesController extends EntityController{
 		}
 		try {
 			service.updateSellCurrencyRates(sellList, securityToken);
-		} catch (ICurrencyServiceUpdateSellCurrencyRatesAuthorizationFaultFaultFaultMessage e) {
+		} catch (IInternetBankingServiceUpdateSellCurrencyRatesAuthorizationFaultFaultFaultMessage e) {
 			AdminUtils.logDebug(logger, MessageConstants.AUTHORIZATION_ERROR);
 			result.reject(e.getMessage());
 			return "redirect:" + MessageConstants.AUTH_FAILED_VIEW;
-		} catch (ICurrencyServiceUpdateSellCurrencyRatesDomainFaultFaultFaultMessage e) {
+		} catch (IInternetBankingServiceUpdateSellCurrencyRatesDomainFaultFaultFaultMessage e) {
 			AdminUtils.logDebug(logger, MessageConstants.OBJECT_SAVING_FAILED_ON_SERVER, MessageConstants.CURRENCY_ENTITY);
 			result.reject(e.getMessage());
 			return VIEW_NAME;

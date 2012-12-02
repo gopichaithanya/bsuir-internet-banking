@@ -50,8 +50,8 @@ public interface IOperatorService {
      * @param securityToken
      * @return
      *     returns java.lang.Integer
-     * @throws IOperatorServiceCreateClientDomainFaultFaultFaultMessage
      * @throws IOperatorServiceCreateClientAuthorizationFaultFaultFaultMessage
+     * @throws IOperatorServiceCreateClientDomainFaultFaultFaultMessage
      */
     @WebMethod(operationName = "CreateClient", action = "http://tempuri.org/IOperatorService/CreateClient")
     @WebResult(name = "CreateClientResult", targetNamespace = "http://tempuri.org/")
@@ -69,8 +69,8 @@ public interface IOperatorService {
      * 
      * @param client
      * @param securityToken
-     * @throws IOperatorServiceUpdateClientDomainFaultFaultFaultMessage
      * @throws IOperatorServiceUpdateClientAuthorizationFaultFaultFaultMessage
+     * @throws IOperatorServiceUpdateClientDomainFaultFaultFaultMessage
      */
     @WebMethod(operationName = "UpdateClient", action = "http://tempuri.org/IOperatorService/UpdateClient")
     @RequestWrapper(localName = "UpdateClient", targetNamespace = "http://tempuri.org/", className = "by.bsuir.banking.proxy.operator.UpdateClient")
@@ -87,8 +87,8 @@ public interface IOperatorService {
      * 
      * @param securityToken
      * @param clientId
-     * @throws IOperatorServiceDeleteClientDomainFaultFaultFaultMessage
      * @throws IOperatorServiceDeleteClientAuthorizationFaultFaultFaultMessage
+     * @throws IOperatorServiceDeleteClientDomainFaultFaultFaultMessage
      */
     @WebMethod(operationName = "DeleteClient", action = "http://tempuri.org/IOperatorService/DeleteClient")
     @RequestWrapper(localName = "DeleteClient", targetNamespace = "http://tempuri.org/", className = "by.bsuir.banking.proxy.operator.DeleteClient")

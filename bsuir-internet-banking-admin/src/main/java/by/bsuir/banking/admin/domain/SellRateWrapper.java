@@ -4,8 +4,8 @@ import java.math.BigDecimal;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
-import by.bsuir.banking.proxy.currency.ObjectFactory;
-import by.bsuir.banking.proxy.currency.SellCurrencyRate;
+import by.bsuir.banking.proxy.internetbanking.ObjectFactory;
+import by.bsuir.banking.proxy.internetbanking.SellCurrencyRate;
 
 public class SellRateWrapper {
 	private static ObjectFactory factory = new ObjectFactory();

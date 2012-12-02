@@ -1,7 +1,5 @@
 package by.bsuir.banking.admin.controller.account;
 
-import java.util.Random;
-
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -21,11 +19,11 @@ import by.bsuir.banking.admin.utils.AdminUtils;
 import by.bsuir.banking.admin.utils.MessageConstants;
 import by.bsuir.banking.admin.utils.NumberGenerator;
 import by.bsuir.banking.admin.utils.ServiceProvider;
-import by.bsuir.banking.proxy.card.ICardService;
-import by.bsuir.banking.proxy.card.ICardServiceCreateCardAuthorizationFaultFaultFaultMessage;
-import by.bsuir.banking.proxy.card.ICardServiceCreateCardDomainFaultFaultFaultMessage;
-import by.bsuir.banking.proxy.card.ICardServiceOpenAccountAuthorizationFaultFaultFaultMessage;
-import by.bsuir.banking.proxy.card.ICardServiceOpenAccountDomainFaultFaultFaultMessage;
+import by.bsuir.banking.proxy.internetbanking.IInternetBankingService;
+import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceCreateCardAuthorizationFaultFaultFaultMessage;
+import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceCreateCardDomainFaultFaultFaultMessage;
+import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceOpenAccountAuthorizationFaultFaultFaultMessage;
+import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceOpenAccountDomainFaultFaultFaultMessage;
 
 /**
  * Controller for opening account. Account can be opened only for particular
@@ -41,11 +39,11 @@ public class OpenAccountController extends EntityController {
 
 	private static Logger logger = Logger
 			.getLogger(OpenAccountController.class);
-	private static ICardService service;
+	private static IInternetBankingService service;
 	private static final String VIEW_NAME = "account-open";
 
 	public OpenAccountController() {
-		service = ServiceProvider.getCardService();
+		service = ServiceProvider.getInternetBankingInstance();
 		AdminUtils.logInfo(logger, MessageConstants.CARD_SERVICE_CREATED);
 	}
 
@@ -80,11 +78,11 @@ public class OpenAccountController extends EntityController {
 			accountCard.setAccountNumber(accNumber);
 			accountCard.setClientId(id);
 			service.openAccount(accountCard.getAccount(), securityToken);
-		} catch (ICardServiceOpenAccountAuthorizationFaultFaultFaultMessage e) {
+		} catch (IInternetBankingServiceOpenAccountAuthorizationFaultFaultFaultMessage e) {
 			AdminUtils.logDebug(logger, MessageConstants.AUTHORIZATION_ERROR);
 			result.reject(e.getMessage());
 			return "redirect:" + MessageConstants.AUTH_FAILED_VIEW;
-		} catch (ICardServiceOpenAccountDomainFaultFaultFaultMessage e) {
+		} catch (IInternetBankingServiceOpenAccountDomainFaultFaultFaultMessage e) {
 			AdminUtils.logDebug(logger, MessageConstants.OBJECT_SAVING_FAILED_ON_SERVER, MessageConstants.ACCOUNT_ENTITY);
 			result.reject(e.getMessage());
 			return VIEW_NAME;
@@ -95,11 +93,11 @@ public class OpenAccountController extends EntityController {
 			//TODO set expiration date
 			//TODO set money and operation limits based on card type
 			service.createCard(accountCard.getCard(), securityToken);
-		} catch (ICardServiceCreateCardAuthorizationFaultFaultFaultMessage e) {
+		} catch (IInternetBankingServiceCreateCardAuthorizationFaultFaultFaultMessage e) {
 			AdminUtils.logDebug(logger, MessageConstants.AUTHORIZATION_ERROR);
 			result.reject(e.getMessage());
 			return "redirect:" + MessageConstants.AUTH_FAILED_VIEW;
-		} catch (ICardServiceCreateCardDomainFaultFaultFaultMessage e) {
+		} catch (IInternetBankingServiceCreateCardDomainFaultFaultFaultMessage e) {
 			AdminUtils.logDebug(logger, MessageConstants.OBJECT_SAVING_FAILED_ON_SERVER, MessageConstants.CARD_ENTITY);
 			redirectAttrs.addFlashAttribute("message", "Account was successfully created but withowt a card. Try creating card again");
 			return "redirect:/account/" + id + "/view/" + generatedId;

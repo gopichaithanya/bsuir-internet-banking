@@ -222,14 +222,14 @@
 				<artifactId>jaxws-maven-plugin</artifactId>
 				<version>1.12</version>
 				<executions>
-					<!-- <execution>
+					<execution>
 						<goals>
 							<goal>wsimport</goal>
 						</goals>
-					</execution> -->
+					</execution>
 				</executions>
 				<configuration>
-					<packageName>by.bsuir.banking.proxy.administration</packageName>
+					<packageName>by.bsuir.banking.proxy.client</packageName>
 					<wsdlUrls>
 						<!-- <wsdlUrl>http://localhost:8732/InternetBanking.Services.Implementations/AdministrationService/?wsdl</wsdlUrl> -->
 						<!-- <wsdlUrl>http://localhost:8733/AuthenticationService/?wsdl</wsdlUrl> -->
@@ -239,6 +239,8 @@
 						<!-- <wsdlUrls>http://localhost:8736/CardService/?wsdl</wsdlUrls> -->
 						<!-- <wsdlUrls>http://localhost:8737/LockCardService/?wsdl</wsdlUrls> -->
 						<!-- <wsdlUrls>http://localhost:8738/ClientService/?wsdl</wsdlUrls> -->
+						<!-- <wsdlUrls>http://localhost:8730/InternetBanking.Services.Implementations/InternetBankingService/?wsdl</wsdlUrls> -->
+						
 					</wsdlUrls>
 					<!-- <wsdlDirectory>c:\Users\Katherine\Documents\banking\</wsdlDirectory> -->
 					<!-- <wsdlFiles>ExRates.wsdl</wsdlFiles> -->

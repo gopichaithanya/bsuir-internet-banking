@@ -50,8 +50,8 @@ public interface IAdministrationService {
      * @param newOperator
      * @return
      *     returns java.lang.Integer
-     * @throws IAdministrationServiceCreateNewOperatorAuthorizationFaultFaultFaultMessage
      * @throws IAdministrationServiceCreateNewOperatorDomainFaultFaultFaultMessage
+     * @throws IAdministrationServiceCreateNewOperatorAuthorizationFaultFaultFaultMessage
      */
     @WebMethod(operationName = "CreateNewOperator", action = "http://tempuri.org/IAdministrationService/CreateNewOperator")
     @WebResult(name = "CreateNewOperatorResult", targetNamespace = "http://tempuri.org/")
@@ -72,8 +72,8 @@ public interface IAdministrationService {
      * @param itemsPerPage
      * @return
      *     returns by.bsuir.banking.proxy.administration.ArrayOfAdministrator
-     * @throws IAdministrationServiceGetAllAdministratorsDomainFaultFaultFaultMessage
      * @throws IAdministrationServiceGetAllAdministratorsAuthorizationFaultFaultFaultMessage
+     * @throws IAdministrationServiceGetAllAdministratorsDomainFaultFaultFaultMessage
      */
     @WebMethod(operationName = "GetAllAdministrators", action = "http://tempuri.org/IAdministrationService/GetAllAdministrators")
     @WebResult(name = "GetAllAdministratorsResult", targetNamespace = "http://tempuri.org/")
@@ -135,8 +135,8 @@ public interface IAdministrationService {
      * 
      * @param securityToken
      * @param updatedOperator
-     * @throws IAdministrationServiceUpdateOperatorAuthorizationFaultFaultFaultMessage
      * @throws IAdministrationServiceUpdateOperatorDomainFaultFaultFaultMessage
+     * @throws IAdministrationServiceUpdateOperatorAuthorizationFaultFaultFaultMessage
      */
     @WebMethod(operationName = "UpdateOperator", action = "http://tempuri.org/IAdministrationService/UpdateOperator")
     @RequestWrapper(localName = "UpdateOperator", targetNamespace = "http://tempuri.org/", className = "by.bsuir.banking.proxy.administration.UpdateOperator")
@@ -153,8 +153,8 @@ public interface IAdministrationService {
      * 
      * @param securityToken
      * @param administratorId
-     * @throws IAdministrationServiceRemoveAdministratorAuthorizationFaultFaultFaultMessage
      * @throws IAdministrationServiceRemoveAdministratorDomainFaultFaultFaultMessage
+     * @throws IAdministrationServiceRemoveAdministratorAuthorizationFaultFaultFaultMessage
      */
     @WebMethod(operationName = "RemoveAdministrator", action = "http://tempuri.org/IAdministrationService/RemoveAdministrator")
     @RequestWrapper(localName = "RemoveAdministrator", targetNamespace = "http://tempuri.org/", className = "by.bsuir.banking.proxy.administration.RemoveAdministrator")
@@ -171,8 +171,8 @@ public interface IAdministrationService {
      * 
      * @param operatorId
      * @param securityToken
-     * @throws IAdministrationServiceRemoveOperatorAuthorizationFaultFaultFaultMessage
      * @throws IAdministrationServiceRemoveOperatorDomainFaultFaultFaultMessage
+     * @throws IAdministrationServiceRemoveOperatorAuthorizationFaultFaultFaultMessage
      */
     @WebMethod(operationName = "RemoveOperator", action = "http://tempuri.org/IAdministrationService/RemoveOperator")
     @RequestWrapper(localName = "RemoveOperator", targetNamespace = "http://tempuri.org/", className = "by.bsuir.banking.proxy.administration.RemoveOperator")
@@ -208,8 +208,8 @@ public interface IAdministrationService {
      * @param securityToken
      * @return
      *     returns java.lang.Integer
-     * @throws IAdministrationServiceGetOperatorsCountDomainFaultFaultFaultMessage
      * @throws IAdministrationServiceGetOperatorsCountAuthorizationFaultFaultFaultMessage
+     * @throws IAdministrationServiceGetOperatorsCountDomainFaultFaultFaultMessage
      */
     @WebMethod(operationName = "GetOperatorsCount", action = "http://tempuri.org/IAdministrationService/GetOperatorsCount")
     @WebResult(name = "GetOperatorsCountResult", targetNamespace = "http://tempuri.org/")

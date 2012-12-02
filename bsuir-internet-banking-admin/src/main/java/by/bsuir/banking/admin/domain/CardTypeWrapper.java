@@ -1,7 +1,7 @@
 package by.bsuir.banking.admin.domain;
 
-import by.bsuir.banking.proxy.card.CardType;
-import by.bsuir.banking.proxy.card.ObjectFactory;
+import by.bsuir.banking.proxy.internetbanking.CardType;
+import by.bsuir.banking.proxy.internetbanking.ObjectFactory;
 
 /**
  * Wrapper for card type
@@ -18,6 +18,10 @@ public class CardTypeWrapper {
 	
 	public CardTypeWrapper(CardType type){
 		this.type = type;
+	}
+	
+	public CardType getCardType(){
+		return type;
 	}
 	
 	public Integer getId(){

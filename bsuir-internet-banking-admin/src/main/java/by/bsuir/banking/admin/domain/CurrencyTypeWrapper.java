@@ -2,8 +2,8 @@ package by.bsuir.banking.admin.domain;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
-import by.bsuir.banking.proxy.currency.CurrencyType;
-import by.bsuir.banking.proxy.currency.ObjectFactory;
+import by.bsuir.banking.proxy.internetbanking.CurrencyType;
+import by.bsuir.banking.proxy.internetbanking.ObjectFactory;
 
 public class CurrencyTypeWrapper {
 
