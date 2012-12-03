@@ -9,7 +9,7 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import by.bsuir.banking.admin.utils.AdminUtils;
 import by.bsuir.banking.admin.utils.MessageConstants;
-import by.bsuir.banking.domain.User;
+import by.bsuir.banking.domain.UserInfo;
 
 public class MainInterceptor extends HandlerInterceptorAdapter{
 
@@ -30,7 +30,7 @@ private static Logger logger = Logger.getLogger(MainInterceptor.class);
 			response.sendRedirect(request.getContextPath() + MessageConstants.LOGIN_VIEW);
 			return false;
 		}
-		if(((User)userObj).getRole() != MessageConstants.CLIENT_ROLE){
+		if(!(((UserInfo)userObj).getRole()).equalsIgnoreCase(MessageConstants.CLIENT_ROLE)){
 			AdminUtils.logDebug(logger, MessageConstants.AUTHORIZATION_ERROR, MessageConstants.WRONG_ROLE_REASON);
 			response.sendRedirect(request.getContextPath() + MessageConstants.AUTH_FAILED_VIEW);
 			return false;

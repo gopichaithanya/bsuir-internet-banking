@@ -9,23 +9,24 @@
 	<context:component-scan base-package="by.bsuir.banking" />
 	<context:component-scan base-package="org.springframework.samples.mvc" />
 
+	<mvc:annotation-driven /> 
+
 	<!--Routes -->
-	<mvc:view-controller path="/" view-name="home" />
+	<!-- <mvc:view-controller path="/" view-name="home" /> -->
 	<mvc:view-controller path="/auth/failed" view-name="authorization-error"/>
 	<mvc:view-controller path="/getstarted" view-name="getstarted" />
-	<mvc:view-controller path="/main" view-name="main" />
 	<mvc:view-controller path="/errors-validations"
 		view-name="errors-validations" />
 	
- 
+
 		
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<!-- This one only runs for a specific URL pattern -->
 			<mvc:mapping path="/" />
 			<mvc:mapping path="/main" />
-			<mvc:mapping path="/personal/*" />
-			<mvc:mapping path="/cards/*" />
+			<mvc:mapping path="/personal/**" />
+			<mvc:mapping path="/cards/**" />
 			<bean class="by.bsuir.banking.interceptor.MainInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>
