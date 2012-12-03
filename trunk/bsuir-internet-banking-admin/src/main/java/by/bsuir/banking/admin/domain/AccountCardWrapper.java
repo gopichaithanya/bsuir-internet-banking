@@ -140,6 +140,10 @@ public class AccountCardWrapper {
 		return (card.getNumber() == null) ? null : card.getNumber().getValue();
 	}
 	
+	public void setCardNumber(String value){
+		card.setNumber(factory.createCardNumber(value));
+	}
+	
 	public Integer getOperationsLimit(){
 		return card.getOperationsLimit();
 	}
@@ -173,4 +177,6 @@ public class AccountCardWrapper {
 		calendar.setTime(value);
 		card.setExpirationDate(DatatypeFactory.newInstance().newXMLGregorianCalendar(calendar));
 	}
+	
+	
 }

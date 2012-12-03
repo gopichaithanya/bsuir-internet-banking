@@ -7,7 +7,7 @@
 <body>
 </c:if>
 <div id="formsContent">
-	<form:form id="form" method="post" class="form span5 well"
+	<form:form id="form" method="post" class="form span8 well"
 		modelAttribute="account_card">
 		<div class="control-group">
 			<h4>Open account for ${client.firstName} ${client.middleName} ${client.lastName}</h4>
@@ -21,13 +21,13 @@
 		</s:bind>
 		<div class="control-group">
 			<div class="controls">
-				<form:select path="currencyType" id="inputCurrency" items="${currencyTypes}" itemValue="id" itemLabel="shortName" />
+				<form:select path="currencyTypeId" id="inputCurrency" items="${currencyTypes}" itemLabel="shortName" itemValue="id" />
 				<form:errors class="help-inline" path="currencyType" />
 			</div>
 		</div>
 		<div class="control-group">
 			<div class="controls">
-				<form:select path="cardType" id="inputCardType" items="${cardTypes}" itemValue="id" itemLabel="name" />
+				<form:select path="cardTypeId" id="inputCardType" items="${cardTypes}" itemLabel="name" itemValue="id"/>
 				<form:errors class="help-inline" path="cardType" />
 			</div>
 		</div>
@@ -41,6 +41,7 @@
 				<form:errors class="help-inline" path="secretWord" />
 			</div>
 		</div>
+		<!-- code for expiration date -->
 		<div class="control-group">
 			<div class="controls">
 				<button type="submit" class="btn">Submit</button>

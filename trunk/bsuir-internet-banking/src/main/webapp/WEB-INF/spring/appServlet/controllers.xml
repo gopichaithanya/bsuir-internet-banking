@@ -22,9 +22,11 @@
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<!-- This one only runs for a specific URL pattern -->
-			<mvc:mapping path="/client/*" />
-			<mvc:mapping path="/accaunt/*"/>
-			<bean class="by.bsuir.banking.interceptor.ClientInterceptor" />
+			<mvc:mapping path="/" />
+			<mvc:mapping path="/main" />
+			<mvc:mapping path="/personal/*" />
+			<mvc:mapping path="/cards/*" />
+			<bean class="by.bsuir.banking.interceptor.MainInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>
 
