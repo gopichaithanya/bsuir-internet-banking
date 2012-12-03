@@ -10,7 +10,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
- <link href="<c:url value="/resources/css/bootstrap_cerulian.min.css" />"rel="stylesheet" type="text/css" />
+<link href="<c:url value="/resources/css/bootstrap_cerulian.min.css" />"
+	rel="stylesheet" type="text/css" />
 <link href="<c:url value="/resources/css/main.css" />" rel="stylesheet"
 	type="text/css" />
 
@@ -61,20 +62,27 @@ body {
 			</div>
 			<div class="row-fluid">
 				<div class="span2">
-					<div class="well sidebar-nav">
+					<div class="sidebar-nav">
 						<c:choose>
-						<c:when test="${user.role == 'Client' }">
-							<c:import url="/WEB-INF/views/tags/menu-client.jsp" />
-						</c:when>
-						<c:otherwise>
-							<c:import url="/WEB-INF/views/tags/menu-unauthorized.jsp" />
-						</c:otherwise>
-					</c:choose>
+							<c:when test="${user.role == 'Client' }">
+								<c:import url="/WEB-INF/views/tags/menu-client.jsp" />
+							</c:when>
+							<c:otherwise>
+								<c:import url="/WEB-INF/views/tags/menu-unauthorized.jsp" />
+							</c:otherwise>
+						</c:choose>
 					</div>
 				</div>
 				<div class="span10">
 					<div class="row-fluid">
 						<div class="span12">
+							<c:if test="${not empty message}">
+							<div class="alert alert-block">
+								<button type="button" class="close" data-dismiss="alert">×</button>
+								${message}.
+							</div>
+							</c:if>
+							${message}.
 							<decorator:body />
 						</div>
 					</div>
@@ -94,7 +102,7 @@ body {
 	<!-- Placed at the end of the document so the pages load faster -->
 	<script type="text/javascript"
 		src="<c:url value="/resources/js/jquery-1.8.0-min.js" />"></script>
-		<script type="text/javascript"
+	<script type="text/javascript"
 		src="<c:url value="/resources/js/bootstrap.js" />"></script>
 	<script type="text/javascript"
 		src="<c:url value="/resources/js/demo.js" />"></script>

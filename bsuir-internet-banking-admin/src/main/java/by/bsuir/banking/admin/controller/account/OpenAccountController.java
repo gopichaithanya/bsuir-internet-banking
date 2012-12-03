@@ -2,9 +2,11 @@ package by.bsuir.banking.admin.controller.account;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import javax.xml.datatype.DatatypeConfigurationException;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,15 +17,26 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import by.bsuir.banking.admin.controller.EntityController;
 import by.bsuir.banking.admin.domain.AccountCardWrapper;
+import by.bsuir.banking.admin.domain.CardTypeWrapper;
+import by.bsuir.banking.admin.domain.ClientWrapper;
 import by.bsuir.banking.admin.utils.AdminUtils;
+import by.bsuir.banking.admin.utils.CardUtil;
 import by.bsuir.banking.admin.utils.MessageConstants;
 import by.bsuir.banking.admin.utils.NumberGenerator;
 import by.bsuir.banking.admin.utils.ServiceProvider;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingService;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceCreateCardAuthorizationFaultFaultFaultMessage;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceCreateCardDomainFaultFaultFaultMessage;
+import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetAllCardTypesAuthorizationFaultFaultFaultMessage;
+import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetAllCardTypesDomainFaultFaultFaultMessage;
+import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetCurrencyTypesDomainFaultFaultFaultMessage;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceOpenAccountAuthorizationFaultFaultFaultMessage;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceOpenAccountDomainFaultFaultFaultMessage;
+import by.bsuir.banking.proxy.operator.Client;
+import by.bsuir.banking.proxy.operator.IOperatorService;
+import by.bsuir.banking.proxy.operator.IOperatorServiceGetClientAuthorizationFaultFaultFaultMessage;
+import by.bsuir.banking.proxy.operator.IOperatorServiceGetClientDomainFaultFaultFaultMessage;
+import by.bsuir.banking.proxy.operator.OperatorService;
 
 /**
  * Controller for opening account. Account can be opened only for particular
@@ -33,8 +46,8 @@ import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceOpenAccount
  * 
  */
 @Controller
-@RequestMapping("/account/open/{id}")
-@SessionAttributes("account_card")
+@RequestMapping("/account/{id}/open")
+@SessionAttributes({ "account_card", "currencyTypes", "cardTypes", "client" })
 public class OpenAccountController extends EntityController {
 
 	private static Logger logger = Logger
@@ -53,7 +66,33 @@ public class OpenAccountController extends EntityController {
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
-	public String createForm() {
+	public String createForm(@PathVariable("id") Integer id, Model model,
+			HttpSession session) {
+		try {
+			model.addAttribute("currencyTypes", CardUtil.getCurrencyTypes());
+			String securityToken = getSecurityToken(session);
+			model.addAttribute("cardTypes",
+					CardUtil.getCardTypes(securityToken));
+			IOperatorService operatorService = new OperatorService()
+					.getBasicHttpBindingIOperatorService();
+			Client client = operatorService.getClient(id, securityToken);
+			model.addAttribute("client", new ClientWrapper(client));
+		} catch (IInternetBankingServiceGetCurrencyTypesDomainFaultFaultFaultMessage e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IInternetBankingServiceGetAllCardTypesAuthorizationFaultFaultFaultMessage e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IInternetBankingServiceGetAllCardTypesDomainFaultFaultFaultMessage e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOperatorServiceGetClientAuthorizationFaultFaultFaultMessage e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOperatorServiceGetClientDomainFaultFaultFaultMessage e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return VIEW_NAME;
 	}
 
@@ -63,49 +102,70 @@ public class OpenAccountController extends EntityController {
 			@Valid @ModelAttribute("account_card") AccountCardWrapper accountCard,
 			BindingResult result,
 			@ModelAttribute("ajaxRequest") boolean ajaxRequest,
-			HttpSession session, RedirectAttributes redirectAttrs) {
-		Integer generatedId = 0;
+			HttpSession session, RedirectAttributes redirectAttrs)
+			throws DatatypeConfigurationException {
 		if (result.hasErrors()) {
-			AdminUtils.logDebug(logger, MessageConstants.FORM_VALIDATION_ERROR, MessageConstants.ACCOUNT_ENTITY);
+			AdminUtils.logDebug(logger, MessageConstants.FORM_VALIDATION_ERROR,
+					MessageConstants.ACCOUNT_ENTITY);
 			return VIEW_NAME;
 		}
 		String securityToken = getSecurityToken(session);
-		
-		
+		Integer accountId = 0;
+		Integer cardId = 0;
 		try {
-			//generate account number
+			// generate account number
 			String accNumber = NumberGenerator.generateAccountNumber();
 			accountCard.setAccountNumber(accNumber);
 			accountCard.setClientId(id);
-			service.openAccount(accountCard.getAccount(), securityToken);
+			accountId = service.openAccount(accountCard.getAccount(),
+					securityToken);
 		} catch (IInternetBankingServiceOpenAccountAuthorizationFaultFaultFaultMessage e) {
 			AdminUtils.logDebug(logger, MessageConstants.AUTHORIZATION_ERROR);
 			result.reject(e.getMessage());
 			return "redirect:" + MessageConstants.AUTH_FAILED_VIEW;
 		} catch (IInternetBankingServiceOpenAccountDomainFaultFaultFaultMessage e) {
-			AdminUtils.logDebug(logger, MessageConstants.OBJECT_SAVING_FAILED_ON_SERVER, MessageConstants.ACCOUNT_ENTITY);
+			AdminUtils.logDebug(logger,
+					MessageConstants.OBJECT_SAVING_FAILED_ON_SERVER,
+					MessageConstants.ACCOUNT_ENTITY);
 			result.reject(e.getMessage());
 			return VIEW_NAME;
 		}
 		try {
-			//TODO get newly created account's id to connect it to card
-			//TODO generate number depending on card type
-			//TODO set expiration date
-			//TODO set money and operation limits based on card type
-			service.createCard(accountCard.getCard(), securityToken);
+			accountCard.setCardsAccountId(accountId);
+			CardTypeWrapper cardType = CardUtil.getCardType(
+					accountCard.getCardTypeId(), securityToken);
+			if (cardType != null) {
+				String cardNumber = NumberGenerator.generateCardNumber(cardType.getName());
+				accountCard.setCardNumber(cardNumber);
+			}
+			// TODO set expiration date
+			accountCard.setExpirationDate(CardUtil.getExpirationDate());
+			// TODO set money and operation limits based on card type
+			accountCard.setOperationsLimit(CardUtil
+					.getOperationsLimit(accountCard.getCardType()));
+			accountCard.setMoneyLimit(CardUtil.getMoneyLimit(accountCard
+					.getCardType()));
+			cardId = service.createCard(accountCard.getCard(), securityToken);
 		} catch (IInternetBankingServiceCreateCardAuthorizationFaultFaultFaultMessage e) {
 			AdminUtils.logDebug(logger, MessageConstants.AUTHORIZATION_ERROR);
 			result.reject(e.getMessage());
 			return "redirect:" + MessageConstants.AUTH_FAILED_VIEW;
 		} catch (IInternetBankingServiceCreateCardDomainFaultFaultFaultMessage e) {
-			AdminUtils.logDebug(logger, MessageConstants.OBJECT_SAVING_FAILED_ON_SERVER, MessageConstants.CARD_ENTITY);
-			redirectAttrs.addFlashAttribute("message", "Account was successfully created but withowt a card. Try creating card again");
-			return "redirect:/account/" + id + "/view/" + generatedId;
+			AdminUtils.logDebug(logger,
+					MessageConstants.OBJECT_SAVING_FAILED_ON_SERVER,
+					MessageConstants.CARD_ENTITY);
+			redirectAttrs
+					.addFlashAttribute("message",
+							"Account was successfully created but withowt a card. Try creating card again");
+			return "redirect:/account/" + id + "/view/" + accountId;
+		} catch (IInternetBankingServiceGetAllCardTypesAuthorizationFaultFaultFaultMessage e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IInternetBankingServiceGetAllCardTypesDomainFaultFaultFaultMessage e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		return "redirect:/account/" + id + "/view/" + generatedId;
+		return "redirect:/account/" + id + "/view/" + accountId;
 	}
-	
-	
-	
-	
+
 }

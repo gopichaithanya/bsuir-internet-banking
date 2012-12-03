@@ -42,10 +42,11 @@ public class MessageConstants {
 	public static final String OPERATOR_ROLE = "Operator";
 	public static final String CLIENT_ROLE = "Client";
 	
+	
 	/*
 	 * Common views
 	 */
 	public static String AUTH_FAILED_VIEW = "/auth/failed";
 	public static String ERROR_VIEW = "/error";
-	
+	public static final String LOGIN_VIEW = "/login";
 }

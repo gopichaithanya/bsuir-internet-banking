@@ -12,7 +12,7 @@ public class NumberGenerator {
 
 	private static String characters = "0123456789";
 	private static final String BANK_CODE = "739";
-	private static final String BANK_ID = "548559";
+	private static final String BANK_ID = "54855";
 	private static final String IND_NUMBER = "3012";
 	private static Random rand = new Random();
 
@@ -101,5 +101,9 @@ public class NumberGenerator {
 		return String.valueOf(mult % 10);
 		
 
+	}
+	
+	public static String generateCVV2(){
+		return generateString(rand, characters, 3);
 	}
 }

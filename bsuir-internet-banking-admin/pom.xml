@@ -222,11 +222,11 @@
 				<artifactId>jaxws-maven-plugin</artifactId>
 				<version>1.12</version>
 				<executions>
-					<execution>
+					<!-- <execution>
 						<goals>
 							<goal>wsimport</goal>
 						</goals>
-					</execution>
+					</execution> -->
 				</executions>
 				<configuration>
 					<packageName>by.bsuir.banking.proxy.client</packageName>
