@@ -8,7 +8,9 @@
 
 	<context:component-scan base-package="by.bsuir.banking.admin" />
 	<context:component-scan base-package="org.springframework.samples.mvc" />
-
+	
+	<mvc:annotation-driven />
+	
 	<!--Routes -->
 	<mvc:view-controller path="/" view-name="home" />
 	<mvc:view-controller path="/auth/failed" view-name="authorization-error"/>

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.context.request.WebRequest;
 
 import by.bsuir.banking.admin.utils.MessageConstants;
-import by.bsuir.banking.domain.User;
+import by.bsuir.banking.domain.UserInfo;
 
 @Controller
 public class EntityController {
@@ -23,7 +23,7 @@ public class EntityController {
 	protected String getSecurityToken(HttpSession session) {
 		// when we call this methods we are sure that user is in the session
 		// see Interceptor
-		return ((User) session.getAttribute(MessageConstants.USER_ATTR))
+		return ((UserInfo) session.getAttribute(MessageConstants.USER_ATTR))
 				.getsSecurityToken();
 	}
 
@@ -34,10 +34,10 @@ public class EntityController {
 	 * @param session
 	 * @return
 	 */
-	protected User getSessionUser(HttpSession session) {
+	protected UserInfo getSessionUser(HttpSession session) {
 		// when we call this methods we are sure that user is in the session
 		// see Interceptor
-		return (User) session.getAttribute(MessageConstants.USER_ATTR);
+		return (UserInfo) session.getAttribute(MessageConstants.USER_ATTR);
 	}
 
 	/**

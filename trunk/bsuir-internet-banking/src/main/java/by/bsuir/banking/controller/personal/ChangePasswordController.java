@@ -14,32 +14,29 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import by.bsuir.banking.admin.utils.ServiceProvider;
-import by.bsuir.banking.controller.login.EntityController;
-import by.bsuir.banking.domain.ChangeUsernameWrapper;
+import by.bsuir.banking.domain.ChangePasswordWrapper;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingService;
 
 /**
- * Controller for changing login
- * 
+ * Controller for changing password
  * @author Katherine
- * 
+ *
  */
 @Controller
-@RequestMapping("/personal/change/login")
-@SessionAttributes("changeusername")
-public class ChangeLoginController extends EntityController {
-
-	private static Logger logger = Logger.getLogger(ChangeLoginController.class);
-	private static final String VIEW_NAME = "username-change";
+@RequestMapping("/personal/change/password")
+@SessionAttributes("changepassword")
+public class ChangePasswordController {
+	private static Logger logger = Logger.getLogger(ChangePasswordController.class);
+	private static final String VIEW_NAME = "password-change";
 	private IInternetBankingService service;
 
-	public ChangeLoginController() {
+	public ChangePasswordController() {
 		service = ServiceProvider.getInternetBankingService();
 	}
 
-	@ModelAttribute("changeusername")
-	public ChangeUsernameWrapper createModel() {
-		return new ChangeUsernameWrapper();
+	@ModelAttribute("changepassword")
+	public ChangePasswordWrapper createModel() {
+		return new ChangePasswordWrapper();
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
@@ -50,17 +47,17 @@ public class ChangeLoginController extends EntityController {
 
 	@RequestMapping(method = RequestMethod.POST)
 	public String submitForm(
-			@Valid @ModelAttribute("changeusername") ChangeUsernameWrapper wrapper,
+			@Valid @ModelAttribute("changepassword") ChangePasswordWrapper wrapper,
 			BindingResult result, HttpSession session, RedirectAttributes attrs) {
 		if(result.hasErrors()){
 			return VIEW_NAME;
 		}
-		if(!wrapper.getUsername().equals(wrapper.getConfirmUsername())){
-			result.reject("Username and confirmed username do not match");
+		if(!wrapper.getPassword().equals(wrapper.getConfirmPassword())){
+			result.reject("Password and confirmed password do not match");
 			return VIEW_NAME;
 		}
 		//TODO set new username
-		attrs.addFlashAttribute("success", "Username was suceessfully changed"); 
+		attrs.addFlashAttribute("success", "Password was suceessfully changed"); 
 		return "redirect:/main";
 	}
 }

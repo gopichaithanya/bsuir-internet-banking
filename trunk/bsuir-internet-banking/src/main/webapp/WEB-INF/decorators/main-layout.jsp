@@ -76,13 +76,12 @@ body {
 				<div class="span10">
 					<div class="row-fluid">
 						<div class="span12">
-							<c:if test="${not empty message}">
-							<div class="alert alert-block">
-								<button type="button" class="close" data-dismiss="alert">×</button>
-								${message}.
+							<c:if test="${not empty success}">
+							<div class="alert ">
+								<button type="button" class="close" data-dismiss="alert">x</button>
+								${success}.
 							</div>
 							</c:if>
-							${message}.
 							<decorator:body />
 						</div>
 					</div>
