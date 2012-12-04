@@ -19,13 +19,23 @@
 				</c:if>
 			</s:bind>
 		</div>
+		<div id="divOrigPassword" class="control-group">
+			<%-- <form:label class="control-label" path="username"> 
+						Username 
+			</form:label> --%>
+			<div class="controls">
+				<form:input path="originalPassword" autocomplete="off" id="inputOrigPassword"
+					placeholder="Original password" />
+				<form:errors class="help-inline error" path="originalPassword" />
+			</div>
+		</div>
 		<div id="divPassword" class="control-group">
 			<%-- <form:label class="control-label" path="username"> 
 						Username 
 			</form:label> --%>
 			<div class="controls">
 				<form:input path="password" autocomplete="off" id="inputPassword"
-					placeholder="Password" />
+					placeholder="New password" />
 				<form:errors class="help-inline error" path="password" />
 			</div>
 		</div>

@@ -13,6 +13,9 @@ public class ChangeUsernameWrapper {
 	public ChangeUsernameWrapper() {
 
 	}
+	
+	@NotEmpty
+	private String originalUsername;
 
 	@NotEmpty
 	private String username;
@@ -20,6 +23,14 @@ public class ChangeUsernameWrapper {
 	@NotEmpty
 	private String confirmUsername;
 
+	public String getOriginalUsername(){
+		return originalUsername;
+	}
+	
+	public void setOriginalUsername(String value){
+		originalUsername = value;
+	}
+	
 	public String getUsername() {
 		return username;
 	}

@@ -14,19 +14,23 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import by.bsuir.banking.admin.utils.ServiceProvider;
+import by.bsuir.banking.controller.login.EntityController;
 import by.bsuir.banking.domain.ChangePasswordWrapper;
+import by.bsuir.banking.domain.UserInfo;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingService;
 
 /**
  * Controller for changing password
+ * 
  * @author Katherine
- *
+ * 
  */
 @Controller
 @RequestMapping("/personal/change/password")
 @SessionAttributes("changepassword")
-public class ChangePasswordController {
-	private static Logger logger = Logger.getLogger(ChangePasswordController.class);
+public class ChangePasswordController extends EntityController{
+	private static Logger logger = Logger
+			.getLogger(ChangePasswordController.class);
 	private static final String VIEW_NAME = "password-change";
 	private IInternetBankingService service;
 
@@ -49,15 +53,21 @@ public class ChangePasswordController {
 	public String submitForm(
 			@Valid @ModelAttribute("changepassword") ChangePasswordWrapper wrapper,
 			BindingResult result, HttpSession session, RedirectAttributes attrs) {
-		if(result.hasErrors()){
+		if (result.hasErrors()) {
 			return VIEW_NAME;
 		}
-		if(!wrapper.getPassword().equals(wrapper.getConfirmPassword())){
+		// checking original username
+		UserInfo user = getSessionUser(session);
+		if (!user.getPassword().equals(wrapper.getOriginalPassword())) {
+			result.reject("Original password is wrong");
+			return VIEW_NAME;
+		}
+		if (!wrapper.getPassword().equals(wrapper.getConfirmPassword())) {
 			result.reject("Password and confirmed password do not match");
 			return VIEW_NAME;
 		}
-		//TODO set new username
-		attrs.addFlashAttribute("success", "Password was suceessfully changed"); 
+		// TODO set new username
+		attrs.addFlashAttribute("success", "Password was suceessfully changed");
 		return "redirect:/main";
 	}
 }

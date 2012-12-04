@@ -14,12 +14,22 @@ public class ChangePasswordWrapper {
 		
 	}		
 	
+	@NotEmpty
+	private String originalPassword;
 	
 	@NotEmpty
 	private String password;
 	
 	@NotEmpty
 	private String confirmPassword;
+	
+	public String getOriginalPassword(){
+		return originalPassword;
+	}
+	
+	public void setOriginalPassword(String value){
+		originalPassword = value;
+	}
 	
 	public String getPassword(){
 		return password;
