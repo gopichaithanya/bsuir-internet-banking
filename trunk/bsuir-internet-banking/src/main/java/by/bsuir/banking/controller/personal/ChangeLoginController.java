@@ -16,6 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import by.bsuir.banking.admin.utils.ServiceProvider;
 import by.bsuir.banking.controller.login.EntityController;
 import by.bsuir.banking.domain.ChangeUsernameWrapper;
+import by.bsuir.banking.domain.UserInfo;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingService;
 
 /**
@@ -53,6 +54,12 @@ public class ChangeLoginController extends EntityController {
 			@Valid @ModelAttribute("changeusername") ChangeUsernameWrapper wrapper,
 			BindingResult result, HttpSession session, RedirectAttributes attrs) {
 		if(result.hasErrors()){
+			return VIEW_NAME;
+		}
+		//checking original username
+		UserInfo user = getSessionUser(session);
+		if(!user.getUsername().equals(wrapper.getOriginalUsername())){
+			result.reject("Original username is wrong");
 			return VIEW_NAME;
 		}
 		if(!wrapper.getUsername().equals(wrapper.getConfirmUsername())){

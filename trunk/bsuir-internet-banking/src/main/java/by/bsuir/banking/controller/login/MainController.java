@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping("/main**")
+@RequestMapping({"","/","/main**"})
 public class MainController extends EntityController {
 
 	@RequestMapping(method=RequestMethod.GET)

@@ -37,6 +37,9 @@ public class EntityController {
 	protected UserInfo getSessionUser(HttpSession session) {
 		// when we call this methods we are sure that user is in the session
 		// see Interceptor
+		if(session.getAttribute(MessageConstants.USER_ATTR) == null){
+			return null;
+		}
 		return (UserInfo) session.getAttribute(MessageConstants.USER_ATTR);
 	}
 
