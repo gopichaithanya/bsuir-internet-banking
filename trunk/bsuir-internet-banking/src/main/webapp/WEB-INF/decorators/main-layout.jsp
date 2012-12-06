@@ -109,5 +109,28 @@ body {
 		src="<c:url value="/resources/js/json2.js" />"></script>
 	<script type="text/javascript"
 		src="<c:url value="/resources/js/date.format.js" />"></script>
+		<script type="text/javascript"
+		src="<c:url value="/resources/js/bootstrap-datepicker.js" />"></script>
+	<script>
+		$(function(){
+			window.prettyPrint && prettyPrint();
+			$('#d').value = "13-02-2012";
+			$('#dp3').datepicker();
+						
+			var startDate = new Date(2012,1,20);
+			var endDate = new Date(2012,1,25);
+			$('#dp4').datepicker()
+				.on('changeDate', function(ev){
+					if (ev.date.valueOf() > endDate.valueOf()){
+						$('#alert').show().find('strong').text('The start date can not be greater then the end date');
+					} else {
+						$('#alert').hide();
+						startDate = new Date(ev.date);
+						$('#startDate').text($('#dp4').data('date'));
+					}
+					$('#dp4').datepicker('hide');
+				});
+		});
+	</script>
 </body>
 </html>
