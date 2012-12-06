@@ -1,5 +1,7 @@
 package by.bsuir.banking.controller.personal;
 
+import java.util.regex.Pattern;
+
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -32,6 +34,7 @@ public class ChangeLoginController extends EntityController {
 
 	private static Logger logger = Logger.getLogger(ChangeLoginController.class);
 	private static final String VIEW_NAME = "username-change";
+	private static final String USERNAME_PATTERN = "^[a-zA-Z0-9_-]{3,15}$";
 	private IInternetBankingService service;
 
 	public ChangeLoginController() {
@@ -53,6 +56,7 @@ public class ChangeLoginController extends EntityController {
 	public String submitForm(
 			@Valid @ModelAttribute("changeusername") ChangeUsernameWrapper wrapper,
 			BindingResult result, HttpSession session, RedirectAttributes attrs) {
+		Pattern pattern = Pattern.compile(USERNAME_PATTERN);
 		if(result.hasErrors()){
 			return VIEW_NAME;
 		}
@@ -64,6 +68,10 @@ public class ChangeLoginController extends EntityController {
 		}
 		if(!wrapper.getUsername().equals(wrapper.getConfirmUsername())){
 			result.reject("Username and confirmed username do not match");
+			return VIEW_NAME;
+		}
+		if(!pattern.matcher(wrapper.getUsername()).matches()) {
+			result.reject("Username do not match");
 			return VIEW_NAME;
 		}
 		//TODO set new username

@@ -34,7 +34,7 @@
 						Username 
 			</form:label> --%>
 			<div class="controls">
-				<form:input path="username" id="inputPassword"
+				<form:input path="username" id="inputPassword" autocomplete="off"
 					placeholder="Old password" />
 				<form:errors class="help-inline" path="username" />
 			</div>

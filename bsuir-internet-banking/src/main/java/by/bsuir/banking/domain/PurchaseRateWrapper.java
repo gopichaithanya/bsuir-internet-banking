@@ -2,11 +2,8 @@ package by.bsuir.banking.domain;
 
 import java.math.BigDecimal;
 
-import org.hibernate.validator.constraints.NotEmpty;
-
 import by.bsuir.banking.proxy.internetbanking.ObjectFactory;
 import by.bsuir.banking.proxy.internetbanking.PurchaseCurrencyRate;
-
 
 public class PurchaseRateWrapper {
 	
@@ -25,7 +22,6 @@ public class PurchaseRateWrapper {
 		this.rate = rate;
 	}
 	
-	@NotEmpty
 	public CurrencyTypeWrapper getCurrencyType(){
 		return (rate.getCurrencyType() == null) ? null : new CurrencyTypeWrapper(rate.getCurrencyType().getValue());
 	}
@@ -34,7 +30,6 @@ public class PurchaseRateWrapper {
 		rate.setCurrencyType(factory.createCurrencyType(value.getCurrencyType()));
 	}
 	
-	@NotEmpty
 	public BigDecimal getRate(){
 		return rate.getRate();
 	}
