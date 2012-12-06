@@ -1,7 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@ page session="false"%>
+<%@ page contentType="text/html; charset=UTF-8"%>
 <c:if test="${!ajaxRequest}">
 	<html>
 <body>
@@ -9,6 +9,13 @@
 <div id="formsContent">
 	<div>
 		<h3 align="left">Clients list</h3>
+	</div>
+	<div>
+		<form:form class="form-search"  modelAttribute="searchCriteria">
+			<form:input type="text" class="input-medium search-query" path="seria"/>
+			<form:input type="text" class="input-medium search-query" path="number"/>
+			<button type="submit" class="btn">Search</button>
+		</form:form>
 	</div>
 	<table class="table table-hover">
 		<thead>
@@ -21,16 +28,17 @@
 			</tr>
 		</thead>
 		<tbody>
-		<c:set var="i" value="1"/>
+			<c:set var="i" value="1" />
 			<c:forEach var="clientitem" items="${clientlist}">
 				<tr>
 					<td><c:out value="${i}" /></td>
-					<td><a href="<c:url value="/client/view/${clientitem.id}"/>"><c:out value="${clientitem.firstName} ${clientitem.middleName} ${clientitem.lastName}" /></a></td>
+					<td><a href="<c:url value="/client/view/${clientitem.id}"/>"><c:out
+								value="${clientitem.firstName} ${clientitem.middleName} ${clientitem.lastName}" /></a></td>
 					<td>${clientitem.birthdayDate}</td>
 					<td>${clientitem.address}</td>
 					<td>${clientitem.phoneNumber}</td>
 				</tr>
-				<c:set var="i" value="${i + 1}"/>
+				<c:set var="i" value="${i + 1}" />
 			</c:forEach>
 		</tbody>
 	</table>

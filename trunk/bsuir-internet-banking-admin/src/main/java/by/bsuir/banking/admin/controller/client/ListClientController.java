@@ -7,10 +7,12 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,12 +21,15 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import by.bsuir.banking.admin.controller.EntityController;
 import by.bsuir.banking.admin.domain.ClientWrapper;
+import by.bsuir.banking.admin.domain.SearchCriteria;
 import by.bsuir.banking.admin.utils.AdminUtils;
 import by.bsuir.banking.admin.utils.MessageConstants;
 import by.bsuir.banking.admin.utils.ServiceProvider;
 import by.bsuir.banking.proxy.operator.ArrayOfClient;
 import by.bsuir.banking.proxy.operator.Client;
 import by.bsuir.banking.proxy.operator.IOperatorService;
+import by.bsuir.banking.proxy.operator.IOperatorServiceGetClientByPassportDataAuthorizationFaultFaultFaultMessage;
+import by.bsuir.banking.proxy.operator.IOperatorServiceGetClientByPassportDataDomainFaultFaultFaultMessage;
 import by.bsuir.banking.proxy.operator.IOperatorServiceGetClientsCountAuthorizationFaultFaultFaultMessage;
 import by.bsuir.banking.proxy.operator.IOperatorServiceGetClientsCountDomainFaultFaultFaultMessage;
 import by.bsuir.banking.proxy.operator.IOperatorServiceGetPageofClientsAuthorizationFaultFaultFaultMessage;
@@ -38,7 +43,7 @@ import by.bsuir.banking.proxy.operator.IOperatorServiceGetPageofClientsDomainFau
  */
 @Controller
 @RequestMapping("/client/list")
-@SessionAttributes({ "pagecount", "itemsonpage" })
+@SessionAttributes({ "pagecount", "itemsonpage", "searchCriteria" })
 public class ListClientController extends EntityController {
 	private static Logger logger = Logger.getLogger(ListClientController.class);
 	private static IOperatorService service;
@@ -72,6 +77,9 @@ public class ListClientController extends EntityController {
 		}
 		Double pagecount = Math.ceil(((double) adminsCount)
 				/ (double) itemsonpage);
+		//creating search-bean
+		SearchCriteria criteria = new SearchCriteria();
+		model.addAttribute("searchCriteria", criteria);
 		model.addAttribute("pagecount", pagecount.intValue());
 		model.addAttribute("itemsonpage", itemsonpage);
 	}
@@ -120,6 +128,29 @@ public class ListClientController extends EntityController {
 		model.addAttribute("page", page);
 				
 	return VIEW_NAME;
+	}
+	
+	/*
+	 * Method for searching
+	 */
+	@RequestMapping(method=RequestMethod.POST)
+	public String searchResult(@Valid @ModelAttribute SearchCriteria criteria, BindingResult result, Model model, HttpSession session){
+		if(result.hasErrors()){
+			return VIEW_NAME;
+		}
+		//search for clients
+		try {
+			Client client = service.getClientByPassportData(criteria.getSeria(), criteria.getNumber(), getSecurityToken(session));
+			List<ClientWrapper> clientlist = new ArrayList<ClientWrapper>();
+			clientlist.add(new ClientWrapper(client));
+			model.addAttribute("clientlist", clientlist);
+		} catch (IOperatorServiceGetClientByPassportDataAuthorizationFaultFaultFaultMessage e) {
+			return "redirect:" + MessageConstants.AUTH_FAILED_VIEW;
+			
+		} catch (IOperatorServiceGetClientByPassportDataDomainFaultFaultFaultMessage e) {
+			return "redirect:" + MessageConstants.ERROR_VIEW;
+		}
+		return VIEW_NAME;
 	}
 
 }
