@@ -114,6 +114,7 @@ public class CreateClientController extends EntityController {
 			return VIEW_NAME_PASSPORT;
 		}
 		String securityToken = getSecurityToken(session);
+		System.out.println(client.getFirstName());
 		client.setPassport(passport);
 		//generating login and password
 		String login = new BigInteger(50, random).toString(32);

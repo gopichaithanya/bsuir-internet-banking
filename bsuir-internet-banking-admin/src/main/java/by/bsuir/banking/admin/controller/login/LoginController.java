@@ -85,7 +85,7 @@ public class LoginController extends EntityController{
 			IAuthenticationService service = ServiceProvider.getAuthenticationService();
 			AuthenticationCredential credential = service.authenticate(user.getUsername(),
 					user.getPassword());
-			if(credential.getRole().getValue().equals("Client")){
+			if(credential.getRole().getValue().equalsIgnoreCase("Client")){
 				result.reject("Wrong role");
 				return VIEW_NAME;
 			}

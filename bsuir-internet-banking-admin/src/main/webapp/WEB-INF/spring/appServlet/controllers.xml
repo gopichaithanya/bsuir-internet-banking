@@ -8,28 +8,37 @@
 
 	<context:component-scan base-package="by.bsuir.banking.admin" />
 	<context:component-scan base-package="org.springframework.samples.mvc" />
+
 	
-	<mvc:annotation-driven />
-	
+
+	<!-- <mvc:annotation-driven /> -->
+
 	<!--Routes -->
 	<mvc:view-controller path="/" view-name="home" />
-	<mvc:view-controller path="/auth/failed" view-name="authorization-error"/>
+	<mvc:view-controller path="/auth/failed" view-name="authorization-error" />
 	<mvc:view-controller path="/getstarted" view-name="getstarted" />
 	<mvc:view-controller path="/errors-validations"
 		view-name="errors-validations" />
 	<mvc:view-controller path="/misc" view-name="misc" />
 	<mvc:view-controller path="/faq" view-name="faq" />
-		
+
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<!-- This one only runs for a specific URL pattern -->
 			<mvc:mapping path="/" />
+			<mvc:mapping path="/admin/*" />
+			<mvc:mapping path="/operator/*" />
+			<mvc:mapping path="/account/*" />
+			<mvc:mapping path="/account/*/*" />
+			<mvc:mapping path="/client/*" />
+			<mvc:mapping path="/client/*/*" />
+			<mvc:mapping path="/currency/rates/set" />
 			<bean class="by.bsuir.banking.admin.interceptor.MainInterceptor" />
 		</mvc:interceptor>
 		<mvc:interceptor>
 			<!-- This one only runs for a specific URL pattern -->
 			<mvc:mapping path="/admin/*" />
-			<mvc:mapping path="/operator/*"/>
+			<mvc:mapping path="/operator/*" />
 			<bean class="by.bsuir.banking.admin.interceptor.AdminInterceptor" />
 		</mvc:interceptor>
 		<mvc:interceptor>
@@ -43,5 +52,4 @@
 		</mvc:interceptor>
 	</mvc:interceptors>
 
-	
 </beans>

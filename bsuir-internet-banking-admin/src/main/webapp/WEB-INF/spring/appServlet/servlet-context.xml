@@ -6,6 +6,21 @@
         http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
 
+	<!-- <beans:bean
+		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+		<beans:property name="messageConverters">
+			<beans:array>
+				<beans:bean
+					class="org.springframework.http.converter.StringHttpMessageConverter">
+					<beans:property name="supportedMediaTypes" value="text/plain;charset=UTF-8" />
+				</beans:bean>
+			</beans:array>
+		</beans:property>
+	</beans:bean>
+	 -->
+	 
+	 <!-- <beans:bean class = "by.bsuir.banking.admin.controller.EncodingPostProcessor " /> -->
+	
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
 	<!-- Enables the Spring MVC @Controller programming model -->
@@ -30,6 +45,8 @@
             <beans:bean class="org.springframework.samples.mvc.convert.MaskFormatAnnotationFormatterFactory" />
 		</beans:property>
 	</beans:bean>
+	
+	
 
 	<!-- Only needed because we require fileupload in the org.springframework.samples.mvc.fileupload package -->
 	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
