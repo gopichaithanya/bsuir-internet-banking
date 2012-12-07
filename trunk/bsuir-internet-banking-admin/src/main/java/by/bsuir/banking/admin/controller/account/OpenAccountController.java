@@ -145,6 +145,7 @@ public class OpenAccountController extends EntityController {
 					.getOperationsLimit(accountCard.getCardType()));
 			accountCard.setMoneyLimit(CardUtil.getMoneyLimit(accountCard
 					.getCardType()));
+			accountCard.setCVV2(NumberGenerator.generateCVV2());
 			cardId = service.createCard(accountCard.getCard(), securityToken);
 		} catch (IInternetBankingServiceCreateCardAuthorizationFaultFaultFaultMessage e) {
 			AdminUtils.logDebug(logger, MessageConstants.AUTHORIZATION_ERROR);

@@ -229,16 +229,12 @@
 					</execution> -->
 				</executions>
 				<configuration>
-					<packageName>by.bsuir.banking.proxy.client</packageName>
+					<packageName>by.bsuir.banking.proxy.operator</packageName>
 					<wsdlUrls>
 						<!-- <wsdlUrl>http://localhost:8732/InternetBanking.Services.Implementations/AdministrationService/?wsdl</wsdlUrl> -->
 						<!-- <wsdlUrl>http://localhost:8733/AuthenticationService/?wsdl</wsdlUrl> -->
-						<!-- <wsdlUrls>http://localhost:8734/CurrencyService/?wsdl</wsdlUrls> -->
 						<!-- <wsdlUrls>http://localhost:8735/OperatorService/?wsdl</wsdlUrls> -->
 						<!-- <wsdlUrls>http://www.nbrb.by/Services/ExRates.asmx?wsdl</wsdlUrls> -->
-						<!-- <wsdlUrls>http://localhost:8736/CardService/?wsdl</wsdlUrls> -->
-						<!-- <wsdlUrls>http://localhost:8737/LockCardService/?wsdl</wsdlUrls> -->
-						<!-- <wsdlUrls>http://localhost:8738/ClientService/?wsdl</wsdlUrls> -->
 						<!-- <wsdlUrls>http://localhost:8730/InternetBanking.Services.Implementations/InternetBankingService/?wsdl</wsdlUrls> -->
 						
 					</wsdlUrls>
