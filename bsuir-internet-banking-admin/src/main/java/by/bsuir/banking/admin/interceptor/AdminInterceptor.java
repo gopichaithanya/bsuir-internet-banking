@@ -25,7 +25,7 @@ public class AdminInterceptor extends HandlerInterceptorAdapter {
 		Object userObj = session.getAttribute(MessageConstants.USER_ATTR);
 		if(userObj == null){
 			AdminUtils.logDebug(logger, MessageConstants.AUTHORIZATION_ERROR, MessageConstants.NOT_AUTHENTICATED_REASON);
-			response.sendRedirect(request.getContextPath() + MessageConstants.AUTH_FAILED_VIEW);
+			response.sendRedirect(request.getContextPath() + MessageConstants.LOGIN_VIEW);
 			return false;
 		}
 		if(!((UserInfo)userObj).getRole().equalsIgnoreCase(MessageConstants.ADMIN_ROLE)){

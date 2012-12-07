@@ -50,8 +50,8 @@ public interface IAdministrationService {
      * @param newOperator
      * @return
      *     returns java.lang.Integer
-     * @throws IAdministrationServiceCreateNewOperatorDomainFaultFaultFaultMessage
      * @throws IAdministrationServiceCreateNewOperatorAuthorizationFaultFaultFaultMessage
+     * @throws IAdministrationServiceCreateNewOperatorDomainFaultFaultFaultMessage
      */
     @WebMethod(operationName = "CreateNewOperator", action = "http://tempuri.org/IAdministrationService/CreateNewOperator")
     @WebResult(name = "CreateNewOperatorResult", targetNamespace = "http://tempuri.org/")
@@ -96,8 +96,8 @@ public interface IAdministrationService {
      * @param itemsPerPage
      * @return
      *     returns by.bsuir.banking.proxy.administration.ArrayOfOperator
-     * @throws IAdministrationServiceGetAllOperatorsAuthorizationFaultFaultFaultMessage
      * @throws IAdministrationServiceGetAllOperatorsDomainFaultFaultFaultMessage
+     * @throws IAdministrationServiceGetAllOperatorsAuthorizationFaultFaultFaultMessage
      */
     @WebMethod(operationName = "GetAllOperators", action = "http://tempuri.org/IAdministrationService/GetAllOperators")
     @WebResult(name = "GetAllOperatorsResult", targetNamespace = "http://tempuri.org/")
@@ -190,8 +190,8 @@ public interface IAdministrationService {
      * @param securityToken
      * @return
      *     returns java.lang.Integer
-     * @throws IAdministrationServiceGetAdministratorsCountAuthorizationFaultFaultFaultMessage
      * @throws IAdministrationServiceGetAdministratorsCountDomainFaultFaultFaultMessage
+     * @throws IAdministrationServiceGetAdministratorsCountAuthorizationFaultFaultFaultMessage
      */
     @WebMethod(operationName = "GetAdministratorsCount", action = "http://tempuri.org/IAdministrationService/GetAdministratorsCount")
     @WebResult(name = "GetAdministratorsCountResult", targetNamespace = "http://tempuri.org/")
@@ -208,8 +208,8 @@ public interface IAdministrationService {
      * @param securityToken
      * @return
      *     returns java.lang.Integer
-     * @throws IAdministrationServiceGetOperatorsCountAuthorizationFaultFaultFaultMessage
      * @throws IAdministrationServiceGetOperatorsCountDomainFaultFaultFaultMessage
+     * @throws IAdministrationServiceGetOperatorsCountAuthorizationFaultFaultFaultMessage
      */
     @WebMethod(operationName = "GetOperatorsCount", action = "http://tempuri.org/IAdministrationService/GetOperatorsCount")
     @WebResult(name = "GetOperatorsCountResult", targetNamespace = "http://tempuri.org/")
