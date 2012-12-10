@@ -41,23 +41,25 @@ import by.bsuir.banking.proxy.internetbanking.Money;
 /**
  * 
  * @author Svetlana
- *
+ * 
  */
 @Controller
 @RequestMapping("cards/view")
 public class ViewCardsController extends EntityController {
-	
+
 	private static Logger logger = Logger.getLogger(ViewCardsController.class);
 	private static IInternetBankingService service;
 	private final static String VIEW_NAME = "card-view";
-	
-	
+
 	public ViewCardsController() {
 		service = ServiceProvider.getInternetBankingService();
 	}
-	
-	@RequestMapping(method=RequestMethod.GET)
-	public String viewCards(HttpSession session, Model model, @ModelAttribute @Valid CardWrapper w, HttpServletResponse response, HttpServletRequest request, BindingResult result) throws IOException {
+
+	@RequestMapping(method = RequestMethod.GET)
+	public String viewCards(HttpSession session, Model model,
+			@ModelAttribute @Valid CardWrapper w, BindingResult result,
+			HttpServletResponse response, HttpServletRequest request)
+			throws IOException {
 		String securityToken = getSecurityToken(session);
 		List<CardWrapper> cards = new ArrayList<CardWrapper>();
 		List<MoneyWrapper> ballance = new ArrayList<MoneyWrapper>();
@@ -65,25 +67,30 @@ public class ViewCardsController extends EntityController {
 			for (Card card : service.getCards(securityToken).getCard()) {
 				CardWrapper wrapper = new CardWrapper(card);
 				cards.add(wrapper);
-				ballance.add(new MoneyWrapper(service.getBallance(wrapper.getCardId(), securityToken)));
+				ballance.add(new MoneyWrapper(service.getBallance(
+						wrapper.getCardId(), securityToken)));
 			}
 		} catch (IInternetBankingServiceGetCardsAuthorizationFaultFaultFaultMessage e) {
 			AdminUtils.logDebug(logger, MessageConstants.AUTHORIZATION_ERROR);
-			response.sendRedirect(request.getContextPath() + MessageConstants.AUTH_FAILED_VIEW);
-		}catch (IInternetBankingServiceGetBallanceAuthorizationFaultFaultFaultMessage e) {
+			response.sendRedirect(request.getContextPath()
+					+ MessageConstants.AUTH_FAILED_VIEW);
+		} catch (IInternetBankingServiceGetBallanceAuthorizationFaultFaultFaultMessage e) {
 			AdminUtils.logDebug(logger, MessageConstants.AUTHORIZATION_ERROR);
-			response.sendRedirect(request.getContextPath() + MessageConstants.AUTH_FAILED_VIEW);
+			response.sendRedirect(request.getContextPath()
+					+ MessageConstants.AUTH_FAILED_VIEW);
 		} catch (IInternetBankingServiceGetCardsDomainFaultFaultFaultMessage e) {
 			AdminUtils.logDebug(logger, MessageConstants.SERVICE_ERROR);
-		}
-		catch (IInternetBankingServiceGetBallanceDomainFaultFaultFaultMessage e) {
+			response.sendRedirect(request.getContextPath()
+					+ MessageConstants.ERROR_VIEW);
+		} catch (IInternetBankingServiceGetBallanceDomainFaultFaultFaultMessage e) {
 			AdminUtils.logDebug(logger, MessageConstants.SERVICE_ERROR);
-		} 
+			response.sendRedirect(request.getContextPath()
+					+ MessageConstants.ERROR_VIEW);
+		}
 		model.addAttribute("cardList", cards);
 		model.addAttribute("ballance", ballance);
-		model.addAttribute("size", cards.size()-1);
+		model.addAttribute("size", cards.size() - 1);
 		return VIEW_NAME;
 	}
-	
 
 }

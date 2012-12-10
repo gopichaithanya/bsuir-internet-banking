@@ -28,6 +28,8 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
+    private final static QName _LegalAccountNumber_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", "Number");
+    private final static QName _LegalAccountCurrencyType_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", "CurrencyType");
     private final static QName _AnyURI_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "anyURI");
     private final static QName _LegalPerson_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", "LegalPerson");
     private final static QName _DateTime_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "dateTime");
@@ -49,6 +51,7 @@ public class ObjectFactory {
     private final static QName _Boolean_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "boolean");
     private final static QName _ArrayOfLegalAccount_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", "ArrayOfLegalAccount");
     private final static QName _Client_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", "Client");
+    private final static QName _ArrayOfLegalPersonCategory_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", "ArrayOfLegalPersonCategory");
     private final static QName _ArrayOfCardType_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", "ArrayOfCardType");
     private final static QName _LegalAccount_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", "LegalAccount");
     private final static QName _UnsignedByte_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "unsignedByte");
@@ -60,7 +63,6 @@ public class ObjectFactory {
     private final static QName _Int_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "int");
     private final static QName _ArrayOfAccount_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", "ArrayOfAccount");
     private final static QName _Decimal_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "decimal");
-    private final static QName _CurrencyType_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", "CurrencyType");
     private final static QName _Transfer_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", "Transfer");
     private final static QName _Double_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "double");
     private final static QName _ArrayOfCurrencyType_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", "ArrayOfCurrencyType");
@@ -75,15 +77,7 @@ public class ObjectFactory {
     private final static QName _Card_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", "Card");
     private final static QName _ArrayOfCard_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", "ArrayOfCard");
     private final static QName _DomainFault_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.Services.Interfaces.FaultContracts", "DomainFault");
-    private final static QName _CreateCardSecurityToken_QNAME = new QName("http://tempuri.org/", "securityToken");
-    private final static QName _CreateCardCard_QNAME = new QName("http://tempuri.org/", "card");
-    private final static QName _GetPeriodPaymentsForCardResponseGetPeriodPaymentsForCardResult_QNAME = new QName("http://tempuri.org/", "GetPeriodPaymentsForCardResult");
-    private final static QName _LegalPersonCategoryName_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", "Name");
-    private final static QName _GetBallanceResponseGetBallanceResult_QNAME = new QName("http://tempuri.org/", "GetBallanceResult");
-    private final static QName _GetPeriodTransfersForAccountResponseGetPeriodTransfersForAccountResult_QNAME = new QName("http://tempuri.org/", "GetPeriodTransfersForAccountResult");
-    private final static QName _PayAccountNumber_QNAME = new QName("http://tempuri.org/", "accountNumber");
-    private final static QName _PayAmount_QNAME = new QName("http://tempuri.org/", "amount");
-    private final static QName _PayReceiverLegalAccountNumber_QNAME = new QName("http://tempuri.org/", "receiverLegalAccountNumber");
+    private final static QName _LockCardByIdSecurityToken_QNAME = new QName("http://tempuri.org/", "securityToken");
     private final static QName _ClientMiddleName_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", "MiddleName");
     private final static QName _ClientLogin_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", "Login");
     private final static QName _ClientPassword_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", "Password");
@@ -91,41 +85,53 @@ public class ObjectFactory {
     private final static QName _ClientPhoneNumber_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", "PhoneNumber");
     private final static QName _ClientFirstName_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", "FirstName");
     private final static QName _ClientLastName_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", "LastName");
-    private final static QName _GetCardForClientResponseGetCardForClientResult_QNAME = new QName("http://tempuri.org/", "GetCardForClientResult");
-    private final static QName _AuthorizationFaultMessage_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.Services.Interfaces.FaultContracts", "Message");
-    private final static QName _GetAccountsForClientResponseGetAccountsForClientResult_QNAME = new QName("http://tempuri.org/", "GetAccountsForClientResult");
-    private final static QName _UnlockCardSecretWord_QNAME = new QName("http://tempuri.org/", "secretWord");
-    private final static QName _UnlockCardNumber_QNAME = new QName("http://tempuri.org/", "number");
-    private final static QName _GetPeriodTransfersForCardResponseGetPeriodTransfersForCardResult_QNAME = new QName("http://tempuri.org/", "GetPeriodTransfersForCardResult");
-    private final static QName _GetClientResponseGetClientResult_QNAME = new QName("http://tempuri.org/", "GetClientResult");
-    private final static QName _OpenAccountAccount_QNAME = new QName("http://tempuri.org/", "account");
-    private final static QName _GetCardsForClientResponseGetCardsForClientResult_QNAME = new QName("http://tempuri.org/", "GetCardsForClientResult");
-    private final static QName _ExecuteTransferReceiverCardNumber_QNAME = new QName("http://tempuri.org/", "receiverCardNumber");
-    private final static QName _ExecuteTransferCardNumber_QNAME = new QName("http://tempuri.org/", "cardNumber");
-    private final static QName _GetSellCurrencyRatesResponseGetSellCurrencyRatesResult_QNAME = new QName("http://tempuri.org/", "GetSellCurrencyRatesResult");
-    private final static QName _GetCurrencyTypesResponseGetCurrencyTypesResult_QNAME = new QName("http://tempuri.org/", "GetCurrencyTypesResult");
-    private final static QName _AccountNumber_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", "Number");
-    private final static QName _GetCardsResponseGetCardsResult_QNAME = new QName("http://tempuri.org/", "GetCardsResult");
+    private final static QName _UpdateSellCurrencyRatesSellCurrencyRates_QNAME = new QName("http://tempuri.org/", "sellCurrencyRates");
     private final static QName _GetAccountByIdResponseGetAccountByIdResult_QNAME = new QName("http://tempuri.org/", "GetAccountByIdResult");
-    private final static QName _CurrencyTypeShortName_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", "ShortName");
+    private final static QName _GetClientResponseGetClientResult_QNAME = new QName("http://tempuri.org/", "GetClientResult");
+    private final static QName _GetAllLegalPersonCategoriesResponseGetAllLegalPersonCategoriesResult_QNAME = new QName("http://tempuri.org/", "GetAllLegalPersonCategoriesResult");
+    private final static QName _SetNewLoginNewLogin_QNAME = new QName("http://tempuri.org/", "newLogin");
     private final static QName _CardSecretWord_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", "SecretWord");
     private final static QName _CardCVV2_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", "CVV2");
+    private final static QName _PaymentInformation_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", "Information");
+    private final static QName _GetCardForClientResponseGetCardForClientResult_QNAME = new QName("http://tempuri.org/", "GetCardForClientResult");
+    private final static QName _GetLegalPersonsForCategoryResponseGetLegalPersonsForCategoryResult_QNAME = new QName("http://tempuri.org/", "GetLegalPersonsForCategoryResult");
+    private final static QName _GetPeriodPaymentsForAccountResponseGetPeriodPaymentsForAccountResult_QNAME = new QName("http://tempuri.org/", "GetPeriodPaymentsForAccountResult");
+    private final static QName _GetAccountByNumberNumber_QNAME = new QName("http://tempuri.org/", "number");
+    private final static QName _GetSellCurrencyRatesResponseGetSellCurrencyRatesResult_QNAME = new QName("http://tempuri.org/", "GetSellCurrencyRatesResult");
+    private final static QName _LegalPersonCategoryName_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", "Name");
     private final static QName _GetCardForAccountResponseGetCardForAccountResult_QNAME = new QName("http://tempuri.org/", "GetCardForAccountResult");
+    private final static QName _GetCardsForClientResponseGetCardsForClientResult_QNAME = new QName("http://tempuri.org/", "GetCardsForClientResult");
+    private final static QName _GetCardForOperatorResponseGetCardForOperatorResult_QNAME = new QName("http://tempuri.org/", "GetCardForOperatorResult");
+    private final static QName _PayAccountNumber_QNAME = new QName("http://tempuri.org/", "accountNumber");
+    private final static QName _PayAmount_QNAME = new QName("http://tempuri.org/", "amount");
+    private final static QName _PayReceiverLegalAccountNumber_QNAME = new QName("http://tempuri.org/", "receiverLegalAccountNumber");
+    private final static QName _GetPeriodPaymentsForCardResponseGetPeriodPaymentsForCardResult_QNAME = new QName("http://tempuri.org/", "GetPeriodPaymentsForCardResult");
+    private final static QName _GetCardsResponseGetCardsResult_QNAME = new QName("http://tempuri.org/", "GetCardsResult");
+    private final static QName _CurrencyTypeShortName_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", "ShortName");
+    private final static QName _PassportAuthority_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", "Authority");
+    private final static QName _PassportSeria_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", "Seria");
     private final static QName _GetPurchaseCurrencyRatesResponseGetPurchaseCurrencyRatesResult_QNAME = new QName("http://tempuri.org/", "GetPurchaseCurrencyRatesResult");
+    private final static QName _GetAccountByNumberResponseGetAccountByNumberResult_QNAME = new QName("http://tempuri.org/", "GetAccountByNumberResult");
+    private final static QName _GetAllLegalPersonsResponseGetAllLegalPersonsResult_QNAME = new QName("http://tempuri.org/", "GetAllLegalPersonsResult");
+    private final static QName _GetPeriodTransfersForCardResponseGetPeriodTransfersForCardResult_QNAME = new QName("http://tempuri.org/", "GetPeriodTransfersForCardResult");
+    private final static QName _CreateCardCard_QNAME = new QName("http://tempuri.org/", "card");
+    private final static QName _GetBallanceResponseGetBallanceResult_QNAME = new QName("http://tempuri.org/", "GetBallanceResult");
+    private final static QName _GetCurrencyTypesResponseGetCurrencyTypesResult_QNAME = new QName("http://tempuri.org/", "GetCurrencyTypesResult");
+    private final static QName _GetAccountsForClientResponseGetAccountsForClientResult_QNAME = new QName("http://tempuri.org/", "GetAccountsForClientResult");
+    private final static QName _UnlockCardSecretWord_QNAME = new QName("http://tempuri.org/", "secretWord");
     private final static QName _LegalPersonPhone_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", "Phone");
     private final static QName _LegalPersonAddress_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", "Address");
     private final static QName _LegalPersonLegalNumber_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", "LegalNumber");
     private final static QName _LegalPersonLegalAccounts_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", "LegalAccounts");
-    private final static QName _UpdateSellCurrencyRatesSellCurrencyRates_QNAME = new QName("http://tempuri.org/", "sellCurrencyRates");
     private final static QName _GetAllCardTypesResponseGetAllCardTypesResult_QNAME = new QName("http://tempuri.org/", "GetAllCardTypesResult");
-    private final static QName _GetCardForOperatorResponseGetCardForOperatorResult_QNAME = new QName("http://tempuri.org/", "GetCardForOperatorResult");
+    private final static QName _GetPeriodTransfersForAccountResponseGetPeriodTransfersForAccountResult_QNAME = new QName("http://tempuri.org/", "GetPeriodTransfersForAccountResult");
+    private final static QName _SetNewPasswordNewPassword_QNAME = new QName("http://tempuri.org/", "newPassword");
+    private final static QName _OpenAccountAccount_QNAME = new QName("http://tempuri.org/", "account");
+    private final static QName _DomainFaultMessage_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.Services.Interfaces.FaultContracts", "Message");
+    private final static QName _ReplenishAccountMoney_QNAME = new QName("http://tempuri.org/", "money");
     private final static QName _UpdatePurchaseCurrencyRatesPurchaseCurrencyRates_QNAME = new QName("http://tempuri.org/", "purchaseCurrencyRates");
-    private final static QName _GetPeriodPaymentsForAccountResponseGetPeriodPaymentsForAccountResult_QNAME = new QName("http://tempuri.org/", "GetPeriodPaymentsForAccountResult");
-    private final static QName _PassportAuthority_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", "Authority");
-    private final static QName _PassportSeria_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", "Seria");
-    private final static QName _GetAccountByNumberResponseGetAccountByNumberResult_QNAME = new QName("http://tempuri.org/", "GetAccountByNumberResult");
-    private final static QName _PaymentInformation_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", "Information");
-    private final static QName _GetAllLegalPersonsResponseGetAllLegalPersonsResult_QNAME = new QName("http://tempuri.org/", "GetAllLegalPersonsResult");
+    private final static QName _ExecuteTransferReceiverCardNumber_QNAME = new QName("http://tempuri.org/", "receiverCardNumber");
+    private final static QName _ExecuteTransferCardNumber_QNAME = new QName("http://tempuri.org/", "cardNumber");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: by.bsuir.banking.proxy.internetbanking
@@ -135,107 +141,59 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetSellCurrencyRates }
+     * Create an instance of {@link LegalAccount }
      * 
      */
-    public GetSellCurrencyRates createGetSellCurrencyRates() {
-        return new GetSellCurrencyRates();
+    public LegalAccount createLegalAccount() {
+        return new LegalAccount();
     }
 
     /**
-     * Create an instance of {@link CreateCard }
+     * Create an instance of {@link Transfer }
      * 
      */
-    public CreateCard createCreateCard() {
-        return new CreateCard();
+    public Transfer createTransfer() {
+        return new Transfer();
     }
 
     /**
-     * Create an instance of {@link ArrayOfAccount }
+     * Create an instance of {@link GetAccountByIdResponse }
      * 
      */
-    public ArrayOfAccount createArrayOfAccount() {
-        return new ArrayOfAccount();
+    public GetAccountByIdResponse createGetAccountByIdResponse() {
+        return new GetAccountByIdResponse();
     }
 
     /**
-     * Create an instance of {@link GetClient }
+     * Create an instance of {@link GetAllLegalPersonCategoriesResponse }
      * 
      */
-    public GetClient createGetClient() {
-        return new GetClient();
+    public GetAllLegalPersonCategoriesResponse createGetAllLegalPersonCategoriesResponse() {
+        return new GetAllLegalPersonCategoriesResponse();
     }
 
     /**
-     * Create an instance of {@link GetPeriodPaymentsForAccount }
+     * Create an instance of {@link SetNewLogin }
      * 
      */
-    public GetPeriodPaymentsForAccount createGetPeriodPaymentsForAccount() {
-        return new GetPeriodPaymentsForAccount();
+    public SetNewLogin createSetNewLogin() {
+        return new SetNewLogin();
     }
 
     /**
-     * Create an instance of {@link GetPeriodPaymentsForCardResponse }
+     * Create an instance of {@link Card }
      * 
      */
-    public GetPeriodPaymentsForCardResponse createGetPeriodPaymentsForCardResponse() {
-        return new GetPeriodPaymentsForCardResponse();
+    public Card createCard() {
+        return new Card();
     }
 
     /**
-     * Create an instance of {@link LegalPersonCategory }
+     * Create an instance of {@link Payment }
      * 
      */
-    public LegalPersonCategory createLegalPersonCategory() {
-        return new LegalPersonCategory();
-    }
-
-    /**
-     * Create an instance of {@link GetBallanceResponse }
-     * 
-     */
-    public GetBallanceResponse createGetBallanceResponse() {
-        return new GetBallanceResponse();
-    }
-
-    /**
-     * Create an instance of {@link CreateCardResponse }
-     * 
-     */
-    public CreateCardResponse createCreateCardResponse() {
-        return new CreateCardResponse();
-    }
-
-    /**
-     * Create an instance of {@link GetPeriodTransfersForAccountResponse }
-     * 
-     */
-    public GetPeriodTransfersForAccountResponse createGetPeriodTransfersForAccountResponse() {
-        return new GetPeriodTransfersForAccountResponse();
-    }
-
-    /**
-     * Create an instance of {@link GetPeriodTransfersForCard }
-     * 
-     */
-    public GetPeriodTransfersForCard createGetPeriodTransfersForCard() {
-        return new GetPeriodTransfersForCard();
-    }
-
-    /**
-     * Create an instance of {@link Pay }
-     * 
-     */
-    public Pay createPay() {
-        return new Pay();
-    }
-
-    /**
-     * Create an instance of {@link Client }
-     * 
-     */
-    public Client createClient() {
-        return new Client();
+    public Payment createPayment() {
+        return new Payment();
     }
 
     /**
@@ -247,19 +205,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link AuthorizationFault }
+     * Create an instance of {@link UpdateSellCurrencyRatesResponse }
      * 
      */
-    public AuthorizationFault createAuthorizationFault() {
-        return new AuthorizationFault();
+    public UpdateSellCurrencyRatesResponse createUpdateSellCurrencyRatesResponse() {
+        return new UpdateSellCurrencyRatesResponse();
     }
 
     /**
-     * Create an instance of {@link ArrayOfLegalPerson }
+     * Create an instance of {@link ArrayOfAccount }
      * 
      */
-    public ArrayOfLegalPerson createArrayOfLegalPerson() {
-        return new ArrayOfLegalPerson();
+    public ArrayOfAccount createArrayOfAccount() {
+        return new ArrayOfAccount();
     }
 
     /**
@@ -271,11 +229,395 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetAmountLimit }
+     * 
+     */
+    public GetAmountLimit createGetAmountLimit() {
+        return new GetAmountLimit();
+    }
+
+    /**
+     * Create an instance of {@link GetCardForAccountResponse }
+     * 
+     */
+    public GetCardForAccountResponse createGetCardForAccountResponse() {
+        return new GetCardForAccountResponse();
+    }
+
+    /**
+     * Create an instance of {@link SellCurrencyRate }
+     * 
+     */
+    public SellCurrencyRate createSellCurrencyRate() {
+        return new SellCurrencyRate();
+    }
+
+    /**
+     * Create an instance of {@link GetCardForAccount }
+     * 
+     */
+    public GetCardForAccount createGetCardForAccount() {
+        return new GetCardForAccount();
+    }
+
+    /**
+     * Create an instance of {@link GetCardsForClientResponse }
+     * 
+     */
+    public GetCardsForClientResponse createGetCardsForClientResponse() {
+        return new GetCardsForClientResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetAccountById }
+     * 
+     */
+    public GetAccountById createGetAccountById() {
+        return new GetAccountById();
+    }
+
+    /**
+     * Create an instance of {@link CreateCardResponse }
+     * 
+     */
+    public CreateCardResponse createCreateCardResponse() {
+        return new CreateCardResponse();
+    }
+
+    /**
+     * Create an instance of {@link SetNewLoginResponse }
+     * 
+     */
+    public SetNewLoginResponse createSetNewLoginResponse() {
+        return new SetNewLoginResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetCardForOperatorResponse }
+     * 
+     */
+    public GetCardForOperatorResponse createGetCardForOperatorResponse() {
+        return new GetCardForOperatorResponse();
+    }
+
+    /**
+     * Create an instance of {@link CloseAccount }
+     * 
+     */
+    public CloseAccount createCloseAccount() {
+        return new CloseAccount();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfPurchaseCurrencyRate }
+     * 
+     */
+    public ArrayOfPurchaseCurrencyRate createArrayOfPurchaseCurrencyRate() {
+        return new ArrayOfPurchaseCurrencyRate();
+    }
+
+    /**
+     * Create an instance of {@link GetPeriodPaymentsForCardResponse }
+     * 
+     */
+    public GetPeriodPaymentsForCardResponse createGetPeriodPaymentsForCardResponse() {
+        return new GetPeriodPaymentsForCardResponse();
+    }
+
+    /**
+     * Create an instance of {@link LockCardResponse }
+     * 
+     */
+    public LockCardResponse createLockCardResponse() {
+        return new LockCardResponse();
+    }
+
+    /**
+     * Create an instance of {@link SetNewPasswordResponse }
+     * 
+     */
+    public SetNewPasswordResponse createSetNewPasswordResponse() {
+        return new SetNewPasswordResponse();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfCurrencyType }
+     * 
+     */
+    public ArrayOfCurrencyType createArrayOfCurrencyType() {
+        return new ArrayOfCurrencyType();
+    }
+
+    /**
+     * Create an instance of {@link CurrencyType }
+     * 
+     */
+    public CurrencyType createCurrencyType() {
+        return new CurrencyType();
+    }
+
+    /**
+     * Create an instance of {@link Passport }
+     * 
+     */
+    public Passport createPassport() {
+        return new Passport();
+    }
+
+    /**
+     * Create an instance of {@link GetPurchaseCurrencyRatesResponse }
+     * 
+     */
+    public GetPurchaseCurrencyRatesResponse createGetPurchaseCurrencyRatesResponse() {
+        return new GetPurchaseCurrencyRatesResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetAccountByNumberResponse }
+     * 
+     */
+    public GetAccountByNumberResponse createGetAccountByNumberResponse() {
+        return new GetAccountByNumberResponse();
+    }
+
+    /**
+     * Create an instance of {@link PayResponse }
+     * 
+     */
+    public PayResponse createPayResponse() {
+        return new PayResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetAllLegalPersonsResponse }
+     * 
+     */
+    public GetAllLegalPersonsResponse createGetAllLegalPersonsResponse() {
+        return new GetAllLegalPersonsResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetPeriodTransfersForCardResponse }
+     * 
+     */
+    public GetPeriodTransfersForCardResponse createGetPeriodTransfersForCardResponse() {
+        return new GetPeriodTransfersForCardResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetCardsForClient }
+     * 
+     */
+    public GetCardsForClient createGetCardsForClient() {
+        return new GetCardsForClient();
+    }
+
+    /**
+     * Create an instance of {@link CreateCard }
+     * 
+     */
+    public CreateCard createCreateCard() {
+        return new CreateCard();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfLegalPersonCategory }
+     * 
+     */
+    public ArrayOfLegalPersonCategory createArrayOfLegalPersonCategory() {
+        return new ArrayOfLegalPersonCategory();
+    }
+
+    /**
+     * Create an instance of {@link Money }
+     * 
+     */
+    public Money createMoney() {
+        return new Money();
+    }
+
+    /**
+     * Create an instance of {@link GetCurrencyTypesResponse }
+     * 
+     */
+    public GetCurrencyTypesResponse createGetCurrencyTypesResponse() {
+        return new GetCurrencyTypesResponse();
+    }
+
+    /**
      * Create an instance of {@link GetAccountsForClientResponse }
      * 
      */
     public GetAccountsForClientResponse createGetAccountsForClientResponse() {
         return new GetAccountsForClientResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetAllCardTypes }
+     * 
+     */
+    public GetAllCardTypes createGetAllCardTypes() {
+        return new GetAllCardTypes();
+    }
+
+    /**
+     * Create an instance of {@link GetPeriodTransfersForAccount }
+     * 
+     */
+    public GetPeriodTransfersForAccount createGetPeriodTransfersForAccount() {
+        return new GetPeriodTransfersForAccount();
+    }
+
+    /**
+     * Create an instance of {@link UnlockCardById }
+     * 
+     */
+    public UnlockCardById createUnlockCardById() {
+        return new UnlockCardById();
+    }
+
+    /**
+     * Create an instance of {@link PurchaseCurrencyRate }
+     * 
+     */
+    public PurchaseCurrencyRate createPurchaseCurrencyRate() {
+        return new PurchaseCurrencyRate();
+    }
+
+    /**
+     * Create an instance of {@link GetAllCardTypesResponse }
+     * 
+     */
+    public GetAllCardTypesResponse createGetAllCardTypesResponse() {
+        return new GetAllCardTypesResponse();
+    }
+
+    /**
+     * Create an instance of {@link SetOperationLimitResponse }
+     * 
+     */
+    public SetOperationLimitResponse createSetOperationLimitResponse() {
+        return new SetOperationLimitResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetPeriodPaymentsForAccount }
+     * 
+     */
+    public GetPeriodPaymentsForAccount createGetPeriodPaymentsForAccount() {
+        return new GetPeriodPaymentsForAccount();
+    }
+
+    /**
+     * Create an instance of {@link GetPeriodTransfersForAccountResponse }
+     * 
+     */
+    public GetPeriodTransfersForAccountResponse createGetPeriodTransfersForAccountResponse() {
+        return new GetPeriodTransfersForAccountResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetLegalPersonsForCategory }
+     * 
+     */
+    public GetLegalPersonsForCategory createGetLegalPersonsForCategory() {
+        return new GetLegalPersonsForCategory();
+    }
+
+    /**
+     * Create an instance of {@link SetNewPassword }
+     * 
+     */
+    public SetNewPassword createSetNewPassword() {
+        return new SetNewPassword();
+    }
+
+    /**
+     * Create an instance of {@link ReplenishAccountResponse }
+     * 
+     */
+    public ReplenishAccountResponse createReplenishAccountResponse() {
+        return new ReplenishAccountResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetOperationLimitResponse }
+     * 
+     */
+    public GetOperationLimitResponse createGetOperationLimitResponse() {
+        return new GetOperationLimitResponse();
+    }
+
+    /**
+     * Create an instance of {@link OpenAccount }
+     * 
+     */
+    public OpenAccount createOpenAccount() {
+        return new OpenAccount();
+    }
+
+    /**
+     * Create an instance of {@link SetAmountLimit }
+     * 
+     */
+    public SetAmountLimit createSetAmountLimit() {
+        return new SetAmountLimit();
+    }
+
+    /**
+     * Create an instance of {@link AuthorizationFault }
+     * 
+     */
+    public AuthorizationFault createAuthorizationFault() {
+        return new AuthorizationFault();
+    }
+
+    /**
+     * Create an instance of {@link UpdatePurchaseCurrencyRates }
+     * 
+     */
+    public UpdatePurchaseCurrencyRates createUpdatePurchaseCurrencyRates() {
+        return new UpdatePurchaseCurrencyRates();
+    }
+
+    /**
+     * Create an instance of {@link LockCardById }
+     * 
+     */
+    public LockCardById createLockCardById() {
+        return new LockCardById();
+    }
+
+    /**
+     * Create an instance of {@link Client }
+     * 
+     */
+    public Client createClient() {
+        return new Client();
+    }
+
+    /**
+     * Create an instance of {@link UpdateSellCurrencyRates }
+     * 
+     */
+    public UpdateSellCurrencyRates createUpdateSellCurrencyRates() {
+        return new UpdateSellCurrencyRates();
+    }
+
+    /**
+     * Create an instance of {@link ExecuteTransferResponse }
+     * 
+     */
+    public ExecuteTransferResponse createExecuteTransferResponse() {
+        return new ExecuteTransferResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetClientResponse }
+     * 
+     */
+    public GetClientResponse createGetClientResponse() {
+        return new GetClientResponse();
     }
 
     /**
@@ -303,363 +645,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DeleteCardResponse }
+     * Create an instance of {@link GetAccountsForClient }
      * 
      */
-    public DeleteCardResponse createDeleteCardResponse() {
-        return new DeleteCardResponse();
-    }
-
-    /**
-     * Create an instance of {@link UnlockCard }
-     * 
-     */
-    public UnlockCard createUnlockCard() {
-        return new UnlockCard();
-    }
-
-    /**
-     * Create an instance of {@link GetPeriodTransfersForCardResponse }
-     * 
-     */
-    public GetPeriodTransfersForCardResponse createGetPeriodTransfersForCardResponse() {
-        return new GetPeriodTransfersForCardResponse();
-    }
-
-    /**
-     * Create an instance of {@link UnlockCardById }
-     * 
-     */
-    public UnlockCardById createUnlockCardById() {
-        return new UnlockCardById();
-    }
-
-    /**
-     * Create an instance of {@link ArrayOfCardType }
-     * 
-     */
-    public ArrayOfCardType createArrayOfCardType() {
-        return new ArrayOfCardType();
-    }
-
-    /**
-     * Create an instance of {@link PayResponse }
-     * 
-     */
-    public PayResponse createPayResponse() {
-        return new PayResponse();
-    }
-
-    /**
-     * Create an instance of {@link SetAmountLimit }
-     * 
-     */
-    public SetAmountLimit createSetAmountLimit() {
-        return new SetAmountLimit();
-    }
-
-    /**
-     * Create an instance of {@link LockCardById }
-     * 
-     */
-    public LockCardById createLockCardById() {
-        return new LockCardById();
-    }
-
-    /**
-     * Create an instance of {@link GetClientResponse }
-     * 
-     */
-    public GetClientResponse createGetClientResponse() {
-        return new GetClientResponse();
-    }
-
-    /**
-     * Create an instance of {@link ArrayOfCurrencyType }
-     * 
-     */
-    public ArrayOfCurrencyType createArrayOfCurrencyType() {
-        return new ArrayOfCurrencyType();
-    }
-
-    /**
-     * Create an instance of {@link LockCard }
-     * 
-     */
-    public LockCard createLockCard() {
-        return new LockCard();
-    }
-
-    /**
-     * Create an instance of {@link SellCurrencyRate }
-     * 
-     */
-    public SellCurrencyRate createSellCurrencyRate() {
-        return new SellCurrencyRate();
-    }
-
-    /**
-     * Create an instance of {@link GetCardsForClientResponse }
-     * 
-     */
-    public GetCardsForClientResponse createGetCardsForClientResponse() {
-        return new GetCardsForClientResponse();
-    }
-
-    /**
-     * Create an instance of {@link OpenAccount }
-     * 
-     */
-    public OpenAccount createOpenAccount() {
-        return new OpenAccount();
-    }
-
-    /**
-     * Create an instance of {@link DomainFault }
-     * 
-     */
-    public DomainFault createDomainFault() {
-        return new DomainFault();
-    }
-
-    /**
-     * Create an instance of {@link CloseAccountResponse }
-     * 
-     */
-    public CloseAccountResponse createCloseAccountResponse() {
-        return new CloseAccountResponse();
-    }
-
-    /**
-     * Create an instance of {@link GetOperationLimit }
-     * 
-     */
-    public GetOperationLimit createGetOperationLimit() {
-        return new GetOperationLimit();
-    }
-
-    /**
-     * Create an instance of {@link GetAccountByNumber }
-     * 
-     */
-    public GetAccountByNumber createGetAccountByNumber() {
-        return new GetAccountByNumber();
-    }
-
-    /**
-     * Create an instance of {@link GetCurrencyTypes }
-     * 
-     */
-    public GetCurrencyTypes createGetCurrencyTypes() {
-        return new GetCurrencyTypes();
-    }
-
-    /**
-     * Create an instance of {@link UpdateSellCurrencyRatesResponse }
-     * 
-     */
-    public UpdateSellCurrencyRatesResponse createUpdateSellCurrencyRatesResponse() {
-        return new UpdateSellCurrencyRatesResponse();
-    }
-
-    /**
-     * Create an instance of {@link ExecuteTransfer }
-     * 
-     */
-    public ExecuteTransfer createExecuteTransfer() {
-        return new ExecuteTransfer();
-    }
-
-    /**
-     * Create an instance of {@link LockCardResponse }
-     * 
-     */
-    public LockCardResponse createLockCardResponse() {
-        return new LockCardResponse();
-    }
-
-    /**
-     * Create an instance of {@link GetAmountLimit }
-     * 
-     */
-    public GetAmountLimit createGetAmountLimit() {
-        return new GetAmountLimit();
-    }
-
-    /**
-     * Create an instance of {@link GetSellCurrencyRatesResponse }
-     * 
-     */
-    public GetSellCurrencyRatesResponse createGetSellCurrencyRatesResponse() {
-        return new GetSellCurrencyRatesResponse();
-    }
-
-    /**
-     * Create an instance of {@link GetCardForOperator }
-     * 
-     */
-    public GetCardForOperator createGetCardForOperator() {
-        return new GetCardForOperator();
-    }
-
-    /**
-     * Create an instance of {@link GetAmountLimitResponse }
-     * 
-     */
-    public GetAmountLimitResponse createGetAmountLimitResponse() {
-        return new GetAmountLimitResponse();
-    }
-
-    /**
-     * Create an instance of {@link ArrayOfSellCurrencyRate }
-     * 
-     */
-    public ArrayOfSellCurrencyRate createArrayOfSellCurrencyRate() {
-        return new ArrayOfSellCurrencyRate();
-    }
-
-    /**
-     * Create an instance of {@link GetCurrencyTypesResponse }
-     * 
-     */
-    public GetCurrencyTypesResponse createGetCurrencyTypesResponse() {
-        return new GetCurrencyTypesResponse();
-    }
-
-    /**
-     * Create an instance of {@link ArrayOfPurchaseCurrencyRate }
-     * 
-     */
-    public ArrayOfPurchaseCurrencyRate createArrayOfPurchaseCurrencyRate() {
-        return new ArrayOfPurchaseCurrencyRate();
-    }
-
-    /**
-     * Create an instance of {@link Account }
-     * 
-     */
-    public Account createAccount() {
-        return new Account();
-    }
-
-    /**
-     * Create an instance of {@link GetOperationLimitResponse }
-     * 
-     */
-    public GetOperationLimitResponse createGetOperationLimitResponse() {
-        return new GetOperationLimitResponse();
-    }
-
-    /**
-     * Create an instance of {@link GetCardsResponse }
-     * 
-     */
-    public GetCardsResponse createGetCardsResponse() {
-        return new GetCardsResponse();
-    }
-
-    /**
-     * Create an instance of {@link SetOperationLimitResponse }
-     * 
-     */
-    public SetOperationLimitResponse createSetOperationLimitResponse() {
-        return new SetOperationLimitResponse();
-    }
-
-    /**
-     * Create an instance of {@link GetAccountByIdResponse }
-     * 
-     */
-    public GetAccountByIdResponse createGetAccountByIdResponse() {
-        return new GetAccountByIdResponse();
-    }
-
-    /**
-     * Create an instance of {@link GetPeriodPaymentsForCard }
-     * 
-     */
-    public GetPeriodPaymentsForCard createGetPeriodPaymentsForCard() {
-        return new GetPeriodPaymentsForCard();
-    }
-
-    /**
-     * Create an instance of {@link CurrencyType }
-     * 
-     */
-    public CurrencyType createCurrencyType() {
-        return new CurrencyType();
-    }
-
-    /**
-     * Create an instance of {@link GetCardForAccount }
-     * 
-     */
-    public GetCardForAccount createGetCardForAccount() {
-        return new GetCardForAccount();
-    }
-
-    /**
-     * Create an instance of {@link GetCardsForClient }
-     * 
-     */
-    public GetCardsForClient createGetCardsForClient() {
-        return new GetCardsForClient();
-    }
-
-    /**
-     * Create an instance of {@link Card }
-     * 
-     */
-    public Card createCard() {
-        return new Card();
-    }
-
-    /**
-     * Create an instance of {@link LegalAccount }
-     * 
-     */
-    public LegalAccount createLegalAccount() {
-        return new LegalAccount();
-    }
-
-    /**
-     * Create an instance of {@link GetCardForAccountResponse }
-     * 
-     */
-    public GetCardForAccountResponse createGetCardForAccountResponse() {
-        return new GetCardForAccountResponse();
-    }
-
-    /**
-     * Create an instance of {@link UpdatePurchaseCurrencyRatesResponse }
-     * 
-     */
-    public UpdatePurchaseCurrencyRatesResponse createUpdatePurchaseCurrencyRatesResponse() {
-        return new UpdatePurchaseCurrencyRatesResponse();
-    }
-
-    /**
-     * Create an instance of {@link GetPurchaseCurrencyRatesResponse }
-     * 
-     */
-    public GetPurchaseCurrencyRatesResponse createGetPurchaseCurrencyRatesResponse() {
-        return new GetPurchaseCurrencyRatesResponse();
-    }
-
-    /**
-     * Create an instance of {@link LegalPerson }
-     * 
-     */
-    public LegalPerson createLegalPerson() {
-        return new LegalPerson();
-    }
-
-    /**
-     * Create an instance of {@link UpdateSellCurrencyRates }
-     * 
-     */
-    public UpdateSellCurrencyRates createUpdateSellCurrencyRates() {
-        return new UpdateSellCurrencyRates();
+    public GetAccountsForClient createGetAccountsForClient() {
+        return new GetAccountsForClient();
     }
 
     /**
@@ -671,91 +661,27 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ArrayOfLegalAccount }
+     * Create an instance of {@link ArrayOfPayment }
      * 
      */
-    public ArrayOfLegalAccount createArrayOfLegalAccount() {
-        return new ArrayOfLegalAccount();
+    public ArrayOfPayment createArrayOfPayment() {
+        return new ArrayOfPayment();
     }
 
     /**
-     * Create an instance of {@link GetAllCardTypes }
+     * Create an instance of {@link GetLegalPersonsForCategoryResponse }
      * 
      */
-    public GetAllCardTypes createGetAllCardTypes() {
-        return new GetAllCardTypes();
+    public GetLegalPersonsForCategoryResponse createGetLegalPersonsForCategoryResponse() {
+        return new GetLegalPersonsForCategoryResponse();
     }
 
     /**
-     * Create an instance of {@link GetAccountById }
+     * Create an instance of {@link ArrayOfLegalPerson }
      * 
      */
-    public GetAccountById createGetAccountById() {
-        return new GetAccountById();
-    }
-
-    /**
-     * Create an instance of {@link GetAllCardTypesResponse }
-     * 
-     */
-    public GetAllCardTypesResponse createGetAllCardTypesResponse() {
-        return new GetAllCardTypesResponse();
-    }
-
-    /**
-     * Create an instance of {@link ArrayOfTransfer }
-     * 
-     */
-    public ArrayOfTransfer createArrayOfTransfer() {
-        return new ArrayOfTransfer();
-    }
-
-    /**
-     * Create an instance of {@link DeleteCard }
-     * 
-     */
-    public DeleteCard createDeleteCard() {
-        return new DeleteCard();
-    }
-
-    /**
-     * Create an instance of {@link GetCardForOperatorResponse }
-     * 
-     */
-    public GetCardForOperatorResponse createGetCardForOperatorResponse() {
-        return new GetCardForOperatorResponse();
-    }
-
-    /**
-     * Create an instance of {@link Money }
-     * 
-     */
-    public Money createMoney() {
-        return new Money();
-    }
-
-    /**
-     * Create an instance of {@link UpdatePurchaseCurrencyRates }
-     * 
-     */
-    public UpdatePurchaseCurrencyRates createUpdatePurchaseCurrencyRates() {
-        return new UpdatePurchaseCurrencyRates();
-    }
-
-    /**
-     * Create an instance of {@link GetBallance }
-     * 
-     */
-    public GetBallance createGetBallance() {
-        return new GetBallance();
-    }
-
-    /**
-     * Create an instance of {@link CardType }
-     * 
-     */
-    public CardType createCardType() {
-        return new CardType();
+    public ArrayOfLegalPerson createArrayOfLegalPerson() {
+        return new ArrayOfLegalPerson();
     }
 
     /**
@@ -767,19 +693,51 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetCardForClient }
+     * Create an instance of {@link GetAccountByNumber }
      * 
      */
-    public GetCardForClient createGetCardForClient() {
-        return new GetCardForClient();
+    public GetAccountByNumber createGetAccountByNumber() {
+        return new GetAccountByNumber();
     }
 
     /**
-     * Create an instance of {@link ExecuteTransferResponse }
+     * Create an instance of {@link GetSellCurrencyRatesResponse }
      * 
      */
-    public ExecuteTransferResponse createExecuteTransferResponse() {
-        return new ExecuteTransferResponse();
+    public GetSellCurrencyRatesResponse createGetSellCurrencyRatesResponse() {
+        return new GetSellCurrencyRatesResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetAllLegalPersonCategories }
+     * 
+     */
+    public GetAllLegalPersonCategories createGetAllLegalPersonCategories() {
+        return new GetAllLegalPersonCategories();
+    }
+
+    /**
+     * Create an instance of {@link LegalPersonCategory }
+     * 
+     */
+    public LegalPersonCategory createLegalPersonCategory() {
+        return new LegalPersonCategory();
+    }
+
+    /**
+     * Create an instance of {@link GetClient }
+     * 
+     */
+    public GetClient createGetClient() {
+        return new GetClient();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfSellCurrencyRate }
+     * 
+     */
+    public ArrayOfSellCurrencyRate createArrayOfSellCurrencyRate() {
+        return new ArrayOfSellCurrencyRate();
     }
 
     /**
@@ -791,51 +749,99 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Passport }
+     * Create an instance of {@link DeleteCard }
      * 
      */
-    public Passport createPassport() {
-        return new Passport();
+    public DeleteCard createDeleteCard() {
+        return new DeleteCard();
     }
 
     /**
-     * Create an instance of {@link SetAmountLimitResponse }
+     * Create an instance of {@link GetPeriodTransfersForCard }
      * 
      */
-    public SetAmountLimitResponse createSetAmountLimitResponse() {
-        return new SetAmountLimitResponse();
+    public GetPeriodTransfersForCard createGetPeriodTransfersForCard() {
+        return new GetPeriodTransfersForCard();
     }
 
     /**
-     * Create an instance of {@link GetPeriodTransfersForAccount }
+     * Create an instance of {@link Pay }
      * 
      */
-    public GetPeriodTransfersForAccount createGetPeriodTransfersForAccount() {
-        return new GetPeriodTransfersForAccount();
+    public Pay createPay() {
+        return new Pay();
     }
 
     /**
-     * Create an instance of {@link GetAccountByNumberResponse }
+     * Create an instance of {@link DeleteCardResponse }
      * 
      */
-    public GetAccountByNumberResponse createGetAccountByNumberResponse() {
-        return new GetAccountByNumberResponse();
+    public DeleteCardResponse createDeleteCardResponse() {
+        return new DeleteCardResponse();
     }
 
     /**
-     * Create an instance of {@link UnlockCardByIdResponse }
+     * Create an instance of {@link GetCardsResponse }
      * 
      */
-    public UnlockCardByIdResponse createUnlockCardByIdResponse() {
-        return new UnlockCardByIdResponse();
+    public GetCardsResponse createGetCardsResponse() {
+        return new GetCardsResponse();
     }
 
     /**
-     * Create an instance of {@link ArrayOfPayment }
+     * Create an instance of {@link GetOperationLimit }
      * 
      */
-    public ArrayOfPayment createArrayOfPayment() {
-        return new ArrayOfPayment();
+    public GetOperationLimit createGetOperationLimit() {
+        return new GetOperationLimit();
+    }
+
+    /**
+     * Create an instance of {@link GetSellCurrencyRates }
+     * 
+     */
+    public GetSellCurrencyRates createGetSellCurrencyRates() {
+        return new GetSellCurrencyRates();
+    }
+
+    /**
+     * Create an instance of {@link CloseAccountResponse }
+     * 
+     */
+    public CloseAccountResponse createCloseAccountResponse() {
+        return new CloseAccountResponse();
+    }
+
+    /**
+     * Create an instance of {@link UpdatePurchaseCurrencyRatesResponse }
+     * 
+     */
+    public UpdatePurchaseCurrencyRatesResponse createUpdatePurchaseCurrencyRatesResponse() {
+        return new UpdatePurchaseCurrencyRatesResponse();
+    }
+
+    /**
+     * Create an instance of {@link CardType }
+     * 
+     */
+    public CardType createCardType() {
+        return new CardType();
+    }
+
+    /**
+     * Create an instance of {@link GetPeriodPaymentsForCard }
+     * 
+     */
+    public GetPeriodPaymentsForCard createGetPeriodPaymentsForCard() {
+        return new GetPeriodPaymentsForCard();
+    }
+
+    /**
+     * Create an instance of {@link GetBallanceResponse }
+     * 
+     */
+    public GetBallanceResponse createGetBallanceResponse() {
+        return new GetBallanceResponse();
     }
 
     /**
@@ -847,43 +853,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link CloseAccount }
+     * Create an instance of {@link GetCurrencyTypes }
      * 
      */
-    public CloseAccount createCloseAccount() {
-        return new CloseAccount();
+    public GetCurrencyTypes createGetCurrencyTypes() {
+        return new GetCurrencyTypes();
     }
 
     /**
-     * Create an instance of {@link PurchaseCurrencyRate }
+     * Create an instance of {@link GetAmountLimitResponse }
      * 
      */
-    public PurchaseCurrencyRate createPurchaseCurrencyRate() {
-        return new PurchaseCurrencyRate();
-    }
-
-    /**
-     * Create an instance of {@link Payment }
-     * 
-     */
-    public Payment createPayment() {
-        return new Payment();
-    }
-
-    /**
-     * Create an instance of {@link Transfer }
-     * 
-     */
-    public Transfer createTransfer() {
-        return new Transfer();
-    }
-
-    /**
-     * Create an instance of {@link GetAllLegalPersonsResponse }
-     * 
-     */
-    public GetAllLegalPersonsResponse createGetAllLegalPersonsResponse() {
-        return new GetAllLegalPersonsResponse();
+    public GetAmountLimitResponse createGetAmountLimitResponse() {
+        return new GetAmountLimitResponse();
     }
 
     /**
@@ -895,11 +877,141 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetAccountsForClient }
+     * Create an instance of {@link SetAmountLimitResponse }
      * 
      */
-    public GetAccountsForClient createGetAccountsForClient() {
-        return new GetAccountsForClient();
+    public SetAmountLimitResponse createSetAmountLimitResponse() {
+        return new SetAmountLimitResponse();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfLegalAccount }
+     * 
+     */
+    public ArrayOfLegalAccount createArrayOfLegalAccount() {
+        return new ArrayOfLegalAccount();
+    }
+
+    /**
+     * Create an instance of {@link UnlockCard }
+     * 
+     */
+    public UnlockCard createUnlockCard() {
+        return new UnlockCard();
+    }
+
+    /**
+     * Create an instance of {@link UnlockCardByIdResponse }
+     * 
+     */
+    public UnlockCardByIdResponse createUnlockCardByIdResponse() {
+        return new UnlockCardByIdResponse();
+    }
+
+    /**
+     * Create an instance of {@link LegalPerson }
+     * 
+     */
+    public LegalPerson createLegalPerson() {
+        return new LegalPerson();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfTransfer }
+     * 
+     */
+    public ArrayOfTransfer createArrayOfTransfer() {
+        return new ArrayOfTransfer();
+    }
+
+    /**
+     * Create an instance of {@link GetCardForClient }
+     * 
+     */
+    public GetCardForClient createGetCardForClient() {
+        return new GetCardForClient();
+    }
+
+    /**
+     * Create an instance of {@link GetCardForOperator }
+     * 
+     */
+    public GetCardForOperator createGetCardForOperator() {
+        return new GetCardForOperator();
+    }
+
+    /**
+     * Create an instance of {@link GetBallance }
+     * 
+     */
+    public GetBallance createGetBallance() {
+        return new GetBallance();
+    }
+
+    /**
+     * Create an instance of {@link DomainFault }
+     * 
+     */
+    public DomainFault createDomainFault() {
+        return new DomainFault();
+    }
+
+    /**
+     * Create an instance of {@link Account }
+     * 
+     */
+    public Account createAccount() {
+        return new Account();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfCardType }
+     * 
+     */
+    public ArrayOfCardType createArrayOfCardType() {
+        return new ArrayOfCardType();
+    }
+
+    /**
+     * Create an instance of {@link ReplenishAccount }
+     * 
+     */
+    public ReplenishAccount createReplenishAccount() {
+        return new ReplenishAccount();
+    }
+
+    /**
+     * Create an instance of {@link ExecuteTransfer }
+     * 
+     */
+    public ExecuteTransfer createExecuteTransfer() {
+        return new ExecuteTransfer();
+    }
+
+    /**
+     * Create an instance of {@link LockCard }
+     * 
+     */
+    public LockCard createLockCard() {
+        return new LockCard();
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", name = "Number", scope = LegalAccount.class)
+    public JAXBElement<String> createLegalAccountNumber(String value) {
+        return new JAXBElement<String>(_LegalAccountNumber_QNAME, String.class, LegalAccount.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CurrencyType }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", name = "CurrencyType", scope = LegalAccount.class)
+    public JAXBElement<CurrencyType> createLegalAccountCurrencyType(CurrencyType value) {
+        return new JAXBElement<CurrencyType>(_LegalAccountCurrencyType_QNAME, CurrencyType.class, LegalAccount.class, value);
     }
 
     /**
@@ -1092,6 +1204,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfLegalPersonCategory }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", name = "ArrayOfLegalPersonCategory")
+    public JAXBElement<ArrayOfLegalPersonCategory> createArrayOfLegalPersonCategory(ArrayOfLegalPersonCategory value) {
+        return new JAXBElement<ArrayOfLegalPersonCategory>(_ArrayOfLegalPersonCategory_QNAME, ArrayOfLegalPersonCategory.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfCardType }{@code >}}
      * 
      */
@@ -1196,7 +1317,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", name = "CurrencyType")
     public JAXBElement<CurrencyType> createCurrencyType(CurrencyType value) {
-        return new JAXBElement<CurrencyType>(_CurrencyType_QNAME, CurrencyType.class, null, value);
+        return new JAXBElement<CurrencyType>(_LegalAccountCurrencyType_QNAME, CurrencyType.class, null, value);
     }
 
     /**
@@ -1329,117 +1450,9 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = CreateCard.class)
-    public JAXBElement<String> createCreateCardSecurityToken(String value) {
-        return new JAXBElement<String>(_CreateCardSecurityToken_QNAME, String.class, CreateCard.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Card }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "card", scope = CreateCard.class)
-    public JAXBElement<Card> createCreateCardCard(Card value) {
-        return new JAXBElement<Card>(_CreateCardCard_QNAME, Card.class, CreateCard.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = GetClient.class)
-    public JAXBElement<String> createGetClientSecurityToken(String value) {
-        return new JAXBElement<String>(_CreateCardSecurityToken_QNAME, String.class, GetClient.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfPayment }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "GetPeriodPaymentsForCardResult", scope = GetPeriodPaymentsForCardResponse.class)
-    public JAXBElement<ArrayOfPayment> createGetPeriodPaymentsForCardResponseGetPeriodPaymentsForCardResult(ArrayOfPayment value) {
-        return new JAXBElement<ArrayOfPayment>(_GetPeriodPaymentsForCardResponseGetPeriodPaymentsForCardResult_QNAME, ArrayOfPayment.class, GetPeriodPaymentsForCardResponse.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = GetPeriodPaymentsForAccount.class)
-    public JAXBElement<String> createGetPeriodPaymentsForAccountSecurityToken(String value) {
-        return new JAXBElement<String>(_CreateCardSecurityToken_QNAME, String.class, GetPeriodPaymentsForAccount.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", name = "Name", scope = LegalPersonCategory.class)
-    public JAXBElement<String> createLegalPersonCategoryName(String value) {
-        return new JAXBElement<String>(_LegalPersonCategoryName_QNAME, String.class, LegalPersonCategory.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Money }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "GetBallanceResult", scope = GetBallanceResponse.class)
-    public JAXBElement<Money> createGetBallanceResponseGetBallanceResult(Money value) {
-        return new JAXBElement<Money>(_GetBallanceResponseGetBallanceResult_QNAME, Money.class, GetBallanceResponse.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfTransfer }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "GetPeriodTransfersForAccountResult", scope = GetPeriodTransfersForAccountResponse.class)
-    public JAXBElement<ArrayOfTransfer> createGetPeriodTransfersForAccountResponseGetPeriodTransfersForAccountResult(ArrayOfTransfer value) {
-        return new JAXBElement<ArrayOfTransfer>(_GetPeriodTransfersForAccountResponseGetPeriodTransfersForAccountResult_QNAME, ArrayOfTransfer.class, GetPeriodTransfersForAccountResponse.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = GetPeriodTransfersForCard.class)
-    public JAXBElement<String> createGetPeriodTransfersForCardSecurityToken(String value) {
-        return new JAXBElement<String>(_CreateCardSecurityToken_QNAME, String.class, GetPeriodTransfersForCard.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = Pay.class)
-    public JAXBElement<String> createPaySecurityToken(String value) {
-        return new JAXBElement<String>(_CreateCardSecurityToken_QNAME, String.class, Pay.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "accountNumber", scope = Pay.class)
-    public JAXBElement<String> createPayAccountNumber(String value) {
-        return new JAXBElement<String>(_PayAccountNumber_QNAME, String.class, Pay.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Money }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "amount", scope = Pay.class)
-    public JAXBElement<Money> createPayAmount(Money value) {
-        return new JAXBElement<Money>(_PayAmount_QNAME, Money.class, Pay.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "receiverLegalAccountNumber", scope = Pay.class)
-    public JAXBElement<String> createPayReceiverLegalAccountNumber(String value) {
-        return new JAXBElement<String>(_PayReceiverLegalAccountNumber_QNAME, String.class, Pay.class, value);
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = LockCardById.class)
+    public JAXBElement<String> createLockCardByIdSecurityToken(String value) {
+        return new JAXBElement<String>(_LockCardByIdSecurityToken_QNAME, String.class, LockCardById.class, value);
     }
 
     /**
@@ -1515,111 +1528,30 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Card }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "GetCardForClientResult", scope = GetCardForClientResponse.class)
-    public JAXBElement<Card> createGetCardForClientResponseGetCardForClientResult(Card value) {
-        return new JAXBElement<Card>(_GetCardForClientResponseGetCardForClientResult_QNAME, Card.class, GetCardForClientResponse.class, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.Services.Interfaces.FaultContracts", name = "Message", scope = AuthorizationFault.class)
-    public JAXBElement<String> createAuthorizationFaultMessage(String value) {
-        return new JAXBElement<String>(_AuthorizationFaultMessage_QNAME, String.class, AuthorizationFault.class, value);
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = UpdateSellCurrencyRates.class)
+    public JAXBElement<String> createUpdateSellCurrencyRatesSecurityToken(String value) {
+        return new JAXBElement<String>(_LockCardByIdSecurityToken_QNAME, String.class, UpdateSellCurrencyRates.class, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfSellCurrencyRate }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = SetOperationLimit.class)
-    public JAXBElement<String> createSetOperationLimitSecurityToken(String value) {
-        return new JAXBElement<String>(_CreateCardSecurityToken_QNAME, String.class, SetOperationLimit.class, value);
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "sellCurrencyRates", scope = UpdateSellCurrencyRates.class)
+    public JAXBElement<ArrayOfSellCurrencyRate> createUpdateSellCurrencyRatesSellCurrencyRates(ArrayOfSellCurrencyRate value) {
+        return new JAXBElement<ArrayOfSellCurrencyRate>(_UpdateSellCurrencyRatesSellCurrencyRates_QNAME, ArrayOfSellCurrencyRate.class, UpdateSellCurrencyRates.class, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfAccount }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Account }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "GetAccountsForClientResult", scope = GetAccountsForClientResponse.class)
-    public JAXBElement<ArrayOfAccount> createGetAccountsForClientResponseGetAccountsForClientResult(ArrayOfAccount value) {
-        return new JAXBElement<ArrayOfAccount>(_GetAccountsForClientResponseGetAccountsForClientResult_QNAME, ArrayOfAccount.class, GetAccountsForClientResponse.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = GetAllLegalPersons.class)
-    public JAXBElement<String> createGetAllLegalPersonsSecurityToken(String value) {
-        return new JAXBElement<String>(_CreateCardSecurityToken_QNAME, String.class, GetAllLegalPersons.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "secretWord", scope = UnlockCard.class)
-    public JAXBElement<String> createUnlockCardSecretWord(String value) {
-        return new JAXBElement<String>(_UnlockCardSecretWord_QNAME, String.class, UnlockCard.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "number", scope = UnlockCard.class)
-    public JAXBElement<String> createUnlockCardNumber(String value) {
-        return new JAXBElement<String>(_UnlockCardNumber_QNAME, String.class, UnlockCard.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfTransfer }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "GetPeriodTransfersForCardResult", scope = GetPeriodTransfersForCardResponse.class)
-    public JAXBElement<ArrayOfTransfer> createGetPeriodTransfersForCardResponseGetPeriodTransfersForCardResult(ArrayOfTransfer value) {
-        return new JAXBElement<ArrayOfTransfer>(_GetPeriodTransfersForCardResponseGetPeriodTransfersForCardResult_QNAME, ArrayOfTransfer.class, GetPeriodTransfersForCardResponse.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = UnlockCardById.class)
-    public JAXBElement<String> createUnlockCardByIdSecurityToken(String value) {
-        return new JAXBElement<String>(_CreateCardSecurityToken_QNAME, String.class, UnlockCardById.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = SetAmountLimit.class)
-    public JAXBElement<String> createSetAmountLimitSecurityToken(String value) {
-        return new JAXBElement<String>(_CreateCardSecurityToken_QNAME, String.class, SetAmountLimit.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Money }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "amount", scope = SetAmountLimit.class)
-    public JAXBElement<Money> createSetAmountLimitAmount(Money value) {
-        return new JAXBElement<Money>(_PayAmount_QNAME, Money.class, SetAmountLimit.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = LockCardById.class)
-    public JAXBElement<String> createLockCardByIdSecurityToken(String value) {
-        return new JAXBElement<String>(_CreateCardSecurityToken_QNAME, String.class, LockCardById.class, value);
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "GetAccountByIdResult", scope = GetAccountByIdResponse.class)
+    public JAXBElement<Account> createGetAccountByIdResponseGetAccountByIdResult(Account value) {
+        return new JAXBElement<Account>(_GetAccountByIdResponseGetAccountByIdResult_QNAME, Account.class, GetAccountByIdResponse.class, value);
     }
 
     /**
@@ -1635,243 +1567,54 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "secretWord", scope = LockCard.class)
-    public JAXBElement<String> createLockCardSecretWord(String value) {
-        return new JAXBElement<String>(_UnlockCardSecretWord_QNAME, String.class, LockCard.class, value);
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = GetAllLegalPersons.class)
+    public JAXBElement<String> createGetAllLegalPersonsSecurityToken(String value) {
+        return new JAXBElement<String>(_LockCardByIdSecurityToken_QNAME, String.class, GetAllLegalPersons.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfLegalPersonCategory }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "GetAllLegalPersonCategoriesResult", scope = GetAllLegalPersonCategoriesResponse.class)
+    public JAXBElement<ArrayOfLegalPersonCategory> createGetAllLegalPersonCategoriesResponseGetAllLegalPersonCategoriesResult(ArrayOfLegalPersonCategory value) {
+        return new JAXBElement<ArrayOfLegalPersonCategory>(_GetAllLegalPersonCategoriesResponseGetAllLegalPersonCategoriesResult_QNAME, ArrayOfLegalPersonCategory.class, GetAllLegalPersonCategoriesResponse.class, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "number", scope = LockCard.class)
-    public JAXBElement<String> createLockCardNumber(String value) {
-        return new JAXBElement<String>(_UnlockCardNumber_QNAME, String.class, LockCard.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CurrencyType }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", name = "CurrencyType", scope = SellCurrencyRate.class)
-    public JAXBElement<CurrencyType> createSellCurrencyRateCurrencyType(CurrencyType value) {
-        return new JAXBElement<CurrencyType>(_CurrencyType_QNAME, CurrencyType.class, SellCurrencyRate.class, value);
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = GetAccountsForClient.class)
+    public JAXBElement<String> createGetAccountsForClientSecurityToken(String value) {
+        return new JAXBElement<String>(_LockCardByIdSecurityToken_QNAME, String.class, GetAccountsForClient.class, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = OpenAccount.class)
-    public JAXBElement<String> createOpenAccountSecurityToken(String value) {
-        return new JAXBElement<String>(_CreateCardSecurityToken_QNAME, String.class, OpenAccount.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Account }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "account", scope = OpenAccount.class)
-    public JAXBElement<Account> createOpenAccountAccount(Account value) {
-        return new JAXBElement<Account>(_OpenAccountAccount_QNAME, Account.class, OpenAccount.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfCard }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "GetCardsForClientResult", scope = GetCardsForClientResponse.class)
-    public JAXBElement<ArrayOfCard> createGetCardsForClientResponseGetCardsForClientResult(ArrayOfCard value) {
-        return new JAXBElement<ArrayOfCard>(_GetCardsForClientResponseGetCardsForClientResult_QNAME, ArrayOfCard.class, GetCardsForClientResponse.class, value);
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = GetCards.class)
+    public JAXBElement<String> createGetCardsSecurityToken(String value) {
+        return new JAXBElement<String>(_LockCardByIdSecurityToken_QNAME, String.class, GetCards.class, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.Services.Interfaces.FaultContracts", name = "Message", scope = DomainFault.class)
-    public JAXBElement<String> createDomainFaultMessage(String value) {
-        return new JAXBElement<String>(_AuthorizationFaultMessage_QNAME, String.class, DomainFault.class, value);
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = SetNewLogin.class)
+    public JAXBElement<String> createSetNewLoginSecurityToken(String value) {
+        return new JAXBElement<String>(_LockCardByIdSecurityToken_QNAME, String.class, SetNewLogin.class, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = GetAccountByNumber.class)
-    public JAXBElement<String> createGetAccountByNumberSecurityToken(String value) {
-        return new JAXBElement<String>(_CreateCardSecurityToken_QNAME, String.class, GetAccountByNumber.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "number", scope = GetAccountByNumber.class)
-    public JAXBElement<String> createGetAccountByNumberNumber(String value) {
-        return new JAXBElement<String>(_UnlockCardNumber_QNAME, String.class, GetAccountByNumber.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = GetOperationLimit.class)
-    public JAXBElement<String> createGetOperationLimitSecurityToken(String value) {
-        return new JAXBElement<String>(_CreateCardSecurityToken_QNAME, String.class, GetOperationLimit.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = ExecuteTransfer.class)
-    public JAXBElement<String> createExecuteTransferSecurityToken(String value) {
-        return new JAXBElement<String>(_CreateCardSecurityToken_QNAME, String.class, ExecuteTransfer.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "receiverCardNumber", scope = ExecuteTransfer.class)
-    public JAXBElement<String> createExecuteTransferReceiverCardNumber(String value) {
-        return new JAXBElement<String>(_ExecuteTransferReceiverCardNumber_QNAME, String.class, ExecuteTransfer.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Money }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "amount", scope = ExecuteTransfer.class)
-    public JAXBElement<Money> createExecuteTransferAmount(Money value) {
-        return new JAXBElement<Money>(_PayAmount_QNAME, Money.class, ExecuteTransfer.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "cardNumber", scope = ExecuteTransfer.class)
-    public JAXBElement<String> createExecuteTransferCardNumber(String value) {
-        return new JAXBElement<String>(_ExecuteTransferCardNumber_QNAME, String.class, ExecuteTransfer.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = GetAmountLimit.class)
-    public JAXBElement<String> createGetAmountLimitSecurityToken(String value) {
-        return new JAXBElement<String>(_CreateCardSecurityToken_QNAME, String.class, GetAmountLimit.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfSellCurrencyRate }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "GetSellCurrencyRatesResult", scope = GetSellCurrencyRatesResponse.class)
-    public JAXBElement<ArrayOfSellCurrencyRate> createGetSellCurrencyRatesResponseGetSellCurrencyRatesResult(ArrayOfSellCurrencyRate value) {
-        return new JAXBElement<ArrayOfSellCurrencyRate>(_GetSellCurrencyRatesResponseGetSellCurrencyRatesResult_QNAME, ArrayOfSellCurrencyRate.class, GetSellCurrencyRatesResponse.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = GetCardForOperator.class)
-    public JAXBElement<String> createGetCardForOperatorSecurityToken(String value) {
-        return new JAXBElement<String>(_CreateCardSecurityToken_QNAME, String.class, GetCardForOperator.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfCurrencyType }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "GetCurrencyTypesResult", scope = GetCurrencyTypesResponse.class)
-    public JAXBElement<ArrayOfCurrencyType> createGetCurrencyTypesResponseGetCurrencyTypesResult(ArrayOfCurrencyType value) {
-        return new JAXBElement<ArrayOfCurrencyType>(_GetCurrencyTypesResponseGetCurrencyTypesResult_QNAME, ArrayOfCurrencyType.class, GetCurrencyTypesResponse.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", name = "Number", scope = Account.class)
-    public JAXBElement<String> createAccountNumber(String value) {
-        return new JAXBElement<String>(_AccountNumber_QNAME, String.class, Account.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CurrencyType }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", name = "CurrencyType", scope = Account.class)
-    public JAXBElement<CurrencyType> createAccountCurrencyType(CurrencyType value) {
-        return new JAXBElement<CurrencyType>(_CurrencyType_QNAME, CurrencyType.class, Account.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfCard }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "GetCardsResult", scope = GetCardsResponse.class)
-    public JAXBElement<ArrayOfCard> createGetCardsResponseGetCardsResult(ArrayOfCard value) {
-        return new JAXBElement<ArrayOfCard>(_GetCardsResponseGetCardsResult_QNAME, ArrayOfCard.class, GetCardsResponse.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Account }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "GetAccountByIdResult", scope = GetAccountByIdResponse.class)
-    public JAXBElement<Account> createGetAccountByIdResponseGetAccountByIdResult(Account value) {
-        return new JAXBElement<Account>(_GetAccountByIdResponseGetAccountByIdResult_QNAME, Account.class, GetAccountByIdResponse.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = GetPeriodPaymentsForCard.class)
-    public JAXBElement<String> createGetPeriodPaymentsForCardSecurityToken(String value) {
-        return new JAXBElement<String>(_CreateCardSecurityToken_QNAME, String.class, GetPeriodPaymentsForCard.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", name = "Name", scope = CurrencyType.class)
-    public JAXBElement<String> createCurrencyTypeName(String value) {
-        return new JAXBElement<String>(_LegalPersonCategoryName_QNAME, String.class, CurrencyType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", name = "ShortName", scope = CurrencyType.class)
-    public JAXBElement<String> createCurrencyTypeShortName(String value) {
-        return new JAXBElement<String>(_CurrencyTypeShortName_QNAME, String.class, CurrencyType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = GetCardForAccount.class)
-    public JAXBElement<String> createGetCardForAccountSecurityToken(String value) {
-        return new JAXBElement<String>(_CreateCardSecurityToken_QNAME, String.class, GetCardForAccount.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = GetCardsForClient.class)
-    public JAXBElement<String> createGetCardsForClientSecurityToken(String value) {
-        return new JAXBElement<String>(_CreateCardSecurityToken_QNAME, String.class, GetCardsForClient.class, value);
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "newLogin", scope = SetNewLogin.class)
+    public JAXBElement<String> createSetNewLoginNewLogin(String value) {
+        return new JAXBElement<String>(_SetNewLoginNewLogin_QNAME, String.class, SetNewLogin.class, value);
     }
 
     /**
@@ -1889,7 +1632,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", name = "Number", scope = Card.class)
     public JAXBElement<String> createCardNumber(String value) {
-        return new JAXBElement<String>(_AccountNumber_QNAME, String.class, Card.class, value);
+        return new JAXBElement<String>(_LegalAccountNumber_QNAME, String.class, Card.class, value);
     }
 
     /**
@@ -1914,18 +1657,117 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", name = "Number", scope = LegalAccount.class)
-    public JAXBElement<String> createLegalAccountNumber(String value) {
-        return new JAXBElement<String>(_AccountNumber_QNAME, String.class, LegalAccount.class, value);
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", name = "Information", scope = Payment.class)
+    public JAXBElement<String> createPaymentInformation(String value) {
+        return new JAXBElement<String>(_PaymentInformation_QNAME, String.class, Payment.class, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CurrencyType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link LegalAccount }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", name = "CurrencyType", scope = LegalAccount.class)
-    public JAXBElement<CurrencyType> createLegalAccountCurrencyType(CurrencyType value) {
-        return new JAXBElement<CurrencyType>(_CurrencyType_QNAME, CurrencyType.class, LegalAccount.class, value);
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", name = "LegalAccount", scope = Payment.class)
+    public JAXBElement<LegalAccount> createPaymentLegalAccount(LegalAccount value) {
+        return new JAXBElement<LegalAccount>(_LegalAccount_QNAME, LegalAccount.class, Payment.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Account }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", name = "Account", scope = Payment.class)
+    public JAXBElement<Account> createPaymentAccount(Account value) {
+        return new JAXBElement<Account>(_Account_QNAME, Account.class, Payment.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Card }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "GetCardForClientResult", scope = GetCardForClientResponse.class)
+    public JAXBElement<Card> createGetCardForClientResponseGetCardForClientResult(Card value) {
+        return new JAXBElement<Card>(_GetCardForClientResponseGetCardForClientResult_QNAME, Card.class, GetCardForClientResponse.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfLegalPerson }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "GetLegalPersonsForCategoryResult", scope = GetLegalPersonsForCategoryResponse.class)
+    public JAXBElement<ArrayOfLegalPerson> createGetLegalPersonsForCategoryResponseGetLegalPersonsForCategoryResult(ArrayOfLegalPerson value) {
+        return new JAXBElement<ArrayOfLegalPerson>(_GetLegalPersonsForCategoryResponseGetLegalPersonsForCategoryResult_QNAME, ArrayOfLegalPerson.class, GetLegalPersonsForCategoryResponse.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfPayment }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "GetPeriodPaymentsForAccountResult", scope = GetPeriodPaymentsForAccountResponse.class)
+    public JAXBElement<ArrayOfPayment> createGetPeriodPaymentsForAccountResponseGetPeriodPaymentsForAccountResult(ArrayOfPayment value) {
+        return new JAXBElement<ArrayOfPayment>(_GetPeriodPaymentsForAccountResponseGetPeriodPaymentsForAccountResult_QNAME, ArrayOfPayment.class, GetPeriodPaymentsForAccountResponse.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = GetAccountByNumber.class)
+    public JAXBElement<String> createGetAccountByNumberSecurityToken(String value) {
+        return new JAXBElement<String>(_LockCardByIdSecurityToken_QNAME, String.class, GetAccountByNumber.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "number", scope = GetAccountByNumber.class)
+    public JAXBElement<String> createGetAccountByNumberNumber(String value) {
+        return new JAXBElement<String>(_GetAccountByNumberNumber_QNAME, String.class, GetAccountByNumber.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfSellCurrencyRate }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "GetSellCurrencyRatesResult", scope = GetSellCurrencyRatesResponse.class)
+    public JAXBElement<ArrayOfSellCurrencyRate> createGetSellCurrencyRatesResponseGetSellCurrencyRatesResult(ArrayOfSellCurrencyRate value) {
+        return new JAXBElement<ArrayOfSellCurrencyRate>(_GetSellCurrencyRatesResponseGetSellCurrencyRatesResult_QNAME, ArrayOfSellCurrencyRate.class, GetSellCurrencyRatesResponse.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = GetAmountLimit.class)
+    public JAXBElement<String> createGetAmountLimitSecurityToken(String value) {
+        return new JAXBElement<String>(_LockCardByIdSecurityToken_QNAME, String.class, GetAmountLimit.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = GetAllLegalPersonCategories.class)
+    public JAXBElement<String> createGetAllLegalPersonCategoriesSecurityToken(String value) {
+        return new JAXBElement<String>(_LockCardByIdSecurityToken_QNAME, String.class, GetAllLegalPersonCategories.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = SetOperationLimit.class)
+    public JAXBElement<String> createSetOperationLimitSecurityToken(String value) {
+        return new JAXBElement<String>(_LockCardByIdSecurityToken_QNAME, String.class, SetOperationLimit.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", name = "Name", scope = LegalPersonCategory.class)
+    public JAXBElement<String> createLegalPersonCategoryName(String value) {
+        return new JAXBElement<String>(_LegalPersonCategoryName_QNAME, String.class, LegalPersonCategory.class, value);
     }
 
     /**
@@ -1938,12 +1780,363 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CurrencyType }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", name = "CurrencyType", scope = SellCurrencyRate.class)
+    public JAXBElement<CurrencyType> createSellCurrencyRateCurrencyType(CurrencyType value) {
+        return new JAXBElement<CurrencyType>(_LegalAccountCurrencyType_QNAME, CurrencyType.class, SellCurrencyRate.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = GetCardForAccount.class)
+    public JAXBElement<String> createGetCardForAccountSecurityToken(String value) {
+        return new JAXBElement<String>(_LockCardByIdSecurityToken_QNAME, String.class, GetCardForAccount.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = GetClient.class)
+    public JAXBElement<String> createGetClientSecurityToken(String value) {
+        return new JAXBElement<String>(_LockCardByIdSecurityToken_QNAME, String.class, GetClient.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfCard }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "GetCardsForClientResult", scope = GetCardsForClientResponse.class)
+    public JAXBElement<ArrayOfCard> createGetCardsForClientResponseGetCardsForClientResult(ArrayOfCard value) {
+        return new JAXBElement<ArrayOfCard>(_GetCardsForClientResponseGetCardsForClientResult_QNAME, ArrayOfCard.class, GetCardsForClientResponse.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = GetAccountById.class)
+    public JAXBElement<String> createGetAccountByIdSecurityToken(String value) {
+        return new JAXBElement<String>(_LockCardByIdSecurityToken_QNAME, String.class, GetAccountById.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = DeleteCard.class)
+    public JAXBElement<String> createDeleteCardSecurityToken(String value) {
+        return new JAXBElement<String>(_LockCardByIdSecurityToken_QNAME, String.class, DeleteCard.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = GetPeriodTransfersForCard.class)
+    public JAXBElement<String> createGetPeriodTransfersForCardSecurityToken(String value) {
+        return new JAXBElement<String>(_LockCardByIdSecurityToken_QNAME, String.class, GetPeriodTransfersForCard.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Card }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "GetCardForOperatorResult", scope = GetCardForOperatorResponse.class)
+    public JAXBElement<Card> createGetCardForOperatorResponseGetCardForOperatorResult(Card value) {
+        return new JAXBElement<Card>(_GetCardForOperatorResponseGetCardForOperatorResult_QNAME, Card.class, GetCardForOperatorResponse.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = Pay.class)
+    public JAXBElement<String> createPaySecurityToken(String value) {
+        return new JAXBElement<String>(_LockCardByIdSecurityToken_QNAME, String.class, Pay.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "accountNumber", scope = Pay.class)
+    public JAXBElement<String> createPayAccountNumber(String value) {
+        return new JAXBElement<String>(_PayAccountNumber_QNAME, String.class, Pay.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Money }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "amount", scope = Pay.class)
+    public JAXBElement<Money> createPayAmount(Money value) {
+        return new JAXBElement<Money>(_PayAmount_QNAME, Money.class, Pay.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "receiverLegalAccountNumber", scope = Pay.class)
+    public JAXBElement<String> createPayReceiverLegalAccountNumber(String value) {
+        return new JAXBElement<String>(_PayReceiverLegalAccountNumber_QNAME, String.class, Pay.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = CloseAccount.class)
+    public JAXBElement<String> createCloseAccountSecurityToken(String value) {
+        return new JAXBElement<String>(_LockCardByIdSecurityToken_QNAME, String.class, CloseAccount.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfPayment }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "GetPeriodPaymentsForCardResult", scope = GetPeriodPaymentsForCardResponse.class)
+    public JAXBElement<ArrayOfPayment> createGetPeriodPaymentsForCardResponseGetPeriodPaymentsForCardResult(ArrayOfPayment value) {
+        return new JAXBElement<ArrayOfPayment>(_GetPeriodPaymentsForCardResponseGetPeriodPaymentsForCardResult_QNAME, ArrayOfPayment.class, GetPeriodPaymentsForCardResponse.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfCard }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "GetCardsResult", scope = GetCardsResponse.class)
+    public JAXBElement<ArrayOfCard> createGetCardsResponseGetCardsResult(ArrayOfCard value) {
+        return new JAXBElement<ArrayOfCard>(_GetCardsResponseGetCardsResult_QNAME, ArrayOfCard.class, GetCardsResponse.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", name = "Name", scope = CurrencyType.class)
+    public JAXBElement<String> createCurrencyTypeName(String value) {
+        return new JAXBElement<String>(_LegalPersonCategoryName_QNAME, String.class, CurrencyType.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", name = "ShortName", scope = CurrencyType.class)
+    public JAXBElement<String> createCurrencyTypeShortName(String value) {
+        return new JAXBElement<String>(_CurrencyTypeShortName_QNAME, String.class, CurrencyType.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = GetOperationLimit.class)
+    public JAXBElement<String> createGetOperationLimitSecurityToken(String value) {
+        return new JAXBElement<String>(_LockCardByIdSecurityToken_QNAME, String.class, GetOperationLimit.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", name = "Number", scope = Passport.class)
+    public JAXBElement<String> createPassportNumber(String value) {
+        return new JAXBElement<String>(_LegalAccountNumber_QNAME, String.class, Passport.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", name = "Authority", scope = Passport.class)
+    public JAXBElement<String> createPassportAuthority(String value) {
+        return new JAXBElement<String>(_PassportAuthority_QNAME, String.class, Passport.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", name = "Seria", scope = Passport.class)
+    public JAXBElement<String> createPassportSeria(String value) {
+        return new JAXBElement<String>(_PassportSeria_QNAME, String.class, Passport.class, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfPurchaseCurrencyRate }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://tempuri.org/", name = "GetPurchaseCurrencyRatesResult", scope = GetPurchaseCurrencyRatesResponse.class)
     public JAXBElement<ArrayOfPurchaseCurrencyRate> createGetPurchaseCurrencyRatesResponseGetPurchaseCurrencyRatesResult(ArrayOfPurchaseCurrencyRate value) {
         return new JAXBElement<ArrayOfPurchaseCurrencyRate>(_GetPurchaseCurrencyRatesResponseGetPurchaseCurrencyRatesResult_QNAME, ArrayOfPurchaseCurrencyRate.class, GetPurchaseCurrencyRatesResponse.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Account }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "GetAccountByNumberResult", scope = GetAccountByNumberResponse.class)
+    public JAXBElement<Account> createGetAccountByNumberResponseGetAccountByNumberResult(Account value) {
+        return new JAXBElement<Account>(_GetAccountByNumberResponseGetAccountByNumberResult_QNAME, Account.class, GetAccountByNumberResponse.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfLegalPerson }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "GetAllLegalPersonsResult", scope = GetAllLegalPersonsResponse.class)
+    public JAXBElement<ArrayOfLegalPerson> createGetAllLegalPersonsResponseGetAllLegalPersonsResult(ArrayOfLegalPerson value) {
+        return new JAXBElement<ArrayOfLegalPerson>(_GetAllLegalPersonsResponseGetAllLegalPersonsResult_QNAME, ArrayOfLegalPerson.class, GetAllLegalPersonsResponse.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfTransfer }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "GetPeriodTransfersForCardResult", scope = GetPeriodTransfersForCardResponse.class)
+    public JAXBElement<ArrayOfTransfer> createGetPeriodTransfersForCardResponseGetPeriodTransfersForCardResult(ArrayOfTransfer value) {
+        return new JAXBElement<ArrayOfTransfer>(_GetPeriodTransfersForCardResponseGetPeriodTransfersForCardResult_QNAME, ArrayOfTransfer.class, GetPeriodTransfersForCardResponse.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = GetCardsForClient.class)
+    public JAXBElement<String> createGetCardsForClientSecurityToken(String value) {
+        return new JAXBElement<String>(_LockCardByIdSecurityToken_QNAME, String.class, GetCardsForClient.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = CreateCard.class)
+    public JAXBElement<String> createCreateCardSecurityToken(String value) {
+        return new JAXBElement<String>(_LockCardByIdSecurityToken_QNAME, String.class, CreateCard.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Card }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "card", scope = CreateCard.class)
+    public JAXBElement<Card> createCreateCardCard(Card value) {
+        return new JAXBElement<Card>(_CreateCardCard_QNAME, Card.class, CreateCard.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", name = "Name", scope = CardType.class)
+    public JAXBElement<String> createCardTypeName(String value) {
+        return new JAXBElement<String>(_LegalPersonCategoryName_QNAME, String.class, CardType.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = GetPeriodPaymentsForCard.class)
+    public JAXBElement<String> createGetPeriodPaymentsForCardSecurityToken(String value) {
+        return new JAXBElement<String>(_LockCardByIdSecurityToken_QNAME, String.class, GetPeriodPaymentsForCard.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Money }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "GetBallanceResult", scope = GetBallanceResponse.class)
+    public JAXBElement<Money> createGetBallanceResponseGetBallanceResult(Money value) {
+        return new JAXBElement<Money>(_GetBallanceResponseGetBallanceResult_QNAME, Money.class, GetBallanceResponse.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", name = "CurrencyType", scope = Money.class)
+    public JAXBElement<String> createMoneyCurrencyType(String value) {
+        return new JAXBElement<String>(_LegalAccountCurrencyType_QNAME, String.class, Money.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfCurrencyType }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "GetCurrencyTypesResult", scope = GetCurrencyTypesResponse.class)
+    public JAXBElement<ArrayOfCurrencyType> createGetCurrencyTypesResponseGetCurrencyTypesResult(ArrayOfCurrencyType value) {
+        return new JAXBElement<ArrayOfCurrencyType>(_GetCurrencyTypesResponseGetCurrencyTypesResult_QNAME, ArrayOfCurrencyType.class, GetCurrencyTypesResponse.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfAccount }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "GetAccountsForClientResult", scope = GetAccountsForClientResponse.class)
+    public JAXBElement<ArrayOfAccount> createGetAccountsForClientResponseGetAccountsForClientResult(ArrayOfAccount value) {
+        return new JAXBElement<ArrayOfAccount>(_GetAccountsForClientResponseGetAccountsForClientResult_QNAME, ArrayOfAccount.class, GetAccountsForClientResponse.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = GetAllCardTypes.class)
+    public JAXBElement<String> createGetAllCardTypesSecurityToken(String value) {
+        return new JAXBElement<String>(_LockCardByIdSecurityToken_QNAME, String.class, GetAllCardTypes.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = GetPeriodTransfersForAccount.class)
+    public JAXBElement<String> createGetPeriodTransfersForAccountSecurityToken(String value) {
+        return new JAXBElement<String>(_LockCardByIdSecurityToken_QNAME, String.class, GetPeriodTransfersForAccount.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = UnlockCardById.class)
+    public JAXBElement<String> createUnlockCardByIdSecurityToken(String value) {
+        return new JAXBElement<String>(_LockCardByIdSecurityToken_QNAME, String.class, UnlockCardById.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CurrencyType }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", name = "CurrencyType", scope = PurchaseCurrencyRate.class)
+    public JAXBElement<CurrencyType> createPurchaseCurrencyRateCurrencyType(CurrencyType value) {
+        return new JAXBElement<CurrencyType>(_LegalAccountCurrencyType_QNAME, CurrencyType.class, PurchaseCurrencyRate.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "secretWord", scope = UnlockCard.class)
+    public JAXBElement<String> createUnlockCardSecretWord(String value) {
+        return new JAXBElement<String>(_UnlockCardSecretWord_QNAME, String.class, UnlockCard.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "number", scope = UnlockCard.class)
+    public JAXBElement<String> createUnlockCardNumber(String value) {
+        return new JAXBElement<String>(_GetAccountByNumberNumber_QNAME, String.class, UnlockCard.class, value);
     }
 
     /**
@@ -2001,51 +2194,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = UpdateSellCurrencyRates.class)
-    public JAXBElement<String> createUpdateSellCurrencyRatesSecurityToken(String value) {
-        return new JAXBElement<String>(_CreateCardSecurityToken_QNAME, String.class, UpdateSellCurrencyRates.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfSellCurrencyRate }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "sellCurrencyRates", scope = UpdateSellCurrencyRates.class)
-    public JAXBElement<ArrayOfSellCurrencyRate> createUpdateSellCurrencyRatesSellCurrencyRates(ArrayOfSellCurrencyRate value) {
-        return new JAXBElement<ArrayOfSellCurrencyRate>(_UpdateSellCurrencyRatesSellCurrencyRates_QNAME, ArrayOfSellCurrencyRate.class, UpdateSellCurrencyRates.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = GetCards.class)
-    public JAXBElement<String> createGetCardsSecurityToken(String value) {
-        return new JAXBElement<String>(_CreateCardSecurityToken_QNAME, String.class, GetCards.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = GetAllCardTypes.class)
-    public JAXBElement<String> createGetAllCardTypesSecurityToken(String value) {
-        return new JAXBElement<String>(_CreateCardSecurityToken_QNAME, String.class, GetAllCardTypes.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = GetAccountById.class)
-    public JAXBElement<String> createGetAccountByIdSecurityToken(String value) {
-        return new JAXBElement<String>(_CreateCardSecurityToken_QNAME, String.class, GetAccountById.class, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfCardType }{@code >}}
      * 
      */
@@ -2058,27 +2206,63 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = DeleteCard.class)
-    public JAXBElement<String> createDeleteCardSecurityToken(String value) {
-        return new JAXBElement<String>(_CreateCardSecurityToken_QNAME, String.class, DeleteCard.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Card }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "GetCardForOperatorResult", scope = GetCardForOperatorResponse.class)
-    public JAXBElement<Card> createGetCardForOperatorResponseGetCardForOperatorResult(Card value) {
-        return new JAXBElement<Card>(_GetCardForOperatorResponseGetCardForOperatorResult_QNAME, Card.class, GetCardForOperatorResponse.class, value);
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = GetPeriodPaymentsForAccount.class)
+    public JAXBElement<String> createGetPeriodPaymentsForAccountSecurityToken(String value) {
+        return new JAXBElement<String>(_LockCardByIdSecurityToken_QNAME, String.class, GetPeriodPaymentsForAccount.class, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", name = "CurrencyType", scope = Money.class)
-    public JAXBElement<String> createMoneyCurrencyType(String value) {
-        return new JAXBElement<String>(_CurrencyType_QNAME, String.class, Money.class, value);
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = GetCardForClient.class)
+    public JAXBElement<String> createGetCardForClientSecurityToken(String value) {
+        return new JAXBElement<String>(_LockCardByIdSecurityToken_QNAME, String.class, GetCardForClient.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfTransfer }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "GetPeriodTransfersForAccountResult", scope = GetPeriodTransfersForAccountResponse.class)
+    public JAXBElement<ArrayOfTransfer> createGetPeriodTransfersForAccountResponseGetPeriodTransfersForAccountResult(ArrayOfTransfer value) {
+        return new JAXBElement<ArrayOfTransfer>(_GetPeriodTransfersForAccountResponseGetPeriodTransfersForAccountResult_QNAME, ArrayOfTransfer.class, GetPeriodTransfersForAccountResponse.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = GetLegalPersonsForCategory.class)
+    public JAXBElement<String> createGetLegalPersonsForCategorySecurityToken(String value) {
+        return new JAXBElement<String>(_LockCardByIdSecurityToken_QNAME, String.class, GetLegalPersonsForCategory.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "newPassword", scope = SetNewPassword.class)
+    public JAXBElement<String> createSetNewPasswordNewPassword(String value) {
+        return new JAXBElement<String>(_SetNewPasswordNewPassword_QNAME, String.class, SetNewPassword.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = SetNewPassword.class)
+    public JAXBElement<String> createSetNewPasswordSecurityToken(String value) {
+        return new JAXBElement<String>(_LockCardByIdSecurityToken_QNAME, String.class, SetNewPassword.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = GetCardForOperator.class)
+    public JAXBElement<String> createGetCardForOperatorSecurityToken(String value) {
+        return new JAXBElement<String>(_LockCardByIdSecurityToken_QNAME, String.class, GetCardForOperator.class, value);
     }
 
     /**
@@ -2087,7 +2271,115 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = GetBallance.class)
     public JAXBElement<String> createGetBallanceSecurityToken(String value) {
-        return new JAXBElement<String>(_CreateCardSecurityToken_QNAME, String.class, GetBallance.class, value);
+        return new JAXBElement<String>(_LockCardByIdSecurityToken_QNAME, String.class, GetBallance.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = OpenAccount.class)
+    public JAXBElement<String> createOpenAccountSecurityToken(String value) {
+        return new JAXBElement<String>(_LockCardByIdSecurityToken_QNAME, String.class, OpenAccount.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Account }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "account", scope = OpenAccount.class)
+    public JAXBElement<Account> createOpenAccountAccount(Account value) {
+        return new JAXBElement<Account>(_OpenAccountAccount_QNAME, Account.class, OpenAccount.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.Services.Interfaces.FaultContracts", name = "Message", scope = DomainFault.class)
+    public JAXBElement<String> createDomainFaultMessage(String value) {
+        return new JAXBElement<String>(_DomainFaultMessage_QNAME, String.class, DomainFault.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", name = "Number", scope = Account.class)
+    public JAXBElement<String> createAccountNumber(String value) {
+        return new JAXBElement<String>(_LegalAccountNumber_QNAME, String.class, Account.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CurrencyType }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", name = "CurrencyType", scope = Account.class)
+    public JAXBElement<CurrencyType> createAccountCurrencyType(CurrencyType value) {
+        return new JAXBElement<CurrencyType>(_LegalAccountCurrencyType_QNAME, CurrencyType.class, Account.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = ReplenishAccount.class)
+    public JAXBElement<String> createReplenishAccountSecurityToken(String value) {
+        return new JAXBElement<String>(_LockCardByIdSecurityToken_QNAME, String.class, ReplenishAccount.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Money }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "money", scope = ReplenishAccount.class)
+    public JAXBElement<Money> createReplenishAccountMoney(Money value) {
+        return new JAXBElement<Money>(_ReplenishAccountMoney_QNAME, Money.class, ReplenishAccount.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = SetAmountLimit.class)
+    public JAXBElement<String> createSetAmountLimitSecurityToken(String value) {
+        return new JAXBElement<String>(_LockCardByIdSecurityToken_QNAME, String.class, SetAmountLimit.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Money }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "amount", scope = SetAmountLimit.class)
+    public JAXBElement<Money> createSetAmountLimitAmount(Money value) {
+        return new JAXBElement<Money>(_PayAmount_QNAME, Money.class, SetAmountLimit.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.Services.Interfaces.FaultContracts", name = "Message", scope = AuthorizationFault.class)
+    public JAXBElement<String> createAuthorizationFaultMessage(String value) {
+        return new JAXBElement<String>(_DomainFaultMessage_QNAME, String.class, AuthorizationFault.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "secretWord", scope = LockCard.class)
+    public JAXBElement<String> createLockCardSecretWord(String value) {
+        return new JAXBElement<String>(_UnlockCardSecretWord_QNAME, String.class, LockCard.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "number", scope = LockCard.class)
+    public JAXBElement<String> createLockCardNumber(String value) {
+        return new JAXBElement<String>(_GetAccountByNumberNumber_QNAME, String.class, LockCard.class, value);
     }
 
     /**
@@ -2096,7 +2388,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = UpdatePurchaseCurrencyRates.class)
     public JAXBElement<String> createUpdatePurchaseCurrencyRatesSecurityToken(String value) {
-        return new JAXBElement<String>(_CreateCardSecurityToken_QNAME, String.class, UpdatePurchaseCurrencyRates.class, value);
+        return new JAXBElement<String>(_LockCardByIdSecurityToken_QNAME, String.class, UpdatePurchaseCurrencyRates.class, value);
     }
 
     /**
@@ -2112,135 +2404,36 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", name = "Name", scope = CardType.class)
-    public JAXBElement<String> createCardTypeName(String value) {
-        return new JAXBElement<String>(_LegalPersonCategoryName_QNAME, String.class, CardType.class, value);
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = ExecuteTransfer.class)
+    public JAXBElement<String> createExecuteTransferSecurityToken(String value) {
+        return new JAXBElement<String>(_LockCardByIdSecurityToken_QNAME, String.class, ExecuteTransfer.class, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = GetCardForClient.class)
-    public JAXBElement<String> createGetCardForClientSecurityToken(String value) {
-        return new JAXBElement<String>(_CreateCardSecurityToken_QNAME, String.class, GetCardForClient.class, value);
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "receiverCardNumber", scope = ExecuteTransfer.class)
+    public JAXBElement<String> createExecuteTransferReceiverCardNumber(String value) {
+        return new JAXBElement<String>(_ExecuteTransferReceiverCardNumber_QNAME, String.class, ExecuteTransfer.class, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfPayment }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Money }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "GetPeriodPaymentsForAccountResult", scope = GetPeriodPaymentsForAccountResponse.class)
-    public JAXBElement<ArrayOfPayment> createGetPeriodPaymentsForAccountResponseGetPeriodPaymentsForAccountResult(ArrayOfPayment value) {
-        return new JAXBElement<ArrayOfPayment>(_GetPeriodPaymentsForAccountResponseGetPeriodPaymentsForAccountResult_QNAME, ArrayOfPayment.class, GetPeriodPaymentsForAccountResponse.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", name = "Number", scope = Passport.class)
-    public JAXBElement<String> createPassportNumber(String value) {
-        return new JAXBElement<String>(_AccountNumber_QNAME, String.class, Passport.class, value);
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "amount", scope = ExecuteTransfer.class)
+    public JAXBElement<Money> createExecuteTransferAmount(Money value) {
+        return new JAXBElement<Money>(_PayAmount_QNAME, Money.class, ExecuteTransfer.class, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", name = "Authority", scope = Passport.class)
-    public JAXBElement<String> createPassportAuthority(String value) {
-        return new JAXBElement<String>(_PassportAuthority_QNAME, String.class, Passport.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", name = "Seria", scope = Passport.class)
-    public JAXBElement<String> createPassportSeria(String value) {
-        return new JAXBElement<String>(_PassportSeria_QNAME, String.class, Passport.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = GetPeriodTransfersForAccount.class)
-    public JAXBElement<String> createGetPeriodTransfersForAccountSecurityToken(String value) {
-        return new JAXBElement<String>(_CreateCardSecurityToken_QNAME, String.class, GetPeriodTransfersForAccount.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Account }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "GetAccountByNumberResult", scope = GetAccountByNumberResponse.class)
-    public JAXBElement<Account> createGetAccountByNumberResponseGetAccountByNumberResult(Account value) {
-        return new JAXBElement<Account>(_GetAccountByNumberResponseGetAccountByNumberResult_QNAME, Account.class, GetAccountByNumberResponse.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = CloseAccount.class)
-    public JAXBElement<String> createCloseAccountSecurityToken(String value) {
-        return new JAXBElement<String>(_CreateCardSecurityToken_QNAME, String.class, CloseAccount.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", name = "Information", scope = Payment.class)
-    public JAXBElement<String> createPaymentInformation(String value) {
-        return new JAXBElement<String>(_PaymentInformation_QNAME, String.class, Payment.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link LegalAccount }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", name = "LegalAccount", scope = Payment.class)
-    public JAXBElement<LegalAccount> createPaymentLegalAccount(LegalAccount value) {
-        return new JAXBElement<LegalAccount>(_LegalAccount_QNAME, LegalAccount.class, Payment.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Account }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", name = "Account", scope = Payment.class)
-    public JAXBElement<Account> createPaymentAccount(Account value) {
-        return new JAXBElement<Account>(_Account_QNAME, Account.class, Payment.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CurrencyType }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", name = "CurrencyType", scope = PurchaseCurrencyRate.class)
-    public JAXBElement<CurrencyType> createPurchaseCurrencyRateCurrencyType(CurrencyType value) {
-        return new JAXBElement<CurrencyType>(_CurrencyType_QNAME, CurrencyType.class, PurchaseCurrencyRate.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = GetAccountsForClient.class)
-    public JAXBElement<String> createGetAccountsForClientSecurityToken(String value) {
-        return new JAXBElement<String>(_CreateCardSecurityToken_QNAME, String.class, GetAccountsForClient.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfLegalPerson }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "GetAllLegalPersonsResult", scope = GetAllLegalPersonsResponse.class)
-    public JAXBElement<ArrayOfLegalPerson> createGetAllLegalPersonsResponseGetAllLegalPersonsResult(ArrayOfLegalPerson value) {
-        return new JAXBElement<ArrayOfLegalPerson>(_GetAllLegalPersonsResponseGetAllLegalPersonsResult_QNAME, ArrayOfLegalPerson.class, GetAllLegalPersonsResponse.class, value);
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "cardNumber", scope = ExecuteTransfer.class)
+    public JAXBElement<String> createExecuteTransferCardNumber(String value) {
+        return new JAXBElement<String>(_ExecuteTransferCardNumber_QNAME, String.class, ExecuteTransfer.class, value);
     }
 
 }

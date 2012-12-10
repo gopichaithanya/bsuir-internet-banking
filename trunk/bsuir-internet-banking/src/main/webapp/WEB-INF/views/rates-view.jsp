@@ -7,6 +7,13 @@
 <body>
 </c:if>
 <div id="content">
+	<div id="breadcumbs" class="span12">
+		<ul class="breadcrumb">
+			<li><a href="<c:url value='/main' />">Home</a> <span class="divider">/</span></li>
+			<li class="active">View Currency Rates</li>
+			
+		</ul>
+	</div>
 	<div id="ratesInfo" class="span5">
 		<table class="table table-bordered">
 			<tr>

@@ -29,8 +29,8 @@ public interface IOperatorService {
      * @param clientId
      * @return
      *     returns by.bsuir.banking.proxy.operator.Client
-     * @throws IOperatorServiceGetClientDomainFaultFaultFaultMessage
      * @throws IOperatorServiceGetClientAuthorizationFaultFaultFaultMessage
+     * @throws IOperatorServiceGetClientDomainFaultFaultFaultMessage
      */
     @WebMethod(operationName = "GetClient", action = "http://tempuri.org/IOperatorService/GetClient")
     @WebResult(name = "GetClientResult", targetNamespace = "http://tempuri.org/")
@@ -50,8 +50,8 @@ public interface IOperatorService {
      * @param securityToken
      * @return
      *     returns java.lang.Integer
-     * @throws IOperatorServiceCreateClientAuthorizationFaultFaultFaultMessage
      * @throws IOperatorServiceCreateClientDomainFaultFaultFaultMessage
+     * @throws IOperatorServiceCreateClientAuthorizationFaultFaultFaultMessage
      */
     @WebMethod(operationName = "CreateClient", action = "http://tempuri.org/IOperatorService/CreateClient")
     @WebResult(name = "CreateClientResult", targetNamespace = "http://tempuri.org/")
@@ -130,8 +130,8 @@ public interface IOperatorService {
      * @param securityToken
      * @return
      *     returns java.lang.Integer
-     * @throws IOperatorServiceGetClientsCountAuthorizationFaultFaultFaultMessage
      * @throws IOperatorServiceGetClientsCountDomainFaultFaultFaultMessage
+     * @throws IOperatorServiceGetClientsCountAuthorizationFaultFaultFaultMessage
      */
     @WebMethod(operationName = "GetClientsCount", action = "http://tempuri.org/IOperatorService/GetClientsCount")
     @WebResult(name = "GetClientsCountResult", targetNamespace = "http://tempuri.org/")
@@ -177,8 +177,8 @@ public interface IOperatorService {
      * @param number
      * @return
      *     returns by.bsuir.banking.proxy.operator.Client
-     * @throws IOperatorServiceGetClientByPassportDataAuthorizationFaultFaultFaultMessage
      * @throws IOperatorServiceGetClientByPassportDataDomainFaultFaultFaultMessage
+     * @throws IOperatorServiceGetClientByPassportDataAuthorizationFaultFaultFaultMessage
      */
     @WebMethod(operationName = "GetClientByPassportData", action = "http://tempuri.org/IOperatorService/GetClientByPassportData")
     @WebResult(name = "GetClientByPassportDataResult", targetNamespace = "http://tempuri.org/")

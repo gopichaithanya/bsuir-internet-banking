@@ -70,8 +70,8 @@ public class ViewAccountController extends EntityController {
 		try {
 			Account account = service.getAccountById(accountId, securityToken);
 			Card card = service.getCardForAccount(accountId, securityToken);
-			AccountCardWrapper accoutnCard = new AccountCardWrapper(account, card);
-			model.addAttribute("account_card", accoutnCard);
+			AccountCardWrapper accountCard = new AccountCardWrapper(account, card);
+			model.addAttribute("account_card", accountCard);
 		} catch (IInternetBankingServiceGetAccountByIdAuthorizationFaultFaultFaultMessage e) {
 			return "redirect:" +  MessageConstants.AUTH_FAILED_VIEW;
 		} catch (IInternetBankingServiceGetAccountByIdDomainFaultFaultFaultMessage e) {

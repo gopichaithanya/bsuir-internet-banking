@@ -40,6 +40,8 @@ public class UserInfo {
 	 * the web service 
 	 */
 	private String role;
+
+	private String name;
 	
 	public String getUsername(){
 		return username;
@@ -73,7 +75,13 @@ public class UserInfo {
 		this.securityToken = securityToken;
 	}
 	
+	public String getName(){
+		return name;
+	}
 	
+	public void setName(String value){
+		name = value;
+	}
 	
 
 }

@@ -7,9 +7,16 @@
 <body>
 </c:if>
 <div id="formsContent">
-	<form:form id="form" method="post" class="form span5 well" modelAttribute="changeusername">
+	<div id="breadcumbs">
+		<ul class="breadcrumb">
+			<li><a href="<c:url value='/main' />">Home</a> <span class="divider">/</span></li>
+			<li class="active">Change username</li>
+			
+		</ul>
+	</div>
+	<form:form id="form" method="post" class="form span5" modelAttribute="changeusername">
 		<div class="control-group">
-			<h4>Please enter username and password</h4>
+			<h4>Please fill in the form</h4>
 			<br>
 		</div>
 		<div class="control-group error">
