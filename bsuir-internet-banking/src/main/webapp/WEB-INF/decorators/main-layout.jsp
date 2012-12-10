@@ -21,6 +21,7 @@
 body {
 	padding-top: 60px;
 	padding-bottom: 40px;
+	
 }
 
 .sidebar-nav {
@@ -48,20 +49,20 @@ body {
 
 		<div class="container-fluid">
 			<div class="row-fluid">
-				<div class="span2">
+				<div class="span3">
 					<div id="logo" align="center">
 						<img src="<c:url value="/resources/img/bguir_logo.jpg" />"
 							alt="Logo">
 					</div>
 				</div>
-				<div class="span10">
+				<div class="span9">
 					<div class="page-header">
 						<c:import url="/WEB-INF/views/tags/banner.jsp" />
 					</div>
 				</div>
 			</div>
 			<div class="row-fluid">
-				<div class="span2">
+				<div class="span3">
 					<div class="sidebar-nav">
 						<c:choose>
 							<c:when test="${user.role == 'Client' }">
@@ -73,13 +74,19 @@ body {
 						</c:choose>
 					</div>
 				</div>
-				<div class="span10">
+				<div class="span9">
 					<div class="row-fluid">
 						<div class="span12">
 							<c:if test="${not empty success}">
 							<div class="alert ">
 								<button type="button" class="close" data-dismiss="alert">x</button>
 								${success}.
+							</div>
+							</c:if>
+							<c:if test="${not empty error}">
+							<div class="alert alert-error">
+								<button type="button" class="close" data-dismiss="alert">x</button>
+								${error}.
 							</div>
 							</c:if>
 							<decorator:body />

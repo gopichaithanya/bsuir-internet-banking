@@ -4,8 +4,10 @@
 <html lang="en">
 
 <body>
-	<div class="row-fluid">
+		
 		<div class="span6">
+		<h4>Choose operation</h4>
+		<br>
 			<a href="<c:url value="/currency/rates/view"/>" title="currency exchange rate"><img width="100" height="50"
 				src="<c:url value="/resources/img/exchange_rate.png" />"
 				alt="Currency exchange rate"></img></a> 

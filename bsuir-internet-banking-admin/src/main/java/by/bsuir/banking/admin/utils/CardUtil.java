@@ -74,5 +74,9 @@ public class CardUtil {
 		}
 		return currencyTypes;
 	}
+	
+	public static String changeCardNumber(String cardNumber){
+		return cardNumber.substring(0, 4) + "XXXXXXXX" + cardNumber.substring(12, 16);
+	}
 
 }

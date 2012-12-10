@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import by.bsuir.banking.controller.login.EntityController;
+import by.bsuir.banking.domain.ClientWrapper;
 import by.bsuir.banking.domain.UserInfo;
 import by.bsuir.banking.admin.utils.AdminUtils;
 import by.bsuir.banking.admin.utils.MessageConstants;
@@ -21,6 +22,9 @@ import by.bsuir.banking.admin.utils.ServiceProvider;
 import by.bsuir.banking.proxy.authentication.AuthenticationCredential;
 import by.bsuir.banking.proxy.authentication.IAuthenticationService;
 import by.bsuir.banking.proxy.authentication.IAuthenticationServiceAuthenticateAuthenticationFaultFaultFaultMessage;
+import by.bsuir.banking.proxy.internetbanking.Client;
+import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetClientAuthorizationFaultFaultFaultMessage;
+import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetClientDomainFaultFaultFaultMessage;
 
 /**
  * Controller for authentication, handles user input and calls web-service
@@ -85,7 +89,8 @@ public class LoginController extends EntityController{
 			IAuthenticationService service = ServiceProvider.getAuthenticationService();
 			AuthenticationCredential credential = service.authenticate(user.getUsername(),
 					user.getPassword());
-			
+			Client client = ServiceProvider.getInternetBankingService().getClient(credential.getSecurityToken().getValue());
+			user.setName(client.getFirstName().getValue() + " " + client.getLastName().getValue());
 			user.setSecurityToken(credential.getSecurityToken().getValue());
 			user.setRole(credential.getRole().getValue());
 			if(!user.getRole().equals(MessageConstants.CLIENT_ROLE)){
@@ -104,6 +109,14 @@ public class LoginController extends EntityController{
 			result.reject(e.getMessage());
 			AdminUtils.logInfo(logger, MessageConstants.USER_AUTH_FAILED_SERVER);
 			return VIEW_NAME;
+		} catch (IInternetBankingServiceGetClientAuthorizationFaultFaultFaultMessage e) {
+			result.reject(e.getMessage());
+			AdminUtils.logInfo(logger, MessageConstants.USER_AUTH_FAILED_SERVER);
+			return VIEW_NAME;
+		} catch (IInternetBankingServiceGetClientDomainFaultFaultFaultMessage e) {
+			result.reject(e.getMessage());
+			AdminUtils.logInfo(logger, MessageConstants.USER_AUTH_FAILED_SERVER);
+			return "redirect:" + MessageConstants.ERROR_VIEW;
 		}
 
 	}

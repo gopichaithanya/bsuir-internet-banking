@@ -7,6 +7,7 @@ import java.util.GregorianCalendar;
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 
+import by.bsuir.banking.admin.utils.CardUtil;
 import by.bsuir.banking.proxy.internetbanking.Card;
 import by.bsuir.banking.proxy.internetbanking.ObjectFactory;
 
@@ -115,6 +116,22 @@ public class CardWrapper {
 		GregorianCalendar calendar = new GregorianCalendar();
 		calendar.setTime(value);
 		card.setExpirationDate(DatatypeFactory.newInstance().newXMLGregorianCalendar(calendar));
+	}
+	
+	public String getHiddenNumber(){
+		return CardUtil.changeCardNumber(getCardNumber());
+	}
+	
+	public boolean isExpired(){
+		return (new Date().compareTo(getExpirationDate()) >= 0);
+	}
+	public String getStatus(){
+		if(!isExpired()){
+			return "Valid";
+		}else{
+			return "Expired";
+		}
+		
 	}
 
 }

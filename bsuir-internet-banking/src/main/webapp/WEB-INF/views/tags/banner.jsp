@@ -5,8 +5,8 @@
 	</div>
 	<div class="span3 pull-right">
 		<span>Welcome, <c:choose>
-				<c:when test="${(not empty user) && (not empty user.username)}">
-					<c:out value="${user.username}"></c:out>.
+				<c:when test="${(not empty user) && (not empty user.name)}">
+					<c:out value="${user.name}"></c:out>.
 				</c:when>
 				<c:otherwise>guest.</c:otherwise>
 		</c:choose>

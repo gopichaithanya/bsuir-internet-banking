@@ -25,7 +25,7 @@ public class ClientWrapper {
 	private Client client;
 
 	public ClientWrapper() {
-		//client = factory.createClient();
+		client = factory.createClient();
 	}
 
 	public ClientWrapper(Client client) {
