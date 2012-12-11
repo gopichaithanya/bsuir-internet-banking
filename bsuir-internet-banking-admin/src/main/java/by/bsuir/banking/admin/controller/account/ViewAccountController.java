@@ -57,6 +57,7 @@ public class ViewAccountController extends EntityController {
 		IOperatorService operatorService = new OperatorService()
 				.getBasicHttpBindingIOperatorService();
 		Client client = null;
+		Boolean hasCard = true;
 		try {
 			client = operatorService.getClient(clientId, securityToken);
 		} catch (IOperatorServiceGetClientAuthorizationFaultFaultFaultMessage e) {
@@ -70,8 +71,12 @@ public class ViewAccountController extends EntityController {
 		try {
 			Account account = service.getAccountById(accountId, securityToken);
 			Card card = service.getCardForAccount(accountId, securityToken);
+			if(card == null){
+				hasCard = false;
+			}
 			AccountCardWrapper accountCard = new AccountCardWrapper(account, card);
 			model.addAttribute("account_card", accountCard);
+			model.addAttribute("hasCard", hasCard);
 		} catch (IInternetBankingServiceGetAccountByIdAuthorizationFaultFaultFaultMessage e) {
 			return "redirect:" +  MessageConstants.AUTH_FAILED_VIEW;
 		} catch (IInternetBankingServiceGetAccountByIdDomainFaultFaultFaultMessage e) {
