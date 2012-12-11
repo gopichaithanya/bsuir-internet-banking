@@ -156,7 +156,7 @@ public class OpenAccountController extends EntityController {
 					MessageConstants.OBJECT_SAVING_FAILED_ON_SERVER,
 					MessageConstants.CARD_ENTITY);
 			redirectAttrs
-					.addFlashAttribute("message",
+					.addFlashAttribute("error",
 							"Account was successfully created but withowt a card. Try creating card again");
 			return "redirect:/account/" + id + "/view/" + accountId;
 		} catch (IInternetBankingServiceGetAllCardTypesAuthorizationFaultFaultFaultMessage e) {
