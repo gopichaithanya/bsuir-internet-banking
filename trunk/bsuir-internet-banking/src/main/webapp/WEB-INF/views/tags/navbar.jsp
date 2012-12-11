@@ -1,10 +1,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page contentType="text/html; charset=UTF-8"%>
 <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
   <span class="icon-bar"></span>
   <span class="icon-bar"></span>
   <span class="icon-bar"></span>
 </a>
-<a class="brand" href="#">BSUIR Internet Banking</a>
+<a class="brand" href="#">БГУИР Интернет Банкинг</a>
 <div class="nav-collapse collapse">  
   <%-- <ul class="nav">
     <li class="active"><a href="<c:url value="/" />">Home</a></li>

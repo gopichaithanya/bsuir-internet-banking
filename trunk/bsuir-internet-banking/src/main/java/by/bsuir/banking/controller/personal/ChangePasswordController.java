@@ -13,11 +13,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import by.bsuir.banking.admin.utils.MessageConstants;
 import by.bsuir.banking.admin.utils.ServiceProvider;
 import by.bsuir.banking.controller.login.EntityController;
 import by.bsuir.banking.domain.ChangePasswordWrapper;
 import by.bsuir.banking.domain.UserInfo;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingService;
+import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceSetNewPasswordAuthorizationFaultFaultFaultMessage;
+import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceSetNewPasswordDomainFaultFaultFaultMessage;
 
 /**
  * Controller for changing password
@@ -67,7 +70,15 @@ public class ChangePasswordController extends EntityController{
 			return VIEW_NAME;
 		}
 		// TODO set new username
-		attrs.addFlashAttribute("success", "Password was suceessfully changed");
+		try {
+			service.setNewPassword(wrapper.getPassword(), getSecurityToken(session));
+		} catch (IInternetBankingServiceSetNewPasswordAuthorizationFaultFaultFaultMessage e) {
+			return "redirect:" + MessageConstants.AUTH_FAILED_VIEW;
+		} catch (IInternetBankingServiceSetNewPasswordDomainFaultFaultFaultMessage e) {
+			attrs.addFlashAttribute("error", "Произошла ошибка. Пароль не был изменен"); 
+			return "redirect:" + MessageConstants.ERROR_VIEW;
+		}
+		attrs.addFlashAttribute("success", "Пароль был успешно изменен");
 		return "redirect:/main";
 	}
 }
