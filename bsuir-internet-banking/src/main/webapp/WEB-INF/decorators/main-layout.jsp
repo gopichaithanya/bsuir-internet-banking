@@ -1,15 +1,18 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.opensymphony.com/sitemesh/decorator"
 	prefix="decorator"%>
+	<%@ page contentType="text/html; charset=UTF-8"%>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>BSUIR Internet Banking</title>
+<title>БГУИР Интернет Банкинг</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
+<link href="<c:url value="/resources/css/css-treeview.css" />" rel="stylesheet"
+	type="text/css" />
 <link href="<c:url value="/resources/css/bootstrap_cerulian.min.css" />"
 	rel="stylesheet" type="text/css" />
 <link href="<c:url value="/resources/css/main.css" />" rel="stylesheet"
@@ -80,13 +83,13 @@ body {
 							<c:if test="${not empty success}">
 							<div class="alert ">
 								<button type="button" class="close" data-dismiss="alert">x</button>
-								${success}.
+								${success}
 							</div>
 							</c:if>
 							<c:if test="${not empty error}">
 							<div class="alert alert-error">
 								<button type="button" class="close" data-dismiss="alert">x</button>
-								${error}.
+								${error}
 							</div>
 							</c:if>
 							<decorator:body />

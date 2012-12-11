@@ -15,11 +15,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import by.bsuir.banking.admin.utils.MessageConstants;
 import by.bsuir.banking.admin.utils.ServiceProvider;
 import by.bsuir.banking.controller.login.EntityController;
 import by.bsuir.banking.domain.ChangeUsernameWrapper;
 import by.bsuir.banking.domain.UserInfo;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingService;
+import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceSetNewLoginAuthorizationFaultFaultFaultMessage;
+import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceSetNewLoginDomainFaultFaultFaultMessage;
 
 /**
  * Controller for changing login
@@ -75,7 +78,15 @@ public class ChangeLoginController extends EntityController {
 			return VIEW_NAME;
 		}
 		//TODO set new username
-		attrs.addFlashAttribute("success", "Username was suceessfully changed"); 
+		try {
+			service.setNewLogin(wrapper.getUsername(), getSecurityToken(session));
+		} catch (IInternetBankingServiceSetNewLoginAuthorizationFaultFaultFaultMessage e) {
+			return "redirect:" + MessageConstants.AUTH_FAILED_VIEW;
+		} catch (IInternetBankingServiceSetNewLoginDomainFaultFaultFaultMessage e) {
+			attrs.addFlashAttribute("error", "Произошла ошибка. Имя пользователя не было изменено"); 
+			return "redirect:" + MessageConstants.ERROR_VIEW;
+		}
+		attrs.addFlashAttribute("success", "Имя пользователя успешно изменено"); 
 		return "redirect:/main";
 	}
 }
