@@ -18,7 +18,7 @@ public class PaymentUtil {
 		return persons;
 	}
 	
-	private static  LegalPerson getLegalPersonById(Integer id, String securityToken) throws IInternetBankingServiceGetAllLegalPersonsAuthorizationFaultFaultFaultMessage, IInternetBankingServiceGetAllLegalPersonsDomainFaultFaultFaultMessage{
+	public static  LegalPerson getLegalPersonById(Integer id, String securityToken) throws IInternetBankingServiceGetAllLegalPersonsAuthorizationFaultFaultFaultMessage, IInternetBankingServiceGetAllLegalPersonsDomainFaultFaultFaultMessage{
 		for(LegalPerson person:getPersons(securityToken)){
 			if(person.getId().equals(id)){
 				return person;
