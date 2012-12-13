@@ -133,5 +133,9 @@ public class CardWrapper {
 		}
 		
 	}
+	
+	public boolean isLocked(){
+		return card.isIsLocked();
+	}
 
 }
