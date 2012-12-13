@@ -68,12 +68,15 @@
 			<%-- <form:label class="control-label" path="lastName"> 
 						Last Name <form:errors path="lastName" />
 			</form:label> --%>
-			<div class="controls">
-				<form:input path="birthdayDate" id="inputBirthdyDate"
-					placeholder="Birthday (mm/dd/yyyy)" />
+			<div class="controls " >
+				<form:input path="birthdayDate" id="inputBirthdayDate"
+					placeholder="Birthday (dd/mm/yyyy)" readonly="true" />
+					<!--<span class="add-on"><i class="icon-calendar"></i></span>-->
 				<form:errors class="help-inline" path="birthdayDate" />
 			</div>
+				
 		</div>
+		
 		<div class="control-group">
 			<%-- <form:label class="control-label" path="lastName"> 
 						Last Name <form:errors path="lastName" />

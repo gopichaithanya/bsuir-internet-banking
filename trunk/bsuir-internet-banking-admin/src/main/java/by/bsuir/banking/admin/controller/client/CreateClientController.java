@@ -3,12 +3,14 @@ package by.bsuir.banking.admin.controller.client;
 import java.math.BigInteger;
 import java.security.SecureRandom;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,6 +29,9 @@ import by.bsuir.banking.admin.domain.PassportWrapper;
 import by.bsuir.banking.admin.utils.AdminUtils;
 import by.bsuir.banking.admin.utils.MessageConstants;
 import by.bsuir.banking.admin.utils.ServiceProvider;
+import by.bsuir.banking.admin.validation.BirthdayDateValidator;
+import by.bsuir.banking.admin.validation.ClientValidator;
+import by.bsuir.banking.admin.validation.PassportValidator;
 import by.bsuir.banking.proxy.operator.IOperatorService;
 import by.bsuir.banking.proxy.operator.IOperatorServiceCreateClientAuthorizationFaultFaultFaultMessage;
 import by.bsuir.banking.proxy.operator.IOperatorServiceCreateClientDomainFaultFaultFaultMessage;
@@ -49,6 +54,10 @@ public class CreateClientController extends EntityController {
 	private static final String VIEW_NAME_COMMON = "client-create";
 	private static final String VIEW_NAME_PASSPORT = "passport-create";
 	private static SecureRandom random = new SecureRandom();
+	@Autowired
+	private ClientValidator clientValidator;
+	@Autowired
+	private PassportValidator passportValidator;
     
 	
 	/**
@@ -69,12 +78,15 @@ public class CreateClientController extends EntityController {
 		return new ClientWrapper();
 	}
 	
+	
+	
 	@InitBinder
 	protected void initBinder(WebDataBinder binder) {
-		String format = "MM/dd/yyyy";
+		String format = "dd/MM/yyyy";
 		SimpleDateFormat dateFormat = new SimpleDateFormat(format);
-	    binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, false));
+	    binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
 	}
+	
 	
 	@RequestMapping(value={"","/common"}, method=RequestMethod.GET)
 	public String clientCreate(){
@@ -82,14 +94,15 @@ public class CreateClientController extends EntityController {
 	}
 	
 	@RequestMapping(value={"","/common"}, method=RequestMethod.POST)
-	public String clientSubmit(@Valid @ModelAttribute("client") ClientWrapper client, BindingResult result,
-			@ModelAttribute("ajaxRequest") boolean ajaxRequest, Model model,
-			RedirectAttributes redirectAttrs, HttpSession session){
-		if(result.hasErrors()){
+	public String clientSubmit(@Valid @ModelAttribute("client") ClientWrapper client, BindingResult result, HttpSession session, @ModelAttribute("ajaxRequest") boolean ajaxRequest, Model model,
+			RedirectAttributes redirectAttrs){
+		clientValidator.validate(client, result);
+		if (result.hasErrors()){
 			AdminUtils.logDebug(logger, MessageConstants.FORM_VALIDATION_ERROR, MessageConstants.CLIENT_ENTITY);
 			return VIEW_NAME_COMMON;
 		}
 		AdminUtils.logInfo(logger, MessageConstants.MODEL_BEAN_CREATED, MessageConstants.PASSPORT_ENTITY);
+		
 		PassportWrapper passport = new PassportWrapper();
 		model.addAttribute("passport", passport);
 		redirectAttrs.addFlashAttribute("client", client);
@@ -109,12 +122,12 @@ public class CreateClientController extends EntityController {
 	public String passportSubmit(@ModelAttribute("client") ClientWrapper client, @Valid @ModelAttribute("passport") PassportWrapper passport, BindingResult result,
 			@ModelAttribute("ajaxRequest") boolean ajaxRequest, Model model,
 			RedirectAttributes redirectAttrs, HttpSession session){
+		passportValidator.validate(passport, result);
 		if(result.hasErrors()){
 			AdminUtils.logDebug(logger, MessageConstants.FORM_VALIDATION_ERROR, MessageConstants.PASSPORT_ENTITY);
 			return VIEW_NAME_PASSPORT;
 		}
 		String securityToken = getSecurityToken(session);
-		System.out.println(client.getFirstName());
 		client.setPassport(passport);
 		//generating login and password
 		String login = new BigInteger(50, random).toString(32);

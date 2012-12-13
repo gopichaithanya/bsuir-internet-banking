@@ -41,7 +41,7 @@ public class PassportWrapper {
 	 * Getting authority
 	 * @return
 	 */
-	@NotEmpty
+
 	public String getAuthority(){
 		return (passport.getAuthority() == null) ? null : passport.getAuthority().getValue();
 	}
@@ -58,7 +58,7 @@ public class PassportWrapper {
 	 * Getting date of expiry
 	 * @return
 	 */
-	//@NotEmpty
+	
 	public Date getDateOfExpiry(){
 		return (passport.getDateOfExpiry() == null) ? null : passport.getDateOfExpiry().toGregorianCalendar().getTime();
 	}

@@ -44,7 +44,6 @@ public class ClientWrapper {
 	 * Getting address
 	 * @return
 	 */
-	@NotEmpty
 	public String getAddress() {
 		return (client.getAdress() == null) ? null : client.getAdress()
 				.getValue();
@@ -81,7 +80,7 @@ public class ClientWrapper {
 	 * Getting first name
 	 * @return
 	 */
-	@NotEmpty
+	
 	public String getFirstName(){
 		return (client.getFirstName() == null) ? null : client.getFirstName().getValue();
 	}
@@ -114,7 +113,7 @@ public class ClientWrapper {
 	 * Getting last name
 	 * @return
 	 */
-	@NotEmpty
+
 	public String getLastName(){
 		return (client.getLastName() == null) ? null : client.getLastName().getValue();
 	}
@@ -194,7 +193,6 @@ public class ClientWrapper {
 	/**
 	 * Getting phone number
 	 */
-	@NotEmpty
 	public String getPhoneNumber(){
 		return (client.getPhoneNumber() == null) ? null : client.getPhoneNumber().getValue();
 	}

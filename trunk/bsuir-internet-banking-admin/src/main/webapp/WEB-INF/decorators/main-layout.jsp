@@ -13,7 +13,11 @@
 <meta name="author" content="">
 <link href="<c:url value="/resources/css/bootstrap_spacelab.min.css" />"
 	rel="stylesheet" type="text/css" />
+<link href="<c:url value="/resources/css/jquery-ui-1.9.2.custom.min.css" />"
+	rel="stylesheet" type="text/css" />
 <link href="<c:url value="/resources/css/main.css" />" rel="stylesheet"
+	type="text/css" />
+	<link href="<c:url value="/resources/css/datepicker.css" />" rel="stylesheet"
 	type="text/css" />
 
 <style type="text/css">
@@ -96,7 +100,7 @@ body {
 <!-- Placed at the end of the document so the pages load faster -->
 	<script type="text/javascript"
 		src="<c:url value="/resources/js/jquery-1.8.0-min.js" />"></script>
-	<script type="text/javascript"
+	<%--<script type="text/javascript"
 		src="<c:url value="/resources/js/bootstrap.js" />"></script>
 	<script type="text/javascript"
 		src="<c:url value="/resources/js/demo.js" />"></script>
@@ -104,6 +108,39 @@ body {
 		src="<c:url value="/resources/js/json2.js" />"></script>
 	<script type="text/javascript"
 		src="<c:url value="/resources/js/date.format.js" />"></script>
-	
+		<script type="text/javascript"
+	src="<c:url value="/resources/js/bootstrap-datepicker.js" />"></script> --%>
+	<script type="text/javascript"
+	src="<c:url value="/resources/js/jquery-ui.js" />"></script>
+	<script>
+		$(function(){
+			//$('#inputBirthdayDate').datapicker( { date-format: "dd/mm/yy"  })
+			$('#inputBirthdayDate').datepicker( { dateFormat: "dd/mm/yy",
+				showOn: 'button',
+				buttonImage: "/resources/img/calendar.gif",
+	            buttonImageOnly: true,
+				minDate: '-120Y',
+				maxDate: '-18Y',
+				changeMonth: true, 
+				changeYear: true});
+			$('#inputDateOfExpiry').datepicker( { dateFormat: "dd/mm/yy",
+				showOn: 'button',
+				buttonImage: "/resources/img/calendar.gif",
+	            buttonImageOnly: true,
+				minDate: '+1M',
+				maxDate: '+50Y',
+				changeMonth: true, 
+				changeYear: true});
+			$('#inputDateOfIssue').datepicker( { dateFormat: "dd/mm/yy",
+				showOn: 'button',
+				buttonImage: "/resources/img/calendar.gif",
+	            buttonImageOnly: true,
+				minDate: '-50Y',
+				maxDate: '+0D',
+				changeMonth: true, 
+				changeYear: true});
+
+		});
+	</script>
 </body>
 </html>

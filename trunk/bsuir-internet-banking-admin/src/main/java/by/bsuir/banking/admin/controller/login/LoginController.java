@@ -1,5 +1,7 @@
 package by.bsuir.banking.admin.controller.login;
 
+import java.util.regex.Pattern;
+
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -35,6 +37,7 @@ import by.bsuir.banking.proxy.authentication.IAuthenticationServiceAuthenticateA
 public class LoginController extends EntityController{
 	private static Logger logger = Logger.getLogger(LoginController.class);
 	private static final String VIEW_NAME = "login";
+	private static final String LOGIN_PATTERN = "^[a-zA-Z0-9_-]{4,15}$";
 	
 	/**
 	 * Invoked initially to create the "user" attribute Once created the "form"
@@ -89,9 +92,12 @@ public class LoginController extends EntityController{
 				result.reject("Wrong role");
 				return VIEW_NAME;
 			}
+			if (!Pattern.compile(LOGIN_PATTERN).matcher(user.getUsername()).matches()){
+				result.reject("login","Wrong login");
+				return VIEW_NAME;
+			}
 			user.setSecurityToken(credential.getSecurityToken().getValue());
-			user.setRole(credential.getRole().getValue());
-			
+			user.setRole(credential.getRole().getValue());			
 			session.setAttribute(MessageConstants.USER_ATTR, user);
 
 			AdminUtils.logInfo(logger,
