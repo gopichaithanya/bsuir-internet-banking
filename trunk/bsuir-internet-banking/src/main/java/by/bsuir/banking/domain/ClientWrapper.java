@@ -8,10 +8,9 @@ import javax.xml.datatype.DatatypeFactory;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
-import by.bsuir.banking.proxy.operator.ObjectFactory;
+import by.bsuir.banking.proxy.internetbanking.Client;
+import by.bsuir.banking.proxy.internetbanking.ObjectFactory;
 
-import by.bsuir.banking.proxy.operator.Client;
-//import by.bsuir.banking.proxy.operator.ObjectFactory;
 
 
 /**
