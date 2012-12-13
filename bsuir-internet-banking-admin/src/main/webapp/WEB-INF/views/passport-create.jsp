@@ -36,7 +36,7 @@
 			</form:label> --%>
 			<div class="controls">
 				<form:input path="dateOfExpiry" id="inputDateOfExpiry"
-					placeholder="Date of expiry (mm/dd/yyyy)" />
+					placeholder="Date of expiry (dd/mm/yyyy)" />
 				<form:errors class="help-inline" path="dateOfExpiry" />
 			</div>
 		</div>

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -26,6 +27,7 @@ import by.bsuir.banking.admin.domain.SellRateWrapper;
 import by.bsuir.banking.admin.utils.AdminUtils;
 import by.bsuir.banking.admin.utils.MessageConstants;
 import by.bsuir.banking.admin.utils.ServiceProvider;
+import by.bsuir.banking.admin.validation.SellRateValidator;
 import by.bsuir.banking.proxy.internetbanking.ArrayOfPurchaseCurrencyRate;
 import by.bsuir.banking.proxy.internetbanking.ArrayOfSellCurrencyRate;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingService;
@@ -52,13 +54,15 @@ public class EditCurrencyRatesController extends EntityController{
 	private static Logger logger = Logger.getLogger(EditCurrencyRatesController.class);
 	private static IInternetBankingService service;
 	private static final String VIEW_NAME = "rates-edit";
+	@Autowired
+	private SellRateValidator sellRateValidator;
 	
 	public EditCurrencyRatesController() {
 		service = ServiceProvider.getInternetBankingInstance();
 	}
 	
 	@ModelAttribute("rates")
-	public CurrencyRatesWrapper createPurchaseRates(HttpServletRequest request, HttpServletResponse response) throws IOException{
+	public CurrencyRatesWrapper createPurchaseRates(@Valid @ModelAttribute("sellRate") SellRateWrapper sellRate, BindingResult sellResult, HttpServletRequest request, HttpServletResponse response) throws IOException{
 		List<PurchaseRateWrapper> purchaseRates = new ArrayList<PurchaseRateWrapper>();
 		try {
 			for(PurchaseCurrencyRate rate: service.getPurchaseCurrencyRates().getPurchaseCurrencyRate()){
