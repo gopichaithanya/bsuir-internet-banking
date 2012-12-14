@@ -12,7 +12,7 @@ import by.bsuir.banking.admin.utils.AdminUtils;
 
 public class DatePropertyEditor extends PropertyEditorSupport {
 	private static Logger logger = Logger.getLogger(DatePropertyEditor.class);
-	private String format = "MM/dd/yyyy";
+	private String format = "dd/MM/yyyy";
 	private SimpleDateFormat dateFormat = new SimpleDateFormat(format);
 
 	private Date defaultDate = new Date(0L);

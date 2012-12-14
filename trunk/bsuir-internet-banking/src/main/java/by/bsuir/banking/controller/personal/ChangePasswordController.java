@@ -1,5 +1,7 @@
 package by.bsuir.banking.controller.personal;
 
+import java.util.regex.Pattern;
+
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -34,8 +36,9 @@ import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceSetNewPassw
 public class ChangePasswordController extends EntityController{
 	private static Logger logger = Logger
 			.getLogger(ChangePasswordController.class);
-	private static final String VIEW_NAME = "password-change";
 	private IInternetBankingService service;
+	private static final String VIEW_NAME = "password-change";
+	private static final String PASSWORD_PATTERN = "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{6,20})";
 
 	public ChangePasswordController() {
 		service = ServiceProvider.getInternetBankingService();
@@ -67,6 +70,10 @@ public class ChangePasswordController extends EntityController{
 		}
 		if (!wrapper.getPassword().equals(wrapper.getConfirmPassword())) {
 			result.reject("Password and confirmed password do not match");
+			return VIEW_NAME;
+		}
+		if (!Pattern.compile(PASSWORD_PATTERN).matcher(wrapper.getPassword()).matches()) {
+			result.reject("wrongNewPassword", "password must contain numbers, capital letter");
 			return VIEW_NAME;
 		}
 		// TODO set new username

@@ -7,8 +7,9 @@ package by.bsuir.banking.validator;
 
 public class MessageValidation {
 	
-	public static final String NULL_VALUE = "Value is null";
-	public static final String NEGATIVE_OR_ZERO_VALUE = "Value is equal or less than zero";
-	public static final String EMPTY_VALUE = "Value is empty";
+	public static final String NULL_VALUE = "nullValue";
+	public static final String NEGATIVE_OR_ZERO_VALUE = "negativeOrZeroValue";
+	public static final String EMPTY_VALUE = "emptyValue";
+	public static final String WRONG_DATE_FORMAT = "wrongDateFormat";
 
 }

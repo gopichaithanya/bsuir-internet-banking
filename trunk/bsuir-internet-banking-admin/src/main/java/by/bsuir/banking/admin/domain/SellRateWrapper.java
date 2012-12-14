@@ -23,7 +23,7 @@ public class SellRateWrapper {
 		return rate;
 	}
 
-	@NotEmpty
+	
 	public CurrencyTypeWrapper getCurrencyType(){
 		return (rate.getCurrencyType() == null) ? null : new CurrencyTypeWrapper(rate.getCurrencyType().getValue());
 	}
@@ -32,7 +32,7 @@ public class SellRateWrapper {
 		rate.setCurrencyType(factory.createCurrencyType(value.getCurrencyType()));
 	}
 	
-	@NotEmpty
+	
 	public BigDecimal getRate(){
 		return rate.getRate();
 	}

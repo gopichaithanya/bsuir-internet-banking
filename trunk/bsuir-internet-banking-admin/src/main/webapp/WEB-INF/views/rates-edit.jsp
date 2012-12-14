@@ -14,12 +14,7 @@
 				<c:if test="${status.error}">
 					<div id="message" class="alert alert-error">
 						<div>Form has errors</div>
-						<div>
-							<form:errors  path="purchaseRates[${i}].rate" />
-						</div>
-						<div>
-							<form:errors  path="sellRates[${i}].rate" />
-						</div>
+						
 					</div>
 
 				</c:if>
@@ -40,6 +35,7 @@
 									<div class="controls" style="width: 50px">
 										<form:input path="purchaseRates[${i}].rate"
 											id="inputPurchaseRate" style="width:50px" />
+											<form:errors  path="purchaseRates[${i}].rate" />
 									</div>
 								</div>
 							</td>
@@ -48,6 +44,7 @@
 									<div class="controls" style="width: 50px">
 										<form:input path="sellRates[${i}].rate" id="inputSellRate"
 											style="width:50px" />
+										<form:errors  path="sellRates[${i}].rate" />	
 									</div>
 								</div>
 							</td>

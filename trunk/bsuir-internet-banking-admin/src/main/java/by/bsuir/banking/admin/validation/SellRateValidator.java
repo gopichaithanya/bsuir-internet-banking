@@ -1,4 +1,4 @@
- package by.bsuir.banking.admin.validation;
+package by.bsuir.banking.admin.validation;
 
 import java.math.BigDecimal;
 
@@ -13,19 +13,19 @@ import by.bsuir.banking.admin.domain.SellRateWrapper;
 
 @Component
 public class SellRateValidator implements Validator {
-	
-	
-	private final  CurrencyTypeValidator currencyTypeValidator;
+
+	private final CurrencyTypeValidator currencyTypeValidator;
+
 	@Autowired
 	public SellRateValidator(CurrencyTypeValidator currencyTypeValidator) {
 		if (currencyTypeValidator == null) {
-            throw new IllegalArgumentException(
-              "The supplied [Validator] is required and must not be null.");
-        }
-        if (!currencyTypeValidator.supports(CurrencyTypeWrapper.class)) {
-            throw new IllegalArgumentException(
-              "The supplied [Validator] must support the validation of [CurrencyTypeWrapper] instances.");
-        }
+			throw new IllegalArgumentException(
+					"The supplied [Validator] is required and must not be null.");
+		}
+		if (!currencyTypeValidator.supports(CurrencyTypeWrapper.class)) {
+			throw new IllegalArgumentException(
+					"The supplied [Validator] must support the validation of [CurrencyTypeWrapper] instances.");
+		}
 		this.currencyTypeValidator = currencyTypeValidator;
 	}
 
@@ -36,17 +36,23 @@ public class SellRateValidator implements Validator {
 
 	@Override
 	public void validate(Object obj, Errors errors) {
-		SellRateWrapper sellRate = (SellRateWrapper) obj; 
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "rate", MessageValidation.EMPTY_VALUE, MessageValidation.EMPTY_FIELD);
-		if (sellRate.getRate().compareTo(BigDecimal.ZERO)< 1) {
-			errors.rejectValue("rate", MessageValidation.NEGATIVE_OR_ZERO_VALUE, MessageValidation.NEGATIVE_FIELD);
+		SellRateWrapper sellRate = (SellRateWrapper) obj;
+		 //ValidationUtils.rejectIfEmpty(errors, "rate", MessageValidation.EMPTY_VALUE, MessageValidation.EMPTY_FIELD);
+		 if(sellRate.getRate() == null){
+			 errors.rejectValue("rate", MessageValidation.EMPTY_VALUE, MessageValidation.EMPTY_FIELD);
+		 } else
+		 if (sellRate.getRate().compareTo(BigDecimal.ZERO) < 1) {
+			 System.out.println("I'm here!!!!!!!!!!!!!!!!!!after      null");
+			errors.rejectValue("rate",
+					MessageValidation.NEGATIVE_OR_ZERO_VALUE,
+					MessageValidation.NEGATIVE_FIELD);
 		}
 		try {
-            errors.pushNestedPath("currencyType");
-            ValidationUtils.invokeValidator(this.currencyTypeValidator, sellRate.getCurrencyType(), errors);
-        } finally {
-            errors.popNestedPath();
-        }
+			errors.pushNestedPath("currencyType");
+			ValidationUtils.invokeValidator(this.currencyTypeValidator,
+					sellRate.getCurrencyType(), errors);
+		} finally {
+			errors.popNestedPath();
+		}
 	}
-
 }

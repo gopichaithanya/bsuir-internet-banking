@@ -59,7 +59,7 @@ public class ViewCurrencyRatesController extends EntityController {
 	}
 	
 	@RequestMapping(method=RequestMethod.GET)
-	public String viewRates(Model model, @ModelAttribute @Valid SellRateWrapper sellWrapper,@ModelAttribute @Valid PurchaseRateWrapper purchaseWrapper, HttpSession session, HttpServletRequest request, HttpServletResponse response, BindingResult result) throws IOException{
+	public String viewRates(Model model, @ModelAttribute @Valid SellRateWrapper sellWrapper, BindingResult sellResult, @ModelAttribute @Valid PurchaseRateWrapper purchaseWrapper, BindingResult purchaseResult, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws IOException{
 		
 		List<CurrencyTypeWrapper> typeList = new ArrayList<CurrencyTypeWrapper>();
 		try {
@@ -77,7 +77,7 @@ public class ViewCurrencyRatesController extends EntityController {
 		try {
 			for(PurchaseCurrencyRate rate: service.getPurchaseCurrencyRates().getPurchaseCurrencyRate()){
 				PurchaseRateWrapper wrapper = new PurchaseRateWrapper(rate);
-				purchaseRateValidator.validate(wrapper, result);
+				purchaseRateValidator.validate(wrapper, purchaseResult);
 				purchaseList.add(wrapper);
 			}
 		} catch (IInternetBankingServiceGetPurchaseCurrencyRatesDomainFaultFaultFaultMessage e) {
@@ -90,7 +90,7 @@ public class ViewCurrencyRatesController extends EntityController {
 		try {
 			for(SellCurrencyRate rate: service.getSellCurrencyRates().getSellCurrencyRate()){
 				SellRateWrapper wrapper = new SellRateWrapper(rate);
-				sellRateValidator.validate(wrapper, result);
+				sellRateValidator.validate(wrapper, sellResult);
 				sellList.add(wrapper);
 			}
 		} catch (IInternetBankingServiceGetSellCurrencyRatesDomainFaultFaultFaultMessage e) {
@@ -98,8 +98,11 @@ public class ViewCurrencyRatesController extends EntityController {
 			response.sendRedirect(request.getContextPath() + MessageConstants.ERROR_VIEW);
 		}
 		model.addAttribute("sellRates", sellList);
-		if (result.hasErrors()) {
-			result.reject("ERROR:)");
+		if (purchaseResult.hasErrors()) {
+			purchaseResult.reject("purchaseRateError");
+		}
+		if (sellResult.hasErrors()) {
+			sellResult.reject("sellRateError");
 		}
 		return VIEW_NAME;
 	}
