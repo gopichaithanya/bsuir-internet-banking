@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,6 +28,7 @@ import by.bsuir.banking.admin.domain.ClientWrapper;
 import by.bsuir.banking.admin.utils.AdminUtils;
 import by.bsuir.banking.admin.utils.MessageConstants;
 import by.bsuir.banking.admin.utils.ServiceProvider;
+import by.bsuir.banking.admin.validation.ClientValidator;
 import by.bsuir.banking.proxy.operator.Client;
 import by.bsuir.banking.proxy.operator.IOperatorService;
 import by.bsuir.banking.proxy.operator.IOperatorServiceGetClientAuthorizationFaultFaultFaultMessage;
@@ -47,6 +49,8 @@ public class EditClientController extends EntityController {
 	private static Logger logger = Logger.getLogger(EditClientController.class);
 	private static IOperatorService service;
 	private static final String VIEW_NAME = "client-edit";
+	@Autowired
+	ClientValidator clientValidator;
 	
 	public EditClientController(){
 		service = ServiceProvider.getOperatorService();
@@ -54,7 +58,7 @@ public class EditClientController extends EntityController {
 	
 	@InitBinder
 	protected void initBinder(WebDataBinder binder) {
-		String format = "MM/dd/yyyy";
+		String format = "dd/MM/yyyy";
 		SimpleDateFormat dateFormat = new SimpleDateFormat(format);
 	    binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, false));
 	}
@@ -85,6 +89,7 @@ public class EditClientController extends EntityController {
 	public String submitForm(@ModelAttribute("client") ClientWrapper client, BindingResult result,
 			@ModelAttribute("ajaxRequest") boolean ajaxRequest, Model model,
 			RedirectAttributes redirectAttrs, HttpSession session){
+		clientValidator.validate(client, result);
 		if(result.hasErrors()){
 			AdminUtils.logDebug(logger, MessageConstants.FORM_VALIDATION_ERROR, MessageConstants.PASSPORT_ENTITY);
 			return VIEW_NAME;

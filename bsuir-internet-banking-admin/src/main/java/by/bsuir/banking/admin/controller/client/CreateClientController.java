@@ -29,7 +29,6 @@ import by.bsuir.banking.admin.domain.PassportWrapper;
 import by.bsuir.banking.admin.utils.AdminUtils;
 import by.bsuir.banking.admin.utils.MessageConstants;
 import by.bsuir.banking.admin.utils.ServiceProvider;
-import by.bsuir.banking.admin.validation.BirthdayDateValidator;
 import by.bsuir.banking.admin.validation.ClientValidator;
 import by.bsuir.banking.admin.validation.PassportValidator;
 import by.bsuir.banking.proxy.operator.IOperatorService;
@@ -77,8 +76,7 @@ public class CreateClientController extends EntityController {
 		AdminUtils.logInfo(logger, MessageConstants.MODEL_BEAN_CREATED, MessageConstants.CLIENT_ENTITY);
 		return new ClientWrapper();
 	}
-	
-	
+		
 	
 	@InitBinder
 	protected void initBinder(WebDataBinder binder) {

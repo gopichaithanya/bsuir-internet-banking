@@ -57,8 +57,8 @@
 						Birth date 
 					</form:label>
 						<div class="controls">
-							<form:input path="birthdayDate" id="inputBirthdyDate"
-								placeholder="Birthday (mm/dd/yyyy)" />
+							<form:input path="birthdayDate" id="inputBirthdayDate"
+								placeholder="Birthday (dd/mm/yyyy)" readonly="true" />
 							<form:errors class="help-inline" path="birthdayDate" />
 						</div>
 					</div>
@@ -100,7 +100,7 @@
 					</form:label>
 						<div class="controls">
 							<form:input path="passport.dateOfExpiry" id="inputDateOfExpiry"
-								placeholder="Date of expiry (mm/dd/yyyy)" />
+								placeholder="Date of expiry (dd/mm/yyyy)" readonly="true" />
 							<form:errors class="help-inline" path="passport.dateOfExpiry" />
 						</div>
 					</div>
@@ -110,7 +110,7 @@
 					</form:label>
 						<div class="controls">
 							<form:input path="passport.dateOfIssue" id="inputDateOfIssue"
-								placeholder="Date of issue (mm/dd/yyyy)" />
+								placeholder="Date of issue (dd/mm/yyyy)" readonly="true" />
 							<form:errors class="help-inline" path="passport.dateOfIssue" />
 						</div>
 					</div>

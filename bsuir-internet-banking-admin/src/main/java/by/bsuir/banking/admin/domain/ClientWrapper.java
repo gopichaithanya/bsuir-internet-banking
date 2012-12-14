@@ -3,6 +3,7 @@ package by.bsuir.banking.admin.domain;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
+import javax.validation.constraints.NotNull;
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 
@@ -61,6 +62,7 @@ public class ClientWrapper {
 	 * Getting birthday
 	 * @return
 	 */
+	@NotNull
 	public Date getBirthdayDate(){
 		return (client.getBirthdayDate() == null) ? null : client.getBirthdayDate().toGregorianCalendar().getTime();
 	}

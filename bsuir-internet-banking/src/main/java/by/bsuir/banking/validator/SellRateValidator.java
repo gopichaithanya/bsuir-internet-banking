@@ -31,7 +31,7 @@ public class SellRateValidator implements Validator {
 	}
 
 	@Override
-	public boolean supports(Class clazz) {
+	public boolean supports(Class<?> clazz) {
 		return SellRateWrapper.class.equals(clazz);
 	}
 

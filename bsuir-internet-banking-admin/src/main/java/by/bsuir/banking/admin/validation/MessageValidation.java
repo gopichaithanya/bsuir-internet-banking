@@ -13,7 +13,7 @@ public class MessageValidation {
 	public static final String WRONG_FORMAT = "wrongFormat";
 	public static final String WRONG_BIRTHDATE = "wrongBirhdate";
 	
-	public static final String EMPTY_FIELD = "may not be empty";
+	public static final String EMPTY_FIELD = "must not be empty";
 	public static final String NEGATIVE_FIELD = "must be positive";
 	public static final String WRONG_PHONE_NUMBER_FORMAT = "wrong format. must be (xxx)xxxxxxx";
 	public static final String WRONG_PASSPORT_NUMBER = "wrong format. must be only 7 numbers";
