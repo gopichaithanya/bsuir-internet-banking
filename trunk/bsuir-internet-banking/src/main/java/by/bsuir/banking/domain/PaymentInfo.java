@@ -11,23 +11,27 @@ import by.bsuir.banking.admin.utils.PaymentUtil;
  * @author E.Krasnotschek
  *
  */
-public class PaymentWrapper {
+public class PaymentInfo {
 	
 	private LegalPersonWrapper legalPerson;
 	private ClientWrapper client;
+	private String ÒardNumber;
+	private boolean saved;
+	private boolean toSave;
 	
 	@NotEmpty
 	private String infoString;
 	private MoneyWrapper amount;
 	
 	
-	public PaymentWrapper(LegalPersonWrapper person){
+	public PaymentInfo(LegalPersonWrapper person){
 		legalPerson = person;
 	}
 	
-	public PaymentWrapper(LegalPersonWrapper person, ClientWrapper client){
+	public PaymentInfo(LegalPersonWrapper person, ClientWrapper client, boolean isSaved){
 		legalPerson = person;
 		this.client = client;
+		saved = isSaved;
 	}
 	
 	public LegalPersonWrapper getLegalPerson() {
@@ -55,6 +59,7 @@ public class PaymentWrapper {
 	}
 	
 	public String getInfoLabel(){
+		System.out.println(legalPerson.getCategoryId());
 		return PaymentUtil.getLabelForCategory(legalPerson.getCategoryId());
 	}
 	
@@ -71,7 +76,34 @@ public class PaymentWrapper {
 	}
 	
 	public void setAmount(MoneyWrapper value){
-		
+		amount = value;
 	}
+
+	public String get—ardNumber() {
+		return ÒardNumber;
+	}
+
+	public void set—ardNumber(String ÒardNumber) {
+		this.ÒardNumber = ÒardNumber;
+	}
+
+	public boolean isSaved() {
+		return saved;
+	}
+
+	public void setSaved(boolean saved) {
+		this.saved = saved;
+	}
+
+	public boolean isToSave() {
+		return toSave;
+	}
+
+	public void setToSave(boolean toSave) {
+		this.toSave = toSave;
+	}
+	
+	
+		
 	
 }

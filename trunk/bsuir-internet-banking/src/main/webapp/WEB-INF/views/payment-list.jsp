@@ -39,7 +39,7 @@
 								<ul>
 									<c:forEach items="${entry.value}" varStatus="inloop"
 										var="legal">
-										<li><a href="/payment/pay/${legal.id}">- ${legal.name.value}</a></li>
+										<li>-<a href="<c:url value='/payment/pay/${legal.id}' />" > ${legal.name.value}</a></li>
 									</c:forEach>
 								</ul></li>
 						</c:forEach>

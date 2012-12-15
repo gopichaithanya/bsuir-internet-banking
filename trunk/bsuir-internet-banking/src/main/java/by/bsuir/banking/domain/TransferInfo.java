@@ -1,6 +1,5 @@
 package by.bsuir.banking.domain;
 
-import org.hibernate.validator.constraints.NotEmpty;
 
 
 /**
@@ -14,7 +13,6 @@ public class TransferInfo {
 	
 	private String receiverCardNumber;
 	
-	@NotEmpty
 	private MoneyWrapper amount;
 	
 	

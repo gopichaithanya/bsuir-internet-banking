@@ -1,5 +1,10 @@
 package by.bsuir.banking.controller.payment;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
@@ -10,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import by.bsuir.banking.admin.utils.ServiceProvider;
 import by.bsuir.banking.controller.login.EntityController;
-import by.bsuir.banking.proxy.internetbanking.ArrayOfLegalPersonCategory;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingService;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetAllLegalPersonCategoriesAuthorizationFaultFaultFaultMessage;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetAllLegalPersonCategoriesDomainFaultFaultFaultMessage;
@@ -18,11 +22,6 @@ import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetLegalPer
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetLegalPersonsForCategoryDomainFaultFaultFaultMessage;
 import by.bsuir.banking.proxy.internetbanking.LegalPerson;
 import by.bsuir.banking.proxy.internetbanking.LegalPersonCategory;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 
 

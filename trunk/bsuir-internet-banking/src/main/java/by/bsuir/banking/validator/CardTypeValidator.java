@@ -6,6 +6,7 @@ import org.springframework.validation.Validator;
 
 import by.bsuir.banking.domain.CardTypeWrapper;
 
+
 @Component
 public class CardTypeValidator implements Validator {
 

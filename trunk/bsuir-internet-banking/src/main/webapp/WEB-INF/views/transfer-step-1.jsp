@@ -11,11 +11,11 @@
 <div id="content">
 	<div id="breadcumbs" class="span12">
 		<ul class="breadcrumb">
-			<li><a href="<c:url value='/main' />">Home</a> <span
+			<li><a href="<c:url value='/main' />">Главная</a> <span
 				class="divider">/</span></li>
-			<li><a href="<c:url value='/transfer' />">Transfer</a><span
+			<li><a href="<c:url value='/transfer' />">Перевод</a><span
 				class="divider">/</span></li>
-			<li class="active">Step 1</li>
+			<li class="active">Выбор карт</li>
 		</ul>
 	</div>
 	<br>
@@ -28,7 +28,7 @@
 				<div class="clearfix alert alert-error ">У Вас одна карта. Вы не можете провести операцию перевода.</div>
 			</c:when>
 			<c:otherwise>
-				<h4>Select cards</h4>
+				<h4>Выбор карт</h4>
 				<form:form id="form" method="post" class="form span10"
 					modelAttribute="transfer">
 					<s:bind path="*">
@@ -38,7 +38,7 @@
 					</s:bind>
 					<div class="control-group">
 						<form:label class="control-label" path="senderCardNumber"> 
-						<strong>From:</strong> <form:errors path="senderCardNumber" />
+						<strong>С карты:</strong> <form:errors path="senderCardNumber" />
 						</form:label>
 						<div class="controls">
 							<form:select  path="senderCardNumber" style="width:400px;" items="${cardSelect}"
@@ -48,7 +48,7 @@
 					</div>
 					<div class="control-group">
 						<form:label class="control-label" path="receiverCardNumber"> 
-						<strong>To:</strong> <form:errors path="receiverCardNumber" />
+						<strong>На карту:</strong> <form:errors path="receiverCardNumber" />
 						</form:label>
 						<div class="controls">
 							<form:select path="receiverCardNumber" style="width:400px;" items="${cardSelect}"
@@ -58,8 +58,8 @@
 					</div>
 					<div class="control-group">
 						<div class="controls">
-							<a href="<c:url value='/main'/>" class="btn">Cancel</a>
-							<button type="submit" class="btn">Next</button>
+							<a href="<c:url value='/main'/>" class="btn">Отмена</a>
+							<button type="submit" class="btn">Дальше</button>
 						</div>
 					</div>
 

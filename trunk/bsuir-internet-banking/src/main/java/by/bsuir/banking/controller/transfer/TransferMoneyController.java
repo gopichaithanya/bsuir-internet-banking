@@ -31,7 +31,6 @@ import by.bsuir.banking.domain.CurrencyTypeWrapper;
 import by.bsuir.banking.domain.MoneyWrapper;
 import by.bsuir.banking.domain.TransferInfo;
 import by.bsuir.banking.proxy.internetbanking.Card;
-import by.bsuir.banking.proxy.internetbanking.CurrencyType;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingService;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceExecuteTransferAuthorizationFaultFaultFaultMessage;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceExecuteTransferDomainFaultFaultFaultMessage;
@@ -113,12 +112,12 @@ public class TransferMoneyController extends EntityController {
 			HttpServletRequest request, HttpServletResponse response,
 			RedirectAttributes attrs) throws IOException {
 		if(result.hasErrors()){
-			model.addAttribute("form-error", "Form has errors");
+			model.addAttribute("form-error", "На форме есть ошибки");
 			return VIEW_NAME_STEP_1;
 		}
 		if(transfer.getReceiverCardNumber().equals(transfer.getSenderCardNumber())){
-			model.addAttribute("form-error", "You chose only one card");
-			result.reject("TranferError","Cards are the same");
+			model.addAttribute("form-error", "Вы выбрали одикаковые карты");
+			result.reject("TranferError","Вы выбрали одинаковые карты. Выберите вторую карту.");
 			return VIEW_NAME_STEP_1;
 		}
 		
@@ -126,7 +125,7 @@ public class TransferMoneyController extends EntityController {
 		//we take only those types that we have in our selected cards
 		String securityToken = getSecurityToken(session);
 		if(session.getAttribute("cardSelect") == null){
-			attrs.addFlashAttribute("error", "Could not find cards list");
+			attrs.addFlashAttribute("error", "Невозможно найти список карт");
 			response.sendRedirect(request.getContextPath() + MessageConstants.ERROR_VIEW);
 		}
 		String curTypeFrom = "";
@@ -134,7 +133,7 @@ public class TransferMoneyController extends EntityController {
 		for(CardSelectInfo card:cardSelect){
 			if(card.getCardNumber().equals(transfer.getSenderCardNumber())){
 				if(card.isExpired()){
-					result.reject("TransferError", "Sender card has expired. Select other card or contact woth bank operator");
+					result.reject("TransferError", "Карта-отправитель недействительна. Выберите другую карту или обратитесь к оператору.");
 					return VIEW_NAME_STEP_1;
 				}
 				attrs.addFlashAttribute("sender", card.getDisplayValue());
@@ -142,7 +141,7 @@ public class TransferMoneyController extends EntityController {
 			}
 			if(card.getCardNumber().equals(transfer.getReceiverCardNumber())){
 				if(card.isExpired()){
-					result.reject("TransferError", "Reciever card has expired. Select other card or contact woth bank operator");
+					result.reject("TransferError", "Карта-получатель недействительна. Выберите другую карту или обратитесь к оператору.");
 					return VIEW_NAME_STEP_1;
 				}
 				curTypeTo = card.getCurrencyType();
@@ -165,7 +164,7 @@ public class TransferMoneyController extends EntityController {
 	@RequestMapping(value={"/step2"}, method=RequestMethod.GET)
 	public String createStep2(Model model, RedirectAttributes attrs){
 		if(!model.containsAttribute("curSelect") || !model.containsAttribute("transfer")){
-			attrs.addFlashAttribute("error", "You haven't chosen cards yet");
+			attrs.addFlashAttribute("error", "Вы еще не выбрали карты");
 			return "redirect:/transfer/step1";
 		}
 		return VIEW_NAME_STEP_2;
@@ -199,7 +198,7 @@ public class TransferMoneyController extends EntityController {
 		} catch (IInternetBankingServiceGetCurrencyTypesDomainFaultFaultFaultMessage e) {
 			response.sendRedirect(request.getContextPath() + MessageConstants.ERROR_VIEW);
 		}
-		attrs.addFlashAttribute("success", "Transfer has been successfully executed");
+		attrs.addFlashAttribute("success", "Операция перевода прошла успешно");
 		return "redirect:/cards/view";
 		
 	}
