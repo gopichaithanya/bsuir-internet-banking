@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import by.bsuir.banking.domain.PaymentInfo;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingService;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetAllLegalPersonsAuthorizationFaultFaultFaultMessage;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetAllLegalPersonsDomainFaultFaultFaultMessage;
@@ -40,6 +41,7 @@ public class PaymentUtil {
 				break;
 			case 4:
 				label = "Номер заказа билета"; 
+				break;
 			case 5:
 				label = "Номер телефона";
 				break;
@@ -65,6 +67,12 @@ public class PaymentUtil {
 			}
 		}
 		return null;
+	}
+
+	public static String formInformation(PaymentInfo payment) {
+
+
+		return "Info";
 	}
 	 
 
