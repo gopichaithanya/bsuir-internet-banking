@@ -61,7 +61,7 @@
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
 			<version>1.2.16</version>
-			<scope>provided</scope>
+			
 		</dependency>
 
 		<!-- @Inject -->
@@ -229,9 +229,9 @@
 					</execution> -->
 				</executions>
 				<configuration>
-					<packageName>by.bsuir.banking.proxy.operator</packageName>
+					<packageName>by.bsuir.banking.proxy.administration</packageName>
 					<wsdlUrls>
-						<!-- <wsdlUrl>http://localhost:8732/InternetBanking.Services.Implementations/AdministrationService/?wsdl</wsdlUrl> -->
+						<wsdlUrl>http://localhost:8732/InternetBanking.Services.Implementations/AdministrationService/?wsdl</wsdlUrl>
 						<!-- <wsdlUrl>http://localhost:8733/AuthenticationService/?wsdl</wsdlUrl> -->
 						<!-- <wsdlUrls>http://localhost:8735/OperatorService/?wsdl</wsdlUrls> -->
 						<!-- <wsdlUrls>http://www.nbrb.by/Services/ExRates.asmx?wsdl</wsdlUrls> -->

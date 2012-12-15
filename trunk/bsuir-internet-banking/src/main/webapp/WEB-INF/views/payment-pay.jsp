@@ -11,71 +11,64 @@
 <div id="content">
 	<div id="breadcumbs" class="span12">
 		<ul class="breadcrumb">
-			<li><a href="<c:url value='/main' />">Home</a> <span
+			<li><a href="<c:url value='/main' />">Главная</a> <span
 				class="divider">/</span></li>
-			<li><a href="<c:url value='/transfer' />">Transfer</a><span
+			<li><a href="<c:url value='/payment/list' />">Платежи</a><span
 				class="divider">/</span></li>
-			<li class="active">Step 1</li>
+			<li class="active">${payment.legalPerson.name}</li>
 		</ul>
 	</div>
 	<br>
 	<div id="ratesInfo" class="span8">
-		<c:choose>
+		<h4>Провести платеж: ${payment.legalPerson.category.name.value} - ${payment.legalPerson.name}</h4>
+		<%-- <c:choose>
 			<c:when test="${fn:length(cardSelect) == 0}">
-				<div class="clearfix alert alert-error ">У Вас нет карт. Свяжитесь с оператором банка.</div>
+				<div class="clearfix alert alert-error ">You have no cards.
+					Please contact bank operator.</div>
 			</c:when>
 			<c:when test="${fn:length(cardSelect) == 1}">
-				<div class="clearfix alert alert-error ">У Вас одна карта. Вы не можете провести операцию перевода.</div>
+				<div class="clearfix alert alert-error ">You have only one
+					card. You cannot transfer money.</div>
 			</c:when>
 			<c:otherwise>
-				<h4>Enter amount</h4>
-				<form:form id="form" method="post" class="form span8"
-					modelAttribute="transfer" >
+				<h4>Select cards</h4>
+				<form:form id="form" method="post" class="form span10"
+					modelAttribute="transfer">
 					<s:bind path="*">
 						<c:if test="${status.error}">
 							<div id="message" class="alert alert-error">${status.errorMessage}.</div>
 						</c:if>
 					</s:bind>
 					<div class="control-group">
-						<label class="control-label"> 
-						<strong>From</strong> : ${sender} 
-						</label>
-					</div>
-					<br>
-					<div class="control-group">
-						<label class="control-label"> 
-						<strong>To</strong> : ${receiver} 
-						</label>
-					</div>
-					<br>
-					<div class="control-group">
-						<form:label class="control-label" path="amount.currencyType"> 
-						<strong>Currrency:</strong> <form:errors path="amount.currencyType" />
+						<form:label class="control-label" path="senderCardNumber"> 
+						<strong>From:</strong> <form:errors path="senderCardNumber" />
 						</form:label>
 						<div class="controls">
-							<form:select path="amount.currencyType" items="${curSelect}"></form:select>
+							<form:select  path="senderCardNumber" style="width:400px;" items="${cardSelect}"
+								itemLabel="displayValue" itemValue="cardNumber"></form:select>
 							
 						</div>
 					</div>
 					<div class="control-group">
-						<form:label class="control-label" path="amount.amount"> 
-						<strong>Amount:</strong> <form:errors path="amount.amount" />
+						<form:label class="control-label" path="receiverCardNumber"> 
+						<strong>To:</strong> <form:errors path="receiverCardNumber" />
 						</form:label>
 						<div class="controls">
-							<form:input path="amount.amount" ></form:input>
+							<form:select path="receiverCardNumber" style="width:400px;" items="${cardSelect}"
+								itemLabel="displayValue" itemValue="cardNumber"></form:select>
 							
 						</div>
 					</div>
 					<div class="control-group">
 						<div class="controls">
-							<a href="<c:url value='/main' />" class="btn">Cancel</a>
-							<button type="submit" class="btn">Submit</button>
+							<a href="<c:url value='/main'/>" class="btn">Cancel</a>
+							<button type="submit" class="btn">Next</button>
 						</div>
 					</div>
 
 				</form:form>
 			</c:otherwise>
-		</c:choose>
+		</c:choose> --%>
 	</div>
 	<script type="text/javascript">
 		$(document).ready(

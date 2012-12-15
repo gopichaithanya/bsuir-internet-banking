@@ -17,15 +17,14 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.tags.BindErrorsTag;
 
+import by.bsuir.banking.admin.utils.AdminUtils;
+import by.bsuir.banking.admin.utils.MessageConstants;
+import by.bsuir.banking.admin.utils.ServiceProvider;
 import by.bsuir.banking.controller.login.EntityController;
 import by.bsuir.banking.domain.CurrencyTypeWrapper;
 import by.bsuir.banking.domain.PurchaseRateWrapper;
 import by.bsuir.banking.domain.SellRateWrapper;
-import by.bsuir.banking.admin.utils.AdminUtils;
-import by.bsuir.banking.admin.utils.MessageConstants;
-import by.bsuir.banking.admin.utils.ServiceProvider;
 import by.bsuir.banking.proxy.internetbanking.CurrencyType;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingService;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetCurrencyTypesDomainFaultFaultFaultMessage;
@@ -33,7 +32,6 @@ import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetPurchase
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetSellCurrencyRatesDomainFaultFaultFaultMessage;
 import by.bsuir.banking.proxy.internetbanking.PurchaseCurrencyRate;
 import by.bsuir.banking.proxy.internetbanking.SellCurrencyRate;
-import by.bsuir.banking.validator.CurrencyTypeValidator;
 import by.bsuir.banking.validator.PurchaseRateValidator;
 import by.bsuir.banking.validator.SellRateValidator;
 

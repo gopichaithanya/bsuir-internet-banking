@@ -30,6 +30,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="Information" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="LegalAccount" type="{http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model}LegalAccount" minOccurs="0"/>
  *         &lt;element name="LegalAccountId" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *         &lt;element name="Money" type="{http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model}Money" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -47,7 +48,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "id",
     "information",
     "legalAccount",
-    "legalAccountId"
+    "legalAccountId",
+    "money"
 })
 public class Payment {
 
@@ -68,6 +70,8 @@ public class Payment {
     protected JAXBElement<LegalAccount> legalAccount;
     @XmlElement(name = "LegalAccountId")
     protected Integer legalAccountId;
+    @XmlElementRef(name = "Money", namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", type = JAXBElement.class)
+    protected JAXBElement<Money> money;
 
     /**
      * Gets the value of the account property.
@@ -259,6 +263,30 @@ public class Payment {
      */
     public void setLegalAccountId(Integer value) {
         this.legalAccountId = value;
+    }
+
+    /**
+     * Gets the value of the money property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link Money }{@code >}
+     *     
+     */
+    public JAXBElement<Money> getMoney() {
+        return money;
+    }
+
+    /**
+     * Sets the value of the money property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link Money }{@code >}
+     *     
+     */
+    public void setMoney(JAXBElement<Money> value) {
+        this.money = ((JAXBElement<Money> ) value);
     }
 
 }

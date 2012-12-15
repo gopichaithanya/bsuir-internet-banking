@@ -1,7 +1,8 @@
 package by.bsuir.banking.domain;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import by.bsuir.banking.admin.utils.PaymentUtil;
-import by.bsuir.banking.proxy.internetbanking.LegalPerson;
 
 /**
  * Wrapper for payment,
@@ -12,24 +13,28 @@ import by.bsuir.banking.proxy.internetbanking.LegalPerson;
  */
 public class PaymentWrapper {
 	
-	private LegalPerson legalPerson;
+	private LegalPersonWrapper legalPerson;
 	private ClientWrapper client;
 	
+	@NotEmpty
+	private String infoString;
+	private MoneyWrapper amount;
 	
-	public PaymentWrapper(LegalPerson person){
+	
+	public PaymentWrapper(LegalPersonWrapper person){
 		legalPerson = person;
 	}
 	
-	public PaymentWrapper(LegalPerson person, ClientWrapper client){
+	public PaymentWrapper(LegalPersonWrapper person, ClientWrapper client){
 		legalPerson = person;
 		this.client = client;
 	}
 	
-	public LegalPerson getLegalPerson() {
+	public LegalPersonWrapper getLegalPerson() {
 		return legalPerson;
 	}
 
-	public void setLegalPerson(LegalPerson legalPerson) {
+	public void setLegalPerson(LegalPersonWrapper legalPerson) {
 		this.legalPerson = legalPerson;
 	}
 
@@ -50,11 +55,23 @@ public class PaymentWrapper {
 	}
 	
 	public String getInfoLabel(){
-		return PaymentUtil.getLabelForCategory(legalPerson.getLegalPersonCategoryId());
+		return PaymentUtil.getLabelForCategory(legalPerson.getCategoryId());
 	}
 	
+	public String getInfoString(){
+		return infoString;
+	}
 	
+	public void setInfoString(String value){
+		infoString = value;
+	}
 
+	public MoneyWrapper getAmount(){
+		return amount;
+	}
 	
+	public void setAmount(MoneyWrapper value){
+		
+	}
 	
 }

@@ -50,8 +50,8 @@ public interface IOperatorService {
      * @param securityToken
      * @return
      *     returns java.lang.Integer
-     * @throws IOperatorServiceCreateClientDomainFaultFaultFaultMessage
      * @throws IOperatorServiceCreateClientAuthorizationFaultFaultFaultMessage
+     * @throws IOperatorServiceCreateClientDomainFaultFaultFaultMessage
      */
     @WebMethod(operationName = "CreateClient", action = "http://tempuri.org/IOperatorService/CreateClient")
     @WebResult(name = "CreateClientResult", targetNamespace = "http://tempuri.org/")
@@ -69,8 +69,8 @@ public interface IOperatorService {
      * 
      * @param client
      * @param securityToken
-     * @throws IOperatorServiceUpdateClientAuthorizationFaultFaultFaultMessage
      * @throws IOperatorServiceUpdateClientDomainFaultFaultFaultMessage
+     * @throws IOperatorServiceUpdateClientAuthorizationFaultFaultFaultMessage
      */
     @WebMethod(operationName = "UpdateClient", action = "http://tempuri.org/IOperatorService/UpdateClient")
     @RequestWrapper(localName = "UpdateClient", targetNamespace = "http://tempuri.org/", className = "by.bsuir.banking.proxy.operator.UpdateClient")
@@ -177,8 +177,8 @@ public interface IOperatorService {
      * @param number
      * @return
      *     returns by.bsuir.banking.proxy.operator.Client
-     * @throws IOperatorServiceGetClientByPassportDataDomainFaultFaultFaultMessage
      * @throws IOperatorServiceGetClientByPassportDataAuthorizationFaultFaultFaultMessage
+     * @throws IOperatorServiceGetClientByPassportDataDomainFaultFaultFaultMessage
      */
     @WebMethod(operationName = "GetClientByPassportData", action = "http://tempuri.org/IOperatorService/GetClientByPassportData")
     @WebResult(name = "GetClientByPassportDataResult", targetNamespace = "http://tempuri.org/")
