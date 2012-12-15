@@ -29,8 +29,6 @@ import javax.xml.namespace.QName;
 public class ObjectFactory {
 
     private final static QName _AuthenticationFaultMessage_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.Services.Interfaces.FaultContracts", "Message");
-    private final static QName _AuthenticatePassword_QNAME = new QName("http://tempuri.org/", "password");
-    private final static QName _AuthenticateLogin_QNAME = new QName("http://tempuri.org/", "login");
     private final static QName _AnyURI_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "anyURI");
     private final static QName _AuthenticationCredential_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", "AuthenticationCredential");
     private final static QName _Char_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "char");
@@ -56,6 +54,8 @@ public class ObjectFactory {
     private final static QName _AuthenticationFault_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.Services.Interfaces.FaultContracts", "AuthenticationFault");
     private final static QName _AuthenticationCredentialSecurityToken_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", "SecurityToken");
     private final static QName _AuthenticationCredentialRole_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", "Role");
+    private final static QName _AuthenticatePassword_QNAME = new QName("http://tempuri.org/", "password");
+    private final static QName _AuthenticateLogin_QNAME = new QName("http://tempuri.org/", "login");
     private final static QName _AuthenticateResponseAuthenticateResult_QNAME = new QName("http://tempuri.org/", "AuthenticateResult");
 
     /**
@@ -74,19 +74,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Authenticate }
-     * 
-     */
-    public Authenticate createAuthenticate() {
-        return new Authenticate();
-    }
-
-    /**
      * Create an instance of {@link AuthenticationCredential }
      * 
      */
     public AuthenticationCredential createAuthenticationCredential() {
         return new AuthenticationCredential();
+    }
+
+    /**
+     * Create an instance of {@link Authenticate }
+     * 
+     */
+    public Authenticate createAuthenticate() {
+        return new Authenticate();
     }
 
     /**
@@ -104,24 +104,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.Services.Interfaces.FaultContracts", name = "Message", scope = AuthenticationFault.class)
     public JAXBElement<String> createAuthenticationFaultMessage(String value) {
         return new JAXBElement<String>(_AuthenticationFaultMessage_QNAME, String.class, AuthenticationFault.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "password", scope = Authenticate.class)
-    public JAXBElement<String> createAuthenticatePassword(String value) {
-        return new JAXBElement<String>(_AuthenticatePassword_QNAME, String.class, Authenticate.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "login", scope = Authenticate.class)
-    public JAXBElement<String> createAuthenticateLogin(String value) {
-        return new JAXBElement<String>(_AuthenticateLogin_QNAME, String.class, Authenticate.class, value);
     }
 
     /**
@@ -347,6 +329,24 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", name = "Role", scope = AuthenticationCredential.class)
     public JAXBElement<String> createAuthenticationCredentialRole(String value) {
         return new JAXBElement<String>(_AuthenticationCredentialRole_QNAME, String.class, AuthenticationCredential.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "password", scope = Authenticate.class)
+    public JAXBElement<String> createAuthenticatePassword(String value) {
+        return new JAXBElement<String>(_AuthenticatePassword_QNAME, String.class, Authenticate.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "login", scope = Authenticate.class)
+    public JAXBElement<String> createAuthenticateLogin(String value) {
+        return new JAXBElement<String>(_AuthenticateLogin_QNAME, String.class, Authenticate.class, value);
     }
 
     /**

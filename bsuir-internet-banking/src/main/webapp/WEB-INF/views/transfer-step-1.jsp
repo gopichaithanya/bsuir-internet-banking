@@ -22,12 +22,10 @@
 	<div id="ratesInfo" class="span8">
 		<c:choose>
 			<c:when test="${fn:length(cardSelect) == 0}">
-				<div class="clearfix alert alert-error ">You have no cards.
-					Please contact bank operator.</div>
+				<div class="clearfix alert alert-error ">У Вас нет карт. Свяжитесь с оператором банка.</div>
 			</c:when>
 			<c:when test="${fn:length(cardSelect) == 1}">
-				<div class="clearfix alert alert-error ">You have only one
-					card. You cannot transfer money.</div>
+				<div class="clearfix alert alert-error ">У Вас одна карта. Вы не можете провести операцию перевода.</div>
 			</c:when>
 			<c:otherwise>
 				<h4>Select cards</h4>

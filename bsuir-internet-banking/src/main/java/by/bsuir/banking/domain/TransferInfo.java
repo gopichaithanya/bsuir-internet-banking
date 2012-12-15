@@ -1,5 +1,7 @@
 package by.bsuir.banking.domain;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 
 /**
  * Class created especially for transfer form 
@@ -12,6 +14,7 @@ public class TransferInfo {
 	
 	private String receiverCardNumber;
 	
+	@NotEmpty
 	private MoneyWrapper amount;
 	
 	

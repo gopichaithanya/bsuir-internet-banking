@@ -17,16 +17,14 @@ public class UserInfo {
 	 * Username field
 	 * TODO add other constraints
 	 */
-	@NotEmpty
-	@Size(min = 1, max = 20)
+	@NotEmpty(message="Имя пользователя не должно быть пустым")
 	protected String username;
 	
 	/**
 	 * Password field
 	 * TODO add other constraints
 	 */
-	@NotEmpty
-	@Size(min = 1, max = 20)
+	@NotEmpty(message="Пароль не должен быть пустым")
 	protected String password;
 	
 	/**

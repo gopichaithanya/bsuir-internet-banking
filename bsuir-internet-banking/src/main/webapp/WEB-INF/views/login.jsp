@@ -1,7 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@ page session="false"%>
+<%@ page contentType="text/html; charset=UTF-8"%>
 <c:if test="${!ajaxRequest}">
 	<html>
 <body>
@@ -9,13 +9,13 @@
 <div id="formsContent">
 	<form:form id="form" method="post" class="form span5 well" modelAttribute="userInfo">
 		<div class="control-group">
-			<h4>Please enter username and password</h4>
+			<h4>Введите имя пользователя и пароль</h4>
 			<br>
 		</div>
 		<div class="control-group error">
 			<s:bind path="*">
 				<c:if test="${status.error}">
-					<div id="controls" class="alert alert-error">Username and/or password is invalid</div>
+					<div id="controls" class="alert alert-error">${status.errorMessage }</div>
 				</c:if>
 			</s:bind>
 		</div>
@@ -25,8 +25,8 @@
 			</form:label> --%>
 			<div class="controls">
 				<form:input path="username" autocomplete="off" id="inputUsername"
-					placeholder="Username" />
-				<form:errors class="help-inline error" path="username" />
+					placeholder="Имя пользователя" />
+				<%-- <form:errors class="help-inline error" path="username" /> --%>
 			</div>
 		</div>
 		<div id="divPassword" class="control-group">
@@ -35,8 +35,8 @@
 			</form:label> --%>
 			<div class="controls">
 				<form:password path="password" id="inputPassword"
-					placeholder="Password" />
-				<form:errors class="help-inline" path="password" />
+					placeholder="Пароль" />
+				<%-- <form:errors class="help-inline" path="password" /> --%>
 			</div>
 		</div>
 		<div class="control-group">

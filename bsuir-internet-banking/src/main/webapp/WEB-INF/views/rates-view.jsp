@@ -2,6 +2,7 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ page session="false"%>
+<%@ page contentType="text/html; charset=UTF-8"%>
 <c:if test="${!ajaxRequest}">
 	<html>
 <body>
@@ -9,17 +10,17 @@
 <div id="content">
 	<div id="breadcumbs" class="span12">
 		<ul class="breadcrumb">
-			<li><a href="<c:url value='/main' />">Home</a> <span class="divider">/</span></li>
-			<li class="active">View Currency Rates</li>
+			<li><a href="<c:url value='/main' />">Главная</a> <span class="divider">/</span></li>
+			<li class="active">Просмотреть курсы обмена валют</li>
 			
 		</ul>
 	</div>
 	<div id="ratesInfo" class="span5">
 		<table class="table table-bordered">
 			<tr>
-				<th>Currency</th>
-				<th>Purchase</th>
-				<th>Sell</th>
+				<th>Наим. валюты</th>
+				<th>Покупка</th>
+				<th>Продажа</th>
 			</tr>
 			<tr>
 				<c:forEach var="i" begin="1" end="3" step="1">

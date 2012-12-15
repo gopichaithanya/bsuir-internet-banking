@@ -22,6 +22,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="accountNumber" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="receiverLegalAccountNumber" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="amount" type="{http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model}Money" minOccurs="0"/>
+ *         &lt;element name="information" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="securityToken" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
@@ -36,6 +37,7 @@ import javax.xml.bind.annotation.XmlType;
     "accountNumber",
     "receiverLegalAccountNumber",
     "amount",
+    "information",
     "securityToken"
 })
 @XmlRootElement(name = "Pay")
@@ -47,6 +49,8 @@ public class Pay {
     protected JAXBElement<String> receiverLegalAccountNumber;
     @XmlElementRef(name = "amount", namespace = "http://tempuri.org/", type = JAXBElement.class)
     protected JAXBElement<Money> amount;
+    @XmlElementRef(name = "information", namespace = "http://tempuri.org/", type = JAXBElement.class)
+    protected JAXBElement<String> information;
     @XmlElementRef(name = "securityToken", namespace = "http://tempuri.org/", type = JAXBElement.class)
     protected JAXBElement<String> securityToken;
 
@@ -120,6 +124,30 @@ public class Pay {
      */
     public void setAmount(JAXBElement<Money> value) {
         this.amount = ((JAXBElement<Money> ) value);
+    }
+
+    /**
+     * Gets the value of the information property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
+     *     
+     */
+    public JAXBElement<String> getInformation() {
+        return information;
+    }
+
+    /**
+     * Sets the value of the information property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
+     *     
+     */
+    public void setInformation(JAXBElement<String> value) {
+        this.information = ((JAXBElement<String> ) value);
     }
 
     /**

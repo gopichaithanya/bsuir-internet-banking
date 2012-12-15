@@ -20,8 +20,7 @@
 	<div id="ratesInfo" class="span6">
 		<c:choose>
 			<c:when test="${fn:length(cardList) == 0}">
-				<div class="clearfix alert alert-error ">You have no cards. Please contact bank
-					operator.</div>
+				<div class="clearfix alert alert-error ">У Вас нет карт. Свяжитесь с оператором банка.</div>
 			</c:when>
 			<c:otherwise>
 				<h4>My cards</h4>

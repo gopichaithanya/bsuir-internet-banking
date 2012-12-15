@@ -13,12 +13,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import by.bsuir.banking.controller.login.EntityController;
-import by.bsuir.banking.domain.ClientWrapper;
-import by.bsuir.banking.domain.UserInfo;
 import by.bsuir.banking.admin.utils.AdminUtils;
 import by.bsuir.banking.admin.utils.MessageConstants;
 import by.bsuir.banking.admin.utils.ServiceProvider;
+import by.bsuir.banking.domain.UserInfo;
 import by.bsuir.banking.proxy.authentication.AuthenticationCredential;
 import by.bsuir.banking.proxy.authentication.IAuthenticationService;
 import by.bsuir.banking.proxy.authentication.IAuthenticationServiceAuthenticateAuthenticationFaultFaultFaultMessage;
@@ -89,15 +87,18 @@ public class LoginController extends EntityController{
 			IAuthenticationService service = ServiceProvider.getAuthenticationService();
 			AuthenticationCredential credential = service.authenticate(user.getUsername(),
 					user.getPassword());
-			Client client = ServiceProvider.getInternetBankingService().getClient(credential.getSecurityToken().getValue());
-			user.setName(client.getFirstName().getValue() + " " + client.getLastName().getValue());
-			user.setSecurityToken(credential.getSecurityToken().getValue());
 			user.setRole(credential.getRole().getValue());
 			if(!user.getRole().equals(MessageConstants.CLIENT_ROLE)){
-				result.reject(MessageConstants.USER_AUTH_FAILED_CLIENT);
+				System.out.println("OOPS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+				result.reject("logonError", "Имя пользователя и/или пароль неверны");
 				AdminUtils.logInfo(logger, MessageConstants.USER_AUTH_FAILED_CLIENT);
 				return VIEW_NAME;
 			}
+			Client client = ServiceProvider.getInternetBankingService().getClient(credential.getSecurityToken().getValue());
+			
+			user.setName(client.getFirstName().getValue() + " " + client.getLastName().getValue());
+			user.setSecurityToken(credential.getSecurityToken().getValue());
+			
 			
 			session.setAttribute(MessageConstants.USER_ATTR, user);
 
@@ -106,15 +107,15 @@ public class LoginController extends EntityController{
 					user.getUsername());
 			return "redirect:/main";
 		} catch (IAuthenticationServiceAuthenticateAuthenticationFaultFaultFaultMessage e) {
-			result.reject(e.getMessage());
+			result.reject("loginError","Имя пользователя и/или пароль неверны");
 			AdminUtils.logInfo(logger, MessageConstants.USER_AUTH_FAILED_SERVER);
 			return VIEW_NAME;
 		} catch (IInternetBankingServiceGetClientAuthorizationFaultFaultFaultMessage e) {
-			result.reject(e.getMessage());
+			result.reject("authError", "Вы не авторизованны для этой операции");
 			AdminUtils.logInfo(logger, MessageConstants.USER_AUTH_FAILED_SERVER);
 			return VIEW_NAME;
 		} catch (IInternetBankingServiceGetClientDomainFaultFaultFaultMessage e) {
-			result.reject(e.getMessage());
+			result.reject("domainError", "Невозможно получить информацию о клиенте");
 			AdminUtils.logInfo(logger, MessageConstants.USER_AUTH_FAILED_SERVER);
 			return "redirect:" + MessageConstants.ERROR_VIEW;
 		}
