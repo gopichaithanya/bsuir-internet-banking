@@ -2,8 +2,6 @@ package by.bsuir.banking.admin.domain;
 
 import java.math.BigDecimal;
 
-import org.hibernate.validator.constraints.NotEmpty;
-
 import by.bsuir.banking.proxy.internetbanking.ObjectFactory;
 import by.bsuir.banking.proxy.internetbanking.PurchaseCurrencyRate;
 

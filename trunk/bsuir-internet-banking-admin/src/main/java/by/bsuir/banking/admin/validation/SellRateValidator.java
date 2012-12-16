@@ -37,12 +37,10 @@ public class SellRateValidator implements Validator {
 	@Override
 	public void validate(Object obj, Errors errors) {
 		SellRateWrapper sellRate = (SellRateWrapper) obj;
-		 //ValidationUtils.rejectIfEmpty(errors, "rate", MessageValidation.EMPTY_VALUE, MessageValidation.EMPTY_FIELD);
 		 if(sellRate.getRate() == null){
 			 errors.rejectValue("rate", MessageValidation.EMPTY_VALUE, MessageValidation.EMPTY_FIELD);
 		 } else
 		 if (sellRate.getRate().compareTo(BigDecimal.ZERO) < 1) {
-			 System.out.println("I'm here!!!!!!!!!!!!!!!!!!after      null");
 			errors.rejectValue("rate",
 					MessageValidation.NEGATIVE_OR_ZERO_VALUE,
 					MessageValidation.NEGATIVE_FIELD);

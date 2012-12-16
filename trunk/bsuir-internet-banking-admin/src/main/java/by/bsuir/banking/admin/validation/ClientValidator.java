@@ -3,19 +3,18 @@ package by.bsuir.banking.admin.validation;
 import java.util.Calendar;
 import java.util.Date;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
 import by.bsuir.banking.admin.domain.ClientWrapper;
-import by.bsuir.banking.admin.domain.CurrencyTypeWrapper;
 
 @Component
 public class ClientValidator implements Validator {
 	private static final String PHONE_NUMBER_PATTERN = "\\([0-9]{3}\\)[0-9]{5,7}";
-	private static final String EMAIL_PATTERN = "";
+	private static final String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+			+ "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 	private static final int MIN_AGE = 18;
 	private static final int MAX_AGE = 120;
 	private static final Calendar today = Calendar.getInstance();
@@ -32,17 +31,28 @@ public class ClientValidator implements Validator {
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "firstName", MessageValidation.NULL_VALUE, MessageValidation.EMPTY_FIELD);
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "lastName", MessageValidation.NULL_VALUE, MessageValidation.EMPTY_FIELD);
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "address", MessageValidation.NULL_VALUE, MessageValidation.EMPTY_FIELD);
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "phoneNumber", MessageValidation.NULL_VALUE, MessageValidation.EMPTY_FIELD);
-		if (!client.getPhoneNumber().trim().matches(PHONE_NUMBER_PATTERN)) {
+		if (client.getPhoneNumber() == null) {
+			errors.rejectValue("phoneNumber", MessageValidation.NULL_VALUE, MessageValidation.EMPTY_FIELD);
+		} else if (client.getPhoneNumber().trim().isEmpty()){
+			errors.rejectValue("phoneNumber", MessageValidation.NULL_VALUE, MessageValidation.EMPTY_FIELD);
+		} else if (!client.getPhoneNumber().trim().matches(PHONE_NUMBER_PATTERN)) {
 			errors.rejectValue("phoneNumber", MessageValidation.WRONG_FORMAT, MessageValidation.WRONG_PHONE_NUMBER_FORMAT);
 		}
 		if (client.getBirthdayDate() == null) {
-			errors.rejectValue("birthdayDate", MessageValidation.NULL_VALUE, MessageValidation.EMPTY_FIELD);
+			errors.rejectValue("birthdayDate", "methodInvocation", MessageValidation.EMPTY_FIELD);
 		} else if (!equalOrMoreThanEighteen(client.getBirthdayDate())) {
 			errors.rejectValue("birthdayDate", MessageValidation.WRONG_BIRTHDATE, MessageValidation.WRONG_BIRTHDATE);
 		} else if (!lessThan120(client.getBirthdayDate())) {
 			errors.rejectValue("birthdayDate", MessageValidation.WRONG_BIRTHDATE, MessageValidation.WRONG_BIRTHDATE);
 		}
+		if (client.getEmail() == null) {
+			errors.rejectValue("email", MessageValidation.NULL_VALUE, MessageValidation.EMPTY_FIELD);
+		} else if (client.getEmail().trim().isEmpty()){
+			errors.rejectValue("email", MessageValidation.NULL_VALUE, MessageValidation.EMPTY_FIELD);
+		} else if (!client.getEmail().trim().matches(EMAIL_PATTERN)) {
+			errors.rejectValue("email", MessageValidation.WRONG_FORMAT, MessageValidation.WRONG_EMAIL_ADDRESS_FORMAT);
+		}
+
 	}
 	
 	private boolean equalOrMoreThanEighteen (Date date) {

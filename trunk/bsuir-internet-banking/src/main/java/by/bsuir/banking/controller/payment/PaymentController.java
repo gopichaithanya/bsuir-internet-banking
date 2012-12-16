@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -53,6 +54,7 @@ import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetCurrency
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServicePayAuthorizationFaultFaultFaultMessage;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServicePayDomainFaultFaultFaultMessage;
 import by.bsuir.banking.proxy.internetbanking.LegalPerson;
+import by.bsuir.banking.validator.PaymentValidator;
 
 /**
  * Controller for payments
@@ -68,6 +70,8 @@ public class PaymentController extends EntityController {
 	private static final String VIEW_NAME = "payment-pay";
 	private static final String VIEW_NAME_CHECK = "payment-check";
 	private static IInternetBankingService service;
+	@Autowired
+	private PaymentValidator paymentValidator;
 
 	public PaymentController() {
 		service = ServiceProvider.getInternetBankingService();
@@ -127,6 +131,7 @@ public class PaymentController extends EntityController {
 			RedirectAttributes attrs,
 			@ModelAttribute("cardSelect") List<CardSelectInfo> cardSelect,
 			Model model) throws IOException {
+		paymentValidator.validate(payment, result);
 		if (result.hasErrors()) {
 			model.addAttribute("form-error", "На форме есть ошибки");
 			return VIEW_NAME;

@@ -37,7 +37,11 @@
 			<div class="controls">
 				<form:input path="dateOfExpiry" id="inputDateOfExpiry"
 					placeholder="Date of expiry (dd/mm/yyyy)" />
-				<form:errors class="help-inline" path="dateOfExpiry" />
+				<form:errors class="help-inline" path="dateOfExpiry">
+						<c:forEach items="${messages}" var="message" begin="1">
+							<span>${message}</span>
+						</c:forEach>
+					</form:errors>
 			</div>
 		</div>
 		<div class="control-group">
@@ -47,7 +51,11 @@
 			<div class="controls">
 				<form:input path="dateOfIssue" id="inputDateOfIssue"
 					placeholder="Date of issue (mm/dd/yyyy)" />
-				<form:errors class="help-inline" path="dateOfIssue" />
+				<form:errors class="help-inline" path="dateOfIssue">
+						<c:forEach items="${messages}" var="message" begin="1">
+							<span>${message}</span>
+						</c:forEach>
+					</form:errors>
 			</div>
 		</div>
 		<div class="control-group">

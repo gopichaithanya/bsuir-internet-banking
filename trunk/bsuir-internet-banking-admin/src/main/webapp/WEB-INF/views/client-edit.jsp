@@ -82,6 +82,16 @@
 							<form:errors class="help-inline" path="phoneNumber" />
 						</div>
 					</div>
+					<div class="control-group">
+						<form:label class="control-label" path="phoneNumber"> 
+						Email address 
+					</form:label>
+						<div class="controls">
+							<form:input path="email" id="inputEmailAddress"
+								placeholder="Email address" />
+							<form:errors class="help-inline" path="email" />
+						</div>
+					</div>
 				</div>
 				<div class="span6">
 					<div class="control-group">
