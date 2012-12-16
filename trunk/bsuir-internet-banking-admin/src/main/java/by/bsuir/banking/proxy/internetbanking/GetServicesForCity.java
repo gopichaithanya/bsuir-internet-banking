@@ -19,9 +19,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="cardId" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
- *         &lt;element name="count" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
- *         &lt;element name="secretWord" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="cityId" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element name="securityToken" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
@@ -33,91 +31,38 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "cardId",
-    "count",
-    "secretWord",
+    "cityId",
     "securityToken"
 })
-@XmlRootElement(name = "SetOperationLimit")
-public class SetOperationLimit {
+@XmlRootElement(name = "GetServicesForCity")
+public class GetServicesForCity {
 
-    protected Integer cardId;
-    protected Integer count;
-    @XmlElementRef(name = "secretWord", namespace = "http://tempuri.org/", type = JAXBElement.class)
-    protected JAXBElement<String> secretWord;
+    protected Integer cityId;
     @XmlElementRef(name = "securityToken", namespace = "http://tempuri.org/", type = JAXBElement.class)
     protected JAXBElement<String> securityToken;
 
     /**
-     * Gets the value of the cardId property.
+     * Gets the value of the cityId property.
      * 
      * @return
      *     possible object is
      *     {@link Integer }
      *     
      */
-    public Integer getCardId() {
-        return cardId;
+    public Integer getCityId() {
+        return cityId;
     }
 
     /**
-     * Sets the value of the cardId property.
+     * Sets the value of the cityId property.
      * 
      * @param value
      *     allowed object is
      *     {@link Integer }
      *     
      */
-    public void setCardId(Integer value) {
-        this.cardId = value;
-    }
-
-    /**
-     * Gets the value of the count property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Integer }
-     *     
-     */
-    public Integer getCount() {
-        return count;
-    }
-
-    /**
-     * Sets the value of the count property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Integer }
-     *     
-     */
-    public void setCount(Integer value) {
-        this.count = value;
-    }
-
-    /**
-     * Gets the value of the secretWord property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link JAXBElement }{@code <}{@link String }{@code >}
-     *     
-     */
-    public JAXBElement<String> getSecretWord() {
-        return secretWord;
-    }
-
-    /**
-     * Sets the value of the secretWord property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link String }{@code >}
-     *     
-     */
-    public void setSecretWord(JAXBElement<String> value) {
-        this.secretWord = ((JAXBElement<String> ) value);
+    public void setCityId(Integer value) {
+        this.cityId = value;
     }
 
     /**

@@ -28,6 +28,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="DateTime" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *         &lt;element name="Id" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element name="Information" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="IsSuccessful" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="LegalAccount" type="{http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model}LegalAccount" minOccurs="0"/>
  *         &lt;element name="LegalAccountId" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element name="Money" type="{http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model}Money" minOccurs="0"/>
@@ -47,6 +48,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "dateTime",
     "id",
     "information",
+    "isSuccessful",
     "legalAccount",
     "legalAccountId",
     "money"
@@ -66,6 +68,8 @@ public class Payment {
     protected Integer id;
     @XmlElementRef(name = "Information", namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", type = JAXBElement.class)
     protected JAXBElement<String> information;
+    @XmlElement(name = "IsSuccessful")
+    protected Boolean isSuccessful;
     @XmlElementRef(name = "LegalAccount", namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", type = JAXBElement.class)
     protected JAXBElement<LegalAccount> legalAccount;
     @XmlElement(name = "LegalAccountId")
@@ -215,6 +219,30 @@ public class Payment {
      */
     public void setInformation(JAXBElement<String> value) {
         this.information = ((JAXBElement<String> ) value);
+    }
+
+    /**
+     * Gets the value of the isSuccessful property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean isIsSuccessful() {
+        return isSuccessful;
+    }
+
+    /**
+     * Sets the value of the isSuccessful property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setIsSuccessful(Boolean value) {
+        this.isSuccessful = value;
     }
 
     /**

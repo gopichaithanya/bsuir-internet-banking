@@ -1,9 +1,12 @@
 package by.bsuir.banking.admin.utils;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ArrayBlockingQueue;
 
+import by.bsuir.banking.domain.LegalPersonWrapper;
 import by.bsuir.banking.domain.PaymentInfo;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingService;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetAllLegalPersonsAuthorizationFaultFaultFaultMessage;
@@ -15,6 +18,7 @@ public class PaymentUtil {
 	private static IInternetBankingService service = ServiceProvider.getInternetBankingService();
 	private static List<LegalPerson> persons;
 	private static Map<Integer, String> categoryLabels;
+	private static List<LegalPersonWrapper> allLegalPersons;
 	
 	private static List<LegalPerson> getPersons(String securityToken) throws IInternetBankingServiceGetAllLegalPersonsAuthorizationFaultFaultFaultMessage, IInternetBankingServiceGetAllLegalPersonsDomainFaultFaultFaultMessage{
 		if(persons == null){
@@ -70,10 +74,28 @@ public class PaymentUtil {
 	}
 
 	public static String formInformation(PaymentInfo payment) {
-
-
-		return "Info";
+		String info = payment.getInfoLabel() + ":" + payment.getInfoString(); 
+		return info;
 	}
 	 
+	public static List<LegalPersonWrapper> getAllLegalPersons(String securityToken) throws IInternetBankingServiceGetAllLegalPersonsAuthorizationFaultFaultFaultMessage, IInternetBankingServiceGetAllLegalPersonsDomainFaultFaultFaultMessage{
+		if(allLegalPersons == null){
+			allLegalPersons = new ArrayList<LegalPersonWrapper>();
+			for(LegalPerson person:service.getAllLegalPersons(securityToken).getLegalPerson()){
+				allLegalPersons.add(new LegalPersonWrapper(person));
+			}
+			
+		}
+		return allLegalPersons;
+	}
+	
+	public static LegalPersonWrapper getLegalPersonByAccountId(Integer id, String securityToken) throws IInternetBankingServiceGetAllLegalPersonsAuthorizationFaultFaultFaultMessage, IInternetBankingServiceGetAllLegalPersonsDomainFaultFaultFaultMessage{
+		for(LegalPersonWrapper person:getAllLegalPersons(securityToken)){
+			if(person.getAccount().getId() == id){
+				return person;
+			}
+		}
+		return null;
+	}
 
 }

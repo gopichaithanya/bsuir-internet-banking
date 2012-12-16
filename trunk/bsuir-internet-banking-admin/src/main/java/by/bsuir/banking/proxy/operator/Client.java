@@ -23,6 +23,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *       &lt;sequence>
  *         &lt;element name="Adress" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="BirthdayDate" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
+ *         &lt;element name="Email" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="FirstName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="Id" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element name="LastName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
@@ -44,6 +45,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 @XmlType(name = "Client", namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", propOrder = {
     "adress",
     "birthdayDate",
+    "email",
     "firstName",
     "id",
     "lastName",
@@ -61,6 +63,8 @@ public class Client {
     @XmlElement(name = "BirthdayDate")
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar birthdayDate;
+    @XmlElementRef(name = "Email", namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", type = JAXBElement.class)
+    protected JAXBElement<String> email;
     @XmlElementRef(name = "FirstName", namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", type = JAXBElement.class)
     protected JAXBElement<String> firstName;
     @XmlElement(name = "Id")
@@ -126,6 +130,30 @@ public class Client {
      */
     public void setBirthdayDate(XMLGregorianCalendar value) {
         this.birthdayDate = value;
+    }
+
+    /**
+     * Gets the value of the email property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
+     *     
+     */
+    public JAXBElement<String> getEmail() {
+        return email;
+    }
+
+    /**
+     * Sets the value of the email property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
+     *     
+     */
+    public void setEmail(JAXBElement<String> value) {
+        this.email = ((JAXBElement<String> ) value);
     }
 
     /**

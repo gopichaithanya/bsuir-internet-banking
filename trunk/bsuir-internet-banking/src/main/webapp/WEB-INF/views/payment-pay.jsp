@@ -65,7 +65,7 @@
 					<div class="control-group">
 						<div class="controls">
 							<a href="<c:url value='/payment/list'/>" class="btn btn-danger">Отменить</a>
-							<button type="submit" class="btn btn-success">Дальше</button>
+							<input type="submit" class="btn btn-success" value="Дальше"/>
 						</div>
 					</div>
 

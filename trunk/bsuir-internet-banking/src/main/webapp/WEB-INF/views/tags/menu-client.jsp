@@ -37,7 +37,7 @@
 		<ul id="menu4" class="accordion-body collapse unstyled">
 			<div class="accordion-inner">
 				<li><a href="<c:url value="#"/>">Автоплатежи</a></li>
-				<li><a href="<c:url value="#"/>">Сохраненные платежи</a></li>
+				<li><a href="<c:url value="/payment/saved/list"/>">Сохраненные платежи</a></li>
 				<li><a href="<c:url value="/payment/list"/>">Провести платеж</a></li>
 			</div>
 		</ul>
