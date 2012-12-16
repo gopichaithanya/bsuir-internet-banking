@@ -29,8 +29,8 @@ public interface IOperatorService {
      * @param clientId
      * @return
      *     returns by.bsuir.banking.proxy.operator.Client
-     * @throws IOperatorServiceGetClientAuthorizationFaultFaultFaultMessage
      * @throws IOperatorServiceGetClientDomainFaultFaultFaultMessage
+     * @throws IOperatorServiceGetClientAuthorizationFaultFaultFaultMessage
      */
     @WebMethod(operationName = "GetClient", action = "http://tempuri.org/IOperatorService/GetClient")
     @WebResult(name = "GetClientResult", targetNamespace = "http://tempuri.org/")
@@ -177,8 +177,8 @@ public interface IOperatorService {
      * @param number
      * @return
      *     returns by.bsuir.banking.proxy.operator.Client
-     * @throws IOperatorServiceGetClientByPassportDataAuthorizationFaultFaultFaultMessage
      * @throws IOperatorServiceGetClientByPassportDataDomainFaultFaultFaultMessage
+     * @throws IOperatorServiceGetClientByPassportDataAuthorizationFaultFaultFaultMessage
      */
     @WebMethod(operationName = "GetClientByPassportData", action = "http://tempuri.org/IOperatorService/GetClientByPassportData")
     @WebResult(name = "GetClientByPassportDataResult", targetNamespace = "http://tempuri.org/")

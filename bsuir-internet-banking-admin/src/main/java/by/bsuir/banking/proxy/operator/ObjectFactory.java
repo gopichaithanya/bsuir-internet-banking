@@ -54,66 +54,35 @@ public class ObjectFactory {
     private final static QName _String_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "string");
     private final static QName _UnsignedLong_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "unsignedLong");
     private final static QName _DomainFault_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.Services.Interfaces.FaultContracts", "DomainFault");
-    private final static QName _AuthorizationFaultMessage_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.Services.Interfaces.FaultContracts", "Message");
-    private final static QName _GetClientByPassportDataSecurityToken_QNAME = new QName("http://tempuri.org/", "securityToken");
-    private final static QName _GetClientByPassportDataSeria_QNAME = new QName("http://tempuri.org/", "seria");
-    private final static QName _GetClientByPassportDataNumber_QNAME = new QName("http://tempuri.org/", "number");
-    private final static QName _CreateClientClient_QNAME = new QName("http://tempuri.org/", "client");
+    private final static QName _GetPageofClientsSecurityToken_QNAME = new QName("http://tempuri.org/", "securityToken");
     private final static QName _PassportNumber_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", "Number");
     private final static QName _PassportAuthority_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", "Authority");
     private final static QName _PassportSeria_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", "Seria");
-    private final static QName _GetClientsByNameResponseGetClientsByNameResult_QNAME = new QName("http://tempuri.org/", "GetClientsByNameResult");
+    private final static QName _CreateClientClient_QNAME = new QName("http://tempuri.org/", "client");
+    private final static QName _AuthorizationFaultMessage_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.Services.Interfaces.FaultContracts", "Message");
     private final static QName _GetClientResponseGetClientResult_QNAME = new QName("http://tempuri.org/", "GetClientResult");
+    private final static QName _GetClientsByNameLastName_QNAME = new QName("http://tempuri.org/", "lastName");
+    private final static QName _GetClientsByNameMiddleName_QNAME = new QName("http://tempuri.org/", "middleName");
+    private final static QName _GetClientsByNameFirstName_QNAME = new QName("http://tempuri.org/", "firstName");
+    private final static QName _GetClientsByNameResponseGetClientsByNameResult_QNAME = new QName("http://tempuri.org/", "GetClientsByNameResult");
+    private final static QName _GetClientByPassportDataSeria_QNAME = new QName("http://tempuri.org/", "seria");
+    private final static QName _GetClientByPassportDataNumber_QNAME = new QName("http://tempuri.org/", "number");
     private final static QName _ClientMiddleName_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", "MiddleName");
     private final static QName _ClientLogin_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", "Login");
     private final static QName _ClientPassword_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", "Password");
     private final static QName _ClientAdress_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", "Adress");
+    private final static QName _ClientEmail_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", "Email");
     private final static QName _ClientPhoneNumber_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", "PhoneNumber");
     private final static QName _ClientFirstName_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", "FirstName");
     private final static QName _ClientLastName_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", "LastName");
     private final static QName _GetClientByPassportDataResponseGetClientByPassportDataResult_QNAME = new QName("http://tempuri.org/", "GetClientByPassportDataResult");
     private final static QName _GetPageofClientsResponseGetPageofClientsResult_QNAME = new QName("http://tempuri.org/", "GetPageofClientsResult");
-    private final static QName _GetClientsByNameLastName_QNAME = new QName("http://tempuri.org/", "lastName");
-    private final static QName _GetClientsByNameMiddleName_QNAME = new QName("http://tempuri.org/", "middleName");
-    private final static QName _GetClientsByNameFirstName_QNAME = new QName("http://tempuri.org/", "firstName");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: by.bsuir.banking.proxy.operator
      * 
      */
     public ObjectFactory() {
-    }
-
-    /**
-     * Create an instance of {@link AuthorizationFault }
-     * 
-     */
-    public AuthorizationFault createAuthorizationFault() {
-        return new AuthorizationFault();
-    }
-
-    /**
-     * Create an instance of {@link GetClientsCountResponse }
-     * 
-     */
-    public GetClientsCountResponse createGetClientsCountResponse() {
-        return new GetClientsCountResponse();
-    }
-
-    /**
-     * Create an instance of {@link GetClientByPassportData }
-     * 
-     */
-    public GetClientByPassportData createGetClientByPassportData() {
-        return new GetClientByPassportData();
-    }
-
-    /**
-     * Create an instance of {@link CreateClient }
-     * 
-     */
-    public CreateClient createCreateClient() {
-        return new CreateClient();
     }
 
     /**
@@ -133,35 +102,27 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetClient }
+     * Create an instance of {@link CreateClient }
      * 
      */
-    public GetClient createGetClient() {
-        return new GetClient();
+    public CreateClient createCreateClient() {
+        return new CreateClient();
     }
 
     /**
-     * Create an instance of {@link GetClientsByNameResponse }
+     * Create an instance of {@link CreateClientResponse }
      * 
      */
-    public GetClientsByNameResponse createGetClientsByNameResponse() {
-        return new GetClientsByNameResponse();
+    public CreateClientResponse createCreateClientResponse() {
+        return new CreateClientResponse();
     }
 
     /**
-     * Create an instance of {@link GetClientResponse }
+     * Create an instance of {@link ArrayOfClient }
      * 
      */
-    public GetClientResponse createGetClientResponse() {
-        return new GetClientResponse();
-    }
-
-    /**
-     * Create an instance of {@link Client }
-     * 
-     */
-    public Client createClient() {
-        return new Client();
+    public ArrayOfClient createArrayOfClient() {
+        return new ArrayOfClient();
     }
 
     /**
@@ -173,19 +134,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetClientByPassportDataResponse }
+     * Create an instance of {@link AuthorizationFault }
      * 
      */
-    public GetClientByPassportDataResponse createGetClientByPassportDataResponse() {
-        return new GetClientByPassportDataResponse();
+    public AuthorizationFault createAuthorizationFault() {
+        return new AuthorizationFault();
     }
 
     /**
-     * Create an instance of {@link GetClientsCount }
+     * Create an instance of {@link GetClientResponse }
      * 
      */
-    public GetClientsCount createGetClientsCount() {
-        return new GetClientsCount();
+    public GetClientResponse createGetClientResponse() {
+        return new GetClientResponse();
     }
 
     /**
@@ -197,11 +158,43 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetClient }
+     * 
+     */
+    public GetClient createGetClient() {
+        return new GetClient();
+    }
+
+    /**
+     * Create an instance of {@link GetClientsCount }
+     * 
+     */
+    public GetClientsCount createGetClientsCount() {
+        return new GetClientsCount();
+    }
+
+    /**
+     * Create an instance of {@link GetClientsByName }
+     * 
+     */
+    public GetClientsByName createGetClientsByName() {
+        return new GetClientsByName();
+    }
+
+    /**
      * Create an instance of {@link DeleteClient }
      * 
      */
     public DeleteClient createDeleteClient() {
         return new DeleteClient();
+    }
+
+    /**
+     * Create an instance of {@link GetClientsByNameResponse }
+     * 
+     */
+    public GetClientsByNameResponse createGetClientsByNameResponse() {
+        return new GetClientsByNameResponse();
     }
 
     /**
@@ -213,11 +206,27 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link CreateClientResponse }
+     * Create an instance of {@link GetClientByPassportData }
      * 
      */
-    public CreateClientResponse createCreateClientResponse() {
-        return new CreateClientResponse();
+    public GetClientByPassportData createGetClientByPassportData() {
+        return new GetClientByPassportData();
+    }
+
+    /**
+     * Create an instance of {@link GetClientByPassportDataResponse }
+     * 
+     */
+    public GetClientByPassportDataResponse createGetClientByPassportDataResponse() {
+        return new GetClientByPassportDataResponse();
+    }
+
+    /**
+     * Create an instance of {@link Client }
+     * 
+     */
+    public Client createClient() {
+        return new Client();
     }
 
     /**
@@ -237,19 +246,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ArrayOfClient }
+     * Create an instance of {@link GetClientsCountResponse }
      * 
      */
-    public ArrayOfClient createArrayOfClient() {
-        return new ArrayOfClient();
-    }
-
-    /**
-     * Create an instance of {@link GetClientsByName }
-     * 
-     */
-    public GetClientsByName createGetClientsByName() {
-        return new GetClientsByName();
+    public GetClientsCountResponse createGetClientsCountResponse() {
+        return new GetClientsCountResponse();
     }
 
     /**
@@ -490,63 +491,9 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.Services.Interfaces.FaultContracts", name = "Message", scope = AuthorizationFault.class)
-    public JAXBElement<String> createAuthorizationFaultMessage(String value) {
-        return new JAXBElement<String>(_AuthorizationFaultMessage_QNAME, String.class, AuthorizationFault.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = GetClientByPassportData.class)
-    public JAXBElement<String> createGetClientByPassportDataSecurityToken(String value) {
-        return new JAXBElement<String>(_GetClientByPassportDataSecurityToken_QNAME, String.class, GetClientByPassportData.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "seria", scope = GetClientByPassportData.class)
-    public JAXBElement<String> createGetClientByPassportDataSeria(String value) {
-        return new JAXBElement<String>(_GetClientByPassportDataSeria_QNAME, String.class, GetClientByPassportData.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "number", scope = GetClientByPassportData.class)
-    public JAXBElement<String> createGetClientByPassportDataNumber(String value) {
-        return new JAXBElement<String>(_GetClientByPassportDataNumber_QNAME, String.class, GetClientByPassportData.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = CreateClient.class)
-    public JAXBElement<String> createCreateClientSecurityToken(String value) {
-        return new JAXBElement<String>(_GetClientByPassportDataSecurityToken_QNAME, String.class, CreateClient.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Client }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "client", scope = CreateClient.class)
-    public JAXBElement<Client> createCreateClientClient(Client value) {
-        return new JAXBElement<Client>(_CreateClientClient_QNAME, Client.class, CreateClient.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
     @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = GetPageofClients.class)
     public JAXBElement<String> createGetPageofClientsSecurityToken(String value) {
-        return new JAXBElement<String>(_GetClientByPassportDataSecurityToken_QNAME, String.class, GetPageofClients.class, value);
+        return new JAXBElement<String>(_GetPageofClientsSecurityToken_QNAME, String.class, GetPageofClients.class, value);
     }
 
     /**
@@ -580,9 +527,99 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = CreateClient.class)
+    public JAXBElement<String> createCreateClientSecurityToken(String value) {
+        return new JAXBElement<String>(_GetPageofClientsSecurityToken_QNAME, String.class, CreateClient.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Client }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "client", scope = CreateClient.class)
+    public JAXBElement<Client> createCreateClientClient(Client value) {
+        return new JAXBElement<Client>(_CreateClientClient_QNAME, Client.class, CreateClient.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.Services.Interfaces.FaultContracts", name = "Message", scope = AuthorizationFault.class)
+    public JAXBElement<String> createAuthorizationFaultMessage(String value) {
+        return new JAXBElement<String>(_AuthorizationFaultMessage_QNAME, String.class, AuthorizationFault.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Client }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "GetClientResult", scope = GetClientResponse.class)
+    public JAXBElement<Client> createGetClientResponseGetClientResult(Client value) {
+        return new JAXBElement<Client>(_GetClientResponseGetClientResult_QNAME, Client.class, GetClientResponse.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.Services.Interfaces.FaultContracts", name = "Message", scope = DomainFault.class)
+    public JAXBElement<String> createDomainFaultMessage(String value) {
+        return new JAXBElement<String>(_AuthorizationFaultMessage_QNAME, String.class, DomainFault.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
     @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = GetClient.class)
     public JAXBElement<String> createGetClientSecurityToken(String value) {
-        return new JAXBElement<String>(_GetClientByPassportDataSecurityToken_QNAME, String.class, GetClient.class, value);
+        return new JAXBElement<String>(_GetPageofClientsSecurityToken_QNAME, String.class, GetClient.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = GetClientsCount.class)
+    public JAXBElement<String> createGetClientsCountSecurityToken(String value) {
+        return new JAXBElement<String>(_GetPageofClientsSecurityToken_QNAME, String.class, GetClientsCount.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = GetClientsByName.class)
+    public JAXBElement<String> createGetClientsByNameSecurityToken(String value) {
+        return new JAXBElement<String>(_GetPageofClientsSecurityToken_QNAME, String.class, GetClientsByName.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "lastName", scope = GetClientsByName.class)
+    public JAXBElement<String> createGetClientsByNameLastName(String value) {
+        return new JAXBElement<String>(_GetClientsByNameLastName_QNAME, String.class, GetClientsByName.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "middleName", scope = GetClientsByName.class)
+    public JAXBElement<String> createGetClientsByNameMiddleName(String value) {
+        return new JAXBElement<String>(_GetClientsByNameMiddleName_QNAME, String.class, GetClientsByName.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "firstName", scope = GetClientsByName.class)
+    public JAXBElement<String> createGetClientsByNameFirstName(String value) {
+        return new JAXBElement<String>(_GetClientsByNameFirstName_QNAME, String.class, GetClientsByName.class, value);
     }
 
     /**
@@ -595,12 +632,39 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Client }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "GetClientResult", scope = GetClientResponse.class)
-    public JAXBElement<Client> createGetClientResponseGetClientResult(Client value) {
-        return new JAXBElement<Client>(_GetClientResponseGetClientResult_QNAME, Client.class, GetClientResponse.class, value);
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = DeleteClient.class)
+    public JAXBElement<String> createDeleteClientSecurityToken(String value) {
+        return new JAXBElement<String>(_GetPageofClientsSecurityToken_QNAME, String.class, DeleteClient.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = GetClientByPassportData.class)
+    public JAXBElement<String> createGetClientByPassportDataSecurityToken(String value) {
+        return new JAXBElement<String>(_GetPageofClientsSecurityToken_QNAME, String.class, GetClientByPassportData.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "seria", scope = GetClientByPassportData.class)
+    public JAXBElement<String> createGetClientByPassportDataSeria(String value) {
+        return new JAXBElement<String>(_GetClientByPassportDataSeria_QNAME, String.class, GetClientByPassportData.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "number", scope = GetClientByPassportData.class)
+    public JAXBElement<String> createGetClientByPassportDataNumber(String value) {
+        return new JAXBElement<String>(_GetClientByPassportDataNumber_QNAME, String.class, GetClientByPassportData.class, value);
     }
 
     /**
@@ -652,6 +716,15 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", name = "Email", scope = Client.class)
+    public JAXBElement<String> createClientEmail(String value) {
+        return new JAXBElement<String>(_ClientEmail_QNAME, String.class, Client.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
     @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", name = "PhoneNumber", scope = Client.class)
     public JAXBElement<String> createClientPhoneNumber(String value) {
         return new JAXBElement<String>(_ClientPhoneNumber_QNAME, String.class, Client.class, value);
@@ -676,39 +749,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = GetClientsCount.class)
-    public JAXBElement<String> createGetClientsCountSecurityToken(String value) {
-        return new JAXBElement<String>(_GetClientByPassportDataSecurityToken_QNAME, String.class, GetClientsCount.class, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Client }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://tempuri.org/", name = "GetClientByPassportDataResult", scope = GetClientByPassportDataResponse.class)
     public JAXBElement<Client> createGetClientByPassportDataResponseGetClientByPassportDataResult(Client value) {
         return new JAXBElement<Client>(_GetClientByPassportDataResponseGetClientByPassportDataResult_QNAME, Client.class, GetClientByPassportDataResponse.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.Services.Interfaces.FaultContracts", name = "Message", scope = DomainFault.class)
-    public JAXBElement<String> createDomainFaultMessage(String value) {
-        return new JAXBElement<String>(_AuthorizationFaultMessage_QNAME, String.class, DomainFault.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = DeleteClient.class)
-    public JAXBElement<String> createDeleteClientSecurityToken(String value) {
-        return new JAXBElement<String>(_GetClientByPassportDataSecurityToken_QNAME, String.class, DeleteClient.class, value);
     }
 
     /**
@@ -726,7 +772,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = UpdateClient.class)
     public JAXBElement<String> createUpdateClientSecurityToken(String value) {
-        return new JAXBElement<String>(_GetClientByPassportDataSecurityToken_QNAME, String.class, UpdateClient.class, value);
+        return new JAXBElement<String>(_GetPageofClientsSecurityToken_QNAME, String.class, UpdateClient.class, value);
     }
 
     /**
@@ -736,42 +782,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://tempuri.org/", name = "client", scope = UpdateClient.class)
     public JAXBElement<Client> createUpdateClientClient(Client value) {
         return new JAXBElement<Client>(_CreateClientClient_QNAME, Client.class, UpdateClient.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = GetClientsByName.class)
-    public JAXBElement<String> createGetClientsByNameSecurityToken(String value) {
-        return new JAXBElement<String>(_GetClientByPassportDataSecurityToken_QNAME, String.class, GetClientsByName.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "lastName", scope = GetClientsByName.class)
-    public JAXBElement<String> createGetClientsByNameLastName(String value) {
-        return new JAXBElement<String>(_GetClientsByNameLastName_QNAME, String.class, GetClientsByName.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "middleName", scope = GetClientsByName.class)
-    public JAXBElement<String> createGetClientsByNameMiddleName(String value) {
-        return new JAXBElement<String>(_GetClientsByNameMiddleName_QNAME, String.class, GetClientsByName.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "firstName", scope = GetClientsByName.class)
-    public JAXBElement<String> createGetClientsByNameFirstName(String value) {
-        return new JAXBElement<String>(_GetClientsByNameFirstName_QNAME, String.class, GetClientsByName.class, value);
     }
 
 }

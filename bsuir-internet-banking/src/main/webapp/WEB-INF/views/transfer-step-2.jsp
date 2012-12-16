@@ -11,11 +11,11 @@
 <div id="content">
 	<div id="breadcumbs" class="span12">
 		<ul class="breadcrumb">
-			<li><a href="<c:url value='/main' />">Home</a> <span
+			<li><a href="<c:url value='/main' />">Главная</a> <span
 				class="divider">/</span></li>
-			<li><a href="<c:url value='/transfer' />">Transfer</a><span
+			<li><a href="<c:url value='/transfer' />">Перевод</a><span
 				class="divider">/</span></li>
-			<li class="active">Step 1</li>
+			<li class="active">Сумма</li>
 		</ul>
 	</div>
 	<br>
@@ -28,7 +28,7 @@
 				<div class="clearfix alert alert-error ">У Вас одна карта. Вы не можете провести операцию перевода.</div>
 			</c:when>
 			<c:otherwise>
-				<h4>Enter amount</h4>
+				<h4>Введите сумму</h4>
 				<form:form id="form" method="post" class="form span8"
 					modelAttribute="transfer" >
 					<s:bind path="*">
@@ -68,8 +68,8 @@
 					</div>
 					<div class="control-group">
 						<div class="controls">
-							<a href="<c:url value='/main' />" class="btn">Cancel</a>
-							<button type="submit" class="btn">Submit</button>
+							<a href="<c:url value='/main' />" class="btn">Отмена</a>
+							<button type="submit" class="btn">Принять</button>
 						</div>
 					</div>
 

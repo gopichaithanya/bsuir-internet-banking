@@ -11,8 +11,8 @@
 <div id="content">
 	<div id="breadcumbs" class="span12">
 		<ul class="breadcrumb">
-			<li><a href="<c:url value='/main' />">Home</a> <span class="divider">/</span></li>
-			<li class="active">View Cards</li>
+			<li><a href="<c:url value='/main' />">Главная</a> <span class="divider">/</span></li>
+			<li class="active">Карт-счета</li>
 			
 		</ul>
 	</div>
@@ -23,16 +23,16 @@
 				<div class="clearfix alert alert-error ">У Вас нет карт. Свяжитесь с оператором банка.</div>
 			</c:when>
 			<c:otherwise>
-				<h4>My cards</h4>
+				<h4>Мои карт-счета</h4>
 				<table class="table table-hover">
 					<tr>
 						<th>#</th>
-						<th>Card Number</th>
-						<th>Card Type</th>
-						<th>Ballance</th>
-						<th>Currency</th>
-						<th>Expiration Date</th>
-						<th>Status</th>
+						<th>Номер карты</th>
+						<th>Тип карты</th>
+						<th>Баланс</th>
+						<th>Валюта</th>
+						<th>Срок действия</th>
+						<th>Статус</th>
 					</tr>
 					<tr>
 						<c:forEach begin="0" end="${fn:length(cardList)-1}"

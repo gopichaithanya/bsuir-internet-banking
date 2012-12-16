@@ -1,9 +1,10 @@
 
 package by.bsuir.banking.proxy.internetbanking;
 
+import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -18,7 +19,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="PayResult" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element name="securityToken" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -29,36 +30,36 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "payResult"
+    "securityToken"
 })
-@XmlRootElement(name = "PayResponse")
-public class PayResponse {
+@XmlRootElement(name = "GetAllRegions")
+public class GetAllRegions {
 
-    @XmlElement(name = "PayResult")
-    protected Boolean payResult;
+    @XmlElementRef(name = "securityToken", namespace = "http://tempuri.org/", type = JAXBElement.class)
+    protected JAXBElement<String> securityToken;
 
     /**
-     * Gets the value of the payResult property.
+     * Gets the value of the securityToken property.
      * 
      * @return
      *     possible object is
-     *     {@link Boolean }
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
      *     
      */
-    public Boolean isPayResult() {
-        return payResult;
+    public JAXBElement<String> getSecurityToken() {
+        return securityToken;
     }
 
     /**
-     * Sets the value of the payResult property.
+     * Sets the value of the securityToken property.
      * 
      * @param value
      *     allowed object is
-     *     {@link Boolean }
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
      *     
      */
-    public void setPayResult(Boolean value) {
-        this.payResult = value;
+    public void setSecurityToken(JAXBElement<String> value) {
+        this.securityToken = ((JAXBElement<String> ) value);
     }
 
 }

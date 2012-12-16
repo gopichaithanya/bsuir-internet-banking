@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="accountNumber" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="cardNumber" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="receiverLegalAccountNumber" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="amount" type="{http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model}Money" minOccurs="0"/>
  *         &lt;element name="information" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
@@ -34,7 +34,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "accountNumber",
+    "cardNumber",
     "receiverLegalAccountNumber",
     "amount",
     "information",
@@ -43,8 +43,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement(name = "Pay")
 public class Pay {
 
-    @XmlElementRef(name = "accountNumber", namespace = "http://tempuri.org/", type = JAXBElement.class)
-    protected JAXBElement<String> accountNumber;
+    @XmlElementRef(name = "cardNumber", namespace = "http://tempuri.org/", type = JAXBElement.class)
+    protected JAXBElement<String> cardNumber;
     @XmlElementRef(name = "receiverLegalAccountNumber", namespace = "http://tempuri.org/", type = JAXBElement.class)
     protected JAXBElement<String> receiverLegalAccountNumber;
     @XmlElementRef(name = "amount", namespace = "http://tempuri.org/", type = JAXBElement.class)
@@ -55,27 +55,27 @@ public class Pay {
     protected JAXBElement<String> securityToken;
 
     /**
-     * Gets the value of the accountNumber property.
+     * Gets the value of the cardNumber property.
      * 
      * @return
      *     possible object is
      *     {@link JAXBElement }{@code <}{@link String }{@code >}
      *     
      */
-    public JAXBElement<String> getAccountNumber() {
-        return accountNumber;
+    public JAXBElement<String> getCardNumber() {
+        return cardNumber;
     }
 
     /**
-     * Sets the value of the accountNumber property.
+     * Sets the value of the cardNumber property.
      * 
      * @param value
      *     allowed object is
      *     {@link JAXBElement }{@code <}{@link String }{@code >}
      *     
      */
-    public void setAccountNumber(JAXBElement<String> value) {
-        this.accountNumber = ((JAXBElement<String> ) value);
+    public void setCardNumber(JAXBElement<String> value) {
+        this.cardNumber = ((JAXBElement<String> ) value);
     }
 
     /**

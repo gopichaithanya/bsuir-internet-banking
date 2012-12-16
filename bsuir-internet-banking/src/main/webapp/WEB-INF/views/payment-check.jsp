@@ -20,10 +20,13 @@
 	</div>
 	<br>
 	<div id="ratesInfo" class="span8">
-		<h4>Проверить введенные данные: ${payment.legalPerson.category.name.value} - ${payment.legalPerson.name}</h4>
+		<h4>Проверить введенные данные:
+			${payment.legalPerson.category.name.value} -
+			${payment.legalPerson.name}</h4>
 		<c:choose>
 			<c:when test="${fn:length(cardSelect) == 0}">
-				<div class="clearfix alert alert-error ">У Вас нет карт. Вы не можете провести платеж. Свяжитесь с оператором банка.</div>
+				<div class="clearfix alert alert-error ">У Вас нет карт. Вы не
+					можете провести платеж. Свяжитесь с оператором банка.</div>
 			</c:when>
 			<c:otherwise>
 				<form:form id="form" method="post" class="form span10"
@@ -33,44 +36,58 @@
 							<div id="message" class="alert alert-error">${status.errorMessage}.</div>
 						</c:if>
 					</s:bind>
-					
+
 					<div class="control-group">
-						<form:label class="control-label" path="сardNumber"> 
-						<strong>С карты:</strong> <div class="controls"> ${card} </div>
+						<form:label class="control-label" path="сardNumber">
+							<strong>С карты:</strong>
+							<div class="controls">${card}</div>
 						</form:label>
 					</div>
 					<div class="control-group">
-						<form:label class="control-label" path="infoString"> 
-						<strong>${payment.infoLabel}</strong> <form:errors path="infoString" />
+						<form:label class="control-label" path="infoString">
+							<strong>${payment.infoLabel}</strong>
+							<form:errors path="infoString" />
 						</form:label>
 						<div class="controls">
-							<form:input readonly="true" required="required" path="infoString"  />
-							
+							<form:input readonly="true" required="required" path="infoString" />
+
 						</div>
 					</div>
 					<div class="control-group">
-						<form:label class="control-label" path="clientName"> 
-						<strong>Клиент</strong> <form:errors path="clientName" />
+						<form:label class="control-label" path="clientName">
+							<strong>Клиент</strong>
+							<form:errors path="clientName" />
 						</form:label>
 						<div class="controls">
-							<form:input readonly="true" class="input-xlarge" required="required" path="clientName" />
-							
+							<form:input readonly="true" class="input-xlarge"
+								required="required" path="clientName" />
+
 						</div>
 					</div>
 					<div class="control-group">
-						<form:label class="control-label" path="amount.amount"> 
-						<strong>Сумма</strong> <form:errors path="amount.amount" />
+						<form:label class="control-label" path="amount.amount">
+							<strong>Сумма</strong>
+							<form:errors path="amount.amount" />
 						</form:label>
 						<div class="controls">
-							<form:input readonly="true" required="required" path="amount.amount" />
-							
+							<form:input readonly="true" required="required"
+								path="amount.amount" />
+							<span class="hepl-inline">(${curType})</span>
+
 						</div>
+					</div>
+					<div class="control-group">
+						<form:label class="checkbox" path="toSave"> <form:checkbox path="toSave" />
+							Сохранить платеж
+						</form:label>
+						
 					</div>
 					<div class="control-group">
 						<div class="controls">
 							<a href="<c:url value='/payment/list'/>" class="btn btn-danger">Отменить</a>
-							<a href="<c:url value='/payment/pay/${payment.legalPerson.id}'/>" class="btn btn-warning">Назад</a>
-							<button type="submit" class="btn btn-success">Принять</button>
+							<a href="<c:url value='/payment/pay/${payment.legalPerson.id}'/>"
+								class="btn btn-warning">Назад</a>
+							<button type="submit" class="btn btn-success" >Принять</button>
 						</div>
 					</div>
 

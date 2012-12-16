@@ -18,7 +18,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="PayResult" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element name="PayERIPResult" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -29,36 +29,36 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "payResult"
+    "payERIPResult"
 })
-@XmlRootElement(name = "PayResponse")
-public class PayResponse {
+@XmlRootElement(name = "PayERIPResponse")
+public class PayERIPResponse {
 
-    @XmlElement(name = "PayResult")
-    protected Boolean payResult;
+    @XmlElement(name = "PayERIPResult")
+    protected Boolean payERIPResult;
 
     /**
-     * Gets the value of the payResult property.
+     * Gets the value of the payERIPResult property.
      * 
      * @return
      *     possible object is
      *     {@link Boolean }
      *     
      */
-    public Boolean isPayResult() {
-        return payResult;
+    public Boolean isPayERIPResult() {
+        return payERIPResult;
     }
 
     /**
-     * Sets the value of the payResult property.
+     * Sets the value of the payERIPResult property.
      * 
      * @param value
      *     allowed object is
      *     {@link Boolean }
      *     
      */
-    public void setPayResult(Boolean value) {
-        this.payResult = value;
+    public void setPayERIPResult(Boolean value) {
+        this.payERIPResult = value;
     }
 
 }
