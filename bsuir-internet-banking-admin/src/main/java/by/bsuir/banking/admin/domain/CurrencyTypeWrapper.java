@@ -1,7 +1,5 @@
 package by.bsuir.banking.admin.domain;
 
-import org.hibernate.validator.constraints.NotEmpty;
-
 import by.bsuir.banking.proxy.internetbanking.CurrencyType;
 import by.bsuir.banking.proxy.internetbanking.ObjectFactory;
 
@@ -22,7 +20,6 @@ public class CurrencyTypeWrapper {
 		return type;
 	}
 	
-	@NotEmpty
 	public String getName(){
 		return (type.getName() == null) ? null : type.getName().getValue();
 	}
@@ -31,7 +28,6 @@ public class CurrencyTypeWrapper {
 		type.setName(factory.createCurrencyTypeName(value));
 	}
 	
-	@NotEmpty
 	public String getShortName(){
 		return (type.getShortName() == null) ? null : type.getShortName().getValue();
 	}

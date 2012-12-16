@@ -18,5 +18,6 @@ public class MessageValidation {
 	public static final String WRONG_PHONE_NUMBER_FORMAT = "wrong format. must be (xxx)xxxxxxx";
 	public static final String WRONG_PASSPORT_NUMBER = "wrong format. must be only 7 numbers";
 	public static final String WRONG_PASSPORT_SERIA = "wrong format. must be only 2 letters";
+	public static final String WRONG_EMAIL_ADDRESS_FORMAT = "wrong format";
 
 }

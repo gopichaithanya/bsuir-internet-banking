@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -39,6 +40,7 @@ import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetBallance
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetCardsAuthorizationFaultFaultFaultMessage;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetCardsDomainFaultFaultFaultMessage;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetCurrencyTypesDomainFaultFaultFaultMessage;
+import by.bsuir.banking.validator.MoneyValidator;
 
 /**
  * Controller for transfer between client's cards
@@ -56,6 +58,8 @@ public class TransferMoneyController extends EntityController {
 	private static IInternetBankingService service;
 	private final static String VIEW_NAME_STEP_1 = "transfer-step-1";
 	private final static String VIEW_NAME_STEP_2 = "transfer-step-2";
+	@Autowired
+	MoneyValidator moneyValidator;
 
 	public TransferMoneyController() {
 		service = ServiceProvider.getInternetBankingService();
@@ -111,6 +115,7 @@ public class TransferMoneyController extends EntityController {
 			@ModelAttribute("cardSelect") List<CardSelectInfo> cardSelect, Model model, HttpSession session,
 			HttpServletRequest request, HttpServletResponse response,
 			RedirectAttributes attrs) throws IOException {
+		moneyValidator.validate(transfer.getAmount(), result);
 		if(result.hasErrors()){
 			model.addAttribute("form-error", "На форме есть ошибки");
 			return VIEW_NAME_STEP_1;

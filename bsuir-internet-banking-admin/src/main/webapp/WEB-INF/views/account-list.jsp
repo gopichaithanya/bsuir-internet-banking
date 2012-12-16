@@ -29,7 +29,7 @@
 						<th>#</th>
 						<th>Card Number</th>
 						<th>Card Type</th>
-						<th>Ballance</th>
+						<th>Balance</th>
 						<th>Currency</th>
 						<th>Expiration Date</th>
 						<th>Status</th>
@@ -46,7 +46,7 @@
 								<td>${accountlist[loop.index].cardType.name}</td>
 								<td>${accountlist[loop.index].amount}</td>
 								<td>${accountlist[loop.index].currencyType.shortName}</td>
-								<td><fmt:formatDate pattern="MM/dd/yyyy" value="${accountlist[loop.index].expirationDate}" /></td>
+								<td><fmt:formatDate pattern="dd/MM/yyyy" value="${accountlist[loop.index].expirationDate}" /></td>
 								<td>${accountlist[loop.index].status}</td>
 								<td>${accountlist[loop.index].secretWord}</td>
 								
@@ -59,7 +59,7 @@
 								<td>${accountlist[loop.index].cardType.name}</td>
 								<td>${accountlist[loop.index].amount}</td>
 								<td>${accountlist[loop.index].currencyType.shortName}</td>
-								<td><fmt:formatDate pattern="MM/dd/yyyy" value="${accountlist[loop.index].expirationDate}" /></td>
+								<td><fmt:formatDate pattern="dd/MM/yyyy" value="${accountlist[loop.index].expirationDate}" /></td>
 								<td>${accountlist[loop.index].status}</td>
 								<td>${accountlist[loop.index].secretWord}</td>
 							</tr>

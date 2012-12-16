@@ -1,6 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ page session="false"%>
 <c:if test="${!ajaxRequest}">
 	<html>
@@ -14,7 +15,7 @@
 				<c:if test="${status.error}">
 					<div id="message" class="alert alert-error">
 						<div>Form has errors</div>
-						
+
 					</div>
 
 				</c:if>
@@ -35,7 +36,17 @@
 									<div class="controls" style="width: 50px">
 										<form:input path="purchaseRates[${i}].rate"
 											id="inputPurchaseRate" style="width:50px" />
-											<form:errors  path="purchaseRates[${i}].rate" />
+										<form:errors class="help-inline"
+											path="purchaseRates[${i}].rate" />
+											<%--<c:forEach items="${messages}" var="message" begin="100" >
+											 <c:when test="${fn:startsWith(message,'Failed') == true}">
+												<span>privet</span>
+											</c:when>
+											<c:otherwise>
+												<span>${message}</span>
+											</c:otherwise>
+											</c:forEach>
+											</form:errors> --%>
 									</div>
 								</div>
 							</td>
@@ -44,7 +55,7 @@
 									<div class="controls" style="width: 50px">
 										<form:input path="sellRates[${i}].rate" id="inputSellRate"
 											style="width:50px" />
-										<form:errors  path="sellRates[${i}].rate" />	
+										<form:errors path="sellRates[${i}].rate" />
 									</div>
 								</div>
 							</td>

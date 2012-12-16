@@ -11,6 +11,7 @@ import java.util.Random;
 public class NumberGenerator {
 
 	private static String characters = "0123456789";
+	private static String firstCharacter = "123456789";
 	private static final String BANK_CODE = "739";
 	private static final String BANK_ID = "54855";
 	private static final String IND_NUMBER = "3012";
@@ -104,6 +105,6 @@ public class NumberGenerator {
 	}
 	
 	public static String generateCVV2(){
-		return generateString(rand, characters, 3);
+		return generateString(rand, firstCharacter, 1) + generateString(rand, characters, 2);
 	}
 }

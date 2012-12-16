@@ -59,7 +59,7 @@
 						</form:label>
 						<div class="controls">
 							<form:input required="required" path="amount.amount" />
-							
+							<form:errors path="amount.amount"/>
 						</div>
 					</div>
 					<div class="control-group">

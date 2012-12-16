@@ -84,6 +84,7 @@ public class ViewAccountController extends EntityController {
 		} catch (IInternetBankingServiceGetCardForAccountAuthorizationFaultFaultFaultMessage e) {
 			return "redirect:" +  MessageConstants.AUTH_FAILED_VIEW;
 		} catch (IInternetBankingServiceGetCardForAccountDomainFaultFaultFaultMessage e) {
+			
 			return "redirect:" + MessageConstants.ERROR_VIEW;
 		}
 		

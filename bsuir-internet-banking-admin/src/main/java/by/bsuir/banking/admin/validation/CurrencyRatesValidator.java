@@ -7,7 +7,6 @@ import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
 import by.bsuir.banking.admin.domain.CurrencyRatesWrapper;
-import by.bsuir.banking.admin.domain.CurrencyTypeWrapper;
 import by.bsuir.banking.admin.domain.PurchaseRateWrapper;
 import by.bsuir.banking.admin.domain.SellRateWrapper;
 

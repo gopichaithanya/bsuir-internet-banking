@@ -105,19 +105,18 @@ body {
 	<script type="text/javascript"
 		src="<c:url value="/resources/js/demo.js" />"></script>
 	<script type="text/javascript"
-		src="<c:url value="/resources/js/json2.js" />"></script>
-	<script type="text/javascript"
-		src="<c:url value="/resources/js/date.format.js" />"></script>
-		<script type="text/javascript"
-	src="<c:url value="/resources/js/bootstrap-datepicker.js" />"></script> --%>
+ --%>
 	<script type="text/javascript"
 	src="<c:url value="/resources/js/jquery-ui.js" />"></script>
+	
+		<script type="text/javascript" src="<c:url value="http://code.jquery.com/jquery-latest.js" />"></script>
+		<script type="text/javascript" src="<c:url value="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" />"></script> 
+		
 	<script>
 		$(function(){
-			//$('#inputBirthdayDate').datapicker( { date-format: "dd/mm/yy"  })
 			$('#inputBirthdayDate').datepicker( { dateFormat: "dd/mm/yy",
 				showOn: 'button',
-				buttonImage: "/resources/img/calendar.gif",
+				buttonImage: "images/calendar.gif",
 	            buttonImageOnly: true,
 				minDate: '-120Y',
 				maxDate: '-18Y',
@@ -139,8 +138,15 @@ body {
 				maxDate: '+0D',
 				changeMonth: true, 
 				changeYear: true});
+			
 
 		});
 	</script>
+	<script type="text/javascript">
+      $(document).ready(function() {
+      $("#form1").validate();
+      });
+    </script>
+	
 </body>
 </html>

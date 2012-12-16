@@ -3,11 +3,8 @@ package by.bsuir.banking.admin.domain;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-import javax.validation.constraints.NotNull;
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
-
-import org.hibernate.validator.constraints.NotEmpty;
 
 import by.bsuir.banking.proxy.operator.Client;
 import by.bsuir.banking.proxy.operator.ObjectFactory;
@@ -62,7 +59,6 @@ public class ClientWrapper {
 	 * Getting birthday
 	 * @return
 	 */
-	@NotNull
 	public Date getBirthdayDate(){
 		return (client.getBirthdayDate() == null) ? null : client.getBirthdayDate().toGregorianCalendar().getTime();
 	}
@@ -204,5 +200,19 @@ public class ClientWrapper {
 	 */
 	public void setPhoneNumber(String value){
 		client.setPhoneNumber(factory.createClientPhoneNumber(value));
+	}
+	
+	/**
+	 * Getting email address
+	 */
+	public String getEmail(){
+		return (client.getEmail() == null) ? null : client.getEmail().getValue();
+	}
+	
+	/**
+	 * Setting email address
+	 */
+	public void setEmail(String value){
+		client.setEmail(factory.createClientEmail(value));
 	}
 }

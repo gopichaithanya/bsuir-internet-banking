@@ -100,7 +100,7 @@ public class EditCurrencyRatesController extends EntityController{
 	
 	@InitBinder
 	protected void initBinder(WebDataBinder binder) {
-		binder.registerCustomEditor(BigDecimal.class, new CustomNumberEditor(BigDecimal.class, NumberFormat.getNumberInstance(new Locale("en", "BY")), true));
+		binder.registerCustomEditor(BigDecimal.class, new CustomNumberEditor(BigDecimal.class, NumberFormat.getNumberInstance(new Locale("be", "BY")), true));
 	}
 	
 	@RequestMapping(method=RequestMethod.POST)
