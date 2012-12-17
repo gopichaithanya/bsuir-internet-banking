@@ -29,6 +29,7 @@
 			<mvc:mapping path="/cards/**" />
 			<mvc:mapping path="/transfer/**"/>
 			<mvc:mapping path="/payment/**"/>
+			<mvc:mapping path="/erip/**"/>
 			<mvc:mapping path="/history/**"/>
 			<bean class="by.bsuir.banking.interceptor.MainInterceptor" />
 		</mvc:interceptor>

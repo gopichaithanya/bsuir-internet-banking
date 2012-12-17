@@ -19,7 +19,7 @@ public class CurrencyTypeValidator implements Validator {
 	public void validate(Object obj, Errors errors) {
 		CurrencyTypeWrapper currencyType = (CurrencyTypeWrapper) obj;
 		if (currencyType.getShortName() == null) {
-			errors.reject(MessageValidation.NULL_VALUE);
+			errors.reject(MessageValidation.NULL_VALUE); 
 		}
 		if (currencyType.getShortName().trim().isEmpty()) {
 			errors.reject(MessageValidation.EMPTY_VALUE);

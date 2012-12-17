@@ -15,12 +15,22 @@
 				class="divider">/</span></li>
 			<li><a href="<c:url value='/payment/list' />">Платежи</a><span
 				class="divider">/</span></li>
-			<li class="active">${payment.legalPerson.name}</li>
+				<c:if test="${ not empty payment.legalPerson}">
+					<li class="active">${payment.legalPerson.name}</li>
+				</c:if>
+				<c:if test="${ not empty payment.erip}">
+					<li class="active">${payment.erip.name}</li>
+				</c:if>
 		</ul>
 	</div>
 	<br>
 	<div id="ratesInfo" class="span8">
-		<h4>Провести платеж: ${payment.legalPerson.category.name.value} - ${payment.legalPerson.name}</h4>
+		<c:if test="${ not empty payment.legalPerson}">
+			<h4>Провести платеж: ${payment.legalPerson.category.name.value} - ${payment.legalPerson.name}</h4>
+		</c:if>
+		<c:if test="${ not empty payment.erip}">
+			<h4>Провести платеж в системе Расчет: ${payment.erip.region.name.value} - ${payment.erip.city.name.value} - ${payment.erip.name}</h4>
+		</c:if>
 		<c:choose>
 			<c:when test="${fn:length(cardSelect) == 0}">
 				<div class="clearfix alert alert-error ">У Вас нет карт. Вы не можете провести платеж. Свяжитесь с оператором банка.</div>

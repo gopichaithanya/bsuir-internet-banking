@@ -22,7 +22,7 @@
 		</ul>
 	</div>
 	<br>
-	<div id="ratesInfo" class="span6">
+	<div id="ratesInfo" class="span12">
 		<c:choose>
 			<c:when test="${fn:length(tree) == 0}">
 				<div class="clearfix alert alert-error ">На данный момент нет
@@ -30,26 +30,63 @@
 			</c:when>
 			<c:otherwise>
 				<h4>Доступные платежи</h4>
-
-				<div class="css-treeview">
-					<ul>
-						<c:forEach items="${tree}" varStatus="loop" var="entry">
-							<li><input type="checkbox" id="item-${loop.index}" /><label
-								for="item-${loop.index}">${entry.key.name.value}</label>
+				<div class="row">
+					<div class="css-treeview span4">
+						<ul>
+							<c:forEach items="${tree}" varStatus="loop" var="entry">
+								<li><input type="checkbox" id="item-${loop.index}" /> <label
+									for="item-${loop.index}">${entry.key.name.value}</label>
+									<ul>
+										<c:forEach items="${entry.value}" varStatus="inloop"
+											var="legal">
+											<li>- <a
+												href="<c:url value='/payment/pay/${legal.id}' />">
+													${legal.name.value}</a></li>
+										</c:forEach>
+									</ul></li>
+							</c:forEach>
+						</ul>
+					</div>
+					<div id="eripTree" class="span4">
+						<div class="css-treeview">
+							<ul>
+								<li><input type="checkbox" id="root" checked="checked" />
+									<label for="root">Расчет</label>
 								<ul>
-									<c:forEach items="${entry.value}" varStatus="inloop"
-										var="legal">
-										<li>-<a href="<c:url value='/payment/pay/${legal.id}' />" > ${legal.name.value}</a></li>
+									<c:forEach items="${eripTree}" varStatus="loop" var="entry">
+										<li>
+											<input type="checkbox" id="erip-${loop.index}" />
+											<label for="erip-${loop.index}">${entry.key.name.value}</label>
+											<ul>
+												<c:forEach items="${entry.value}" varStatus="loopInner" var="entryInner">
+												<li>
+												<input type="checkbox" id="erip-${loop.index}-${loopInner.index}" />
+												<label for="erip-${loop.index}-${loopInner.index}">${entryInner.key.name.value}</label>
+												<ul>
+													<c:forEach items="${entryInner.value}" varStatus="loopLeaf" var="service">
+														<li>- <a href="<c:url value='/erip/pay/${service.id}'/>">${service.name.value}</a>
+															
+														</li>
+													</c:forEach>
+												</ul>
+												</li>
+												</c:forEach>
+											</ul>
+										</li>
 									</c:forEach>
-								</ul></li>
-						</c:forEach>
-					</ul>
-				</div>
+								</ul>
+								
+								</li>
+							</ul>
+						</div>
 
+					</div>
+				</div>
 
 			</c:otherwise>
 		</c:choose>
 	</div>
+
 	<script type="text/javascript">
 		$(document).ready(
 				function() {

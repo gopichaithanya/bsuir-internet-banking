@@ -14,7 +14,7 @@ import by.bsuir.banking.domain.SellRateWrapper;
 @Component
 public class SellRateValidator implements Validator {
 	
-	
+	 
 	private final  CurrencyTypeValidator currencyTypeValidator;
 	@Autowired
 	public SellRateValidator(CurrencyTypeValidator currencyTypeValidator) {

@@ -18,7 +18,7 @@ public class CardValidator implements Validator {
 		if (cardTypeValidator == null) {
 			throw new IllegalArgumentException(
 					"The supplied [Validator] is required and must not be null.");
-		}
+		} 
 		if (!cardTypeValidator.supports(CardTypeWrapper.class)) {
 			throw new IllegalArgumentException(
 					"The supplied [Validator] must support the validation of [CurrencyTypeWrapper] instances.");

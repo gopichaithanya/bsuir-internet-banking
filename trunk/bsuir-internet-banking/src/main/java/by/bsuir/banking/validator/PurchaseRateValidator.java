@@ -13,7 +13,7 @@ import by.bsuir.banking.domain.PurchaseRateWrapper;
 
 @Component
 public class PurchaseRateValidator implements Validator {
-
+ 
 	private final CurrencyTypeValidator currencyTypeValidator;
 	
 	@Autowired
