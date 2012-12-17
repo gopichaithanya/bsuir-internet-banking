@@ -28,6 +28,10 @@ public class ClientWrapper {
 	public ClientWrapper(Client client) {
 		this.client = client;
 	}
+	
+	public String getEmail(){
+		return(client.getEmail() == null) ? null:client.getEmail().getValue();
+	}
 
 	/**
 	 * Getting client instance for this wrapper

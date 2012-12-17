@@ -29,7 +29,7 @@ import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceSetNewPassw
  * 
  * @author Katherine
  * 
- */
+ */ 
 @Controller
 @RequestMapping("/personal/change/password")
 @SessionAttributes("changepassword")

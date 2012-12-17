@@ -38,19 +38,19 @@
 					</s:bind>
 					<div class="control-group">
 						<label class="control-label"> 
-						<strong>From</strong> : ${sender} 
+						<strong>С карты</strong> : ${sender} 
 						</label>
 					</div>
 					<br>
 					<div class="control-group">
 						<label class="control-label"> 
-						<strong>To</strong> : ${receiver} 
+						<strong>На карту</strong> : ${receiver} 
 						</label>
 					</div>
 					<br>
 					<div class="control-group">
 						<form:label class="control-label" path="amount.currencyType"> 
-						<strong>Currrency:</strong> <form:errors path="amount.currencyType" />
+						<strong>Валюта:</strong> <form:errors path="amount.currencyType" />
 						</form:label>
 						<div class="controls">
 							<form:select path="amount.currencyType" items="${curSelect}"></form:select>
@@ -59,7 +59,7 @@
 					</div>
 					<div class="control-group">
 						<form:label class="control-label" path="amount.amount"> 
-						<strong>Amount:</strong> <form:errors path="amount.amount" />
+						<strong>Сумма:</strong> <form:errors path="amount.amount" />
 						</form:label>
 						<div class="controls">
 							<form:input path="amount.amount" ></form:input>

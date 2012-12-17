@@ -18,7 +18,7 @@ public class CardTypeValidator implements Validator {
 	@Override
 	public void validate(Object obj, Errors errors) {
 		CardTypeWrapper cardType = (CardTypeWrapper) obj;
-		if (cardType.getId() == null) {
+		if (cardType.getId() == null) { 
 			errors.reject(MessageValidation.NULL_VALUE);
 		}
 		if (cardType.getName() == null) {

@@ -15,14 +15,26 @@
 				class="divider">/</span></li>
 			<li><a href="<c:url value='/payment/list' />">Платежи</a><span
 				class="divider">/</span></li>
-			<li class="active">${payment.legalPerson.name}</li>
+			<c:if test="${ not empty payment.legalPerson}">
+					<li class="active">${payment.legalPerson.name}</li>
+				</c:if>
+				<c:if test="${ not empty payment.erip}">
+					<li class="active">${payment.erip.name}</li>
+				</c:if>
 		</ul>
 	</div>
 	<br>
 	<div id="ratesInfo" class="span8">
-		<h4>Проверить введенные данные:
-			${payment.legalPerson.category.name.value} -
-			${payment.legalPerson.name}</h4>
+		<c:if test="${ not empty payment.legalPerson}">
+			<h4>Проверить введенные данные:
+				${payment.legalPerson.category.name.value} -
+				${payment.legalPerson.name}</h4>
+		</c:if>
+		<c:if test="${ not empty payment.erip}">
+			<h4>Проверить введенные данные в системе Расчет:
+				${payment.erip.region.name.value} - ${payment.erip.city.name.value}
+				- ${payment.erip.name}</h4>
+		</c:if>
 		<c:choose>
 			<c:when test="${fn:length(cardSelect) == 0}">
 				<div class="clearfix alert alert-error ">У Вас нет карт. Вы не
@@ -38,9 +50,9 @@
 					</s:bind>
 
 					<div class="control-group">
-						<form:label class="control-label" path="сardNumber">
+						<form:label class="control-label" path="displayCard">
 							<strong>С карты:</strong>
-							<div class="controls">${card}</div>
+							<div class="controls">${payment.displayCard}</div>
 						</form:label>
 					</div>
 					<div class="control-group">
@@ -72,22 +84,42 @@
 						<div class="controls">
 							<form:input readonly="true" required="required"
 								path="amount.amount" />
-							<span class="hepl-inline">(${curType})</span>
+							<span class="hepl-inline"><form:select
+									path="amount.currencyType" items="${curSelect}"></form:select></span>
 
 						</div>
 					</div>
-					<div class="control-group">
-						<form:label class="checkbox" path="toSave"> <form:checkbox path="toSave" />
+					<c:if test="${not empty payment.legalPerson }">
+						<div class="control-group">
+							<form:label class="checkbox" path="toSave">
+								<form:checkbox path="toSave" />
 							Сохранить платеж
 						</form:label>
-						
-					</div>
+						</div>
+					</c:if>
 					<div class="control-group">
 						<div class="controls">
 							<a href="<c:url value='/payment/list'/>" class="btn btn-danger">Отменить</a>
-							<a href="<c:url value='/payment/pay/${payment.legalPerson.id}'/>"
-								class="btn btn-warning">Назад</a>
-							<button type="submit" class="btn btn-success" >Принять</button>
+							<c:if test="${not empty payment.legalPerson }">
+								<c:choose>
+								<c:when test="${payment.saved}">
+									<a
+									href="<c:url value='/payment/pay/${payment.legalPerson.id}?savedId=${spId}'/>"
+									class="btn btn-warning">Назад</a>
+								</c:when>
+								<c:otherwise>
+								<a
+									href="<c:url value='/payment/pay/${payment.legalPerson.id}'/>"
+									class="btn btn-warning">Назад</a>
+								</c:otherwise>
+								</c:choose>
+							</c:if>
+							<c:if test="${not empty payment.erip }">
+								<a
+									href="<c:url value='/erip/pay/${payment.erip.id}'/>"
+									class="btn btn-warning">Назад</a>
+							</c:if>
+							<button type="submit" class="btn btn-success">Принять</button>
 						</div>
 					</div>
 

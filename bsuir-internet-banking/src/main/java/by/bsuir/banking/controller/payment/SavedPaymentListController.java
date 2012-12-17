@@ -19,8 +19,6 @@ import by.bsuir.banking.controller.login.EntityController;
 import by.bsuir.banking.domain.LegalPersonWrapper;
 import by.bsuir.banking.domain.SavedPaymentWrapper;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingService;
-import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetAccountByIdAuthorizationFaultFaultFaultMessage;
-import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetAccountByIdDomainFaultFaultFaultMessage;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetAllLegalPersonsAuthorizationFaultFaultFaultMessage;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetAllLegalPersonsDomainFaultFaultFaultMessage;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetAllSavedPaymentsAuthorizationFaultFaultFaultMessage;
@@ -28,42 +26,52 @@ import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetAllSaved
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetCardsAuthorizationFaultFaultFaultMessage;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetCardsDomainFaultFaultFaultMessage;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetCurrencyTypesDomainFaultFaultFaultMessage;
-import by.bsuir.banking.proxy.internetbanking.LegalPerson;
 import by.bsuir.banking.proxy.internetbanking.SavedPayment;
 
 /**
  * 
  * @author Katherine
- *
+ * 
  */
 @Controller
 @RequestMapping("/payment/saved/list")
-
 public class SavedPaymentListController extends EntityController {
 
-	private static Logger logger = Logger.getLogger(SavedPaymentListController.class);
+	private static Logger logger = Logger
+			.getLogger(SavedPaymentListController.class);
 	private static final String VIEW_NAME = "savedpayment-list";
 	private static IInternetBankingService service;
-	
+
 	public SavedPaymentListController() {
 		service = ServiceProvider.getInternetBankingService();
 	}
-	
-	@RequestMapping(method=RequestMethod.GET)
-	public String createList(HttpSession session, Model model){
+
+	@RequestMapping(method = RequestMethod.GET)
+	public String createList(HttpSession session, Model model) {
 		String securityToken = getSecurityToken(session);
 		List<SavedPaymentWrapper> savedPayments = new ArrayList<SavedPaymentWrapper>();
 		try {
-			for(SavedPayment sp:service.getAllSavedPayments(securityToken).getSavedPayment()){
-				SavedPaymentWrapper wrapper = new SavedPaymentWrapper(sp);
-				wrapper.getAmount().setCurrencyType(CardUtil.getCurrencyTypeById(wrapper.getAmount().getCurrencyTypeId()).getShortName());
-				wrapper.setCardNumber(CardUtil.changeCardNumber(CardUtil.getCardByAccountId(sp.getAccountId(), securityToken).getCardNumber()));
-				LegalPersonWrapper person = PaymentUtil.getLegalPersonByAccountId(sp.getLegalAccountId(), securityToken);
-				wrapper.setLegalPersonName(person.getName());
-				wrapper.setLegalPersonId(person.getId());
-				savedPayments.add(wrapper);
+			for (SavedPayment sp : service.getAllSavedPayments(securityToken)
+					.getSavedPayment()) {
+				//excluding ERIP accounts
+				if (sp.getLegalAccountId() != 1) {
+					SavedPaymentWrapper wrapper = new SavedPaymentWrapper(sp);
+					wrapper.getAmount().setCurrencyType(
+							CardUtil.getCurrencyTypeById(
+									wrapper.getAmount().getCurrencyTypeId())
+									.getShortName());
+					wrapper.setCardNumber(CardUtil.changeCardNumber(CardUtil
+							.getCardByAccountId(sp.getAccountId(),
+									securityToken).getCardNumber()));
+					LegalPersonWrapper person = PaymentUtil
+							.getLegalPersonByAccountId(sp.getLegalAccountId(),
+									securityToken);
+					wrapper.setLegalPersonName(person.getName());
+					wrapper.setLegalPersonId(person.getId());
+					savedPayments.add(wrapper);
+				}
 			}
-			model.addAttribute("savedpayments",savedPayments);
+			model.addAttribute("savedpayments", savedPayments);
 		} catch (IInternetBankingServiceGetAllSavedPaymentsAuthorizationFaultFaultFaultMessage e) {
 			return "redirect:" + MessageConstants.AUTH_FAILED_VIEW;
 		} catch (IInternetBankingServiceGetAllSavedPaymentsDomainFaultFaultFaultMessage e) {
@@ -73,16 +81,13 @@ public class SavedPaymentListController extends EntityController {
 		} catch (IInternetBankingServiceGetAllLegalPersonsDomainFaultFaultFaultMessage e) {
 			return "redirect:" + MessageConstants.ERROR_VIEW;
 		} catch (IInternetBankingServiceGetCardsAuthorizationFaultFaultFaultMessage e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			return "redirect:" + MessageConstants.AUTH_FAILED_VIEW;
 		} catch (IInternetBankingServiceGetCardsDomainFaultFaultFaultMessage e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			return "redirect:" + MessageConstants.ERROR_VIEW;
 		} catch (IInternetBankingServiceGetCurrencyTypesDomainFaultFaultFaultMessage e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			return "redirect:" + MessageConstants.ERROR_VIEW;
 		}
-		
+
 		return VIEW_NAME;
 	}
 }

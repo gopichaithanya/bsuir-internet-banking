@@ -5,35 +5,42 @@ import org.hibernate.validator.constraints.NotEmpty;
 import by.bsuir.banking.admin.utils.PaymentUtil;
 
 /**
- * Wrapper for payment,
- * contains information about additional field that we need for
- * particular payment
+ * Wrapper for payment, contains information about additional field that we need
+ * for particular payment
+ * 
  * @author E.Krasnotschek
- *
+ * 
  */
 public class PaymentInfo {
-	
-	private LegalPersonWrapper legalPerson;
+
+	private LegalPersonWrapper legalPerson = null;
+	private EripWrapper erip = null;
 	private ClientWrapper client;
 	private String ñardNumber;
-	private boolean saved;
+	private String displayCard;
+	private boolean saved = false;
 	private boolean toSave;
-	
+
 	@NotEmpty
 	private String infoString;
 	private MoneyWrapper amount;
-	
-	
-	public PaymentInfo(LegalPersonWrapper person){
+
+	public PaymentInfo(LegalPersonWrapper person) {
 		legalPerson = person;
 	}
-	
-	public PaymentInfo(LegalPersonWrapper person, ClientWrapper client, boolean isSaved){
+
+	public PaymentInfo(LegalPersonWrapper person, ClientWrapper client,
+			boolean isSaved) {
 		legalPerson = person;
 		this.client = client;
 		saved = isSaved;
 	}
-	
+
+	public PaymentInfo(EripWrapper erip, ClientWrapper client) {
+		this.setErip(erip);
+		this.client = client;
+	}
+
 	public LegalPersonWrapper getLegalPerson() {
 		return legalPerson;
 	}
@@ -51,31 +58,37 @@ public class PaymentInfo {
 	}
 
 	public String getClientName() {
-		if(client == null){
+		if (client == null) {
 			return null;
 		}
-		
-		return client.getFirstName() + " " + client.getMiddleName() + " " + client.getLastName();
+
+		return client.getFirstName() + " " + client.getMiddleName() + " "
+				+ client.getLastName();
 	}
-	
-	public String getInfoLabel(){
-		System.out.println(legalPerson.getCategoryId());
-		return PaymentUtil.getLabelForCategory(legalPerson.getCategoryId());
+
+	public String getInfoLabel() {
+		if (legalPerson != null) {
+			return PaymentUtil.getLabelForCategory(legalPerson.getCategoryId());
+		}
+		if(erip != null){
+			return PaymentUtil.getLabelForErip(erip.getId());
+		}
+		return null;
 	}
-	
-	public String getInfoString(){
+
+	public String getInfoString() {
 		return infoString;
 	}
-	
-	public void setInfoString(String value){
+
+	public void setInfoString(String value) {
 		infoString = value;
 	}
 
-	public MoneyWrapper getAmount(){
+	public MoneyWrapper getAmount() {
 		return amount;
 	}
-	
-	public void setAmount(MoneyWrapper value){
+
+	public void setAmount(MoneyWrapper value) {
 		amount = value;
 	}
 
@@ -102,8 +115,21 @@ public class PaymentInfo {
 	public void setToSave(boolean toSave) {
 		this.toSave = toSave;
 	}
-	
-	
-		
-	
+
+	public EripWrapper getErip() {
+		return erip;
+	}
+
+	public void setErip(EripWrapper erip) {
+		this.erip = erip;
+	}
+
+	public String getDisplayCard() {
+		return displayCard;
+	}
+
+	public void setDisplayCard(String displayCard) {
+		this.displayCard = displayCard;
+	}
+
 }

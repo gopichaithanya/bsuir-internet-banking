@@ -70,7 +70,7 @@ public class TransferMoneyController extends EntityController {
 			HttpServletRequest request, HttpServletResponse response)
 			throws IOException {
 		// creating list of cards
-		String securityToken = getSecurityToken(session);
+		String securityToken = getSecurityToken(session); 
 		List<CardWrapper> cards = new ArrayList<CardWrapper>();
 		List<MoneyWrapper> ballance = new ArrayList<MoneyWrapper>();
 		List<CardSelectInfo> cardSelect = new ArrayList<CardSelectInfo>();
@@ -121,7 +121,6 @@ public class TransferMoneyController extends EntityController {
 			return VIEW_NAME_STEP_1;
 		}
 		if(transfer.getReceiverCardNumber().equals(transfer.getSenderCardNumber())){
-			model.addAttribute("form-error", "Вы выбрали одикаковые карты");
 			result.reject("TranferError","Вы выбрали одинаковые карты. Выберите вторую карту.");
 			return VIEW_NAME_STEP_1;
 		}
