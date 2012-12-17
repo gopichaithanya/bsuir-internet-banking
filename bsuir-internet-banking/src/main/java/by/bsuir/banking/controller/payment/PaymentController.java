@@ -109,7 +109,7 @@ public class PaymentController extends EntityController {
 			//getting cardNumber information from saved payment
 			CardWrapper card = CardUtil.getCardByAccountId(savedPayment.getAccountId(),
 							securityToken);
-			wrapper.setСardNumber(card.getCardNumber());
+			wrapper.setCardNumber(card.getCardNumber());
 			wrapper.setInfoString(InformationParser.getInfoString(savedPayment.getInformation()));
 			wrapper.setAmount(savedPayment.getAmount());
 			
@@ -213,7 +213,7 @@ public class PaymentController extends EntityController {
 		}
 		String curType = "";
 		for (CardSelectInfo card : cardSelect) {
-			if (card.getCardNumber().equals(payment.getСardNumber())) {
+			if (card.getCardNumber().equals(payment.getCardNumber())) {
 				if (card.isExpired()) {
 					result.reject("paymentError",
 							"Карта недействительна. Выберите другую карту или обратитесь к оператору");
@@ -264,7 +264,7 @@ public class PaymentController extends EntityController {
 		Integer accountId = 0;
 		try {
 			for (CardSelectInfo card : cardSelect) {
-				if (card.getCardNumber().equals(payment.getСardNumber())) {
+				if (card.getCardNumber().equals(payment.getCardNumber())) {
 					accountId = card.getCardWrapper().getCardsAccountId();
 					// set currency type for amount
 					List<CurrencyTypeWrapper> currrencies = CardUtil
@@ -284,7 +284,7 @@ public class PaymentController extends EntityController {
 					.getAccount().getNumber().getValue();
 			String information = PaymentUtil.formInformation(payment);
 
-			boolean paymentResult = service.pay(payment.getСardNumber(), receiverLegalAccountNumber, payment
+			boolean paymentResult = service.pay(payment.getCardNumber(), receiverLegalAccountNumber, payment
 					.getAmount().getMoney(), information, securityToken);
 			if(!paymentResult){
 				result.reject("paymentError", "Платеж не может быть проведен. Проверьте правильность введенных данных");

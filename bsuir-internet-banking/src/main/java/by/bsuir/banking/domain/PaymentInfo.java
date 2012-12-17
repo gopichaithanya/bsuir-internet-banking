@@ -16,7 +16,7 @@ public class PaymentInfo {
 	private LegalPersonWrapper legalPerson = null;
 	private EripWrapper erip = null;
 	private ClientWrapper client;
-	private String ÒardNumber;
+	private String cardNumber;
 	private String displayCard;
 	private boolean saved = false;
 	private boolean toSave;
@@ -92,12 +92,12 @@ public class PaymentInfo {
 		amount = value;
 	}
 
-	public String get—ardNumber() {
-		return ÒardNumber;
+	public String getCardNumber() {
+		return cardNumber;
 	}
 
-	public void set—ardNumber(String ÒardNumber) {
-		this.ÒardNumber = ÒardNumber;
+	public void setCardNumber(String cardNumber) {
+		this.cardNumber = cardNumber;
 	}
 
 	public boolean isSaved() {

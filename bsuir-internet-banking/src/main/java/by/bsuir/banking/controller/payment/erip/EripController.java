@@ -156,7 +156,7 @@ public class EripController extends EntityController {
 		}
 		String curType = "";
 		for (CardSelectInfo card : cardSelect) {
-			if (card.getCardNumber().equals(payment.getСardNumber())) {
+			if (card.getCardNumber().equals(payment.getCardNumber())) {
 				if (card.isExpired()) {
 					result.reject("paymentError",
 							"Карта недействительна. Выберите другую карту или обратитесь к оператору");
@@ -204,7 +204,7 @@ public class EripController extends EntityController {
 		try {
 
 			for (CardSelectInfo card : cardSelect) {
-				if (card.getCardNumber().equals(payment.getСardNumber())) {
+				if (card.getCardNumber().equals(payment.getCardNumber())) {
 					accountId = card.getCardWrapper().getCardsAccountId();
 					// set currency type for amount
 					List<CurrencyTypeWrapper> currrencies;
@@ -220,7 +220,7 @@ public class EripController extends EntityController {
 				}
 			}
 			String information = PaymentUtil.formInformationErip(payment);
-			boolean paymentResult = service.payERIP(payment.getСardNumber(),
+			boolean paymentResult = service.payERIP(payment.getCardNumber(),
 					payment.getAmount().getMoney(), information, securityToken);
 			if (!paymentResult) {
 				result.reject("paymentError",
