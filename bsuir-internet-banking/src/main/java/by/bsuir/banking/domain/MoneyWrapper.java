@@ -13,6 +13,7 @@ import by.bsuir.banking.proxy.internetbanking.ObjectFactory;
 public class MoneyWrapper {
 	private static ObjectFactory factory = new ObjectFactory();
 	private Money money;
+	private String enteredAmount;
 	
 	public MoneyWrapper() {
 		money = factory.createMoney();
@@ -20,6 +21,7 @@ public class MoneyWrapper {
 	
 	public MoneyWrapper(Money  money) {
 		this.money = money;
+		enteredAmount = money.getAmount().toString();
 	}
 	
 	public Money getMoney() {
@@ -49,4 +51,13 @@ public class MoneyWrapper {
 	public void setAmount(BigDecimal value) {
 		money.setAmount(value);
 	}
+
+	public String getEnteredAmount() {
+		return enteredAmount;
+	}
+
+	public void setEnteredAmount(String enteredAmount) {
+		this.enteredAmount = enteredAmount;
+	}
+
 }

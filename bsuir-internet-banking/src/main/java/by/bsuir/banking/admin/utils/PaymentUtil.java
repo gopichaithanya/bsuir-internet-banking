@@ -56,19 +56,19 @@ public class PaymentUtil {
 			String label = "";
 			switch (person.getLegalPersonCategoryId()) {
 			case 5:
-				label = "Номер договора";
+				label = "Номер договора. Не менее 6 цифр";
 				break;
 			case 2:
-				label = "Номер телефона";
+				label = "Номер телефона. В формате yyyxxxxxxx, где y - код";
 				break;
 			case 3:
-				label = "Номер контракта";
+				label = "Номер контракта. Не менее 8 цифр";
 				break;
 			case 4:
-				label = "Номер заказа билета";
+				label = "Номер заказа билета. Не менее 6 цифр";
 				break;
 			case 6:
-				label = "Номер телефона";
+				label = "Номер телефона. В формате yyyxxxxx, где y - код";
 				break;
 			case 7:
 			case 8:

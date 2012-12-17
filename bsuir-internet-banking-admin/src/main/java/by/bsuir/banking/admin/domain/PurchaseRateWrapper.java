@@ -10,6 +10,8 @@ public class PurchaseRateWrapper {
 	
 	private static ObjectFactory factory = new ObjectFactory();
 	private PurchaseCurrencyRate rate;
+	private String amount;
+	
 
 	public PurchaseCurrencyRate getPurchaseCurrencyRate(){
 		return rate;
@@ -21,6 +23,7 @@ public class PurchaseRateWrapper {
 	
 	public PurchaseRateWrapper(PurchaseCurrencyRate rate){
 		this.rate = rate;
+		amount = rate.getRate().toString();
 	}
 	
 	
@@ -43,5 +46,13 @@ public class PurchaseRateWrapper {
 	
 	public Integer getId(){
 		return rate.getId();
+	}
+
+	public String getAmount() {
+		return amount;
+	}
+
+	public void setAmount(String amount) {
+		this.amount = amount;
 	}
 }

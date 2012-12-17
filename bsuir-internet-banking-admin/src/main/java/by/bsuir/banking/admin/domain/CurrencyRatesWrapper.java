@@ -24,6 +24,9 @@ public class CurrencyRatesWrapper {
 	}
 	
 	public void setPurchaseRates(List<PurchaseRateWrapper> list){
+		for(PurchaseRateWrapper purchaseRateWrapper : list) {
+			purchaseRateWrapper.setAmount(purchaseRateWrapper.getRate().toString());
+		}
 		purchaseRatesList = list;
 	}
 	

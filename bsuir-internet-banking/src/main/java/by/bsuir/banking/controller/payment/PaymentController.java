@@ -1,6 +1,7 @@
 package by.bsuir.banking.controller.payment;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -202,6 +203,8 @@ public class PaymentController extends EntityController {
 		if (result.hasErrors()) {
 			model.addAttribute("error", "На форме есть ошибки");
 			return VIEW_NAME;
+		} else {
+			payment.getAmount().setAmount(BigDecimal.valueOf(Double.valueOf(payment.getAmount().getEnteredAmount().replace(',', '.'))));
 		}
 		if (session.getAttribute("cardSelect") == null) {
 			attrs.addFlashAttribute("error", "Невозможно найти список карт");
