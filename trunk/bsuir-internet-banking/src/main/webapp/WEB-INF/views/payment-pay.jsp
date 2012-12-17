@@ -50,7 +50,8 @@
 						<form:errors path="cardNumber" />
 						</form:label>
 						<div class="controls">
-							<form:select  path="cardNumber" style="width:400px;" items="${cardSelect}"
+							<form:select  path="cardNumber" 
+							style="width:400px;" items="${cardSelect}"
 								itemLabel="displayValue" itemValue="cardNumber"></form:select>
 							
 						</div>
