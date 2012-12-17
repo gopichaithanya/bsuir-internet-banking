@@ -2,10 +2,8 @@ package by.bsuir.banking.admin.controller.currency;
 
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,12 +12,9 @@ import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.propertyeditors.CustomNumberEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -98,10 +93,10 @@ public class EditCurrencyRatesController extends EntityController{
 		return VIEW_NAME;
 	}
 	
-	@InitBinder
-	protected void initBinder(WebDataBinder binder) {
-		binder.registerCustomEditor(BigDecimal.class, new CustomNumberEditor(BigDecimal.class, NumberFormat.getNumberInstance(new Locale("be", "BY")), true));
-	}
+//	@InitBinder
+//	protected void initBinder(WebDataBinder binder) {
+//		binder.registerCustomEditor(BigDecimal.class, new CustomNumberEditor(BigDecimal.class, NumberFormat.getNumberInstance(new Locale("be", "BY")), true));
+//	}
 	
 	@RequestMapping(method=RequestMethod.POST)
 	public String submitForm(@Valid @ModelAttribute("rates") CurrencyRatesWrapper wrapper, BindingResult result,
@@ -111,12 +106,17 @@ public class EditCurrencyRatesController extends EntityController{
 		if (result.hasErrors()) {
 			AdminUtils.logInfo(logger,
 					MessageConstants.FORM_VALIDATION_ERROR, MessageConstants.CURRENCY_ENTITY);
+//			for(FieldError error : result.getFieldErrors()) {
+//				System.out.println(error.getField());
+//				System.out.println(error.getCode());
+//			}
 			return VIEW_NAME;
-		}
+		} 
 		ObjectFactory factory = new ObjectFactory();
 		String securityToken = getSecurityToken(session);
 		ArrayOfPurchaseCurrencyRate purchaseList = factory.createArrayOfPurchaseCurrencyRate();
 		for(PurchaseRateWrapper purchaseWrapper:wrapper.getPurchaseRates()){
+			purchaseWrapper.setRate(BigDecimal.valueOf(Double.valueOf(purchaseWrapper.getAmount().replace(',', '.'))));
 			purchaseList.getPurchaseCurrencyRate().add(purchaseWrapper.getPurchaseCurrencyRate());
 		}
 		try {
@@ -132,6 +132,7 @@ public class EditCurrencyRatesController extends EntityController{
 		}
 		ArrayOfSellCurrencyRate sellList = factory.createArrayOfSellCurrencyRate();
 		for(SellRateWrapper sellWrapper:wrapper.getSellRates()){
+			sellWrapper.setRate(BigDecimal.valueOf(Double.valueOf(sellWrapper.getAmount().replace(',', '.'))));
 			sellList.getSellCurrencyRate().add(sellWrapper.getSellCurrencyrate());
 		}
 		try {

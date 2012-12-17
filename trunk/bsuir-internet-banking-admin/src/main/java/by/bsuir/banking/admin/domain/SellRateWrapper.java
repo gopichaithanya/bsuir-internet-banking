@@ -2,14 +2,13 @@ package by.bsuir.banking.admin.domain;
 
 import java.math.BigDecimal;
 
-import org.hibernate.validator.constraints.NotEmpty;
-
 import by.bsuir.banking.proxy.internetbanking.ObjectFactory;
 import by.bsuir.banking.proxy.internetbanking.SellCurrencyRate;
 
 public class SellRateWrapper {
 	private static ObjectFactory factory = new ObjectFactory();
 	private SellCurrencyRate rate;
+	private String amount;
 	
 	public SellRateWrapper(){
 		rate = factory.createSellCurrencyRate();
@@ -17,6 +16,7 @@ public class SellRateWrapper {
 	
 	public SellRateWrapper(SellCurrencyRate rate){
 		this.rate = rate;
+		this.amount = rate.getRate().toString();
 	}
 	
 	public SellCurrencyRate getSellCurrencyrate(){
@@ -43,6 +43,14 @@ public class SellRateWrapper {
 	
 	public Integer getId(){
 		return rate.getId();
+	}
+
+	public String getAmount() {
+		return amount;
+	}
+
+	public void setAmount(String amount) {
+		this.amount = amount;
 	}
 
 }

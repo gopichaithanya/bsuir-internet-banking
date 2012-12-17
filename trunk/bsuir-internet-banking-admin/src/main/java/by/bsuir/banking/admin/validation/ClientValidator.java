@@ -12,7 +12,7 @@ import by.bsuir.banking.admin.domain.ClientWrapper;
 
 @Component
 public class ClientValidator implements Validator {
-	private static final String PHONE_NUMBER_PATTERN = "\\([0-9]{3}\\)[0-9]{5,7}";
+	private static final String PHONE_NUMBER_PATTERN = "[0-9]{8,10}";
 	private static final String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
 			+ "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 	private static final int MIN_AGE = 18;

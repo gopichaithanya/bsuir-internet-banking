@@ -34,10 +34,9 @@
 							<td>
 								<div class="control-group">
 									<div class="controls" style="width: 50px">
-										<form:input path="purchaseRates[${i}].rate"
+										<form:input path="purchaseRates[${i}].amount"
 											id="inputPurchaseRate" style="width:50px" />
-										<form:errors class="help-inline"
-											path="purchaseRates[${i}].rate" />
+										<form:errors path="purchaseRates[${i}].amount" />
 											<%--<c:forEach items="${messages}" var="message" begin="100" >
 											 <c:when test="${fn:startsWith(message,'Failed') == true}">
 												<span>privet</span>
