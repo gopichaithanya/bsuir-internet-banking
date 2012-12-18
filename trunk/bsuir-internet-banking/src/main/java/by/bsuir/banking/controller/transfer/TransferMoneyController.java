@@ -1,6 +1,7 @@
 package by.bsuir.banking.controller.transfer;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -115,7 +116,7 @@ public class TransferMoneyController extends EntityController {
 			@ModelAttribute("cardSelect") List<CardSelectInfo> cardSelect, Model model, HttpSession session,
 			HttpServletRequest request, HttpServletResponse response,
 			RedirectAttributes attrs) throws IOException {
-		moneyValidator.validate(transfer.getAmount(), result);
+		
 		if(result.hasErrors()){
 			model.addAttribute("form-error", "На форме есть ошибки");
 	 		return VIEW_NAME_STEP_1;
@@ -180,10 +181,11 @@ public class TransferMoneyController extends EntityController {
 			@ModelAttribute("cardSelect") List<CardSelectInfo> cardSelect, Model model, HttpSession session,
 			HttpServletRequest request, HttpServletResponse response,
 			RedirectAttributes attrs) throws IOException{
+		moneyValidator.validate(transfer.getAmount(), result);
 		if(result.hasErrors()){
 			return VIEW_NAME_STEP_2;
 		}
-		
+		transfer.getAmount().setAmount(BigDecimal.valueOf(Double.valueOf(transfer.getAmount().getEnteredAmount())));
 		try {
 			//lets name currencyTypeIds
 			List<CurrencyTypeWrapper> currrencies = CardUtil.getCurrencyTypes();
