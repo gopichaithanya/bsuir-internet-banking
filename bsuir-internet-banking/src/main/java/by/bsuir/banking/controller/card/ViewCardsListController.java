@@ -37,13 +37,13 @@ import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetCardsDom
  */
 @Controller
 @RequestMapping("cards/view")
-public class ViewCardsController extends EntityController {
+public class ViewCardsListController extends EntityController {
 
-	private static Logger logger = Logger.getLogger(ViewCardsController.class);
+	private static Logger logger = Logger.getLogger(ViewCardsListController.class);
 	private static IInternetBankingService service;
 	private final static String VIEW_NAME = "card-view";
 
-	public ViewCardsController() {
+	public ViewCardsListController() {
 		service = ServiceProvider.getInternetBankingService();
 	}
 
