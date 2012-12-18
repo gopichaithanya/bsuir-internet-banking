@@ -58,11 +58,11 @@
 						</div>
 					</div>
 					<div class="control-group">
-						<form:label class="control-label" path="amount.amount"> 
-						<strong>Сумма:</strong> <form:errors path="amount.amount" />
+						<form:label class="control-label" path="amount.enteredAmount"> 
+						<strong>Сумма:</strong> <form:errors path="amount.enteredAmount" />
 						</form:label>
 						<div class="controls">
-							<form:input path="amount.amount" ></form:input>
+							<form:input path="amount.enteredAmount" ></form:input>
 							
 						</div>
 					</div>
