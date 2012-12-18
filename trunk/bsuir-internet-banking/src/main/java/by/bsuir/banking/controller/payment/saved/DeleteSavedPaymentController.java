@@ -27,8 +27,8 @@ public class DeleteSavedPaymentController extends EntityController {
 	public DeleteSavedPaymentController() {
 		service = ServiceProvider.getInternetBankingService();
 	}
-	
-	@RequestMapping(method=RequestMethod.GET)
+	 
+	@RequestMapping(method=RequestMethod.POST)
 	public String deletePayment(@PathVariable("savedId") Integer id, RedirectAttributes attrs,HttpSession session){
 		try {
 			service.deleteSavedPayment(id, getSecurityToken(session));

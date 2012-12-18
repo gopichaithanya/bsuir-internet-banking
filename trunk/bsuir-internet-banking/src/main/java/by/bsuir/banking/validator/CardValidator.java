@@ -30,7 +30,7 @@ public class CardValidator implements Validator {
 	public boolean supports(Class<?> clazz) {
 		return CardWrapper.class.equals(clazz);
 	}
-
+ 
 	@Override
 	public void validate(Object obj, Errors errors) {
 		CardWrapper card = (CardWrapper) obj;

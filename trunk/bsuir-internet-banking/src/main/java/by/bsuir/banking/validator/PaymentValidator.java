@@ -13,12 +13,12 @@ import by.bsuir.banking.domain.PaymentInfo;
 public class PaymentValidator implements Validator {
 	private final MoneyValidator moneyValidator;
 	private static final String INFO_STRING_FIELD = "infoString";
-	private static final String MOBILE_PHONE_NUMBER_PATTERN = "[2-4]{1}[3-9]{1}[1-9]{1}[0-9]{6}";
+	private static final String MOBILE_PHONE_NUMBER_PATTERN = "[0-9]{3}[0-9]{7}";
 	private static final String HOME_PHONE_NUMBER_PATTERN = "[0-9]{3}[0-9]{5,6}";
 	private static final String CONTRACT_NUMBER_PATTERN = "[0-9]{8,13}";
 	private static final String PROVIDER_CONTRACT_NUMBER_PATTERN = "[0-9]{6,13}";
 	private static final String WRONG_NUMBER_PATTERN = "0{1,}";
-	
+	 
 	@Autowired
 	public PaymentValidator(MoneyValidator moneyValidator) {
 		if (moneyValidator == null) {

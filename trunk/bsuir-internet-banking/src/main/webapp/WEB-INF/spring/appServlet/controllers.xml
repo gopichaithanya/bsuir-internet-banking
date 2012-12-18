@@ -27,6 +27,7 @@
 			<mvc:mapping path="/main" />
 			<mvc:mapping path="/personal/**" />
 			<mvc:mapping path="/cards/**" />
+			<mvc:mapping path="/card/**" />
 			<mvc:mapping path="/transfer/**"/>
 			<mvc:mapping path="/payment/**"/>
 			<mvc:mapping path="/erip/**"/>

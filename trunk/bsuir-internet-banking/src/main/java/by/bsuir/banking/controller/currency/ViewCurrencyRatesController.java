@@ -35,7 +35,7 @@ import by.bsuir.banking.proxy.internetbanking.SellCurrencyRate;
 import by.bsuir.banking.validator.PurchaseRateValidator;
 import by.bsuir.banking.validator.SellRateValidator;
 
-
+ 
 /**
  * Controller for viewing currency exchange rates
  * @author Katherine

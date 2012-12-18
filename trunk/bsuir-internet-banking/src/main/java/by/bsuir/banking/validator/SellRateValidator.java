@@ -33,7 +33,7 @@ public class SellRateValidator implements Validator {
 	public boolean supports(Class<?> clazz) {
 		return SellRateWrapper.class.equals(clazz);
 	}
-
+ 
 	@Override
 	public void validate(Object obj, Errors errors) {
 		SellRateWrapper sellRate = (SellRateWrapper) obj;

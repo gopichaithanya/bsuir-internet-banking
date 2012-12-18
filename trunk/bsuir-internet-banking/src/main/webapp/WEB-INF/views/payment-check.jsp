@@ -104,7 +104,7 @@
 								<c:choose>
 								<c:when test="${payment.saved}">
 									<a
-									href="<c:url value='/payment/pay/${payment.legalPerson.id}?savedId=${spId}'/>"
+									href="<c:url value='/payment/pay/${payment.legalPerson.id}?savedId=${payment.savedId}'/>"
 									class="btn btn-warning">Назад</a>
 								</c:when>
 								<c:otherwise>

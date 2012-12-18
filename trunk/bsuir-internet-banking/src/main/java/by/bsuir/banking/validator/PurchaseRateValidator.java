@@ -28,7 +28,7 @@ public class PurchaseRateValidator implements Validator {
 		}
 		this.currencyTypeValidator = currencyTypeValidator;
 	}
-
+ 
 	@Override
 	public boolean supports(Class<?> clazz) {
 		return PurchaseRateWrapper.class.equals(clazz);

@@ -20,6 +20,7 @@ public class PaymentInfo {
 	private String displayCard;
 	private boolean saved = false;
 	private boolean toSave;
+	private Integer savedId;
 
 	@NotEmpty
 	private String infoString;
@@ -130,6 +131,14 @@ public class PaymentInfo {
 
 	public void setDisplayCard(String displayCard) {
 		this.displayCard = displayCard;
+	}
+
+	public Integer getSavedId() {
+		return savedId;
+	}
+
+	public void setSavedId(Integer savedId) {
+		this.savedId = savedId;
 	}
 
 }

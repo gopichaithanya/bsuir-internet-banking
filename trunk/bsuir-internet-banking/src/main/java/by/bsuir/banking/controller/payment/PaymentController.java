@@ -112,8 +112,8 @@ public class PaymentController extends EntityController {
 			wrapper.setCardNumber(card.getCardNumber());
 			wrapper.setInfoString(InformationParser.getInfoString(savedPayment.getInformation()));
 			wrapper.setAmount(savedPayment.getAmount());
+			wrapper.setSavedId(savedId);
 			
-			model.addAttribute("spId", savedId);
 			model.addAttribute("payment", wrapper);
 			model.addAttribute("cardList", cards);
 			model.addAttribute("cardSelect", cardSelect);
@@ -201,7 +201,7 @@ public class PaymentController extends EntityController {
 			Model model) throws IOException {
 		paymentValidator.validate(payment, result);
 		if (result.hasErrors()) {
-			model.addAttribute("error", "На форме есть ошибки");
+			//model.addAttribute("error", "На форме есть ошибки");
 			return VIEW_NAME;
 		} else {
 			payment.getAmount().setAmount(BigDecimal.valueOf(Double.valueOf(payment.getAmount().getEnteredAmount().replace(',', '.'))));
@@ -255,8 +255,7 @@ public class PaymentController extends EntityController {
 			BindingResult result,
 			@ModelAttribute("cardSelect") List<CardSelectInfo> cardSelect,
 			Model model, HttpSession session, HttpServletRequest request,
-			HttpServletResponse response, RedirectAttributes attrs,
-			@ModelAttribute("spId") Integer savedId) {
+			HttpServletResponse response, RedirectAttributes attrs) {
 		String securityToken = getSecurityToken(session);
 		if (result.hasErrors()) {
 			return VIEW_NAME_CHECK;
@@ -294,8 +293,8 @@ public class PaymentController extends EntityController {
 				// saving payment
 				if (payment.isSaved()) {
 					// take saved payment id
-					SavedPaymentWrapper sp = PaymentUtil.getSavedPaymentById(savedId, securityToken);
-					sp.setAccountId(accountId);
+					SavedPaymentWrapper sp = PaymentUtil.getSavedPaymentById(payment.getSavedId(), securityToken);
+					sp.setAccountId(accountId); 
 					sp.setAmount(payment.getAmount());
 					sp.setInformation(information);
 					
