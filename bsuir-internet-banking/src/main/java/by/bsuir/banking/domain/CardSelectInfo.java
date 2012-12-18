@@ -40,7 +40,7 @@ public class CardSelectInfo {
 		return cardWrapper.getCardNumber();
 	}
 
-	public void setCardNumber(String number) {
+	public void setCardNumber(String number) { 
 		cardWrapper.setCardNumber(number);
 	}
 

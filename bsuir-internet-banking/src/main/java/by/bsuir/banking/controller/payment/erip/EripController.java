@@ -68,7 +68,7 @@ public class EripController extends EntityController {
 	public String createForm(@PathVariable("paymentId") Integer id,
 			HttpSession session, Model model) {
 
-		String securityToken = getSecurityToken(session);
+		String securityToken = getSecurityToken(session); 
 
 		EripWrapper erip;
 		try {
