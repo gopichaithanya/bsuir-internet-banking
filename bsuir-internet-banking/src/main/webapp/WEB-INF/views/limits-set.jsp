@@ -10,50 +10,55 @@
 	<div id="breadcumbs" class="span12">
 		<ul class="breadcrumb">
 			<li><a href="<c:url value='/main' />">Главная</a> <span class="divider">/</span></li>
-			<li class="active">Сменить пароль</li>
+			<li class="active">Установить лимиты по карте</li>
 			
 		</ul>
 	</div>
-	<form:form id="form" method="post" class="form span5" modelAttribute="changepassword">
+	<form:form id="form" method="post" class="form span5" modelAttribute="limits">
 		<div class="control-group">
-			<h4>Заполните форму</h4>
+			<h4>Заполните суточные лимиты</h4>
 			<br>
 		</div>
 		<div class="control-group error">
 			<s:bind path="*">
 				<c:if test="${status.error}">
-					<div id="controls" class="alert alert-error">${status.error}</div>
+					<div id="controls" class="alert alert-error">${status.errorMessage}</div>
 				</c:if>
 			</s:bind>
 		</div>
-		<div id="divOrigPassword" class="control-group">
-			<%-- <form:label class="control-label" path="username"> 
-						Username 
-			</form:label> --%>
+		<div id="divMoneyLimit" class="control-group">
+			<label class="control-label"> 
+						<strong>Карта:</strong> ${info.displayValue}
+			</label>
+		</div>
+		<div id="divMoneyLimit" class="control-group">
+			<form:label class="control-label" path="moneyLimit"> 
+						<strong>Лимит по сумме</strong> 
+			</form:label>
 			<div class="controls">
-				<form:input path="originalPassword" autocomplete="off" id="inputOrigPassword"
-					placeholder="Текущий пароль" />
-				<form:errors class="help-inline error" path="originalPassword" />
+				<form:input path="moneyLimit" autocomplete="off" id="inputOrigPassword"
+					placeholder="" required="true"/><span class="help-inline">(${info.currencyType})</span>
+				<form:errors class="help-inline error" path="moneyLimit" />
 			</div>
 		</div>
 		<div id="divPassword" class="control-group">
-			<%-- <form:label class="control-label" path="username"> 
-						Username 
-			</form:label> --%>
+			<form:label class="control-label" path="operationsLimit"> 
+						<strong>Лимит по расходным операциям</strong>
+			</form:label>
 			<div class="controls">
-				<form:password path="password" autocomplete="off" id="inputPassword"
-					placeholder="Новый пароль" />
-				<form:errors class="help-inline error" path="password" />
+				<form:input path="operationsLimit" autocomplete="off" id="inputPassword"
+					placeholder="" required="true"/>
+				<form:errors class="help-inline error" path="operationsLimit" />
 			</div>
 		</div>
 		<div id="divConfirm" class="control-group">
-			<%-- <form:label class="control-label" path="password"> 
-						Password 
-			</form:label> --%>
+			<form:label class="control-label" path="secretWord"> 
+						<strong>Секретное слово</strong> 
+			</form:label>
 			<div class="controls">
-				<form:password path="confirmPassword" id="inputConfirm"
-					placeholder="Подтвердите пароль" />
-				<form:errors class="help-inline" path="confirmPassword" />
+				<form:password path="secretWord" id="inputConfirm"
+					placeholder="Введите секретное слово" required="true"/>
+				<form:errors class="help-inline" path="secretWord" />
 			</div>
 		</div>
 		<div class="control-group">

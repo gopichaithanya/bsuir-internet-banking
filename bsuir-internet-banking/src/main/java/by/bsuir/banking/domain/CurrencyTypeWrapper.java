@@ -35,4 +35,8 @@ public class CurrencyTypeWrapper {
 	public void setShortName(String value){
 		type.setShortName(factory.createCurrencyTypeShortName(value));
 	}
+	
+	public Integer getId(){
+		return type.getId();
+	}
 }

@@ -118,7 +118,7 @@ public class TransferMoneyController extends EntityController {
 		moneyValidator.validate(transfer.getAmount(), result);
 		if(result.hasErrors()){
 			model.addAttribute("form-error", "На форме есть ошибки");
-			return VIEW_NAME_STEP_1;
+	 		return VIEW_NAME_STEP_1;
 		}
 		if(transfer.getReceiverCardNumber().equals(transfer.getSenderCardNumber())){
 			result.reject("TranferError","Вы выбрали одинаковые карты. Выберите вторую карту.");

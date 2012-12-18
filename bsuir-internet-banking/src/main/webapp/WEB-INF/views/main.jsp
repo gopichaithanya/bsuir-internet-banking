@@ -7,7 +7,7 @@
 <body>
 		
 		<div class="span6">
-		<h4>Choose operation</h4>
+		<h4>Выберите операцию</h4>
 		<br>
 			<a href="<c:url value="/currency/rates/view"/>" title="Курс валют"><img width="100" height="50"
 				src="<c:url value="/resources/img/exchange_rate.png" />"

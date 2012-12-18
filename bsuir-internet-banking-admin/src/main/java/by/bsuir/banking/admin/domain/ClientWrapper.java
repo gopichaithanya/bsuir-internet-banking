@@ -29,7 +29,6 @@ public class ClientWrapper {
 		this.client = client;
 	}
 	
-
 	/**
 	 * Getting client instance for this wrapper
 	 * 

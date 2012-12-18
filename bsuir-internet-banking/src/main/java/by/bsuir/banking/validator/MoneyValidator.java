@@ -37,4 +37,4 @@ public class MoneyValidator implements Validator {
 		}
 	}
 
-}
+} 

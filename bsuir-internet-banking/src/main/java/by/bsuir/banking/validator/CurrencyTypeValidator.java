@@ -27,3 +27,4 @@ public class CurrencyTypeValidator implements Validator {
 	}
 
 }
+ 

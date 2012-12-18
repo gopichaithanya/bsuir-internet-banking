@@ -65,15 +65,15 @@ public class ChangePasswordController extends EntityController{
 		// checking original username
 		UserInfo user = getSessionUser(session);
 		if (!user.getPassword().equals(wrapper.getOriginalPassword())) {
-			result.reject("Original password is wrong");
+			result.reject("ChangePasswordError","Текущий пароль неправильный");
 			return VIEW_NAME;
 		}
 		if (!wrapper.getPassword().equals(wrapper.getConfirmPassword())) {
-			result.reject("Password and confirmed password do not match");
+			result.reject("ChangePasswordError","Новый и подтвержденный пароли не совпадают");
 			return VIEW_NAME;
 		}
 		if (!Pattern.compile(PASSWORD_PATTERN).matcher(wrapper.getPassword()).matches()) {
-			result.reject("wrongNewPassword", "password must contain numbers, capital letter");
+			result.reject("wrongNewPassword", "пароль должен содержать цифру и заглавную букву");
 			return VIEW_NAME;
 		}
 		// TODO set new username

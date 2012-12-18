@@ -80,7 +80,7 @@
 							<input type="submit" class="btn btn-success" value="Дальше"/>
 						</div>
 					</div>
-
+					<c:if test="${payment.saved}"><form:hidden path="savedId"/> </c:if>
 				</form:form>
 			</c:otherwise>
 		</c:choose>

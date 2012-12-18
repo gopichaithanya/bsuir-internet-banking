@@ -41,12 +41,9 @@ public class PaymentUtil {
 	private static List<LegalPerson> getPersons(String securityToken)
 			throws IInternetBankingServiceGetAllLegalPersonsAuthorizationFaultFaultFaultMessage,
 			IInternetBankingServiceGetAllLegalPersonsDomainFaultFaultFaultMessage {
-		if (persons == null) {
-			persons = service.getAllLegalPersons(securityToken)
-					.getLegalPerson();
+		persons = service.getAllLegalPersons(securityToken).getLegalPerson();
 
-			fillCategoryLabels(persons);
-		}
+		fillCategoryLabels(persons);
 		return persons;
 	}
 
@@ -110,13 +107,10 @@ public class PaymentUtil {
 			String securityToken)
 			throws IInternetBankingServiceGetAllLegalPersonsAuthorizationFaultFaultFaultMessage,
 			IInternetBankingServiceGetAllLegalPersonsDomainFaultFaultFaultMessage {
-		if (allLegalPersons == null) {
-			allLegalPersons = new ArrayList<LegalPersonWrapper>();
-			for (LegalPerson person : service.getAllLegalPersons(securityToken)
-					.getLegalPerson()) {
-				allLegalPersons.add(new LegalPersonWrapper(person));
-			}
-
+		allLegalPersons = new ArrayList<LegalPersonWrapper>();
+		for (LegalPerson person : service.getAllLegalPersons(securityToken)
+				.getLegalPerson()) {
+			allLegalPersons.add(new LegalPersonWrapper(person));
 		}
 		return allLegalPersons;
 	}
@@ -140,20 +134,17 @@ public class PaymentUtil {
 			IInternetBankingServiceGetCitiesForRegionDomainFaultFaultFaultMessage,
 			IInternetBankingServiceGetServicesForCityAuthorizationFaultFaultFaultMessage,
 			IInternetBankingServiceGetServicesForCityDomainFaultFaultFaultMessage {
-		if (allEripPayments == null) {
-			allEripPayments = new ArrayList<EripWrapper>();
-			for (Region region : service.getAllRegions(securityToken)
-					.getRegion()) {
-				for (City city : service.getCitiesForRegion(region.getId(),
-						securityToken).getCity()) {
-					for (Service erip : service.getServicesForCity(
-							city.getId(), securityToken).getService()) {
-						allEripPayments.add(new EripWrapper(erip));
-					}
+		allEripPayments = new ArrayList<EripWrapper>();
+		for (Region region : service.getAllRegions(securityToken).getRegion()) {
+			for (City city : service.getCitiesForRegion(region.getId(),
+					securityToken).getCity()) {
+				for (Service erip : service.getServicesForCity(city.getId(),
+						securityToken).getService()) {
+					allEripPayments.add(new EripWrapper(erip));
 				}
 			}
-			fillEripLabels(allEripPayments);
 		}
+		fillEripLabels(allEripPayments);
 		return allEripPayments;
 	}
 
@@ -162,13 +153,10 @@ public class PaymentUtil {
 			IInternetBankingServiceGetAllRegionsDomainFaultFaultFaultMessage,
 			IInternetBankingServiceGetCitiesForRegionAuthorizationFaultFaultFaultMessage,
 			IInternetBankingServiceGetCitiesForRegionDomainFaultFaultFaultMessage {
-		if (allCities == null) {
-			allCities = new ArrayList<City>();
-			for (Region region : service.getAllRegions(securityToken)
-					.getRegion()) {
-				allCities.addAll(service.getCitiesForRegion(region.getId(),
-						securityToken).getCity());
-			}
+		allCities = new ArrayList<City>();
+		for (Region region : service.getAllRegions(securityToken).getRegion()) {
+			allCities.addAll(service.getCitiesForRegion(region.getId(),
+					securityToken).getCity());
 		}
 		return allCities;
 	}
@@ -189,10 +177,8 @@ public class PaymentUtil {
 	public static List<Region> getAllRegions(String securityToken)
 			throws IInternetBankingServiceGetAllRegionsAuthorizationFaultFaultFaultMessage,
 			IInternetBankingServiceGetAllRegionsDomainFaultFaultFaultMessage {
-		if (allRegions == null) {
-			allRegions = new ArrayList<Region>();
-			allRegions.addAll(service.getAllRegions(securityToken).getRegion());
-		}
+		allRegions = new ArrayList<Region>();
+		allRegions.addAll(service.getAllRegions(securityToken).getRegion());
 		return allRegions;
 	}
 
@@ -277,14 +263,12 @@ public class PaymentUtil {
 			String securityToken)
 			throws IInternetBankingServiceGetAllSavedPaymentsAuthorizationFaultFaultFaultMessage,
 			IInternetBankingServiceGetAllSavedPaymentsDomainFaultFaultFaultMessage {
-		if (allSavedPayments == null) {
-			allSavedPayments = new ArrayList<SavedPaymentWrapper>();
-			for (SavedPayment payment : service.getAllSavedPayments(
-					securityToken).getSavedPayment()) {
-				//excluding ERIP accounts
-				if (payment.getLegalAccountId() != 1) {
-					allSavedPayments.add(new SavedPaymentWrapper(payment));
-				}
+		allSavedPayments = new ArrayList<SavedPaymentWrapper>();
+		for (SavedPayment payment : service.getAllSavedPayments(securityToken)
+				.getSavedPayment()) {
+			// excluding ERIP accounts
+			if (payment.getLegalAccountId() != 1) {
+				allSavedPayments.add(new SavedPaymentWrapper(payment));
 			}
 		}
 		return allSavedPayments;

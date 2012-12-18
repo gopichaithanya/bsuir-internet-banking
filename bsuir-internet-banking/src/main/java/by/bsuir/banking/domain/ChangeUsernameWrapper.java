@@ -14,13 +14,13 @@ public class ChangeUsernameWrapper {
 
 	}
 	
-	@NotEmpty
+	@NotEmpty(message="Введите текущее имя пользователя")
 	private String originalUsername;
 
-	@NotEmpty
+	@NotEmpty(message="Введите новое имя пользователя")
 	private String username;
 
-	@NotEmpty
+	@NotEmpty(message="Подтвердите новое имя пользователя")
 	private String confirmUsername;
 
 	public String getOriginalUsername(){

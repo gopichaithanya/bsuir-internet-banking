@@ -23,7 +23,8 @@ import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetCurrency
 
 public class CardUtil {
 
-	private static IInternetBankingService service = ServiceProvider.getInternetBankingService();
+	private static IInternetBankingService service = ServiceProvider
+			.getInternetBankingService();
 	private static List<CardTypeWrapper> cardTypes = null;
 	private static List<CurrencyTypeWrapper> currencyTypes = null;
 	private static List<CardWrapper> cards = null;
@@ -45,9 +46,12 @@ public class CardUtil {
 		return new BigDecimal("100000");
 	}
 
-	public static CardTypeWrapper getCardType(Integer cardTypeId, String securityToken) throws IInternetBankingServiceGetAllCardTypesAuthorizationFaultFaultFaultMessage, IInternetBankingServiceGetAllCardTypesDomainFaultFaultFaultMessage {
-		for(CardTypeWrapper wrapper: getCardTypes(securityToken)){
-			if(wrapper.getId() == cardTypeId){
+	public static CardTypeWrapper getCardType(Integer cardTypeId,
+			String securityToken)
+			throws IInternetBankingServiceGetAllCardTypesAuthorizationFaultFaultFaultMessage,
+			IInternetBankingServiceGetAllCardTypesDomainFaultFaultFaultMessage {
+		for (CardTypeWrapper wrapper : getCardTypes(securityToken)) {
+			if (wrapper.getId() == cardTypeId) {
 				return wrapper;
 			}
 		}
@@ -57,57 +61,59 @@ public class CardUtil {
 	public static List<CardTypeWrapper> getCardTypes(String securityToken)
 			throws IInternetBankingServiceGetAllCardTypesAuthorizationFaultFaultFaultMessage,
 			IInternetBankingServiceGetAllCardTypesDomainFaultFaultFaultMessage {
-		if (cardTypes == null || cardTypes.size() == 0) {
-			cardTypes = new ArrayList<CardTypeWrapper>();
-			ArrayOfCardType cardArr = service.getAllCardTypes(securityToken);
-			for (CardType cardType : cardArr.getCardType()) {
-				cardTypes.add(new CardTypeWrapper(cardType));
-			}
+		cardTypes = new ArrayList<CardTypeWrapper>();
+		ArrayOfCardType cardArr = service.getAllCardTypes(securityToken);
+		for (CardType cardType : cardArr.getCardType()) {
+			cardTypes.add(new CardTypeWrapper(cardType));
 		}
 		return cardTypes;
 	}
 
 	public static List<CurrencyTypeWrapper> getCurrencyTypes()
 			throws IInternetBankingServiceGetCurrencyTypesDomainFaultFaultFaultMessage {
-		if (currencyTypes == null || currencyTypes.size() == 0) {
-			currencyTypes = new ArrayList<CurrencyTypeWrapper>();
-			ArrayOfCurrencyType curArr = service.getCurrencyTypes();
-			for (CurrencyType curType : curArr.getCurrencyType()) {
-				currencyTypes.add(new CurrencyTypeWrapper(curType));
-			}
+		currencyTypes = new ArrayList<CurrencyTypeWrapper>();
+		ArrayOfCurrencyType curArr = service.getCurrencyTypes();
+		for (CurrencyType curType : curArr.getCurrencyType()) {
+			currencyTypes.add(new CurrencyTypeWrapper(curType));
 		}
 		return currencyTypes;
 	}
-	
-	public static CurrencyTypeWrapper getCurrencyTypeById(Integer id) throws IInternetBankingServiceGetCurrencyTypesDomainFaultFaultFaultMessage{
-		for(CurrencyTypeWrapper curType:getCurrencyTypes()){
-			if(curType.getCurrencyType().getId() == id){
+
+	public static CurrencyTypeWrapper getCurrencyTypeById(Integer id)
+			throws IInternetBankingServiceGetCurrencyTypesDomainFaultFaultFaultMessage {
+		for (CurrencyTypeWrapper curType : getCurrencyTypes()) {
+			if (curType.getCurrencyType().getId() == id) {
 				return curType;
 			}
 		}
 		return null;
 	}
-	
-	public static String changeCardNumber(String cardNumber){
-		return cardNumber.substring(0, 4) + "XXXXXXXX" + cardNumber.substring(12, 16);
+
+	public static String changeCardNumber(String cardNumber) {
+		return cardNumber.substring(0, 4) + "XXXXXXXX"
+				+ cardNumber.substring(12, 16);
 	}
 
-	public static List<CardWrapper> getCards(String securityToken) throws IInternetBankingServiceGetCardsAuthorizationFaultFaultFaultMessage, IInternetBankingServiceGetCardsDomainFaultFaultFaultMessage{
-		if(cards == null){
-			cards = new ArrayList<CardWrapper>();
-			for(Card card:service.getCards(securityToken).getCard()){
-				cards.add(new CardWrapper(card));
-			}
+	public static List<CardWrapper> getCards(String securityToken)
+			throws IInternetBankingServiceGetCardsAuthorizationFaultFaultFaultMessage,
+			IInternetBankingServiceGetCardsDomainFaultFaultFaultMessage {
+		cards = new ArrayList<CardWrapper>();
+		for (Card card : service.getCards(securityToken).getCard()) {
+			cards.add(new CardWrapper(card));
 		}
 		return cards;
 	}
-	
-	public static CardWrapper getCardByAccountId(Integer id, String securityToken) throws IInternetBankingServiceGetCardsAuthorizationFaultFaultFaultMessage, IInternetBankingServiceGetCardsDomainFaultFaultFaultMessage{
-		for(CardWrapper card:getCards(securityToken)){
-			if(card.getCardsAccountId() == id){
+
+	public static CardWrapper getCardByAccountId(Integer id,
+			String securityToken)
+			throws IInternetBankingServiceGetCardsAuthorizationFaultFaultFaultMessage,
+			IInternetBankingServiceGetCardsDomainFaultFaultFaultMessage {
+		for (CardWrapper card : getCards(securityToken)) {
+			if (card.getCardsAccountId() == id) {
 				return card;
 			}
 		}
 		return null;
 	}
+
 }

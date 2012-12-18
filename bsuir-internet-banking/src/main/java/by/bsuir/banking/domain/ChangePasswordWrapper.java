@@ -14,13 +14,13 @@ public class ChangePasswordWrapper {
 		
 	}		
 	
-	@NotEmpty
+	@NotEmpty(message="Введите оригинальный пароль")
 	private String originalPassword;
 	
-	@NotEmpty
+	@NotEmpty(message="Введите новый пароль")
 	private String password;
 	
-	@NotEmpty
+	@NotEmpty(message="Подтвердите новый пароль")
 	private String confirmPassword;
 	
 	public String getOriginalPassword(){

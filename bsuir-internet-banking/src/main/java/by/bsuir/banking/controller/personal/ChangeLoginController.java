@@ -66,15 +66,15 @@ public class ChangeLoginController extends EntityController {
 		//checking original username
 		UserInfo user = getSessionUser(session);
 		if(!user.getUsername().equals(wrapper.getOriginalUsername())){
-			result.reject("Original username is wrong");
+			result.reject("ChangeUsernameError","Ќеверное текущее им€ пользовател€");
 			return VIEW_NAME;
 		}
 		if(!wrapper.getUsername().equals(wrapper.getConfirmUsername())){
-			result.reject("Username and confirmed username do not match");
+			result.reject("ChangeUsernameError", "Ќовое и подтвержденное им€ пользовател€ не совпадают");
 			return VIEW_NAME;
 		}
 		if(!pattern.matcher(wrapper.getUsername()).matches()) {
-			result.reject("Username do not match");
+			result.reject("ChangeUsernameError", "Ќеправильное им€ пользовател€");
 			return VIEW_NAME;
 		}
 		//TODO set new username
