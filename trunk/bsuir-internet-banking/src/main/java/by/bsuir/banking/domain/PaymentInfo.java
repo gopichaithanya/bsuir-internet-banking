@@ -102,7 +102,7 @@ public class PaymentInfo {
 	}
 
 	public boolean isSaved() {
-		return saved;
+		return saved; 
 	}
 
 	public void setSaved(boolean saved) {

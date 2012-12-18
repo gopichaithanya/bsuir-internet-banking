@@ -16,7 +16,7 @@ public class MoneyWrapper {
 	private String enteredAmount;
 	
 	public MoneyWrapper() {
-		money = factory.createMoney();
+		money = factory.createMoney(); 
 	}
 	
 	public MoneyWrapper(Money  money) {

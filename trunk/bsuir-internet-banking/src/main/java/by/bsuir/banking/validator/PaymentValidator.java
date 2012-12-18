@@ -38,7 +38,7 @@ public class PaymentValidator implements Validator {
 	}
 
 	@Override
-	public void validate(Object target, Errors errors) {
+	public void validate(Object target, Errors errors) { 
 		PaymentInfo payment = (PaymentInfo) target;
 		
 		if (payment.getLegalPerson().getCategoryId() == null){

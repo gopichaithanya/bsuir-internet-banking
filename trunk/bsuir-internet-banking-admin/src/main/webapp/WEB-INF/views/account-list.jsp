@@ -23,7 +23,7 @@
 				<div class="clearfix alert alert-warning ">This client has no accounts. <span><a href="<c:url value='/account/${clientId}/open'/> " class="btn pull-right">Open account</a></span></div>
 			</c:when>
 			<c:otherwise>
-				<h4>My cards</h4>
+				<h4>Accounts</h4>
 				<table class="table table-hover">
 					<tr>
 						<th>#</th>

@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import by.bsuir.banking.admin.utils.CardUtil;
 import by.bsuir.banking.admin.utils.MessageConstants;
 import by.bsuir.banking.admin.utils.ServiceProvider;
 import by.bsuir.banking.controller.login.EntityController;
@@ -92,7 +91,7 @@ public class EditLimitsController extends EntityController {
 			CardWrapper wrapper = new CardWrapper(card);
 			Money ballance = service.getBallance(cardId, securityToken);
 			System.out.println(wrapper.getSecretWord());
-			System.out.println(limits.getSecretWord());
+		 	System.out.println(limits.getSecretWord());
 			if (!wrapper.getSecretWord().equals(limits.getSecretWord())) {
 				result.reject("LimitsError",
 						"Вы ввели неправильное секретное слово");

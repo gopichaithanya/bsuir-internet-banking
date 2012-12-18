@@ -28,7 +28,7 @@ public class CardValidator implements Validator {
 	
 	@Override
 	public boolean supports(Class<?> clazz) {
-		return CardWrapper.class.equals(clazz);
+		return CardWrapper.class.equals(clazz); 
 	}
  
 	@Override

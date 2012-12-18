@@ -41,7 +41,7 @@
 							<c:when test="${cardList[loop.index].expired}">
 							<tr class="error">
 								<td>${loop.index + 1}</td>
-								<td>${cardList[loop.index].hiddenNumber}</td>
+								<td><a href="<c:url value='/card/${cardList[loop.index].cardId}/view'/>">${cardList[loop.index].hiddenNumber}</a></td>
 								<td>${cardList[loop.index].cardType.name}</td>
 								<td>${ballance[loop.index].amount}</td>
 								<td>${ballance[loop.index].currencyType}</td>
@@ -52,7 +52,7 @@
 							<c:otherwise>
 							<tr>
 								<td>${loop.index + 1}</td>
-								<td>${cardList[loop.index].hiddenNumber}</td>
+								<td><a href="<c:url value='/card/${cardList[loop.index].cardId}/view'/>">${cardList[loop.index].hiddenNumber}</a></td>
 								<td>${cardList[loop.index].cardType.name}</td>
 								<td>${ballance[loop.index].amount}</td>
 								<td>${ballance[loop.index].currencyType}</td>

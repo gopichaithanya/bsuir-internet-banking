@@ -63,7 +63,7 @@ public class TransferMoneyController extends EntityController {
 	MoneyValidator moneyValidator;
 
 	public TransferMoneyController() {
-		service = ServiceProvider.getInternetBankingService();
+		service = ServiceProvider.getInternetBankingService(); 
 	}
 
 	@RequestMapping(value = { "", "/", "/step1" }, method = RequestMethod.GET)

@@ -12,8 +12,8 @@
 	</div>
 	<div>
 		<form:form class="form-search"  modelAttribute="searchCriteria">
-			<form:input type="text" class="input-medium search-query" path="seria"/>
-			<form:input type="text" class="input-medium search-query" path="number"/>
+			<form:input type="text" class="input-medium search-query" path="seria" placeholder="Passport seria"/>
+			<form:input type="text" class="input-medium search-query" path="number" placeholder="Passport number"/>
 			<button type="submit" class="btn">Search</button>
 		</form:form>
 	</div>

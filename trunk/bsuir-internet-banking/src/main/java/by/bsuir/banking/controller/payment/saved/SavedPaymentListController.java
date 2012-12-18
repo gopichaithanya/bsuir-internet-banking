@@ -43,7 +43,7 @@ public class SavedPaymentListController extends EntityController {
 	private static IInternetBankingService service;
 
 	public SavedPaymentListController() {
-		service = ServiceProvider.getInternetBankingService();
+		service = ServiceProvider.getInternetBankingService(); 
 	}
 
 	@RequestMapping(method = RequestMethod.GET)

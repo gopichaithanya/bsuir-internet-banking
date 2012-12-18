@@ -217,7 +217,7 @@ public class PaymentController extends EntityController {
 				if (card.isExpired()) {
 					result.reject("paymentError",
 							" арта недействительна. ¬ыберите другую карту или обратитесь к оператору");
-					return VIEW_NAME;
+	 				return VIEW_NAME;
 				}
 				payment.setDisplayCard(card.getDisplayValue());
 				curType = card.getCurrencyType();
