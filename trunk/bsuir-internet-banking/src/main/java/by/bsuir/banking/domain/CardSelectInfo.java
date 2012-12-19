@@ -69,4 +69,8 @@ public class CardSelectInfo {
 		}
 		
 	}
+	
+	public boolean isLocked(){
+		return cardWrapper.isLocked();
+	}
 }

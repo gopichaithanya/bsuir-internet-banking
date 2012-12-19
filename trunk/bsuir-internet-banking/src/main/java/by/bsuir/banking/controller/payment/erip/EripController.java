@@ -162,6 +162,11 @@ public class EripController extends EntityController {
 							"Карта недействительна. Выберите другую карту или обратитесь к оператору");
 					return VIEW_NAME;
 				}
+				if(card.isLocked()){
+					result.reject("paymentError",
+							"Карта заблокированна. Разблокируйте карту, выберите другую или обратитесь к оператору");
+	 				return VIEW_NAME;
+				}
 				payment.setDisplayCard(card.getDisplayValue());
 				curType = card.getCurrencyType();
 

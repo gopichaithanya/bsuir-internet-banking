@@ -15,13 +15,11 @@ import by.bsuir.banking.admin.utils.ServiceProvider;
 import by.bsuir.banking.controller.login.EntityController;
 import by.bsuir.banking.domain.CardWrapper;
 import by.bsuir.banking.domain.MoneyWrapper;
-import by.bsuir.banking.proxy.internetbanking.Card;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingService;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetBallanceAuthorizationFaultFaultFaultMessage;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetBallanceDomainFaultFaultFaultMessage;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetCardForClientAuthorizationFaultFaultFaultMessage;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetCardForClientDomainFaultFaultFaultMessage;
-import by.bsuir.banking.proxy.internetbanking.Money;
 
 
 @Controller
