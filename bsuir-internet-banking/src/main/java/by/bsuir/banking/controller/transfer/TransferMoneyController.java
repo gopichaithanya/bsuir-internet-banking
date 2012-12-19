@@ -141,6 +141,11 @@ public class TransferMoneyController extends EntityController {
 					result.reject("TransferError", "Карта-отправитель недействительна. Выберите другую карту или обратитесь к оператору.");
 					return VIEW_NAME_STEP_1;
 				}
+				if(card.isLocked()){
+					result.reject("TransferError",
+							"Карта-отправитель заблокированна. Разблокируйте карту, выберите другую или обратитесь к оператору");
+	 				return VIEW_NAME_STEP_1;
+				}
 				attrs.addFlashAttribute("sender", card.getDisplayValue());
 				curTypeFrom = card.getCurrencyType();
 			}
@@ -148,6 +153,11 @@ public class TransferMoneyController extends EntityController {
 				if(card.isExpired()){
 					result.reject("TransferError", "Карта-получатель недействительна. Выберите другую карту или обратитесь к оператору.");
 					return VIEW_NAME_STEP_1;
+				}
+				if(card.isLocked()){
+					result.reject("TransferError",
+							"Карта-получатель заблокированна. Разблокируйте карту, выберите другую или обратитесь к оператору");
+	 				return VIEW_NAME_STEP_1;
 				}
 				curTypeTo = card.getCurrencyType();
 				attrs.addFlashAttribute("receiver", card.getDisplayValue());

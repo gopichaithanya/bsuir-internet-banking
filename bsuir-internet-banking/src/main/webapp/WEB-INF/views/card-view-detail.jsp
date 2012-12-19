@@ -58,27 +58,31 @@
 		</div>
 		<div class="row-fluid">
 			<table>
-				<tr>
+				<tr><c:choose>
+				<c:when test="${not card.locked}">
 					<td><a
 						href="<c:url value='/card/${card.cardId}/limits/set' />"
 						class="btn btn-small btn-primary">Установить лимиты</a></td>
-					<td><c:choose>
-							<c:when test="${not card.locked}">
+					<td>
+							
 								<form action="<c:url value='/card/${card.cardId}/lock' />"
 									style="padding: 0; margin: 0" method="post">
 									<input type="submit" class="btn btn-small btn-warning"
 										value="Заблокировать карту"
 										onclick="return confirm('Вы уверены, что хотите заблокировать карту?')" />
 								</form>
+							</td>
 							</c:when>
 							<c:otherwise>
+							<td>
 								<form action="<c:url value='/card/${card.cardId}/unlock' />"
 									style="padding: 0; margin: 0" method="post">
 									<input type="submit" class="btn btn-small btn-warning"
 										value="Разблокировать карту" />
 								</form>
+								</td>
 							</c:otherwise>
-						</c:choose></td>
+						</c:choose>
 				</tr>
 			</table>
 		</div>
