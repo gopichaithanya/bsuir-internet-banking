@@ -1,10 +1,9 @@
 
 package by.bsuir.banking.proxy.internetbanking;
 
-import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElementRef;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -19,7 +18,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="PayERIPResult" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="CreateAutoPaymentResult" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -30,36 +29,36 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "payERIPResult"
+    "createAutoPaymentResult"
 })
-@XmlRootElement(name = "PayERIPResponse")
-public class PayERIPResponse {
+@XmlRootElement(name = "CreateAutoPaymentResponse")
+public class CreateAutoPaymentResponse {
 
-    @XmlElementRef(name = "PayERIPResult", namespace = "http://tempuri.org/", type = JAXBElement.class)
-    protected JAXBElement<String> payERIPResult;
+    @XmlElement(name = "CreateAutoPaymentResult")
+    protected Integer createAutoPaymentResult;
 
     /**
-     * Gets the value of the payERIPResult property.
+     * Gets the value of the createAutoPaymentResult property.
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link String }{@code >}
+     *     {@link Integer }
      *     
      */
-    public JAXBElement<String> getPayERIPResult() {
-        return payERIPResult;
+    public Integer getCreateAutoPaymentResult() {
+        return createAutoPaymentResult;
     }
 
     /**
-     * Sets the value of the payERIPResult property.
+     * Sets the value of the createAutoPaymentResult property.
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link String }{@code >}
+     *     {@link Integer }
      *     
      */
-    public void setPayERIPResult(JAXBElement<String> value) {
-        this.payERIPResult = ((JAXBElement<String> ) value);
+    public void setCreateAutoPaymentResult(Integer value) {
+        this.createAutoPaymentResult = value;
     }
 
 }

@@ -24,6 +24,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="Amount" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
  *         &lt;element name="DateTime" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *         &lt;element name="Id" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *         &lt;element name="IsSuccessful" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="ReceiverAccountId" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
@@ -39,6 +40,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "amount",
     "dateTime",
     "id",
+    "isSuccessful",
     "receiverAccountId"
 })
 public class Transfer {
@@ -52,6 +54,8 @@ public class Transfer {
     protected XMLGregorianCalendar dateTime;
     @XmlElement(name = "Id")
     protected Integer id;
+    @XmlElement(name = "IsSuccessful")
+    protected Boolean isSuccessful;
     @XmlElement(name = "ReceiverAccountId")
     protected Integer receiverAccountId;
 
@@ -149,6 +153,30 @@ public class Transfer {
      */
     public void setId(Integer value) {
         this.id = value;
+    }
+
+    /**
+     * Gets the value of the isSuccessful property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean isIsSuccessful() {
+        return isSuccessful;
+    }
+
+    /**
+     * Sets the value of the isSuccessful property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setIsSuccessful(Boolean value) {
+        this.isSuccessful = value;
     }
 
     /**

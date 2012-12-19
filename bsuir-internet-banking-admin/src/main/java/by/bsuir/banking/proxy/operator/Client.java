@@ -26,9 +26,11 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="Email" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="FirstName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="Id" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *         &lt;element name="IsLocked" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="LastName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="Login" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="MiddleName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="NumberOfInvalidLogins" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element name="Passport" type="{http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model}Passport" minOccurs="0"/>
  *         &lt;element name="PassportId" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element name="Password" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
@@ -48,9 +50,11 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "email",
     "firstName",
     "id",
+    "isLocked",
     "lastName",
     "login",
     "middleName",
+    "numberOfInvalidLogins",
     "passport",
     "passportId",
     "password",
@@ -69,12 +73,16 @@ public class Client {
     protected JAXBElement<String> firstName;
     @XmlElement(name = "Id")
     protected Integer id;
+    @XmlElement(name = "IsLocked")
+    protected Boolean isLocked;
     @XmlElementRef(name = "LastName", namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", type = JAXBElement.class)
     protected JAXBElement<String> lastName;
     @XmlElementRef(name = "Login", namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", type = JAXBElement.class)
     protected JAXBElement<String> login;
     @XmlElementRef(name = "MiddleName", namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", type = JAXBElement.class)
     protected JAXBElement<String> middleName;
+    @XmlElement(name = "NumberOfInvalidLogins")
+    protected Integer numberOfInvalidLogins;
     @XmlElementRef(name = "Passport", namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", type = JAXBElement.class)
     protected JAXBElement<Passport> passport;
     @XmlElement(name = "PassportId")
@@ -205,6 +213,30 @@ public class Client {
     }
 
     /**
+     * Gets the value of the isLocked property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean isIsLocked() {
+        return isLocked;
+    }
+
+    /**
+     * Sets the value of the isLocked property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setIsLocked(Boolean value) {
+        this.isLocked = value;
+    }
+
+    /**
      * Gets the value of the lastName property.
      * 
      * @return
@@ -274,6 +306,30 @@ public class Client {
      */
     public void setMiddleName(JAXBElement<String> value) {
         this.middleName = ((JAXBElement<String> ) value);
+    }
+
+    /**
+     * Gets the value of the numberOfInvalidLogins property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *     
+     */
+    public Integer getNumberOfInvalidLogins() {
+        return numberOfInvalidLogins;
+    }
+
+    /**
+     * Sets the value of the numberOfInvalidLogins property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *     
+     */
+    public void setNumberOfInvalidLogins(Integer value) {
+        this.numberOfInvalidLogins = value;
     }
 
     /**

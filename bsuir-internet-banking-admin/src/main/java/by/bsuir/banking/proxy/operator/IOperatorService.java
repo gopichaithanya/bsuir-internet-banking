@@ -29,8 +29,8 @@ public interface IOperatorService {
      * @param clientId
      * @return
      *     returns by.bsuir.banking.proxy.operator.Client
-     * @throws IOperatorServiceGetClientDomainFaultFaultFaultMessage
      * @throws IOperatorServiceGetClientAuthorizationFaultFaultFaultMessage
+     * @throws IOperatorServiceGetClientDomainFaultFaultFaultMessage
      */
     @WebMethod(operationName = "GetClient", action = "http://tempuri.org/IOperatorService/GetClient")
     @WebResult(name = "GetClientResult", targetNamespace = "http://tempuri.org/")
@@ -108,8 +108,8 @@ public interface IOperatorService {
      * @param pageNumber
      * @return
      *     returns by.bsuir.banking.proxy.operator.ArrayOfClient
-     * @throws IOperatorServiceGetPageofClientsAuthorizationFaultFaultFaultMessage
      * @throws IOperatorServiceGetPageofClientsDomainFaultFaultFaultMessage
+     * @throws IOperatorServiceGetPageofClientsAuthorizationFaultFaultFaultMessage
      */
     @WebMethod(operationName = "GetPageofClients", action = "http://tempuri.org/IOperatorService/GetPageofClients")
     @WebResult(name = "GetPageofClientsResult", targetNamespace = "http://tempuri.org/")
@@ -151,8 +151,8 @@ public interface IOperatorService {
      * @param firstName
      * @return
      *     returns by.bsuir.banking.proxy.operator.ArrayOfClient
-     * @throws IOperatorServiceGetClientsByNameAuthorizationFaultFaultFaultMessage
      * @throws IOperatorServiceGetClientsByNameDomainFaultFaultFaultMessage
+     * @throws IOperatorServiceGetClientsByNameAuthorizationFaultFaultFaultMessage
      */
     @WebMethod(operationName = "GetClientsByName", action = "http://tempuri.org/IOperatorService/GetClientsByName")
     @WebResult(name = "GetClientsByNameResult", targetNamespace = "http://tempuri.org/")
@@ -177,8 +177,8 @@ public interface IOperatorService {
      * @param number
      * @return
      *     returns by.bsuir.banking.proxy.operator.Client
-     * @throws IOperatorServiceGetClientByPassportDataDomainFaultFaultFaultMessage
      * @throws IOperatorServiceGetClientByPassportDataAuthorizationFaultFaultFaultMessage
+     * @throws IOperatorServiceGetClientByPassportDataDomainFaultFaultFaultMessage
      */
     @WebMethod(operationName = "GetClientByPassportData", action = "http://tempuri.org/IOperatorService/GetClientByPassportData")
     @WebResult(name = "GetClientByPassportDataResult", targetNamespace = "http://tempuri.org/")
@@ -192,6 +192,30 @@ public interface IOperatorService {
         @WebParam(name = "securityToken", targetNamespace = "http://tempuri.org/")
         String securityToken)
         throws IOperatorServiceGetClientByPassportDataAuthorizationFaultFaultFaultMessage, IOperatorServiceGetClientByPassportDataDomainFaultFaultFaultMessage
+    ;
+
+    /**
+     * 
+     * @param securityToken
+     * @param newLogin
+     * @param newPassword
+     * @param clientId
+     * @throws IOperatorServiceUnlockClientAuthorizationFaultFaultFaultMessage
+     * @throws IOperatorServiceUnlockClientDomainFaultFaultFaultMessage
+     */
+    @WebMethod(operationName = "UnlockClient", action = "http://tempuri.org/IOperatorService/UnlockClient")
+    @RequestWrapper(localName = "UnlockClient", targetNamespace = "http://tempuri.org/", className = "by.bsuir.banking.proxy.operator.UnlockClient")
+    @ResponseWrapper(localName = "UnlockClientResponse", targetNamespace = "http://tempuri.org/", className = "by.bsuir.banking.proxy.operator.UnlockClientResponse")
+    public void unlockClient(
+        @WebParam(name = "clientId", targetNamespace = "http://tempuri.org/")
+        Integer clientId,
+        @WebParam(name = "newLogin", targetNamespace = "http://tempuri.org/")
+        String newLogin,
+        @WebParam(name = "newPassword", targetNamespace = "http://tempuri.org/")
+        String newPassword,
+        @WebParam(name = "securityToken", targetNamespace = "http://tempuri.org/")
+        String securityToken)
+        throws IOperatorServiceUnlockClientAuthorizationFaultFaultFaultMessage, IOperatorServiceUnlockClientDomainFaultFaultFaultMessage
     ;
 
 }
