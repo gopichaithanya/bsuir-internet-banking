@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="ExecuteTransferResult" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="securityToken" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -30,36 +30,36 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "executeTransferResult"
+    "securityToken"
 })
-@XmlRootElement(name = "ExecuteTransferResponse")
-public class ExecuteTransferResponse {
+@XmlRootElement(name = "GetAutoPaymentsForClient")
+public class GetAutoPaymentsForClient {
 
-    @XmlElementRef(name = "ExecuteTransferResult", namespace = "http://tempuri.org/", type = JAXBElement.class)
-    protected JAXBElement<String> executeTransferResult;
+    @XmlElementRef(name = "securityToken", namespace = "http://tempuri.org/", type = JAXBElement.class)
+    protected JAXBElement<String> securityToken;
 
     /**
-     * Gets the value of the executeTransferResult property.
+     * Gets the value of the securityToken property.
      * 
      * @return
      *     possible object is
      *     {@link JAXBElement }{@code <}{@link String }{@code >}
      *     
      */
-    public JAXBElement<String> getExecuteTransferResult() {
-        return executeTransferResult;
+    public JAXBElement<String> getSecurityToken() {
+        return securityToken;
     }
 
     /**
-     * Sets the value of the executeTransferResult property.
+     * Sets the value of the securityToken property.
      * 
      * @param value
      *     allowed object is
      *     {@link JAXBElement }{@code <}{@link String }{@code >}
      *     
      */
-    public void setExecuteTransferResult(JAXBElement<String> value) {
-        this.executeTransferResult = ((JAXBElement<String> ) value);
+    public void setSecurityToken(JAXBElement<String> value) {
+        this.securityToken = ((JAXBElement<String> ) value);
     }
 
 }

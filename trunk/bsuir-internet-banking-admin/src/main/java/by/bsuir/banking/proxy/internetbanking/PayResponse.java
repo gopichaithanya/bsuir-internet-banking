@@ -1,9 +1,10 @@
 
 package by.bsuir.banking.proxy.internetbanking;
 
+import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -18,7 +19,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="PayResult" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element name="PayResult" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -34,18 +35,18 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement(name = "PayResponse")
 public class PayResponse {
 
-    @XmlElement(name = "PayResult")
-    protected Boolean payResult;
+    @XmlElementRef(name = "PayResult", namespace = "http://tempuri.org/", type = JAXBElement.class)
+    protected JAXBElement<String> payResult;
 
     /**
      * Gets the value of the payResult property.
      * 
      * @return
      *     possible object is
-     *     {@link Boolean }
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
      *     
      */
-    public Boolean isPayResult() {
+    public JAXBElement<String> getPayResult() {
         return payResult;
     }
 
@@ -54,11 +55,11 @@ public class PayResponse {
      * 
      * @param value
      *     allowed object is
-     *     {@link Boolean }
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
      *     
      */
-    public void setPayResult(Boolean value) {
-        this.payResult = value;
+    public void setPayResult(JAXBElement<String> value) {
+        this.payResult = ((JAXBElement<String> ) value);
     }
 
 }

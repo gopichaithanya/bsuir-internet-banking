@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="ExecuteTransferResult" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="GetAutoPaymentResult" type="{http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model}AutoPayment" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -30,36 +30,36 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "executeTransferResult"
+    "getAutoPaymentResult"
 })
-@XmlRootElement(name = "ExecuteTransferResponse")
-public class ExecuteTransferResponse {
+@XmlRootElement(name = "GetAutoPaymentResponse")
+public class GetAutoPaymentResponse {
 
-    @XmlElementRef(name = "ExecuteTransferResult", namespace = "http://tempuri.org/", type = JAXBElement.class)
-    protected JAXBElement<String> executeTransferResult;
+    @XmlElementRef(name = "GetAutoPaymentResult", namespace = "http://tempuri.org/", type = JAXBElement.class)
+    protected JAXBElement<AutoPayment> getAutoPaymentResult;
 
     /**
-     * Gets the value of the executeTransferResult property.
+     * Gets the value of the getAutoPaymentResult property.
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link String }{@code >}
+     *     {@link JAXBElement }{@code <}{@link AutoPayment }{@code >}
      *     
      */
-    public JAXBElement<String> getExecuteTransferResult() {
-        return executeTransferResult;
+    public JAXBElement<AutoPayment> getGetAutoPaymentResult() {
+        return getAutoPaymentResult;
     }
 
     /**
-     * Sets the value of the executeTransferResult property.
+     * Sets the value of the getAutoPaymentResult property.
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link String }{@code >}
+     *     {@link JAXBElement }{@code <}{@link AutoPayment }{@code >}
      *     
      */
-    public void setExecuteTransferResult(JAXBElement<String> value) {
-        this.executeTransferResult = ((JAXBElement<String> ) value);
+    public void setGetAutoPaymentResult(JAXBElement<AutoPayment> value) {
+        this.getAutoPaymentResult = ((JAXBElement<AutoPayment> ) value);
     }
 
 }
