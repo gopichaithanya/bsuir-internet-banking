@@ -29,7 +29,7 @@ import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetCardForA
 public class CreateCardController extends EntityController {
 	private static Logger logger = Logger.getLogger(ListAccountController.class);
 	private static IInternetBankingService service;
-	private static final String VIEW_NAME = "card-create";
+	private static final String VIEW_NAME = "card-create"; 
 	
 	public CreateCardController(){
 		service = ServiceProvider.getInternetBankingInstance();

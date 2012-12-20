@@ -170,6 +170,12 @@ public class AccountCardWrapper {
 	}
 	
 	public Date getExpirationDate(){
+		if(card == null){
+			System.out.println("NOCARD!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		}
+		if(card.getExpirationDate() == null){
+			System.out.println("NOEXPDATE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		}
 		return (card.getExpirationDate() == null) ? null : card.getExpirationDate().toGregorianCalendar().getTime();
 	}
 	
@@ -190,9 +196,14 @@ public class AccountCardWrapper {
 		if(!isExpired()){
 			return "Valid";
 		}else{
-			return "Expired";
+			return "Expired"; 
 		}
 		
+	}
+	
+	public boolean isHasCard(){
+		
+		return (card != null);
 	}
 	
 }

@@ -33,7 +33,7 @@ import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceSetNewLogin
 @Controller
 @RequestMapping("/personal/change/login")
 @SessionAttributes("changeusername")
-public class ChangeLoginController extends EntityController {
+public class ChangeLoginController extends EntityController { 
 
 	private static Logger logger = Logger.getLogger(ChangeLoginController.class);
 	private static final String VIEW_NAME = "username-change";

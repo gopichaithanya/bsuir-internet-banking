@@ -30,7 +30,7 @@ import by.bsuir.banking.proxy.internetbanking.SavedPayment;
 
 /**
  * 
- * @author Katherine
+ * @author Katherine 
  * 
  */
 @Controller

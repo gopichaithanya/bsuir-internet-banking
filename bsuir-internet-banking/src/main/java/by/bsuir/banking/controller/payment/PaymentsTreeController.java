@@ -82,7 +82,7 @@ public class PaymentsTreeController extends EntityController {
 				}
 				eripPayments.put(region, cities);
 			}
-			
+			 
 		} catch (IInternetBankingServiceGetAllLegalPersonCategoriesAuthorizationFaultFaultFaultMessage e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

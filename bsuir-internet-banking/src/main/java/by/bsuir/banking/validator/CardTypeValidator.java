@@ -14,7 +14,7 @@ public class CardTypeValidator implements Validator {
 	public boolean supports(Class<?> clazz) {
 		return CardTypeWrapper.class.equals(clazz);
 	}
-  
+   
 	@Override
 	public void validate(Object obj, Errors errors) {
 		CardTypeWrapper cardType = (CardTypeWrapper) obj;

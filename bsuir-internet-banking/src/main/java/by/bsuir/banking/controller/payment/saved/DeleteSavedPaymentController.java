@@ -18,7 +18,7 @@ import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceDeleteSaved
 
 @Controller
 @RequestMapping("/payment/saved/delete/{savedId}")
-public class DeleteSavedPaymentController extends EntityController {
+public class DeleteSavedPaymentController extends EntityController { 
 
 	private static Logger logger = Logger
 			.getLogger(DeleteSavedPaymentController.class);

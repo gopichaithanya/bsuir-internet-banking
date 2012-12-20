@@ -33,7 +33,7 @@ public class CardViewController extends EntityController {
 	public CardViewController() {
 		service = ServiceProvider.getInternetBankingService();
 	}
-	 
+	  
 	@RequestMapping(method=RequestMethod.GET)
 	public String createView(@PathVariable("cardId") Integer id, HttpSession session, Model model){
 		String securityToken = getSecurityToken(session);
@@ -42,7 +42,7 @@ public class CardViewController extends EntityController {
 			MoneyWrapper ballance = new MoneyWrapper(service.getBallance(id, securityToken));
 			model.addAttribute("card", wrapper);
 			model.addAttribute("ballance", ballance);
-			
+			 
 		} catch (IInternetBankingServiceGetCardForClientAuthorizationFaultFaultFaultMessage e) {
 			return "redirect:" + MessageConstants.AUTH_FAILED_VIEW;
 		} catch (IInternetBankingServiceGetCardForClientDomainFaultFaultFaultMessage e) {

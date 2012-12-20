@@ -33,7 +33,7 @@ import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceSetNewPassw
 @Controller
 @RequestMapping("/personal/change/password")
 @SessionAttributes("changepassword")
-public class ChangePasswordController extends EntityController{
+public class ChangePasswordController extends EntityController{ 
 	private static Logger logger = Logger
 			.getLogger(ChangePasswordController.class);
 	private IInternetBankingService service;

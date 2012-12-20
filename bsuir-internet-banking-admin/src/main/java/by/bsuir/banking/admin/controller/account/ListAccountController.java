@@ -50,7 +50,7 @@ public class ListAccountController extends EntityController {
 		List<AccountCardWrapper> wrappedList = null;
 		try {
 			accounts = service.getAccountsForClient(clientId, securityToken);
-			wrappedList = new ArrayList<AccountCardWrapper>();
+			wrappedList = new ArrayList<AccountCardWrapper>(); 
 			for (Account account : accounts.getAccount()) {
 				Card card = service.getCardForAccount(account.getId(), securityToken);
 				wrappedList.add(new AccountCardWrapper(account, card));
