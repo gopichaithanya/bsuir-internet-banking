@@ -46,7 +46,7 @@ public class ViewCardsListController extends EntityController {
 	public ViewCardsListController() {
 		service = ServiceProvider.getInternetBankingService();
 	}
- 
+  
 	@RequestMapping(method = RequestMethod.GET)
 	public String viewCards(HttpSession session, Model model,
 			@ModelAttribute @Valid CardWrapper w, BindingResult result,

@@ -115,7 +115,7 @@ public class TransferMoneyController extends EntityController {
 			BindingResult result, 
 			@ModelAttribute("cardSelect") List<CardSelectInfo> cardSelect, Model model, HttpSession session,
 			HttpServletRequest request, HttpServletResponse response,
-			RedirectAttributes attrs) throws IOException {
+			RedirectAttributes attrs) throws IOException { 
 		
 		if(result.hasErrors()){
 			model.addAttribute("form-error", "На форме есть ошибки");

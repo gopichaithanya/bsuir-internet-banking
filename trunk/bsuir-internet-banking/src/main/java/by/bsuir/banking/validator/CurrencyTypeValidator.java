@@ -15,7 +15,7 @@ public class CurrencyTypeValidator implements Validator {
 		return CurrencyTypeWrapper.class.equals(obj);
 	}
 
-	@Override  
+	@Override   
 	public void validate(Object obj, Errors errors) {
 		CurrencyTypeWrapper currencyType = (CurrencyTypeWrapper) obj;
 		if (currencyType.getShortName() == null) {

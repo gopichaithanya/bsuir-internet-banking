@@ -45,7 +45,7 @@ public class ChangePasswordController extends EntityController{
 	}
 
 	@ModelAttribute("changepassword")
-	public ChangePasswordWrapper createModel() {
+	public ChangePasswordWrapper createModel() { 
 		return new ChangePasswordWrapper();
 	}
 

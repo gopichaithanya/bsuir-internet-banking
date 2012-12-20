@@ -30,7 +30,7 @@ public class ClientWrapper {
 	public ClientWrapper(Client client) {
 		this.client = client;
 	}
-
+ 
 	/**
 	 * Getting client instance for this wrapper
 	 * 

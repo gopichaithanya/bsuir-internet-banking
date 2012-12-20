@@ -24,7 +24,7 @@ public class AccountCardWrapper {
 	public AccountCardWrapper(){
 		account = factory.createAccount();
 		card = factory.createCard();
-	}
+	} 
 	
 	public AccountCardWrapper(Account account, Card card){
 		this.account = account;

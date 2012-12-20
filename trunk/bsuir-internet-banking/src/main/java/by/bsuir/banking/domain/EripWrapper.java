@@ -37,6 +37,7 @@ public class EripWrapper {
 	}
 
 	public void setRegion(Region regionName) {
+		
 		this.region = regionName;
 	}
 	
@@ -58,6 +59,10 @@ public class EripWrapper {
 	
 	public Integer getId(){
 		return erip.getId();
+	}
+
+	public Integer getAccountId() {
+		return 1;
 	}
 	
 }

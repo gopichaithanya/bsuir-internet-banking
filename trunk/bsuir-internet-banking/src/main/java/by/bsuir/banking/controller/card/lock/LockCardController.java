@@ -32,7 +32,7 @@ public class LockCardController extends EntityController {
 			return "redirect:" + MessageConstants.AUTH_FAILED_VIEW;
 		} catch (IInternetBankingServiceLockCardByIdDomainFaultFaultFaultMessage e) {
 			attrs.addFlashAttribute("error", "ќпераци€ блокировани€ карты не может быть выполнена. ќбратитесь к оператору");
-			return "redirect:" + MessageConstants.ERROR_VIEW; 
+			return "redirect:" + MessageConstants.ERROR_VIEW;  
 		}
 		 attrs.addFlashAttribute("success", " арта была успешно заблокирована");
 		 return "redirect:/card/"+ id +"/view";

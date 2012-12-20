@@ -37,6 +37,6 @@ public class CurrencyTypeWrapper {
 	}
 	
 	public Integer getId(){
-		return type.getId();
+		return type.getId(); 
 	}
 }

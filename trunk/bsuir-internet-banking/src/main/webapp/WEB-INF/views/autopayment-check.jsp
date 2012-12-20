@@ -13,27 +13,28 @@
 		<ul class="breadcrumb">
 			<li><a href="<c:url value='/main' />">Главная</a> <span
 				class="divider">/</span></li>
-			<li><a href="<c:url value='/payment/list' />">Платежи</a><span
+			<li><a href="<c:url value='/autopayment/list' />">Автоплатежи</a><span
 				class="divider">/</span></li>
+				
 				<c:if test="${ not empty payment.legalPerson}">
-					<li class="active">${payment.legalPerson.name}</li>
+					<li class="active">Создать автоплатеж - ${payment.legalPerson.name}</li>
 				</c:if>
 				<c:if test="${ not empty payment.erip}">
-					<li class="active">${payment.erip.name}</li>
+					<li class="active">Создать автоплатеж - ${payment.erip.name}</li>
 				</c:if>
 		</ul>
 	</div>
 	<br>
 	<div id="ratesInfo" class="span8">
 		<c:if test="${ not empty payment.legalPerson}">
-			<h4>Провести платеж: ${payment.legalPerson.category.name.value} - ${payment.legalPerson.name}</h4>
+			<h4>Проверить автоплатеж: ${payment.legalPerson.category.name.value} - ${payment.legalPerson.name}</h4>
 		</c:if>
 		<c:if test="${ not empty payment.erip}">
-			<h4>Провести платеж в системе Расчет: ${payment.erip.region.name.value} - ${payment.erip.city.name.value} - ${payment.erip.name}</h4>
+			<h4>Проверить автоплатеж в системе Расчет: ${payment.erip.region.name.value} - ${payment.erip.city.name.value} - ${payment.erip.name}</h4>
 		</c:if>
 		<c:choose>
 			<c:when test="${fn:length(cardSelect) == 0}">
-				<div class="clearfix alert alert-error ">У Вас нет карт. Вы не можете провести платеж. Свяжитесь с оператором банка.</div>
+				<div class="clearfix alert alert-error ">У Вас нет карт. Вы не можете создать автоплатеж. Свяжитесь с оператором банка.</div>
 			</c:when>
 			<c:otherwise>
 				<form:form id="form" method="post" class="form span10"
@@ -45,14 +46,14 @@
 					</s:bind>
 					
 					<div class="control-group">
-						<form:label class="control-label" path="cardNumber"> 
+						<form:label class="control-label" path="card"> 
 						<strong>С карты:</strong> 
-						<form:errors path="cardNumber" />
+						<form:errors path="card" />
 						</form:label>
 						<div class="controls">
-							<form:select  path="cardNumber" 
+							<form:select  path="card" 
 							style="width:400px;" items="${cardSelect}"
-								itemLabel="displayValue" itemValue="cardNumber"></form:select>
+								itemLabel="displayValue" itemValue="cardWrapper"></form:select>
 							
 						</div>
 					</div>
@@ -61,27 +62,36 @@
 						<strong>${payment.infoLabel}</strong> <form:errors path="infoString" />
 						</form:label>
 						<div class="controls">
-							<form:input required="required" path="infoString"  />
+							<form:input required="required" readonly="true" path="infoString"  />
 							
 						</div>
 					</div>
 					<div class="control-group">
-						<form:label class="control-label" path="amount.enteredAmount"> 
-						<strong>Сумма</strong> <form:errors path="amount.enteredAmount" />
+						<form:label class="control-label" path="amount.amount"> 
+						<strong>Сумма</strong> <form:errors path="amount.amount" />
 						</form:label>
 						<div class="controls">
-							<form:input required="required" path="amount.enteredAmount" />
+							<form:input required="required" readonly="true" path="amount.amount" />
 							<span>(BYR)</span>
-							<form:errors path="amount.enteredAmount"/>
+							<form:errors path="amount.amount"/>
+						</div>
+					</div>
+					<div class="control-group">
+						<form:label class="control-label" path="dayOfMonth"> 
+						<strong>Оплачивать каждое</strong> 
+						</form:label>
+						<div class="controls">
+							<form:input class="input-mini" readonly="true"  path="dayOfMonth" />
+						<strong> число месяца:</strong>				
 						</div>
 					</div>
 					<div class="control-group">
 						<div class="controls">
-							<a href="<c:url value='/payment/list'/>" class="btn btn-danger">Отменить</a>
+							<a href="<c:url value='/autopayment/list'/>" class="btn btn-danger">Отменить</a>
+							<!-- BACK BUTTON -->
 							<input type="submit" class="btn btn-success" value="Дальше"/>
 						</div>
 					</div>
-					<c:if test="${payment.saved}"><form:hidden path="savedId"/> </c:if>
 				</form:form>
 			</c:otherwise>
 		</c:choose>

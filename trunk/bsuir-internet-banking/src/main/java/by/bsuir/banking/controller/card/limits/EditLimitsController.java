@@ -90,8 +90,6 @@ public class EditLimitsController extends EntityController {
 			Card card = service.getCardForClient(cardId, securityToken);
 			CardWrapper wrapper = new CardWrapper(card);
 			Money ballance = service.getBallance(cardId, securityToken);
-			System.out.println(wrapper.getSecretWord());
-		 	System.out.println(limits.getSecretWord());
 			if (!wrapper.getSecretWord().equals(limits.getSecretWord())) {
 				result.reject("LimitsError",
 						"Вы ввели неправильное секретное слово");
