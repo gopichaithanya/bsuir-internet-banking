@@ -45,7 +45,7 @@ public class ChangeLoginController extends EntityController {
 	}
 
 	@ModelAttribute("changeusername")
-	public ChangeUsernameWrapper createModel() {
+	public ChangeUsernameWrapper createModel() { 
 		return new ChangeUsernameWrapper();
 	}
 

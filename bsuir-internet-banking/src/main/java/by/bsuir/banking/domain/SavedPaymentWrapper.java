@@ -22,7 +22,7 @@ public class SavedPaymentWrapper {
 	public void setSavedPayment(SavedPayment savedPayment) {
 		this.savedPayment = savedPayment;
 	}
-	 
+	  
 	public Integer getAccountId(){
 		return savedPayment.getAccountId();
 	}

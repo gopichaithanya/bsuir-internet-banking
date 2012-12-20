@@ -32,7 +32,6 @@ import by.bsuir.banking.controller.login.EntityController;
 import by.bsuir.banking.domain.CardSelectInfo;
 import by.bsuir.banking.domain.CardWrapper;
 import by.bsuir.banking.domain.ClientWrapper;
-import by.bsuir.banking.domain.CurrencyTypeWrapper;
 import by.bsuir.banking.domain.LegalPersonWrapper;
 import by.bsuir.banking.domain.MoneyWrapper;
 import by.bsuir.banking.domain.PaymentInfo;
@@ -52,7 +51,6 @@ import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetCardsAut
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetCardsDomainFaultFaultFaultMessage;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetClientAuthorizationFaultFaultFaultMessage;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetClientDomainFaultFaultFaultMessage;
-import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetCurrencyTypesDomainFaultFaultFaultMessage;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServicePayAuthorizationFaultFaultFaultMessage;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServicePayDomainFaultFaultFaultMessage;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceUpdateSavedPaymentAuthorizationFaultFaultFaultMessage;
@@ -237,7 +235,7 @@ public class PaymentController extends EntityController {
 		
 		attrs.addFlashAttribute("cardSelect", cardSelect);
 		attrs.addFlashAttribute("payment", payment);
-		attrs.addFlashAttribute("curSelect", curTypes);
+		//attrs.addFlashAttribute("curSelect", curTypes);
 		
 		//model.addAttribute("curType", curType);
 		//return createCheck(paymentId, model, attrs);
@@ -272,7 +270,7 @@ public class PaymentController extends EntityController {
 				if (card.getCardNumber().equals(payment.getCardNumber())) {
 					accountId = card.getCardWrapper().getCardsAccountId();
 					// set currency type for amount
-					List<CurrencyTypeWrapper> currrencies = CardUtil
+					/*List<CurrencyTypeWrapper> currrencies = CardUtil
 							.getCurrencyTypes();
 					for (CurrencyTypeWrapper cur : currrencies) {
 						if (cur.getShortName().equalsIgnoreCase(
@@ -280,7 +278,8 @@ public class PaymentController extends EntityController {
 							payment.getAmount().setCurrencyTypeId(
 									cur.getCurrencyType().getId());
 						}
-					}
+					}*/
+					payment.getAmount().setCurrencyTypeId(1);
 				}
 			}
 
@@ -300,7 +299,7 @@ public class PaymentController extends EntityController {
 				return VIEW_NAME_CHECK;
 			}
 			if(paymentResult.equals("MoneyLimit")){
-				result.reject("paymentError", "Платеж не может быть проведен. Вы превисили лимит по сумме на расходные операции");
+				result.reject("paymentError", "Платеж не может быть проведен. Вы превысили лимит по сумме на расходные операции");
 				return VIEW_NAME_CHECK;
 			}
 			if(paymentResult.equals("Balance")){
@@ -330,8 +329,6 @@ public class PaymentController extends EntityController {
 		} catch (IInternetBankingServicePayDomainFaultFaultFaultMessage e) {
 			attrs.addFlashAttribute("error",
 					"Произошла ошибка. Платеж не был проведен");
-			return "redirect:" + MessageConstants.ERROR_VIEW;
-		} catch (IInternetBankingServiceGetCurrencyTypesDomainFaultFaultFaultMessage e) {
 			return "redirect:" + MessageConstants.ERROR_VIEW;
 		} catch (IInternetBankingServiceCreateSavedPaymentAuthorizationFaultFaultFaultMessage e) {
 			return "redirect:" + MessageConstants.AUTH_FAILED_VIEW;

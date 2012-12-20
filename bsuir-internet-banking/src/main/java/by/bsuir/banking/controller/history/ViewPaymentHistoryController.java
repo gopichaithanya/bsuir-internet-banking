@@ -20,7 +20,7 @@ import by.bsuir.banking.proxy.internetbanking.IInternetBankingService;
 @Controller
 @RequestMapping("/history/payment")
 @SessionAttributes("cardSelect") 
-public class ViewPaymentHistoryController  extends EntityController{
+public class ViewPaymentHistoryController  extends EntityController{ 
 
 	private static final String VIEW_NAME = "history-payment";
 	private IInternetBankingService service;

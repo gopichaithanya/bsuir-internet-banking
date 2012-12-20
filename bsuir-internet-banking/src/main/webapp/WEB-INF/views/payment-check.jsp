@@ -84,8 +84,7 @@
 						<div class="controls">
 							<form:input readonly="true" required="required"
 								path="amount.amount" />
-							<span class="hepl-inline"><form:select
-									path="amount.currencyType" items="${curSelect}"></form:select></span>
+							<span>(BYR)</span>
 
 						</div>
 					</div>

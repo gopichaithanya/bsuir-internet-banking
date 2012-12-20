@@ -1,4 +1,4 @@
-package by.bsuir.banking.validator;
+ package by.bsuir.banking.validator;
 
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;

@@ -60,11 +60,8 @@ public class CardWrapper {
 		return card.getId();
 	}
 	
-	public Boolean isIsLocked(){
-		return card.isIsLocked();
-	}
 	
-	public void setIsLocked(Boolean value){
+	public void setLocked(Boolean value){
 		card.setIsLocked(value);
 	}
 	

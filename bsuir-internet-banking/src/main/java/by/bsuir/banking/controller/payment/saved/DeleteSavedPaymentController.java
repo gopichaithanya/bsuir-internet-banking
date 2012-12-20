@@ -39,6 +39,6 @@ public class DeleteSavedPaymentController extends EntityController {
 			return "redirect:" + MessageConstants.ERROR_VIEW;
 		}
 		attrs.addFlashAttribute("success", "Сохраненный платеж был успешно удален");
-		return "redirect:/payment/saved/list";
+		return "redirect:/payment/saved/list"; 
 	}
 }

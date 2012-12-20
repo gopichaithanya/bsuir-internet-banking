@@ -270,7 +270,7 @@ public class PaymentUtil {
 			if (payment.getLegalAccountId() != 1) {
 				allSavedPayments.add(new SavedPaymentWrapper(payment));
 			}
-		}
+		} 
 		return allSavedPayments;
 	}  
 

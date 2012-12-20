@@ -53,7 +53,8 @@ public class ViewCurrencyRatesController extends EntityController {
 	@Autowired
 	private PurchaseRateValidator purchaseRateValidator;
 	public ViewCurrencyRatesController(){
-		service = ServiceProvider.getInternetBankingService(); 
+		service = ServiceProvider.getInternetBankingService();
+		
 	}
 	
 	@RequestMapping(method=RequestMethod.GET)

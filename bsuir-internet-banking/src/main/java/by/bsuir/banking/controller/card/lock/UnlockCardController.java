@@ -33,7 +33,7 @@ public class UnlockCardController extends EntityController {
 			return "redirect:" + MessageConstants.AUTH_FAILED_VIEW;
 		} catch (IInternetBankingServiceUnlockCardByIdDomainFaultFaultFaultMessage e) {
 			attrs.addFlashAttribute("error", "ќпераци€ разблокировани€ карты не может быть выполнена. ќбратитесь к оператору");
-			return "redirect:" + MessageConstants.ERROR_VIEW;
+			return "redirect:" + MessageConstants.ERROR_VIEW; 
 		}
 		
 		attrs.addFlashAttribute("success", " арта была успешно разблокирована");

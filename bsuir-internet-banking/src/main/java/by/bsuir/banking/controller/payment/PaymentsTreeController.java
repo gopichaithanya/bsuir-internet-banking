@@ -56,7 +56,7 @@ public class PaymentsTreeController extends EntityController {
 		Map<LegalPersonCategory, List<LegalPerson>> categories = new HashMap<LegalPersonCategory, List<LegalPerson>>();
 		Map<Region,Map<City,List<Service>>> eripPayments = new HashMap<Region, Map<City,List<Service>>>();
 		
-		try {
+		try { 
 			//regular payments
 			for (LegalPersonCategory category : service
 					.getAllLegalPersonCategories(securityToken)

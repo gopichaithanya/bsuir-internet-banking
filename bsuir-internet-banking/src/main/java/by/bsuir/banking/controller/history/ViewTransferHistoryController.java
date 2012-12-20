@@ -22,4 +22,4 @@ public class ViewTransferHistoryController extends EntityController {
 	
 	
 	
-}
+} 
