@@ -20,6 +20,7 @@ import by.bsuir.banking.domain.UserInfo;
 import by.bsuir.banking.proxy.authentication.AuthenticationCredential;
 import by.bsuir.banking.proxy.authentication.IAuthenticationService;
 import by.bsuir.banking.proxy.authentication.IAuthenticationServiceAuthenticateAuthenticationFaultFaultFaultMessage;
+import by.bsuir.banking.proxy.authentication.IAuthenticationServiceAuthenticateDomainFaultFaultFaultMessage;
 import by.bsuir.banking.proxy.internetbanking.Client;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetClientAuthorizationFaultFaultFaultMessage;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetClientDomainFaultFaultFaultMessage;
@@ -107,7 +108,7 @@ public class LoginController extends EntityController{
 					user.getUsername());
 			return "redirect:/main";
 		} catch (IAuthenticationServiceAuthenticateAuthenticationFaultFaultFaultMessage e) {
-			result.reject("loginError","Имя пользователя и/или пароль неверны");
+			result.reject("loginError","Имя пользователя и/или пароль неверны. После трех неудачных попыток ваша учетная запись будет заблокирована");
 			AdminUtils.logInfo(logger, MessageConstants.USER_AUTH_FAILED_SERVER);
 			return VIEW_NAME;
 		} catch (IInternetBankingServiceGetClientAuthorizationFaultFaultFaultMessage e) {
@@ -118,6 +119,9 @@ public class LoginController extends EntityController{
 			result.reject("domainError", "Невозможно получить информацию о клиенте");
 			AdminUtils.logInfo(logger, MessageConstants.USER_AUTH_FAILED_SERVER);
 			return "redirect:" + MessageConstants.ERROR_VIEW;
+		} catch (IAuthenticationServiceAuthenticateDomainFaultFaultFaultMessage e) {
+			result.reject("authError", "Вы 3 раза ввели неверный пароль. Ваша учетная запись заблокирована. Обратитесь к оператору банка.");
+			return VIEW_NAME;
 		}
 
 	}
