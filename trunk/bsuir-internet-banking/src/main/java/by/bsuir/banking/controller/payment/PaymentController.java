@@ -230,10 +230,11 @@ public class PaymentController extends EntityController {
 			}
 		}
 		List<String> curTypes = new ArrayList<String>();
-		curTypes.add("BYR");
 		if(!curType.equals("BYR")){
 			curTypes.add(curType);
 		}
+		curTypes.add("BYR");
+		
 		attrs.addFlashAttribute("cardSelect", cardSelect);
 		attrs.addFlashAttribute("payment", payment);
 		attrs.addFlashAttribute("curSelect", curTypes);
@@ -288,10 +289,22 @@ public class PaymentController extends EntityController {
 					.getAccount().getNumber().getValue();
 			String information = PaymentUtil.formInformation(payment);
 
-			boolean paymentResult = service.pay(payment.getCardNumber(), receiverLegalAccountNumber, payment
+			String paymentResult = service.pay(payment.getCardNumber(), receiverLegalAccountNumber, payment
 					.getAmount().getMoney(), information, securityToken);
-			if(!paymentResult){
-				result.reject("paymentError", "Платеж не может быть проведен. Проверьте правильность введенных данных");
+			if(paymentResult.equals("Failure")){
+				result.reject("paymentError", "Платеж не может быть проведен. Произошла ошибка. Попробуйте позже");
+				return VIEW_NAME_CHECK;
+			}
+			if(paymentResult.equals("OperationsLimit")){
+				result.reject("paymentError", "Платеж не может быть проведен. Вы превисили лимит по расходным операциям");
+				return VIEW_NAME_CHECK;
+			}
+			if(paymentResult.equals("MoneyLimit")){
+				result.reject("paymentError", "Платеж не может быть проведен. Вы превисили лимит по сумме на расходные операции");
+				return VIEW_NAME_CHECK;
+			}
+			if(paymentResult.equals("Balance")){
+				result.reject("paymentError", "Платеж не может быть проведен. На карте недостаточно средств");
 				return VIEW_NAME_CHECK;
 			}
 			if (payment.isToSave()) {
@@ -336,7 +349,7 @@ public class PaymentController extends EntityController {
 			return "redirect:" + MessageConstants.ERROR_VIEW;
 		}
 		attrs.addFlashAttribute("success", "Платеж прошел успешно");
-		return "redirect:/main";
+		return "redirect:/main"; 
 	}
 	
 	

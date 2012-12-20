@@ -40,7 +40,7 @@ import by.bsuir.banking.validator.SellRateValidator;
  * Controller for viewing currency exchange rates
  * @author Katherine
  *
- */
+ */ 
 @Controller
 @RequestMapping("/currency/rates/view")
 public class ViewCurrencyRatesController extends EntityController {

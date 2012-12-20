@@ -25,7 +25,7 @@ public class CardValidator implements Validator {
 		}
 		this.cardTypeValidator = cardTypeValidator;
 	}
-	
+	 
 	@Override
 	public boolean supports(Class<?> clazz) {
 		return CardWrapper.class.equals(clazz); 

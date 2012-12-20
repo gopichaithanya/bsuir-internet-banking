@@ -173,10 +173,10 @@ public class EripController extends EntityController {
 			}
 		}
 		List<String> curTypes = new ArrayList<String>();
-		curTypes.add("BYR");
 		if (!curType.equals("BYR")) {
 			curTypes.add(curType);
 		}
+		curTypes.add("BYR");
 		attrs.addFlashAttribute("cardSelect", cardSelect);
 		attrs.addFlashAttribute("payment", payment);
 		attrs.addFlashAttribute("curSelect", curTypes);
@@ -225,11 +225,24 @@ public class EripController extends EntityController {
 				}
 			}
 			String information = PaymentUtil.formInformationErip(payment);
-			boolean paymentResult = service.payERIP(payment.getCardNumber(),
+			String paymentResult = service.payERIP(payment.getCardNumber(),
 					payment.getAmount().getMoney(), information, securityToken);
-			if (!paymentResult) {
-				result.reject("paymentError",
+			if (paymentResult.equals("Failure")) {
+				result.reject("paymentError", 
 						"Платеж не может быть проведен. Проверьте правильность введенных данных");
+				return VIEW_NAME_CHECK;
+			}
+			if (paymentResult.equals("OperationsLimit")) {
+				result.reject("paymentError",
+						"Платеж не может быть проведен. Вы превисили лимит по расходным операциям");
+				return VIEW_NAME_CHECK;
+			}
+			if(paymentResult.equals("MoneyLimit")){
+				result.reject("paymentError", "Платеж не может быть проведен. Вы превисили лимит по сумме на расходные операции");
+				return VIEW_NAME_CHECK;
+			}
+			if(paymentResult.equals("Balance")){
+				result.reject("paymentError", "Платеж не может быть проведен. На карте недостаточно средств");
 				return VIEW_NAME_CHECK;
 			}
 		} catch (IInternetBankingServiceGetCurrencyTypesDomainFaultFaultFaultMessage e) {

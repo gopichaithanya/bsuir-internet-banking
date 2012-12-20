@@ -18,7 +18,7 @@ public class MoneyValidator implements Validator {
 	public boolean supports(Class<?> clazz) {
 		return MoneyWrapper.class.equals(clazz);
 	}
-
+ 
 	@Override
 	public void validate(Object target, Errors errors) {
 		MoneyWrapper money = (MoneyWrapper) target;

@@ -108,7 +108,7 @@ public class TransferMoneyController extends EntityController {
 
 		return VIEW_NAME_STEP_1;
 	}
-
+ 
 	@RequestMapping(value={"","/","/step1"}, method=RequestMethod.POST)
 	public String submitStep1(
 			@Valid @ModelAttribute("transfer") TransferInfo transfer,

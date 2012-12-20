@@ -28,7 +28,7 @@ public class SellRateValidator implements Validator {
         }
 		this.currencyTypeValidator = currencyTypeValidator;
 	}
- 
+  
 	@Override
 	public boolean supports(Class<?> clazz) {
 		return SellRateWrapper.class.equals(clazz);

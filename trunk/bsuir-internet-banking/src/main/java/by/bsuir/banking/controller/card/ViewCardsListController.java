@@ -32,7 +32,7 @@ import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetCardsDom
 
 /**
  * 
- * @author Svetlana
+ * @author Svetlana 
  * 
  */
 @Controller

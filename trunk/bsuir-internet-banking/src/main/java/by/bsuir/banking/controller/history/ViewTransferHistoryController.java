@@ -18,7 +18,7 @@ public class ViewTransferHistoryController extends EntityController {
 	
 	public ViewTransferHistoryController(){
 		service = ServiceProvider.getInternetBankingService();
-	}
+	} 
 	
 	
 	

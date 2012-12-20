@@ -29,7 +29,7 @@ import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetClientDo
  * method to obtain security token
  * 
  * @author Katherine
- * 
+ *  
  */
 @Controller
 @RequestMapping("/login")
