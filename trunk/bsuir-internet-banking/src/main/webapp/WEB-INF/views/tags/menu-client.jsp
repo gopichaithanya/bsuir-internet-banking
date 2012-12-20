@@ -36,21 +36,20 @@
 			data-parent="#client_menu" href="#menu4">Платежи</a></li>
 		<ul id="menu4" class="accordion-body collapse unstyled">
 			<div class="accordion-inner">
-				<li><a href="<c:url value="#"/>">Автоплатежи</a></li>
 				<li><a href="<c:url value="/payment/saved/list"/>">Сохраненные платежи</a></li>
 				<li><a href="<c:url value="/payment/list"/>">Провести платеж</a></li>
 			</div>
 		</ul>
 
-		<%-- <li class="nav-header accordion-heading accordion-heading"><a
+		<li class="nav-header accordion-heading accordion-heading"><a
 			class="accordion-toggle" data-toggle="collapse"
-			data-parent="#client_menu" href="#menu5">Billing</a></li>
+			data-parent="#client_menu" href="#menu5">Автоплатежи</a></li>
 		<ul id="menu5" class="accordion-body collapse unstyled">
 			<div class="accordion-inner">
-				<li><a href="<c:url value="#"/>">Online information</a></li>
-				<li><a href="<c:url value="#"/>">wtf</a></li>
+				<li><a href="<c:url value="/autopayment/create"/>">Создать автоплатеж</a></li>
+				<li><a href="<c:url value="/autopayment/list"/>">Просмотреть автоплатежи</a></li>
 			</div>
-		</ul> --%>
+		</ul>
 
 		<li class="nav-header accordion-heading accordion-heading"><a
 			class="accordion-toggle" data-toggle="collapse"

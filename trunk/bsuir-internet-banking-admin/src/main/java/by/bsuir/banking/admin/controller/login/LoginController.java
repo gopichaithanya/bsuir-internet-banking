@@ -23,6 +23,7 @@ import by.bsuir.banking.admin.utils.ServiceProvider;
 import by.bsuir.banking.proxy.authentication.AuthenticationCredential;
 import by.bsuir.banking.proxy.authentication.IAuthenticationService;
 import by.bsuir.banking.proxy.authentication.IAuthenticationServiceAuthenticateAuthenticationFaultFaultFaultMessage;
+import by.bsuir.banking.proxy.authentication.IAuthenticationServiceAuthenticateDomainFaultFaultFaultMessage;
 
 /**
  * Controller for authentication, handles user input and calls web-service
@@ -107,6 +108,9 @@ public class LoginController extends EntityController{
 		} catch (IAuthenticationServiceAuthenticateAuthenticationFaultFaultFaultMessage e) {
 			result.reject(e.getMessage());
 			AdminUtils.logInfo(logger, MessageConstants.USER_AUTH_FAILED_SERVER);
+			return VIEW_NAME;
+		} catch (IAuthenticationServiceAuthenticateDomainFaultFaultFaultMessage e) {
+			result.reject("authError", "Вы ввели неверный пароль 3 раза. Ваша учетная запись заблокирована. Обратитесь к оператору банка.");
 			return VIEW_NAME;
 		}
 

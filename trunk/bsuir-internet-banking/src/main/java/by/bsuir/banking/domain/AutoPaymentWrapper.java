@@ -7,6 +7,12 @@ public class AutoPaymentWrapper {
 	private AutoPayment payment;
 	private ObjectFactory factory = new ObjectFactory();
 	
+	public AutoPaymentWrapper(){}
+	
+	public AutoPaymentWrapper(AutoPayment payment){
+		this.payment = payment;
+	}
+	
 	public Integer getId(){
 		return payment.getId();
 	}

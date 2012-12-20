@@ -41,7 +41,7 @@
 					можете провести платеж. Свяжитесь с оператором банка.</div>
 			</c:when>
 			<c:otherwise>
-				<form:form id="form" method="post" class="form span10"
+				<form:form id="form" method="post" name="form" class="form span10"
 					modelAttribute="payment">
 					<s:bind path="*">
 						<c:if test="${status.error}">
@@ -119,7 +119,7 @@
 									href="<c:url value='/erip/pay/${payment.erip.id}'/>"
 									class="btn btn-warning">Назад</a>
 							</c:if>
-							<button type="submit" class="btn btn-success">Принять</button>
+							<button type="submit" onclick="this.disabled=true;document.form.submit();" class="btn btn-success">Принять</button>
 						</div>
 					</div>
 

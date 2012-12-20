@@ -10,8 +10,8 @@ import javax.xml.ws.WebFault;
  * Generated source version: 2.1
  * 
  */
-@WebFault(name = "AuthenticationFault", targetNamespace = "http://schemas.datacontract.org/2004/07/InternetBanking.Services.Interfaces.FaultContracts")
-public class IAuthenticationServiceAuthenticateAuthenticationFaultFaultFaultMessage
+@WebFault(name = "DomainFault", targetNamespace = "http://schemas.datacontract.org/2004/07/InternetBanking.Services.Interfaces.FaultContracts")
+public class IAuthenticationServiceAuthenticateDomainFaultFaultFaultMessage
     extends Exception
 {
 
@@ -19,14 +19,14 @@ public class IAuthenticationServiceAuthenticateAuthenticationFaultFaultFaultMess
      * Java type that goes as soapenv:Fault detail element.
      * 
      */
-    private AuthenticationFault faultInfo;
+    private DomainFault faultInfo;
 
     /**
      * 
      * @param message
      * @param faultInfo
      */
-    public IAuthenticationServiceAuthenticateAuthenticationFaultFaultFaultMessage(String message, AuthenticationFault faultInfo) {
+    public IAuthenticationServiceAuthenticateDomainFaultFaultFaultMessage(String message, DomainFault faultInfo) {
         super(message);
         this.faultInfo = faultInfo;
     }
@@ -37,7 +37,7 @@ public class IAuthenticationServiceAuthenticateAuthenticationFaultFaultFaultMess
      * @param faultInfo
      * @param cause
      */
-    public IAuthenticationServiceAuthenticateAuthenticationFaultFaultFaultMessage(String message, AuthenticationFault faultInfo, Throwable cause) {
+    public IAuthenticationServiceAuthenticateDomainFaultFaultFaultMessage(String message, DomainFault faultInfo, Throwable cause) {
         super(message, cause);
         this.faultInfo = faultInfo;
     }
@@ -45,9 +45,9 @@ public class IAuthenticationServiceAuthenticateAuthenticationFaultFaultFaultMess
     /**
      * 
      * @return
-     *     returns fault bean: by.bsuir.banking.proxy.authentication.AuthenticationFault
+     *     returns fault bean: by.bsuir.banking.proxy.authentication.DomainFault
      */
-    public AuthenticationFault getFaultInfo() {
+    public DomainFault getFaultInfo() {
         return faultInfo;
     }
 
