@@ -17,8 +17,14 @@
 		<ul class="breadcrumb">
 			<li><a href="<c:url value='/main' />">Главная</a> <span
 				class="divider">/</span></li>
-			<li class="active">Платежи</li>
-
+			<c:choose>
+				<c:when test="${(empty auto) or (not auto) }">
+					<li class="active">Платежи</li>
+					</c:when>
+					<c:otherwise>
+					<li class="active">Автоплатежи</li>
+					</c:otherwise>
+					</c:choose>
 		</ul>
 	</div>
 	<br>
@@ -29,7 +35,14 @@
 					доступных платежей</div>
 			</c:when>
 			<c:otherwise>
+				<c:choose>
+				<c:when test="${(empty auto) or (not auto) }">
 				<h4>Доступные платежи</h4>
+				</c:when>
+				<c:otherwise>
+				<h4>Выберите услугу для создания автоплатежа</h4>
+				</c:otherwise>
+				</c:choose>
 				<div class="row">
 					<div class="css-treeview span4">
 						<ul>
@@ -39,9 +52,18 @@
 									<ul>
 										<c:forEach items="${entry.value}" varStatus="inloop"
 											var="legal">
-											<li>- <a
-												href="<c:url value='/payment/pay/${legal.id}' />">
-													${legal.name.value}</a></li>
+											<c:choose>
+												<c:when test="${(empty auto) or (not auto)}">
+													<li>- <a
+														href="<c:url value='/payment/pay/${legal.id}' />">
+															${legal.name.value}</a></li>
+												</c:when>
+												<c:otherwise>
+													<li>- <a
+														href="<c:url value='/autopayment/create?type=payment&id=${legal.id}' />">
+															${legal.name.value}</a></li>
+												</c:otherwise>
+											</c:choose>
 										</c:forEach>
 									</ul></li>
 							</c:forEach>
@@ -52,31 +74,39 @@
 							<ul>
 								<li><input type="checkbox" id="root" checked="checked" />
 									<label for="root">Расчет</label>
-								<ul>
-									<c:forEach items="${eripTree}" varStatus="loop" var="entry">
-										<li>
-											<input type="checkbox" id="erip-${loop.index}" />
-											<label for="erip-${loop.index}">${entry.key.name.value}</label>
-											<ul>
-												<c:forEach items="${entry.value}" varStatus="loopInner" var="entryInner">
-												<li>
-												<input type="checkbox" id="erip-${loop.index}-${loopInner.index}" />
-												<label for="erip-${loop.index}-${loopInner.index}">${entryInner.key.name.value}</label>
+									<ul>
+										<c:forEach items="${eripTree}" varStatus="loop" var="entry">
+											<li><input type="checkbox" id="erip-${loop.index}" /> <label
+												for="erip-${loop.index}">${entry.key.name.value}</label>
 												<ul>
-													<c:forEach items="${entryInner.value}" varStatus="loopLeaf" var="service">
-														<li>- <a href="<c:url value='/erip/pay/${service.id}'/>">${service.name.value}</a>
-															
-														</li>
+													<c:forEach items="${entry.value}" varStatus="loopInner"
+														var="entryInner">
+														<li><input type="checkbox"
+															id="erip-${loop.index}-${loopInner.index}" /> <label
+															for="erip-${loop.index}-${loopInner.index}">${entryInner.key.name.value}</label>
+															<ul>
+																<c:forEach items="${entryInner.value}"
+																	varStatus="loopLeaf" var="service">
+																	<c:choose>
+																		<c:when test="${(empty auto) or (not auto) }">
+																			<li>- <a
+																				href="<c:url value='/erip/pay/${service.id}'/>">${service.name.value}</a>
+
+																			</li>
+																		</c:when>
+																		<c:otherwise>
+																			<li>- <a
+																				href="<c:url value='/autopayment/create?type=erip&id=${service.id}'/>">${service.name.value}</a>
+
+																			</li>
+																		</c:otherwise>
+																	</c:choose>
+																</c:forEach>
+															</ul></li>
 													</c:forEach>
-												</ul>
-												</li>
-												</c:forEach>
-											</ul>
-										</li>
-									</c:forEach>
-								</ul>
-								
-								</li>
+												</ul></li>
+										</c:forEach>
+									</ul></li>
 							</ul>
 						</div>
 

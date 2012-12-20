@@ -40,8 +40,8 @@ public class ObjectFactory {
     private final static QName _UnsignedShort_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "unsignedShort");
     private final static QName _Float_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "float");
     private final static QName _Decimal_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "decimal");
-    private final static QName _Double_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "double");
     private final static QName _Long_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "long");
+    private final static QName _Double_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "double");
     private final static QName _Short_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "short");
     private final static QName _Guid_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "guid");
     private final static QName _Base64Binary_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "base64Binary");
@@ -51,6 +51,7 @@ public class ObjectFactory {
     private final static QName _UnsignedLong_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "unsignedLong");
     private final static QName _Boolean_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "boolean");
     private final static QName _AuthenticationFault_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.Services.Interfaces.FaultContracts", "AuthenticationFault");
+    private final static QName _DomainFault_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.Services.Interfaces.FaultContracts", "DomainFault");
     private final static QName _AuthenticationCredentialSecurityToken_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", "SecurityToken");
     private final static QName _AuthenticationCredentialRole_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", "Role");
     private final static QName _AuthenticationFaultMessage_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.Services.Interfaces.FaultContracts", "Message");
@@ -71,6 +72,14 @@ public class ObjectFactory {
      */
     public AuthenticationCredential createAuthenticationCredential() {
         return new AuthenticationCredential();
+    }
+
+    /**
+     * Create an instance of {@link DomainFault }
+     * 
+     */
+    public DomainFault createDomainFault() {
+        return new DomainFault();
     }
 
     /**
@@ -206,21 +215,21 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Double }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://schemas.microsoft.com/2003/10/Serialization/", name = "double")
-    public JAXBElement<Double> createDouble(Double value) {
-        return new JAXBElement<Double>(_Double_QNAME, Double.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://schemas.microsoft.com/2003/10/Serialization/", name = "long")
     public JAXBElement<Long> createLong(Long value) {
         return new JAXBElement<Long>(_Long_QNAME, Long.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Double }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.microsoft.com/2003/10/Serialization/", name = "double")
+    public JAXBElement<Double> createDouble(Double value) {
+        return new JAXBElement<Double>(_Double_QNAME, Double.class, null, value);
     }
 
     /**
@@ -305,6 +314,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link DomainFault }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.Services.Interfaces.FaultContracts", name = "DomainFault")
+    public JAXBElement<DomainFault> createDomainFault(DomainFault value) {
+        return new JAXBElement<DomainFault>(_DomainFault_QNAME, DomainFault.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
@@ -329,6 +347,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.Services.Interfaces.FaultContracts", name = "Message", scope = AuthenticationFault.class)
     public JAXBElement<String> createAuthenticationFaultMessage(String value) {
         return new JAXBElement<String>(_AuthenticationFaultMessage_QNAME, String.class, AuthenticationFault.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.Services.Interfaces.FaultContracts", name = "Message", scope = DomainFault.class)
+    public JAXBElement<String> createDomainFaultMessage(String value) {
+        return new JAXBElement<String>(_AuthenticationFaultMessage_QNAME, String.class, DomainFault.class, value);
     }
 
     /**
