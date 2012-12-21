@@ -58,21 +58,21 @@
 					</div>
 					<div class="control-group">
 						<form:label class="control-label" path="infoString"> 
-						<strong>${payment.infoLabel}</strong> <form:errors path="infoString" />
+						<strong>${payment.infoLabel}</strong> 
 						</form:label>
 						<div class="controls">
-							<form:input required="required" path="infoString"  />
-							
+							<form:input required="required" path="infoString" autocomplete="off"  />
+							<form:errors path="infoString" class="bankingError" />
 						</div>
 					</div>
 					<div class="control-group">
 						<form:label class="control-label" path="amount.enteredAmount"> 
-						<strong>Сумма</strong> <form:errors path="amount.enteredAmount" />
+						<strong>Сумма</strong> 
 						</form:label>
 						<div class="controls">
-							<form:input required="required" path="amount.enteredAmount" />
+							<form:input required="required" path="amount.enteredAmount" autocomplete="off"/>
 							<span>(BYR)</span>
-							<form:errors path="amount.enteredAmount"/>
+							<form:errors path="amount.enteredAmount" class="bankingError"/>
 						</div>
 					</div>
 					<div class="control-group">

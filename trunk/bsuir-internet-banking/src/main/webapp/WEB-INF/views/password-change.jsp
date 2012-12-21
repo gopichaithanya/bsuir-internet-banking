@@ -27,13 +27,10 @@
 			</s:bind>
 		</div>
 		<div id="divOrigPassword" class="control-group">
-			<%-- <form:label class="control-label" path="username"> 
-						Username 
-			</form:label> --%>
 			<div class="controls">
 				<form:input path="originalPassword" autocomplete="off" id="inputOrigPassword"
-					placeholder="Текущий пароль" />
-				<form:errors class="help-inline error" path="originalPassword" />
+					placeholder="Текущий пароль" required="required" />
+				<form:errors class="help-inline error bankingError" path="originalPassword" />
 			</div>
 		</div>
 		<div id="divPassword" class="control-group">
@@ -41,9 +38,12 @@
 						Username 
 			</form:label> --%>
 			<div class="controls">
+				<form:label class="control-label" path="password" style="color:#ccc"> 
+					<strong>Пароль должен обязательно содержать не менее 6 символов: латинские буквы в верхнем и нижнем регистре и цифры</strong> 
+				</form:label>
 				<form:password path="password" autocomplete="off" id="inputPassword"
-					placeholder="Новый пароль" />
-				<form:errors class="help-inline error" path="password" />
+					placeholder="Новый пароль" required="required" />
+				<form:errors class="help-inline error bankingError" path="password" />
 			</div>
 		</div>
 		<div id="divConfirm" class="control-group">
@@ -52,8 +52,8 @@
 			</form:label> --%>
 			<div class="controls">
 				<form:password path="confirmPassword" id="inputConfirm"
-					placeholder="Подтвердите пароль" />
-				<form:errors class="help-inline" path="confirmPassword" />
+					placeholder="Подтвердите пароль" required="required" />
+				<form:errors class="help-inline bankingError" path="confirmPassword" />
 			</div>
 		</div>
 		<div class="control-group">

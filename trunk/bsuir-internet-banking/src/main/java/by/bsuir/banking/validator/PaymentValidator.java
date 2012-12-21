@@ -41,41 +41,42 @@ public class PaymentValidator implements Validator {
 	public void validate(Object target, Errors errors) {   
 		PaymentInfo payment = (PaymentInfo) target;
 		
-		if (payment.getLegalPerson().getCategoryId() == null){
-			errors.reject(MessageValidation.NULL_VALUE, MessageValidation.APPLICATION_PROBLEM);
-		} else if (payment.getInfoString() == null) {
+//		if (payment.getLegalPerson().getCategoryId() == null){
+//			errors.reject(MessageValidation.NULL_VALUE, MessageValidation.APPLICATION_PROBLEM);
+//		} else 
+			if (payment.getInfoString() == null) {
 			errors.rejectValue(INFO_STRING_FIELD, MessageValidation.NULL_VALUE, MessageValidation.EMPTY_FIELD);
-		} else if (payment.getInfoString().matches(WRONG_NUMBER_PATTERN)) {
+		} else if (payment.getInfoString().trim().matches(WRONG_NUMBER_PATTERN)) {
 			errors.rejectValue(INFO_STRING_FIELD, MessageValidation.WRONG_FORMAT, MessageValidation.NOT_EXIST);
 		} else {
 			switch (payment.getLegalPerson().getCategoryId()) {
 			case 2:
 				// "Номер телефона"
-				if (!payment.getInfoString().matches(MOBILE_PHONE_NUMBER_PATTERN)){
+				if (!payment.getInfoString().trim().matches(MOBILE_PHONE_NUMBER_PATTERN)){
 					errors.rejectValue(INFO_STRING_FIELD, MessageValidation.WRONG_FORMAT, MessageValidation.WRONG_PHONE_NUMBER_FORMAT);
 				}
 				break;
 			case 3:
 				// "Номер контракта"
-				if (!payment.getInfoString().matches(CONTRACT_NUMBER_PATTERN)){
+				if (!payment.getInfoString().trim().matches(CONTRACT_NUMBER_PATTERN)){
 					errors.rejectValue(INFO_STRING_FIELD, MessageValidation.WRONG_FORMAT, MessageValidation.WRONG_CONTRACT_FORMAT);
 				}
 				break;
 			case 4:
 				// "Номер заказа билета" 
-				if (!payment.getInfoString().matches(PROVIDER_CONTRACT_NUMBER_PATTERN)){
+				if (!payment.getInfoString().trim().matches(PROVIDER_CONTRACT_NUMBER_PATTERN)){
 					errors.rejectValue(INFO_STRING_FIELD, MessageValidation.WRONG_FORMAT, MessageValidation.WRONG_CONTRACT_FORMAT);
 				}
 				break;
 			case 5:
 				// "Номер договора"
-				if (!payment.getInfoString().matches(PROVIDER_CONTRACT_NUMBER_PATTERN)){
+				if (!payment.getInfoString().trim().matches(PROVIDER_CONTRACT_NUMBER_PATTERN)){
 					errors.rejectValue(INFO_STRING_FIELD, MessageValidation.WRONG_FORMAT, MessageValidation.WRONG_CONTRACT_FORMAT);
 				}
 				break;
 			case 6:
 				// "Номер телефона"
-				if (!payment.getInfoString().matches(HOME_PHONE_NUMBER_PATTERN)){
+				if (!payment.getInfoString().trim().matches(HOME_PHONE_NUMBER_PATTERN)){
 					errors.rejectValue(INFO_STRING_FIELD, MessageValidation.WRONG_FORMAT, MessageValidation.WRONG_PHONE_NUMBER_FORMAT);
 				}
 				break;

@@ -30,6 +30,9 @@ body {
 .sidebar-nav {
 	padding: 9px 0;
 }
+.bankingError {
+ color:#D41E24;
+}
 </style>
 
 <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->

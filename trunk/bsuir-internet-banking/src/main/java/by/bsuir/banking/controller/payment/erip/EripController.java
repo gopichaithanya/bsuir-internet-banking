@@ -1,6 +1,7 @@
 package by.bsuir.banking.controller.payment.erip;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -47,6 +49,7 @@ import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetServices
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetServicesForCityDomainFaultFaultFaultMessage;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServicePayERIPAuthorizationFaultFaultFaultMessage;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServicePayERIPDomainFaultFaultFaultMessage;
+import by.bsuir.banking.validator.PaymentValidator;
 
 @Controller
 @RequestMapping("/erip/pay/{paymentId}")
@@ -56,6 +59,8 @@ public class EripController extends EntityController {
 	private static final String VIEW_NAME = "payment-pay";
 	private static final String VIEW_NAME_CHECK = "payment-check";
 	private static IInternetBankingService service;
+	@Autowired
+	private PaymentValidator paymentValidator;
 
 	public EripController() {
 		service = ServiceProvider.getInternetBankingService();
@@ -142,10 +147,12 @@ public class EripController extends EntityController {
 			RedirectAttributes attrs,
 			@ModelAttribute("cardSelect") List<CardSelectInfo> cardSelect,
 			Model model) throws IOException {
+		paymentValidator.validate(payment, result);
 		if (result.hasErrors()) {
 			model.addAttribute("error", "На форме есть ошибки");
 			return VIEW_NAME;
 		}
+		payment.getAmount().setAmount(BigDecimal.valueOf(Double.valueOf(payment.getAmount().getEnteredAmount().trim().replace(',', '.'))));
 		if (session.getAttribute("cardSelect") == null) {
 			attrs.addFlashAttribute("error", "Невозможно найти список карт");
 			response.sendRedirect(request.getContextPath()

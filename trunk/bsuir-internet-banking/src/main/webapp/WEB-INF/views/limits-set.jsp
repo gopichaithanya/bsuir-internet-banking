@@ -36,9 +36,9 @@
 						<strong>Лимит по сумме</strong> 
 			</form:label>
 			<div class="controls">
-				<form:input path="moneyLimit" autocomplete="off" id="inputOrigPassword"
+				<form:input path="enteredMoneyLimit" autocomplete="off" id="inputOrigPassword"
 					placeholder="" required="true"/><span class="help-inline">(${info.currencyType})</span>
-				<form:errors class="help-inline error" path="moneyLimit" />
+				<form:errors class="help-inline error bankingError" path="enteredMoneyLimit" />
 			</div>
 		</div>
 		<div id="divPassword" class="control-group">
@@ -46,9 +46,9 @@
 						<strong>Лимит по расходным операциям</strong>
 			</form:label>
 			<div class="controls">
-				<form:input path="operationsLimit" autocomplete="off" id="inputPassword"
+				<form:input path="enteredOperationsLimit" autocomplete="off" id="inputPassword"
 					placeholder="" required="true"/>
-				<form:errors class="help-inline error" path="operationsLimit" />
+				<form:errors class="help-inline error bankingError" path="enteredOperationsLimit"  />
 			</div>
 		</div>
 		<div id="divConfirm" class="control-group">
