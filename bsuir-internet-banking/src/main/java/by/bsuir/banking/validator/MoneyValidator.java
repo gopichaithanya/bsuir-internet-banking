@@ -31,7 +31,7 @@ public class MoneyValidator implements Validator {
 		} else if (money.getEnteredAmount().trim().matches(ZERO_PATTERN)) {
 			errors.rejectValue(AMOUNT_FIELD, MessageValidation.LESS_MIN_VALUE, MessageValidation.MIN_AMOUNT);
 		} else if (money.getEnteredAmount().trim().matches(WRONG_NUMBER_FORMAT_PATTERN)){
-			errors.rejectValue(AMOUNT_FIELD, MessageValidation.WRONG_FORMAT, MessageValidation.WRONG_AMOUNT_FORMAT);
+			errors.rejectValue(AMOUNT_FIELD, MessageValidation.WRONG_FORMAT, MessageValidation.STARTS_WITH_ZERO);
 		} else if (!money.getEnteredAmount().trim().matches(HUGE_NUMBER_PATTERN)) {
 			errors.rejectValue(AMOUNT_FIELD, MessageValidation.HUGE_VALUE, MessageValidation.HUGE_NUMBER);
 		}

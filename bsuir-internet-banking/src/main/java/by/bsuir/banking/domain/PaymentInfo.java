@@ -82,7 +82,7 @@ public class PaymentInfo {
 	}
 
 	public void setInfoString(String value) {
-		infoString = value;
+		infoString = value.trim();
 	}
 
 	public MoneyWrapper getAmount() {

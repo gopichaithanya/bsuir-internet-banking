@@ -1,9 +1,12 @@
 package by.bsuir.banking.controller.card.limits;
 
+import java.math.BigDecimal;
+
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -33,6 +36,7 @@ import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceSetOperatio
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceSetOperationLimitDomainFaultFaultFaultMessage;
 import by.bsuir.banking.proxy.internetbanking.Money;
 import by.bsuir.banking.proxy.internetbanking.ObjectFactory;
+import by.bsuir.banking.validator.LimitsValidator;
  
 @Controller
 @RequestMapping("card/{cardId}/limits/set")
@@ -41,6 +45,8 @@ public class EditLimitsController extends EntityController {
 	private static Logger logger = Logger.getLogger(EditLimitsController.class);
 	private static IInternetBankingService service;
 	private final static String VIEW_NAME = "limits-set";
+	@Autowired
+	private LimitsValidator limitsValidator;
 
 	public EditLimitsController() {
 		service = ServiceProvider.getInternetBankingService();
@@ -83,9 +89,12 @@ public class EditLimitsController extends EntityController {
 			@Valid @ModelAttribute("limits") LimitsWrapper limits,
 			BindingResult result, RedirectAttributes attrs) {
 		String securityToken = getSecurityToken(session);
+		limitsValidator.validate(limits, result);
 		if (result.hasErrors()) {
 			return VIEW_NAME;
 		}
+		limits.setMoneyLimit(BigDecimal.valueOf(Double.valueOf(limits.getEnteredMoneyLimit().trim())));
+		limits.setOperationsLimit(Integer.valueOf(limits.getEnteredOperationsLimit().trim()));
 		try {
 			Card card = service.getCardForClient(cardId, securityToken);
 			CardWrapper wrapper = new CardWrapper(card);

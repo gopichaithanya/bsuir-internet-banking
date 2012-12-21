@@ -7,6 +7,8 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class LimitsWrapper {
 	private BigDecimal moneyLimit;
 	private Integer operationsLimit;
+	private String enteredMoneyLimit;
+	private String enteredOperationsLimit;
 	@NotEmpty(message="Нужно ввести секретное слово")
 	private String secretWord;
 
@@ -33,6 +35,22 @@ public class LimitsWrapper {
 	
 	public void setSecretWord(String secretWord) {
 		this.secretWord = secretWord;
+	}
+
+	public String getEnteredMoneyLimit() {
+		return enteredMoneyLimit;
+	}
+
+	public void setEnteredMoneyLimit(String enteredMoneyLimit) {
+		this.enteredMoneyLimit = enteredMoneyLimit;
+	}
+
+	public String getEnteredOperationsLimit() {
+		return enteredOperationsLimit;
+	}
+
+	public void setEnteredOperationsLimit(String enteredOperationsLimit) {
+		this.enteredOperationsLimit = enteredOperationsLimit;
 	}
 	
 	

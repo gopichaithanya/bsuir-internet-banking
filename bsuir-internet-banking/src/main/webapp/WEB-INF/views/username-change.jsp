@@ -32,8 +32,8 @@
 			</form:label> --%>
 			<div class="controls">
 				<form:input path="originalUsername" autocomplete="off" id="inputOrigUsername"
-					placeholder="Текущее имя пользователя" />
-				<form:errors class="help-inline error" path="originalUsername" />
+					placeholder="Текущее имя пользователя" required="required" />
+				<form:errors class="help-inline error bankingError" path="originalUsername" />
 			</div>
 		</div>
 		<div id="divUsername" class="control-group">
@@ -41,19 +41,19 @@
 						Username 
 			</form:label> --%>
 			<div class="controls">
+				<form:label class="control-label" path="username" style="color:#ccc"> 
+						<strong>Имя пользователя может содержать латинские буквы, цифры и знак подчеркивания и должен содержать не менее 3 символов</strong> 
+				</form:label>
 				<form:input path="username" autocomplete="off" id="inputUsername"
-					placeholder="Новое имя пользователя" />
-				<form:errors class="help-inline error" path="username" />
+					placeholder="Новое имя пользователя" required="required" />
+				<form:errors class="help-inline error bankingError" path="username" />
 			</div>
 		</div>
 		<div id="divConfirm" class="control-group">
-			<%-- <form:label class="control-label" path="password"> 
-						Password 
-			</form:label> --%>
 			<div class="controls">
 				<form:password path="confirmUsername" id="inputConfirm"
-					placeholder="Подтвердите имя пользователя" />
-				<form:errors class="help-inline" path="confirmUsername" />
+					placeholder="Подтвердите имя пользователя" required="required" />
+				<form:errors class="help-inline bankingError" path="confirmUsername" />
 			</div>
 		</div>
 		<div class="control-group">

@@ -62,7 +62,7 @@
 						<strong>Сумма:</strong> <form:errors path="amount.enteredAmount" />
 						</form:label>
 						<div class="controls">
-							<form:input path="amount.enteredAmount" ></form:input>
+							<form:input path="amount.enteredAmount" class="bankingError"></form:input>
 							
 						</div>
 					</div>

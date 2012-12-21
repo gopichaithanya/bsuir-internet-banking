@@ -202,7 +202,7 @@ public class PaymentController extends EntityController {
 			//model.addAttribute("error", "На форме есть ошибки");
 			return VIEW_NAME;
 		} else {
-			payment.getAmount().setAmount(BigDecimal.valueOf(Double.valueOf(payment.getAmount().getEnteredAmount().replace(',', '.'))));
+			payment.getAmount().setAmount(BigDecimal.valueOf(Double.valueOf(payment.getAmount().getEnteredAmount().trim().replace(',', '.'))));
 		}
 		if (session.getAttribute("cardSelect") == null) {
 			attrs.addFlashAttribute("error", "Невозможно найти список карт");
