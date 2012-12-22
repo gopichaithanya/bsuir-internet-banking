@@ -3,12 +3,10 @@ package by.bsuir.banking.domain;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import by.bsuir.banking.admin.utils.PaymentUtil;
-import by.bsuir.banking.proxy.internetbanking.AutoPayment;
-import by.bsuir.banking.proxy.internetbanking.ObjectFactory;
 
 public class AutoPaymentInfo {
-	private AutoPayment payment;
-	private ObjectFactory factory = new ObjectFactory();
+	//private AutoPayment payment;
+	//private ObjectFactory factory = new ObjectFactory();
 	private LegalPersonWrapper legalPerson = null;
 	private EripWrapper erip = null;
 	private ClientWrapper client;
@@ -16,20 +14,25 @@ public class AutoPaymentInfo {
 	@NotEmpty
 	private String infoString;
 	private String cardNumber;
+	private Integer dayOfMonth;
+	private MoneyWrapper amount;
+	//private boolean saved = false;
+	private Integer savedId;
+
 	
 
-	public AutoPaymentInfo(AutoPayment payment, ClientWrapper client, LegalPersonWrapper legal) {
-		this.payment = payment;
+	public AutoPaymentInfo(ClientWrapper client, LegalPersonWrapper legal) {
+		//this.payment = payment;
 		this.client = client;
 		this.legalPerson = legal;
-		setLegalAccountId(legal.getAccount().getId());
+		//setLegalAccountId(legal.getAccount().getId());
 	}
 
-	public AutoPaymentInfo(AutoPayment payment, ClientWrapper client, EripWrapper legal) {
-		this.payment = payment;
+	public AutoPaymentInfo(ClientWrapper client, EripWrapper legal) {
+		//this.payment = payment;
 		this.client = client;
 		this.erip = legal;
-		setLegalAccountId(legal.getAccountId());
+		//setLegalAccountId(legal.getAccountId());
 	}
 
 	public String getClientName() {
@@ -51,52 +54,53 @@ public class AutoPaymentInfo {
 		return null;
 	}
 
-	public Integer getId() {
-		return payment.getId();
-	}
-
-	public Integer getAccountId() {
-		return payment.getAccountId();
+	
+	/*public Integer getAccountId() {
+		//return payment.getAccountId();
 	}
 
 	public void setAccountId(Integer id) {
-		payment.setAccountId(id);
-	}
+		//payment.setAccountId(id);
+	}*/
 
-	public String getInformation() {
+	/*public String getInformation() {
 		return (payment.getInformation() == null) ? null : payment
 				.getInformation().getValue();
 	}
 
 	public void setInformation(String info) {
 		payment.setInformation(factory.createAutoPaymentInformation(info));
-	}
+	}*/
 
 	public Integer getDayOfMonth() {
-		return payment.getDayOfMonth();
+		//return payment.getDayOfMonth();
+		return dayOfMonth;
 	}
 
 	public void setDayOfMonth(Integer day) {
-		payment.setDayOfMonth(day);
+		//payment.setDayOfMonth(day);
+		dayOfMonth = day;
 	}
 
 	public MoneyWrapper getAmount() {
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!" + payment.getMoney());
-		return (payment.getMoney() == null) ? new MoneyWrapper() : new MoneyWrapper(payment
-				.getMoney().getValue());
+		
+		//return (payment.getMoney() == null) ? new MoneyWrapper() : new MoneyWrapper(payment
+			//	.getMoney().getValue());
+		return amount;
 	}
 
 	public void setAmount(MoneyWrapper amount) {
-		payment.setMoney(factory.createAutoPaymentMoney(amount.getMoney()));
+		//payment.setMoney(factory.createAutoPaymentMoney(amount.getMoney()));
+		this.amount = amount;
 	}
 
-	public Integer getLegalAccountId() {
+	/*public Integer getLegalAccountId() {
 		return payment.getLegalAccountId();
 	}
 
 	public void setLegalAccountId(Integer id) {
 		payment.setLegalAccountId(id);
-	}
+	}*/
 
 	public String getInfoString() {
 		return infoString;
@@ -144,6 +148,15 @@ public class AutoPaymentInfo {
 
 	public void setCardNumber(String cardNumber) {
 		this.cardNumber = cardNumber;
+	}
+
+	
+	public Integer getSavedId() {
+		return savedId;
+	}
+
+	public void setSavedId(Integer savedId) {
+		this.savedId = savedId;
 	}
 
 }

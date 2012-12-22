@@ -1,10 +1,9 @@
 package by.bsuir.banking.admin.utils;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
+import by.bsuir.banking.domain.AutoPaymentInfo;
 import by.bsuir.banking.domain.EripWrapper;
 import by.bsuir.banking.domain.LegalPersonWrapper;
 import by.bsuir.banking.domain.PaymentInfo;
@@ -30,8 +29,8 @@ public class PaymentUtil {
 	private static IInternetBankingService service = ServiceProvider
 			.getInternetBankingService();
 	private static List<LegalPerson> persons;
-	private static Map<Integer, String> categoryLabels;
-	private static Map<Integer, String> eripLabels;
+	//private static Map<Integer, String> categoryLabels;
+	//private static Map<Integer, String> eripLabels;
 	private static List<LegalPersonWrapper> allLegalPersons;
 	private static List<EripWrapper> allEripPayments;
 	private static List<City> allCities;
@@ -44,47 +43,41 @@ public class PaymentUtil {
 			IInternetBankingServiceGetAllLegalPersonsDomainFaultFaultFaultMessage {
 		persons = service.getAllLegalPersons(securityToken).getLegalPerson();
 
-		fillCategoryLabels(persons);
+		//fillCategoryLabels(persons);
 		return persons;
 	}
 
-	private static void fillCategoryLabels(List<LegalPerson> persons2) {
-		categoryLabels = new HashMap<Integer, String>();
-		for (LegalPerson person : persons2) {
-			String label = "";
-			switch (person.getLegalPersonCategoryId()) {
-			case 5:
-				label = "Номер договора. Не менее 6 цифр";
-				break;
-			case 2:
-				label = "Номер телефона. В формате yyyxxxxxxx, где y - код";
-				break;
-			case 3:
-				label = "Номер контракта. Не менее 8 цифр";
-				break;
-			case 4:
-				label = "Номер заказа билета. Не менее 6 цифр";
-				break;
-			case 6:
-				label = "Номер телефона. В формате yyyxxxxx, где y - код";
-				break;
-			case 7:
-			case 8:
-			case 9:
-			case 10:
-			case 11:
-				label = "Лицевой счет";
-				break;
-			default:
-				break;
-			}
-			categoryLabels.put(person.getLegalPersonCategoryId(), label);
-		}
-
-	}
-
+		
+	
 	public static String getLabelForCategory(Integer categoryId) {
-		return categoryLabels.get(categoryId);
+		String label = "";
+		switch (categoryId) {
+		case 5:
+			label = "Номер договора. Не менее 6 цифр";
+			break;
+		case 2:
+			label = "Номер телефона. В формате yyyxxxxxxx, где y - код";
+			break;
+		case 3:
+			label = "Номер контракта. Не менее 8 цифр";
+			break;
+		case 4:
+			label = "Номер заказа билета. Не менее 6 цифр";
+			break;
+		case 6:
+			label = "Номер телефона. В формате yyyxxxxx, где y - код";
+			break;
+		case 7:
+		case 8:
+		case 9:
+		case 10:
+		case 11:
+			label = "Лицевой счет";
+			break;
+		default:
+			break;
+		}
+		return label;
 	}
 
 	public static LegalPerson getLegalPersonById(Integer id,
@@ -145,7 +138,6 @@ public class PaymentUtil {
 				}
 			}
 		}
-		fillEripLabels(allEripPayments);
 		return allEripPayments;
 	}
 
@@ -194,45 +186,7 @@ public class PaymentUtil {
 		return null;
 	}
 
-	private static void fillEripLabels(List<EripWrapper> allEripPayments2) {
-		eripLabels = new HashMap<Integer, String>();
-		for (EripWrapper erip : allEripPayments2) {
-			String label = "";
-			switch (erip.getId()) {
-			case 4:
-				label = "Номер договора";
-				break;
-			case 1:
-			case 2:
-			case 3:
-			case 5:
-			case 6:
-				label = "Номер телефона";
-				break;
-			case 7:
-				label = "Номер контракта";
-				break;
-			case 8:
-				label = "Номер заказа билета";
-				break;
-			case 9:
-				label = "Номер телефона";
-				break;
-			case 10:
-			case 11:
-			case 12:
-			case 13:
-			case 14:
-				label = "Лицевой счет";
-				break;
-			default:
-				break;
-			}
-			eripLabels.put(erip.getId(), label);
-		}
-
-	}
-
+	
 	public static EripWrapper getServiceById(Integer id, String securityToken)
 			throws IInternetBankingServiceGetAllRegionsAuthorizationFaultFaultFaultMessage,
 			IInternetBankingServiceGetAllRegionsDomainFaultFaultFaultMessage,
@@ -249,7 +203,39 @@ public class PaymentUtil {
 	}
 
 	public static String getLabelForErip(Integer integer) {
-		return eripLabels.get(integer);
+		String label = "";
+		switch (integer) {
+		case 4:
+			label = "Номер договора";
+			break;
+		case 1:
+		case 2:
+		case 3:
+		case 5:
+		case 6:
+			label = "Номер телефона";
+			break;
+		case 7:
+			label = "Номер контракта";
+			break;
+		case 8:
+			label = "Номер заказа билета";
+			break;
+		case 9:
+			label = "Номер телефона";
+			break;
+		case 10:
+		case 11:
+		case 12:
+		case 13:
+		case 14:
+			label = "Лицевой счет";
+			break;
+		default:
+			break;
+		}
+		return label;
+
 	}
 
 	public static String formInformationErip(PaymentInfo payment) {
@@ -328,6 +314,21 @@ public class PaymentUtil {
 			}
 		}
 		return null;
+	}
+
+	public static String formInformation(AutoPaymentInfo payment) {
+		String info = payment.getInfoLabel() + ":" + payment.getInfoString();
+		return info;
+	}
+
+	public static String formInformationErip(
+			AutoPaymentInfo payment) {
+		String info = payment.getErip().getId() + "."
+				+ payment.getErip().getRegion().getName().getValue() + ","
+				+ payment.getErip().getCity().getName().getValue() + ","
+				+ payment.getErip().getName() + "," + payment.getInfoLabel()
+				+ ":" + payment.getInfoString();
+		return info;
 	}
 
 }

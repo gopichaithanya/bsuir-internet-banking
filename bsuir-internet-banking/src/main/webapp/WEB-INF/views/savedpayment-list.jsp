@@ -18,7 +18,7 @@
 		</ul>
 	</div>
 	<br>
-	<div id="ratesInfo" class="span10">
+	<div id="ratesInfo" class="span11">
 		<h4>Сохраненные платежи</h4>
 		<table class="table table-hover table-condensed">
 			<tr>
@@ -28,7 +28,7 @@
 				<th>Сумма</th>
 				<th>Валюта</th>
 				<th>Информация</th>
-				<th style="text-align:center" colspan="2">Действия</th>
+				<th style="text-align:center" colspan="3">Действия</th>
 			</tr>
 			<tr>
 				<c:forEach begin="0" end="${fn:length(savedpayments)-1}"
@@ -42,6 +42,7 @@
 						<td>${savedpayments[loop.index].information}</td>
 						<td><span><a href="<c:url value='/payment/pay/${savedpayments[loop.index].legalPersonId}?savedId=${savedpayments[loop.index].id }'/>" class="btn btn-primary btn-mini">Оплатить</a></span>
 						</td>
+						<td><span><a href="<c:url value='/autopayment/create?type=payment&savedId=${savedpayments[loop.index].id }'/>" class="btn btn-primary btn-mini">Автоплатеж</a></span></td>
 						<td>
 						<span><form action="<c:url value='/payment/saved/delete/${savedpayments[loop.index].id}'/>" method="post">
 							<input type="submit" class="btn btn-danger btn-mini" value="Удалить" onclick="return confirm('Вы уверены, что хотите удалить платеж?')"/>
