@@ -58,6 +58,7 @@ import by.bsuir.banking.proxy.internetbanking.IInternetBankingServicePayERIPAuth
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServicePayERIPDomainFaultFaultFaultMessage;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceUpdateSavedPaymentAuthorizationFaultFaultFaultMessage;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceUpdateSavedPaymentDomainFaultFaultFaultMessage;
+import by.bsuir.banking.validator.EripPaymentValidator;
 import by.bsuir.banking.validator.PaymentValidator;
 
 @Controller
@@ -69,7 +70,7 @@ public class EripController extends EntityController {
 	private static final String VIEW_NAME_CHECK = "payment-check";
 	private static IInternetBankingService service;
 	@Autowired
-	private PaymentValidator paymentValidator;
+	private EripPaymentValidator eripPaymentValidator;
 
 	public EripController() {
 		service = ServiceProvider.getInternetBankingService();
@@ -179,7 +180,7 @@ public class EripController extends EntityController {
 			RedirectAttributes attrs,
 			@ModelAttribute("cardSelect") List<CardSelectInfo> cardSelect,
 			Model model) throws IOException {
-		//paymentValidator.validate(payment, result);
+		eripPaymentValidator.validate(payment, result);
 		if (result.hasErrors()) {
 			model.addAttribute("error", "На форме есть ошибки");
 			return VIEW_NAME;

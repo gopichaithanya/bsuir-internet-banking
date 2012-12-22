@@ -9,6 +9,7 @@ import java.util.Map;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -65,6 +66,7 @@ import by.bsuir.banking.proxy.internetbanking.LegalPersonCategory;
 import by.bsuir.banking.proxy.internetbanking.ObjectFactory;
 import by.bsuir.banking.proxy.internetbanking.Region;
 import by.bsuir.banking.proxy.internetbanking.Service;
+import by.bsuir.banking.validator.AutoPaymentValidator;
 
 @Controller
 @RequestMapping("/autopayment/create")
@@ -74,6 +76,8 @@ public class CreateAutoPaymentController extends EntityController {
 	private static String VIEW_NAME = "autopayment-create";
 	private static String VIEW_NAME_LIST = "payment-list";
 	private static IInternetBankingService service;
+	@Autowired
+	private AutoPaymentValidator autoPaymentValidator;
 
 	public CreateAutoPaymentController() {
 		service = ServiceProvider.getInternetBankingService();
@@ -346,6 +350,7 @@ public class CreateAutoPaymentController extends EntityController {
 			BindingResult result, RedirectAttributes attrs,
 			@ModelAttribute("cardSelect") List<CardSelectInfo> cardSelect,
 			Model model) {
+		autoPaymentValidator.validate(payment, result);
 		if (result.hasErrors()) {
 			return VIEW_NAME;
 		} else {

@@ -22,7 +22,7 @@
 		<div class="control-group error">
 			<s:bind path="*">
 				<c:if test="${status.error}">
-					<div id="controls" class="alert alert-error">${status.error}</div>
+					<div id="controls" class="alert alert-error">${status.errorMessage}</div>
 				</c:if>
 			</s:bind>
 		</div>
@@ -38,11 +38,11 @@
 						Username 
 			</form:label> --%>
 			<div class="controls">
-				<form:label class="control-label" path="password" style="color:#ccc"> 
-					<strong>Пароль должен обязательно содержать не менее 6 символов: латинские буквы в верхнем и нижнем регистре и цифры</strong> 
+				<form:label class="control-label" path="password"> 
 				</form:label>
 				<form:password path="password" autocomplete="off" id="inputPassword"
 					placeholder="Новый пароль" required="required" />
+					<p style="color:#ccc; font-size=12px;">Пароль должен обязательно содержать не менее 6 символов: латинские буквы в верхнем и нижнем регистре и цифры</p>
 				<form:errors class="help-inline error bankingError" path="password" />
 			</div>
 		</div>

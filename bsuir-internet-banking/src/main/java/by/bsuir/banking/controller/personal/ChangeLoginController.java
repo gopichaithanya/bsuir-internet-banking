@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -23,6 +24,7 @@ import by.bsuir.banking.domain.UserInfo;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingService;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceSetNewLoginAuthorizationFaultFaultFaultMessage;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceSetNewLoginDomainFaultFaultFaultMessage;
+import by.bsuir.banking.validator.ChangeLoginValidator;
 
 /**
  * Controller for changing login
@@ -37,7 +39,9 @@ public class ChangeLoginController extends EntityController {
 
 	private static Logger logger = Logger.getLogger(ChangeLoginController.class);
 	private static final String VIEW_NAME = "username-change";
-	private static final String USERNAME_PATTERN = "^[a-zA-Z0-9_-]{3,15}$";
+	@Autowired
+	private ChangeLoginValidator changeLoginValidator;
+	
 	private IInternetBankingService service;
 
 	public ChangeLoginController() {
@@ -59,22 +63,15 @@ public class ChangeLoginController extends EntityController {
 	public String submitForm(
 			@Valid @ModelAttribute("changeusername") ChangeUsernameWrapper wrapper,
 			BindingResult result, HttpSession session, RedirectAttributes attrs) {
-		Pattern pattern = Pattern.compile(USERNAME_PATTERN);
-		if(result.hasErrors()){
-			return VIEW_NAME;
-		}
+		
 		//checking original username
 		UserInfo user = getSessionUser(session);
 		if(!user.getUsername().equals(wrapper.getOriginalUsername())){
 			result.reject("ChangeUsernameError","Ќеверное текущее им€ пользовател€");
 			return VIEW_NAME;
 		}
-		if(!wrapper.getUsername().equals(wrapper.getConfirmUsername())){
-			result.reject("ChangeUsernameError", "Ќовое и подтвержденное им€ пользовател€ не совпадают");
-			return VIEW_NAME;
-		}
-		if(!pattern.matcher(wrapper.getUsername()).matches()) {
-			result.reject("ChangeUsernameError", "Ќеправильное им€ пользовател€");
+		changeLoginValidator.validate(wrapper, result);
+		if(result.hasErrors()){
 			return VIEW_NAME;
 		}
 		//TODO set new username
