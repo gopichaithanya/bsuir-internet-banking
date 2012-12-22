@@ -11,7 +11,7 @@ public class EripWrapper {
 	private City city;
 	private Region region;
 	private ObjectFactory factory = new ObjectFactory();
-
+	
 	public EripWrapper(Service service){
 		erip = service;
 	}
@@ -64,5 +64,6 @@ public class EripWrapper {
 	public Integer getAccountId() {
 		return 1;
 	}
-	
+
+		
 }

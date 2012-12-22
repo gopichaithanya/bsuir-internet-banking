@@ -46,23 +46,17 @@
 					</s:bind>
 					
 					<div class="control-group">
-						<form:label class="control-label" path="card"> 
-						<strong>С карты:</strong> 
-						<form:errors path="card" />
+						<form:label class="control-label" path="displayCard">
+							<strong>С карты:</strong>
+							<div class="controls">${payment.displayCard}</div>
 						</form:label>
-						<div class="controls">
-							<form:select  path="card" 
-							style="width:400px;" items="${cardSelect}"
-								itemLabel="displayValue" itemValue="cardWrapper"></form:select>
-							
-						</div>
 					</div>
 					<div class="control-group">
 						<form:label class="control-label" path="infoString"> 
 						<strong>${payment.infoLabel}</strong> <form:errors path="infoString" />
 						</form:label>
 						<div class="controls">
-							<form:input required="required" readonly="true" path="infoString"  />
+							<form:input readonly="true" path="infoString"  />
 							
 						</div>
 					</div>

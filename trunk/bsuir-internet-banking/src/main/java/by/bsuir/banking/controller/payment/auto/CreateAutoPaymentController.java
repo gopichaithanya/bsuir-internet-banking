@@ -1,5 +1,6 @@
 package by.bsuir.banking.controller.payment.auto;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -238,28 +239,31 @@ public class CreateAutoPaymentController extends EntityController {
 			BindingResult result,RedirectAttributes attrs,
 			@ModelAttribute("cardSelect") List<CardSelectInfo> cardSelect,
 			Model model){
+		System.out.println("????????????????????????????????" + payment.getAmount() + payment.getAmount().getEnteredAmount());
 		if(result.hasErrors()){
 			return VIEW_NAME;
+		} else {
+			payment.getAmount().setAmount(BigDecimal.valueOf(Double.valueOf(payment.getAmount().getEnteredAmount().replace(',', '.'))));
 		}
 		
 		if (session.getAttribute("cardSelect") == null) {
 			attrs.addFlashAttribute("error", "Невозможно найти список карт");
 			return "redirect:" + MessageConstants.ERROR_VIEW;
 		}
-		if(payment.getCard().isExpired()){
-			result.reject("paymentError",
-					"Карта недействительна. Выберите другую карту или обратитесь к оператору");
-			return VIEW_NAME;
-		}
-		if(payment.getCard().isLocked()){
-			result.reject("paymentError",
-					"Карта заблокированна. Разблокируйте карту, выберите другую или обратитесь к оператору");
-				return VIEW_NAME;
-		}
+		
 		for (CardSelectInfo card : cardSelect) {
-			if (card.getCardNumber().equals(payment.getCard().getCardNumber())) {
+			if (card.getCardNumber().equals(payment.getCardNumber())) {
 				payment.setDisplayCard(card.getDisplayValue());
-
+				if(card.isExpired()){
+					result.reject("paymentError",
+							"Карта недействительна. Выберите другую карту или обратитесь к оператору");
+					return VIEW_NAME;
+				}
+				if(card.isLocked()){
+					result.reject("paymentError",
+							"Карта заблокированна. Разблокируйте карту, выберите другую или обратитесь к оператору");
+						return VIEW_NAME;
+				}
 			}
 		}
 		

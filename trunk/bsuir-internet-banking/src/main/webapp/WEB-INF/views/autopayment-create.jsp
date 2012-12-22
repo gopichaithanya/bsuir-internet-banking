@@ -46,14 +46,14 @@
 					</s:bind>
 					
 					<div class="control-group">
-						<form:label class="control-label" path="card"> 
+						<form:label class="control-label" path="cardNumber"> 
 						<strong>С карты:</strong> 
-						<form:errors path="card" />
+						<form:errors path="cardNumber" />
 						</form:label>
 						<div class="controls">
-							<form:select  path="cardId" 
+							<form:select  path="cardNumber" 
 							style="width:400px;" items="${cardSelect}"
-								itemLabel="displayValue" itemValue="cardId"></form:select>
+								itemLabel="displayValue" itemValue="cardNumber"></form:select>
 							
 						</div>
 					</div>
@@ -67,11 +67,11 @@
 						</div>
 					</div>
 					<div class="control-group">
-						<form:label class="control-label" path="amount.amount"> 
-						<strong>Сумма</strong> <form:errors path="amount.amount" />
+						<form:label class="control-label" path="amount.enteredAmount"> 
+						<strong>Сумма</strong> <form:errors path="amount.enteredAmount" />
 						</form:label>
 						<div class="controls">
-							<form:input required="required" path="amount.amount" />
+							<form:input required="required" path="amount.enteredAmount" />
 							<span>(BYR)</span>
 							<form:errors path="amount.amount"/>
 						</div>

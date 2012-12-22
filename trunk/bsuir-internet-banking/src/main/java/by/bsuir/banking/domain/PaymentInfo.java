@@ -37,9 +37,10 @@ public class PaymentInfo {
 		saved = isSaved;
 	}
 
-	public PaymentInfo(EripWrapper erip, ClientWrapper client) {
+	public PaymentInfo(EripWrapper erip, ClientWrapper client, boolean isSaved) {
 		this.setErip(erip);
 		this.client = client;
+		saved = isSaved;
 	}
 
 	public LegalPersonWrapper getLegalPerson() {
