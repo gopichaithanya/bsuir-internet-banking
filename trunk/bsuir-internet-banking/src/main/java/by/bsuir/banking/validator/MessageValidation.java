@@ -31,7 +31,11 @@ public class MessageValidation {
 	public static final String MIN_VALUE = "Минимальное значение 1";
 	public static final String MAX_AMOUNT = "Максимальное значение 20 000 000";
 	public static final String MAX_VALUE = "Максимальное значение 20";
-	
+	public static final String WRONG_USERNAME = "Имя пользователя должно содержать не менее 3 и не более 15 символов(только латинские буквы, цифры, знак _ или -)";
+	public static final String DO_NOT_MATCH_USERNAMES = "Новое и подтвержденное имя пользователя не совпадают";
+	public static final String WRONG_PASSWORD = "Пароль должен содержать не менее 6 и не более 20, среди которых должна быть ОБЯЗАТЕЛЬНО хотя бы одна цифра и заглавная буква";
+	public static final String DO_NOT_MATCH_PASSWORD = "Новый пароль и подтвержденный пароль не совпадают";
+	public static final String WRONG_PERSONAL_ACCOUNT_FORMAT = "Неверный номер лицевого счета(9-13 цифр)";
 	
 
 }

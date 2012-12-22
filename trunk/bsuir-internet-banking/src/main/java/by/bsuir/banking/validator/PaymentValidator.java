@@ -18,7 +18,8 @@ public class PaymentValidator implements Validator {
 	private static final String CONTRACT_NUMBER_PATTERN = "[0-9]{8,13}";
 	private static final String PROVIDER_CONTRACT_NUMBER_PATTERN = "[0-9]{6,13}";
 	private static final String WRONG_NUMBER_PATTERN = "0{1,}";
-	 
+	private static final String PERSANAL_ACCOUNT_PATTERN = "[0-3]{9,13}";
+
 	@Autowired
 	public PaymentValidator(MoneyValidator moneyValidator) {
 		if (moneyValidator == null) {
@@ -38,50 +39,83 @@ public class PaymentValidator implements Validator {
 	}
 
 	@Override
-	public void validate(Object target, Errors errors) {   
+	public void validate(Object target, Errors errors) {
 		PaymentInfo payment = (PaymentInfo) target;
-		
-//		if (payment.getLegalPerson().getCategoryId() == null){
-//			errors.reject(MessageValidation.NULL_VALUE, MessageValidation.APPLICATION_PROBLEM);
-//		} else 
-			if (payment.getInfoString() == null) {
-			errors.rejectValue(INFO_STRING_FIELD, MessageValidation.NULL_VALUE, MessageValidation.EMPTY_FIELD);
+
+		// if (payment.getLegalPerson().getCategoryId() == null){
+		// errors.reject(MessageValidation.NULL_VALUE,
+		// MessageValidation.APPLICATION_PROBLEM);
+		// } else
+		if (payment.getInfoString() == null) {
+			errors.rejectValue(INFO_STRING_FIELD, MessageValidation.NULL_VALUE,
+					MessageValidation.EMPTY_FIELD);
+		} else if (payment.getInfoString().trim().isEmpty()) {
+			errors.rejectValue(INFO_STRING_FIELD,
+					MessageValidation.EMPTY_VALUE,
+					MessageValidation.EMPTY_FIELD);
+
 		} else if (payment.getInfoString().trim().matches(WRONG_NUMBER_PATTERN)) {
-			errors.rejectValue(INFO_STRING_FIELD, MessageValidation.WRONG_FORMAT, MessageValidation.NOT_EXIST);
+			errors.rejectValue(INFO_STRING_FIELD,
+					MessageValidation.WRONG_FORMAT, MessageValidation.NOT_EXIST);
 		} else {
 			switch (payment.getLegalPerson().getCategoryId()) {
 			case 2:
 				// "Номер телефона"
-				if (!payment.getInfoString().trim().matches(MOBILE_PHONE_NUMBER_PATTERN)){
-					errors.rejectValue(INFO_STRING_FIELD, MessageValidation.WRONG_FORMAT, MessageValidation.WRONG_PHONE_NUMBER_FORMAT);
+				if (!payment.getInfoString().trim()
+						.matches(MOBILE_PHONE_NUMBER_PATTERN)) {
+					errors.rejectValue(INFO_STRING_FIELD,
+							MessageValidation.WRONG_FORMAT,
+							MessageValidation.WRONG_PHONE_NUMBER_FORMAT);
 				}
 				break;
 			case 3:
 				// "Номер контракта"
-				if (!payment.getInfoString().trim().matches(CONTRACT_NUMBER_PATTERN)){
-					errors.rejectValue(INFO_STRING_FIELD, MessageValidation.WRONG_FORMAT, MessageValidation.WRONG_CONTRACT_FORMAT);
+				if (!payment.getInfoString().trim()
+						.matches(CONTRACT_NUMBER_PATTERN)) {
+					errors.rejectValue(INFO_STRING_FIELD,
+							MessageValidation.WRONG_FORMAT,
+							MessageValidation.WRONG_CONTRACT_FORMAT);
 				}
 				break;
 			case 4:
-				// "Номер заказа билета" 
-				if (!payment.getInfoString().trim().matches(PROVIDER_CONTRACT_NUMBER_PATTERN)){
-					errors.rejectValue(INFO_STRING_FIELD, MessageValidation.WRONG_FORMAT, MessageValidation.WRONG_CONTRACT_FORMAT);
+				// "Номер заказа билета"
+				if (!payment.getInfoString().trim()
+						.matches(PROVIDER_CONTRACT_NUMBER_PATTERN)) {
+					errors.rejectValue(INFO_STRING_FIELD,
+							MessageValidation.WRONG_FORMAT,
+							MessageValidation.WRONG_CONTRACT_FORMAT);
 				}
 				break;
 			case 5:
 				// "Номер договора"
-				if (!payment.getInfoString().trim().matches(PROVIDER_CONTRACT_NUMBER_PATTERN)){
-					errors.rejectValue(INFO_STRING_FIELD, MessageValidation.WRONG_FORMAT, MessageValidation.WRONG_CONTRACT_FORMAT);
+				if (!payment.getInfoString().trim()
+						.matches(PROVIDER_CONTRACT_NUMBER_PATTERN)) {
+					errors.rejectValue(INFO_STRING_FIELD,
+							MessageValidation.WRONG_FORMAT,
+							MessageValidation.WRONG_CONTRACT_FORMAT);
 				}
 				break;
 			case 6:
 				// "Номер телефона"
-				if (!payment.getInfoString().trim().matches(HOME_PHONE_NUMBER_PATTERN)){
-					errors.rejectValue(INFO_STRING_FIELD, MessageValidation.WRONG_FORMAT, MessageValidation.WRONG_PHONE_NUMBER_FORMAT);
+				if (!payment.getInfoString().trim()
+						.matches(HOME_PHONE_NUMBER_PATTERN)) {
+					errors.rejectValue(INFO_STRING_FIELD,
+							MessageValidation.WRONG_FORMAT,
+							MessageValidation.WRONG_PHONE_NUMBER_FORMAT);
 				}
 				break;
-			case 7: case 8: case 9: case 10: case 11:
+			case 7:
+			case 8:
+			case 9:
+			case 10:
+			case 11:
 				// "Лицевой счет"
+				if (!payment.getInfoString().trim()
+						.matches(PERSANAL_ACCOUNT_PATTERN)) {
+					errors.rejectValue(INFO_STRING_FIELD,
+							MessageValidation.WRONG_FORMAT,
+							MessageValidation.WRONG_PERSONAL_ACCOUNT_FORMAT);
+				}
 				break;
 			default:
 				break;

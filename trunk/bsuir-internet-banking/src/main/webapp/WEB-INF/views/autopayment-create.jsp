@@ -59,7 +59,8 @@
 					</div>
 					<div class="control-group">
 						<form:label class="control-label" path="infoString"> 
-						<strong>${payment.infoLabel}</strong> <form:errors path="infoString" />
+						<strong>${payment.infoLabel}</strong> 
+						<form:errors path="infoString" class="bankingError" />
 						</form:label>
 						<div class="controls">
 							<form:input required="required" path="infoString"  />
@@ -68,12 +69,12 @@
 					</div>
 					<div class="control-group">
 						<form:label class="control-label" path="amount.enteredAmount"> 
-						<strong>Сумма</strong> <form:errors path="amount.enteredAmount" />
+						<strong>Сумма</strong>
 						</form:label>
 						<div class="controls">
 							<form:input required="required" path="amount.enteredAmount" />
 							<span>(BYR)</span>
-							<form:errors path="amount.amount"/>
+							<form:errors path="amount.enteredAmount" class="bankingError" />
 						</div>
 					</div>
 					<div class="control-group">

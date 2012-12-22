@@ -1,11 +1,10 @@
 package by.bsuir.banking.controller.personal;
 
-import java.util.regex.Pattern;
-
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -23,6 +22,7 @@ import by.bsuir.banking.domain.UserInfo;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingService;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceSetNewPasswordAuthorizationFaultFaultFaultMessage;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceSetNewPasswordDomainFaultFaultFaultMessage;
+import by.bsuir.banking.validator.ChangePasswordValidator;
 
 /**
  * Controller for changing password
@@ -38,7 +38,8 @@ public class ChangePasswordController extends EntityController{
 			.getLogger(ChangePasswordController.class);
 	private IInternetBankingService service;
 	private static final String VIEW_NAME = "password-change";
-	private static final String PASSWORD_PATTERN = "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{6,20})";
+	@Autowired
+	private ChangePasswordValidator changePasswordValidator;
 
 	public ChangePasswordController() {
 		service = ServiceProvider.getInternetBankingService();
@@ -58,25 +59,17 @@ public class ChangePasswordController extends EntityController{
 	@RequestMapping(method = RequestMethod.POST)
 	public String submitForm(
 			@Valid @ModelAttribute("changepassword") ChangePasswordWrapper wrapper,
-			BindingResult result, HttpSession session, RedirectAttributes attrs) {
-		if (result.hasErrors()) {
-			return VIEW_NAME;
-		}
+			BindingResult result, HttpSession session, RedirectAttributes attrs) {		
 		// checking original username
 		UserInfo user = getSessionUser(session);
 		if (!user.getPassword().equals(wrapper.getOriginalPassword())) {
 			result.reject("ChangePasswordError","Текущий пароль неправильный");
 			return VIEW_NAME;
 		}
-		if (!wrapper.getPassword().equals(wrapper.getConfirmPassword())) {
-			result.reject("ChangePasswordError","Новый и подтвержденный пароли не совпадают");
+		changePasswordValidator.validate(wrapper, result);
+		if (result.hasErrors()) {
 			return VIEW_NAME;
 		}
-		if (!Pattern.compile(PASSWORD_PATTERN).matcher(wrapper.getPassword()).matches()) {
-			result.reject("wrongNewPassword", "пароль должен содержать цифру и заглавную букву");
-			return VIEW_NAME;
-		}
-		// TODO set new username
 		try {
 			service.setNewPassword(wrapper.getPassword(), getSecurityToken(session));
 		} catch (IInternetBankingServiceSetNewPasswordAuthorizationFaultFaultFaultMessage e) {

@@ -42,10 +42,10 @@
 			</form:label> --%>
 			<div class="controls">
 				<form:label class="control-label" path="username" style="color:#ccc"> 
-						<strong>Имя пользователя может содержать латинские буквы, цифры и знак подчеркивания и должен содержать не менее 3 символов</strong> 
 				</form:label>
 				<form:input path="username" autocomplete="off" id="inputUsername"
 					placeholder="Новое имя пользователя" required="required" />
+											<p style="color:#ccc; font-size:12px;">Имя пользователя может содержать латинские буквы, цифры и знак подчеркивания и должен содержать не менее 3 символов</p> 
 				<form:errors class="help-inline error bankingError" path="username" />
 			</div>
 		</div>
