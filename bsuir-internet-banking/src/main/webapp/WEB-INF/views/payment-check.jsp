@@ -92,7 +92,9 @@
 						<div class="control-group">
 							<form:label class="checkbox" path="toSave">
 								<form:checkbox path="toSave" />
-							Сохранить платеж
+							<c:choose>
+							<c:when test="${payment.saved}">Обновить платеж</c:when>
+							<c:otherwise>Сохранить платеж</c:otherwise></c:choose>
 						</form:label>
 						</div>
 					</c:if>

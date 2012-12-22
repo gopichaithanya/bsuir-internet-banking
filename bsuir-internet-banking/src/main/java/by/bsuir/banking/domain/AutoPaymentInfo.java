@@ -12,10 +12,11 @@ public class AutoPaymentInfo {
 	private LegalPersonWrapper legalPerson = null;
 	private EripWrapper erip = null;
 	private ClientWrapper client;
-	private CardWrapper card;
 	private String displayCard;
 	@NotEmpty
 	private String infoString;
+	private String cardNumber;
+	
 
 	public AutoPaymentInfo(AutoPayment payment, ClientWrapper client, LegalPersonWrapper legal) {
 		this.payment = payment;
@@ -137,11 +138,12 @@ public class AutoPaymentInfo {
 		this.legalPerson = legalPerson;
 	}
 
-	public CardWrapper getCard() {
-		return card;
+	public String getCardNumber() {
+		return cardNumber;
 	}
 
-	public void setCard(CardWrapper card) {
-		this.card = card;
+	public void setCardNumber(String cardNumber) {
+		this.cardNumber = cardNumber;
 	}
+
 }

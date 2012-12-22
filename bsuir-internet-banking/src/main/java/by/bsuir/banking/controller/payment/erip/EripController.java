@@ -22,6 +22,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import by.bsuir.banking.admin.utils.CardUtil;
+import by.bsuir.banking.admin.utils.InformationParser;
 import by.bsuir.banking.admin.utils.MessageConstants;
 import by.bsuir.banking.admin.utils.PaymentUtil;
 import by.bsuir.banking.admin.utils.ServiceProvider;
@@ -32,11 +34,16 @@ import by.bsuir.banking.domain.ClientWrapper;
 import by.bsuir.banking.domain.EripWrapper;
 import by.bsuir.banking.domain.MoneyWrapper;
 import by.bsuir.banking.domain.PaymentInfo;
+import by.bsuir.banking.domain.SavedPaymentWrapper;
 import by.bsuir.banking.proxy.internetbanking.Card;
 import by.bsuir.banking.proxy.internetbanking.Client;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingService;
+import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceCreateSavedPaymentAuthorizationFaultFaultFaultMessage;
+import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceCreateSavedPaymentDomainFaultFaultFaultMessage;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetAllRegionsAuthorizationFaultFaultFaultMessage;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetAllRegionsDomainFaultFaultFaultMessage;
+import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetAllSavedPaymentsAuthorizationFaultFaultFaultMessage;
+import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetAllSavedPaymentsDomainFaultFaultFaultMessage;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetBallanceAuthorizationFaultFaultFaultMessage;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetBallanceDomainFaultFaultFaultMessage;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetCardsAuthorizationFaultFaultFaultMessage;
@@ -49,6 +56,8 @@ import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetServices
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetServicesForCityDomainFaultFaultFaultMessage;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServicePayERIPAuthorizationFaultFaultFaultMessage;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServicePayERIPDomainFaultFaultFaultMessage;
+import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceUpdateSavedPaymentAuthorizationFaultFaultFaultMessage;
+import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceUpdateSavedPaymentDomainFaultFaultFaultMessage;
 import by.bsuir.banking.validator.PaymentValidator;
 
 @Controller
@@ -70,19 +79,14 @@ public class EripController extends EntityController {
 	public String createForm(@PathVariable("paymentId") Integer id,
 			HttpSession session, Model model) {
 
-		String securityToken = getSecurityToken(session); 
-
-		EripWrapper erip;
+		String securityToken = getSecurityToken(session);
+		PaymentInfo wrapper = null;
+		EripWrapper erip = null;
 		try {
-			erip = PaymentUtil.getServiceById(id, securityToken);
-			erip.setCity(PaymentUtil.getCityById(erip.getCityId(),
-					securityToken));
-			erip.setRegion(PaymentUtil.getRegionById(erip.getCity()
-					.getRegionId(), securityToken));
-			Client client = service.getClient(securityToken);
 			List<CardWrapper> cards = new ArrayList<CardWrapper>();
 			List<MoneyWrapper> ballance = new ArrayList<MoneyWrapper>();
 			List<CardSelectInfo> cardSelect = new ArrayList<CardSelectInfo>();
+
 			for (Card card : service.getCards(securityToken).getCard()) {
 				CardWrapper cardWrapper = new CardWrapper(card);
 				cards.add(cardWrapper);
@@ -92,8 +96,30 @@ public class EripController extends EntityController {
 				ballance.add(cardsBallance);
 				cardSelect.add(new CardSelectInfo(cardWrapper, cardsBallance));
 			}
-			PaymentInfo wrapper = new PaymentInfo(erip, new ClientWrapper(
-					client));
+			erip = PaymentUtil.getServiceById(id, securityToken);
+			erip.setCity(PaymentUtil.getCityById(erip.getCityId(),
+					securityToken));
+			erip.setRegion(PaymentUtil.getRegionById(erip.getCity()
+					.getRegionId(), securityToken));
+			Client client = service.getClient(securityToken);
+
+			// ищем платеж среди сохраненных
+			Integer savedId = PaymentUtil.getEripSavedId(id, securityToken);
+			if (savedId != null) {
+				SavedPaymentWrapper savedPayment = PaymentUtil
+						.getEripSavedPaymentById(savedId, securityToken);
+				//getting cardNumber information from saved payment
+				CardWrapper card = CardUtil.getCardByAccountId(savedPayment.getAccountId(),
+								securityToken);
+				wrapper = new PaymentInfo(erip, new ClientWrapper(client), true);
+				wrapper.setCardNumber(card.getCardNumber());
+				wrapper.setInfoString(InformationParser.getInfoString(savedPayment.getInformation()));
+				wrapper.setAmount(savedPayment.getAmount());
+				wrapper.setSavedId(savedId);
+				
+			} else {
+				wrapper = new PaymentInfo(erip, new ClientWrapper(client), false);
+			}
 			model.addAttribute("payment", wrapper);
 			model.addAttribute("cardList", cards);
 			model.addAttribute("cardSelect", cardSelect);
@@ -134,6 +160,12 @@ public class EripController extends EntityController {
 		} catch (IInternetBankingServiceGetClientDomainFaultFaultFaultMessage e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} catch (IInternetBankingServiceGetAllSavedPaymentsAuthorizationFaultFaultFaultMessage e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IInternetBankingServiceGetAllSavedPaymentsDomainFaultFaultFaultMessage e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
 		return VIEW_NAME;
@@ -147,10 +179,14 @@ public class EripController extends EntityController {
 			RedirectAttributes attrs,
 			@ModelAttribute("cardSelect") List<CardSelectInfo> cardSelect,
 			Model model) throws IOException {
-		paymentValidator.validate(payment, result);
+		//paymentValidator.validate(payment, result);
 		if (result.hasErrors()) {
 			model.addAttribute("error", "На форме есть ошибки");
 			return VIEW_NAME;
+		} else {
+			payment.getAmount().setAmount(
+					BigDecimal.valueOf(Double.valueOf(payment.getAmount()
+							.getEnteredAmount().replace(',', '.'))));
 		}
 		payment.getAmount().setAmount(BigDecimal.valueOf(Double.valueOf(payment.getAmount().getEnteredAmount().trim().replace(',', '.'))));
 		if (session.getAttribute("cardSelect") == null) {
@@ -166,10 +202,11 @@ public class EripController extends EntityController {
 							"Карта недействительна. Выберите другую карту или обратитесь к оператору");
 					return VIEW_NAME;
 				}
-				if(card.isLocked()){
-					result.reject("paymentError",
+				if (card.isLocked()) {
+					result.reject(
+							"paymentError",
 							"Карта заблокированна. Разблокируйте карту, выберите другую или обратитесь к оператору");
-	 				return VIEW_NAME;
+					return VIEW_NAME;
 				}
 				payment.setDisplayCard(card.getDisplayValue());
 				curType = card.getCurrencyType();
@@ -183,7 +220,7 @@ public class EripController extends EntityController {
 		curTypes.add("BYR");
 		attrs.addFlashAttribute("cardSelect", cardSelect);
 		attrs.addFlashAttribute("payment", payment);
-		//attrs.addFlashAttribute("curSelect", curTypes);
+		// attrs.addFlashAttribute("curSelect", curTypes);
 		// model.addAttribute("curType", curType);
 		// return createCheck(paymentId, model, attrs);
 		return "redirect:/erip/pay/" + paymentId + "/check";
@@ -216,16 +253,6 @@ public class EripController extends EntityController {
 				if (card.getCardNumber().equals(payment.getCardNumber())) {
 					accountId = card.getCardWrapper().getCardsAccountId();
 					// set currency type for amount
-					/*List<CurrencyTypeWrapper> currrencies;
-					currrencies = CardUtil.getCurrencyTypes();
-
-					for (CurrencyTypeWrapper cur : currrencies) {
-						if (cur.getShortName().equalsIgnoreCase(
-								payment.getAmount().getCurrencyType())) {
-							payment.getAmount().setCurrencyTypeId(
-									cur.getCurrencyType().getId());
-						}
-					}*/
 					payment.getAmount().setCurrencyTypeId(1);
 				}
 			}
@@ -233,9 +260,9 @@ public class EripController extends EntityController {
 			String paymentResult = service.payERIP(payment.getCardNumber(),
 					payment.getAmount().getMoney(), information, securityToken);
 			if (paymentResult.equals("Failure")) {
-				result.reject("paymentError", 
+				result.reject("paymentError",
 						"Платеж не может быть проведен. Проверьте правильность введенных данных");
-				
+
 				return VIEW_NAME_CHECK;
 			}
 			if (paymentResult.equals("OperationsLimit")) {
@@ -243,13 +270,36 @@ public class EripController extends EntityController {
 						"Платеж не может быть проведен. Вы превисили лимит по расходным операциям");
 				return VIEW_NAME_CHECK;
 			}
-			if(paymentResult.equals("MoneyLimit")){
-				result.reject("paymentError", "Платеж не может быть проведен. Вы превисили лимит по сумме на расходные операции");
+			if (paymentResult.equals("MoneyLimit")) {
+				result.reject(
+						"paymentError",
+						"Платеж не может быть проведен. Вы превисили лимит по сумме на расходные операции");
 				return VIEW_NAME_CHECK;
 			}
-			if(paymentResult.equals("Balance")){
-				result.reject("paymentError", "Платеж не может быть проведен. На карте недостаточно средств");
+			if (paymentResult.equals("Balance")) {
+				result.reject("paymentError",
+						"Платеж не может быть проведен. На карте недостаточно средств");
 				return VIEW_NAME_CHECK;
+			}
+			// сохраняем платеж
+			if (payment.isSaved()) {
+				// обновляем по savedId
+				SavedPaymentWrapper savedPayment = PaymentUtil
+						.getEripSavedPaymentById(payment.getSavedId(),
+								securityToken);
+				savedPayment.setAccountId(accountId);
+				savedPayment.setAmount(payment.getAmount());
+				savedPayment.setInformation(information);
+
+				service.updateSavedPayment(savedPayment.getSavedPayment(),
+						securityToken);
+			} else {
+				// сохраняем как новый
+				SavedPaymentWrapper savedPayment = new SavedPaymentWrapper(
+						accountId, payment.getErip().getAccountId(),
+						information, payment.getAmount());
+				service.createSavedPayment(savedPayment.getSavedPayment(),
+						securityToken);
 			}
 		} catch (IInternetBankingServicePayERIPAuthorizationFaultFaultFaultMessage e) {
 			return "redirect:" + MessageConstants.AUTH_FAILED_VIEW;
@@ -257,6 +307,24 @@ public class EripController extends EntityController {
 			attrs.addFlashAttribute("error",
 					"Произошла ошибка. Платеж не был проведен");
 			return "redirect:" + MessageConstants.ERROR_VIEW;
+		} catch (IInternetBankingServiceGetAllSavedPaymentsAuthorizationFaultFaultFaultMessage e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IInternetBankingServiceGetAllSavedPaymentsDomainFaultFaultFaultMessage e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IInternetBankingServiceUpdateSavedPaymentAuthorizationFaultFaultFaultMessage e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IInternetBankingServiceUpdateSavedPaymentDomainFaultFaultFaultMessage e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IInternetBankingServiceCreateSavedPaymentAuthorizationFaultFaultFaultMessage e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IInternetBankingServiceCreateSavedPaymentDomainFaultFaultFaultMessage e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		attrs.addFlashAttribute("success", "Платеж прошел успешно");
 		return "redirect:/main";

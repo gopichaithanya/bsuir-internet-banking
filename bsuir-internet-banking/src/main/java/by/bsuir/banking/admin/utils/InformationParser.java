@@ -8,5 +8,10 @@ public class InformationParser {
 		return infoString;
 	}
 	
+	//pattern id.Region,City,Service,infoLabel:infoString
+	/*public static String getEripInfoString(String information) {
+		Integer pos = information.lastIndexOf("")
+	}*/
+	
 	
 }

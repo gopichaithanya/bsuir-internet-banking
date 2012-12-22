@@ -36,7 +36,8 @@ public class PaymentUtil {
 	private static List<EripWrapper> allEripPayments;
 	private static List<City> allCities;
 	private static List<Region> allRegions;
-	private static List<SavedPaymentWrapper> allSavedPayments;
+	private static List<SavedPaymentWrapper> regularSavedPayments;
+	private static List<SavedPaymentWrapper> eripSavedPayments;
 
 	private static List<LegalPerson> getPersons(String securityToken)
 			throws IInternetBankingServiceGetAllLegalPersonsAuthorizationFaultFaultFaultMessage,
@@ -252,35 +253,78 @@ public class PaymentUtil {
 	}
 
 	public static String formInformationErip(PaymentInfo payment) {
-		String info = payment.getErip().getRegion().getName().getValue() + ","
+		String info = payment.getErip().getId() + "."
+				+ payment.getErip().getRegion().getName().getValue() + ","
 				+ payment.getErip().getCity().getName().getValue() + ","
 				+ payment.getErip().getName() + "," + payment.getInfoLabel()
 				+ ":" + payment.getInfoString();
 		return info;
 	}
 
-	public static List<SavedPaymentWrapper> getAllSavedPayments(
+	public static List<SavedPaymentWrapper> getRegularSavedPayments(
 			String securityToken)
 			throws IInternetBankingServiceGetAllSavedPaymentsAuthorizationFaultFaultFaultMessage,
 			IInternetBankingServiceGetAllSavedPaymentsDomainFaultFaultFaultMessage {
-		allSavedPayments = new ArrayList<SavedPaymentWrapper>();
+		regularSavedPayments = new ArrayList<SavedPaymentWrapper>();
 		for (SavedPayment payment : service.getAllSavedPayments(securityToken)
 				.getSavedPayment()) {
 			// excluding ERIP accounts
 			if (payment.getLegalAccountId() != 1) {
-				allSavedPayments.add(new SavedPaymentWrapper(payment));
+				regularSavedPayments.add(new SavedPaymentWrapper(payment));
 			}
-		} 
-		return allSavedPayments;
-	}  
+		}
+		return regularSavedPayments;
+	}
+
+	public static List<SavedPaymentWrapper> getEripSavedPayments(
+			String securityToken)
+			throws IInternetBankingServiceGetAllSavedPaymentsAuthorizationFaultFaultFaultMessage,
+			IInternetBankingServiceGetAllSavedPaymentsDomainFaultFaultFaultMessage {
+		eripSavedPayments = new ArrayList<SavedPaymentWrapper>();
+		for (SavedPayment payment : service.getAllSavedPayments(securityToken)
+				.getSavedPayment()) {
+			// excluding ERIP accounts
+			if (payment.getLegalAccountId() == 1) {
+				eripSavedPayments.add(new SavedPaymentWrapper(payment));
+			}
+		}
+		return eripSavedPayments;
+	}
+
+	public static SavedPaymentWrapper getEripSavedPaymentById(Integer id,
+			String securityToken)
+			throws IInternetBankingServiceGetAllSavedPaymentsAuthorizationFaultFaultFaultMessage,
+			IInternetBankingServiceGetAllSavedPaymentsDomainFaultFaultFaultMessage {
+		for (SavedPaymentWrapper payment : getEripSavedPayments(securityToken)) {
+			if (payment.getId() == id) {
+				return payment;
+			}
+		}
+		return null;
+	}
 
 	public static SavedPaymentWrapper getSavedPaymentById(Integer id,
 			String securityToken)
 			throws IInternetBankingServiceGetAllSavedPaymentsAuthorizationFaultFaultFaultMessage,
 			IInternetBankingServiceGetAllSavedPaymentsDomainFaultFaultFaultMessage {
-		for (SavedPaymentWrapper payment : getAllSavedPayments(securityToken)) {
+		for (SavedPaymentWrapper payment : getRegularSavedPayments(securityToken)) {
 			if (payment.getId() == id) {
 				return payment;
+			}
+		}
+		return null;
+	}
+
+	public static Integer getEripSavedId(Integer id, String securityToken)
+			throws IInternetBankingServiceGetAllSavedPaymentsAuthorizationFaultFaultFaultMessage,
+			IInternetBankingServiceGetAllSavedPaymentsDomainFaultFaultFaultMessage {
+		for (SavedPaymentWrapper savedPayment : getEripSavedPayments(securityToken)) {
+			int pos = savedPayment.getInformation().indexOf(".");
+			if (pos >= 0){
+				Integer serviceId = Integer.valueOf(savedPayment.getInformation().substring(0,pos));
+				if(id == serviceId){
+					return savedPayment.getId();
+				}
 			}
 		}
 		return null;
