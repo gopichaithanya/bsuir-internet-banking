@@ -9,12 +9,14 @@
 <div id="formsContent">
 	<div id="breadcumbs" class="span12">
 		<ul class="breadcrumb">
-			<li><a href="<c:url value='/main' />">Главная</a> <span class="divider">/</span></li>
+			<li><a href="<c:url value='/main' />">Главная</a> <span
+				class="divider">/</span></li>
 			<li class="active">Установить лимиты по карте</li>
-			
+
 		</ul>
 	</div>
-	<form:form id="form" method="post" class="form span5" modelAttribute="limits">
+	<form:form id="form" method="post" class="form span5"
+		modelAttribute="limits">
 		<div class="control-group">
 			<h4>Заполните суточные лимиты</h4>
 			<br>
@@ -27,37 +29,40 @@
 			</s:bind>
 		</div>
 		<div id="divMoneyLimit" class="control-group">
-			<label class="control-label"> 
-						<strong>Карта:</strong> ${info.displayValue}
+			<label class="control-label"> <strong>Карта:</strong>
+				${info.displayValue}
 			</label>
 		</div>
 		<div id="divMoneyLimit" class="control-group">
-			<form:label class="control-label" path="moneyLimit"> 
-						<strong>Лимит по сумме</strong> 
+			<form:label class="control-label" path="moneyLimit">
+				<strong>Лимит по сумме</strong>
 			</form:label>
 			<div class="controls">
-				<form:input path="enteredMoneyLimit" autocomplete="off" id="inputOrigPassword"
-					placeholder="" required="true"/><span class="help-inline">(${info.currencyType})</span>
-				<form:errors class="help-inline error bankingError" path="enteredMoneyLimit" />
+				<form:input path="enteredMoneyLimit" autocomplete="off"
+					placeholder="" required="true" />
+				<span class="help-inline">(${info.currencyType})</span>
+				<form:errors class="help-inline error bankingError"
+					path="enteredMoneyLimit" />
 			</div>
 		</div>
 		<div id="divPassword" class="control-group">
-			<form:label class="control-label" path="operationsLimit"> 
-						<strong>Лимит по расходным операциям</strong>
+			<form:label class="control-label" path="operationsLimit">
+				<strong>Лимит по расходным операциям</strong>
 			</form:label>
 			<div class="controls">
-				<form:input path="enteredOperationsLimit" autocomplete="off" id="inputPassword"
-					placeholder="" required="true"/>
-				<form:errors class="help-inline error bankingError" path="enteredOperationsLimit"  />
+				<form:input path="enteredOperationsLimit" autocomplete="off"
+					placeholder="" required="true" />
+				<form:errors class="help-inline error bankingError"
+					path="enteredOperationsLimit" />
 			</div>
 		</div>
 		<div id="divConfirm" class="control-group">
-			<form:label class="control-label" path="secretWord"> 
-						<strong>Секретное слово</strong> 
+			<form:label class="control-label" path="secretWord">
+				<strong>Секретное слово</strong>
 			</form:label>
 			<div class="controls">
 				<form:password path="secretWord" id="inputConfirm"
-					placeholder="Введите секретное слово" required="true"/>
+					placeholder="Введите секретное слово" required="true" />
 				<form:errors class="help-inline" path="secretWord" />
 			</div>
 		</div>

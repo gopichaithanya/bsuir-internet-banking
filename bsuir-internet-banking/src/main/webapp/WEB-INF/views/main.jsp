@@ -17,7 +17,7 @@
 				alt="Мои карты"></img></a> 
 			<a href="<c:url value="/payment/list"/>" title="Платежи"><img width="100" height="50"
 				src="<c:url value="/resources/img/payments.png" />" alt="Платежи"></img></a>
-			<a href="#" title="История платежей"><img width="100" height="50"
+			<a href="<c:url value="/history/payment"/>" title="История платежей"><img width="100" height="50"
 				src="<c:url value="/resources/img/billing.png" />" alt="История платежей"></img></a>
 		</div>
 		

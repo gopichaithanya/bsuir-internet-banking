@@ -32,6 +32,7 @@
 				<th>Статус</th>
 			</tr>
 			<tr>
+			<c:if test="${not empty payments}">
 				<c:forEach begin="0" end="${fn:length(payments)-1}"
 					varStatus="loop">
 					<tr>
@@ -47,6 +48,7 @@
 						<td>${payments[loop.index].status}</td>
 					</tr>
 				</c:forEach>
+				</c:if>
 			</tr>
 		</table>
 	</div>

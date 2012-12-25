@@ -6,10 +6,13 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
+import by.bsuir.banking.domain.CardWrapper;
 import by.bsuir.banking.domain.LimitsWrapper;
+import by.bsuir.banking.domain.MoneyWrapper;
 
 @Component
 public class LimitsValidator implements Validator {
+	private static BigDecimal maxMoneyLimit = BigDecimal.valueOf(20000000l);;
 	private static final String MONEY_LIMIT_FIELD = "enteredMoneyLimit";
 	private static final String OPERATIONS_LIMIT_FIELD = "enteredOperationsLimit";
 	private static final String DECIMAL_PATTERN = "[0-9]+((\\.|\\,)?[0-9]+)?";
@@ -18,11 +21,10 @@ public class LimitsValidator implements Validator {
 	private static final String HUGE_INTEGER_PATTERN = "[0-9]{1,7}";
 	
 	private static final String WRONG_DECIMAL_FORMAT_PATTERN = "0{1}0+[1-9]?((\\.|\\,)?[0-9]+)?"; //contains first number == 0
-//	private static final String ZERO_DECIMAL_PATTERN = "(0){1}((\\.|\\,){1}[0-9]+)?"; //numbers lees than 1.0
+//	private static final String ZERO_DECIMAL_PATTERN = "(0){1}((\\.|\\,){1}[0-9]+)?"; //numbers less than 1.0
 	private static final String WRONG_INTEGER_FORMAT_PATTERN = "0{1}0+[1-9]?"; //contains first number == 0
-//	private static final String ZERO_INTEGER_PATTERN = "(0){1}((\\.|\\,){1}[0-9]+)?"; //numbers lees than 1.0
+//	private static final String ZERO_INTEGER_PATTERN = "(0){1}((\\.|\\,){1}[0-9]+)?"; //numbers less than 1.0
 	
-	private static final BigDecimal MAX_MONEY_LIMIT = BigDecimal.valueOf(20000000l);
 	private static final Integer MAX_OPERATIONS_LIMIT = 20;
 //	private static final BigDecimal MIN_MONEY_LIMIT = BigDecimal.ONE;
 
@@ -48,7 +50,7 @@ public class LimitsValidator implements Validator {
 			BigDecimal moneyLimit = BigDecimal.valueOf(Double.valueOf(limits.getEnteredMoneyLimit().trim()));
 			if (moneyLimit.compareTo(BigDecimal.ONE) < 0) {
 				errors.rejectValue(MONEY_LIMIT_FIELD, MessageValidation.LESS_MIN_VALUE, MessageValidation.MIN_VALUE);
-			} else if (moneyLimit.compareTo(MAX_MONEY_LIMIT) > 0) {
+			} else if (moneyLimit.compareTo(maxMoneyLimit) > 0) {
 				errors.rejectValue(MONEY_LIMIT_FIELD, MessageValidation.MORE_MAX_VALUE, MessageValidation.MAX_AMOUNT);
 			}
 		}
@@ -59,10 +61,11 @@ public class LimitsValidator implements Validator {
 			errors.rejectValue(OPERATIONS_LIMIT_FIELD, MessageValidation.EMPTY_VALUE, MessageValidation.EMPTY_FIELD);
 		} else if (!limits.getEnteredOperationsLimit().trim().matches(INTEGER_PATTERN)) {
 			errors.rejectValue(OPERATIONS_LIMIT_FIELD, MessageValidation.WRONG_FORMAT, MessageValidation.WRONG_INTEGER_FORMAT);
-		} else if (limits.getEnteredMoneyLimit().trim().matches(WRONG_INTEGER_FORMAT_PATTERN)) {
+		} else if (limits.getEnteredOperationsLimit().trim().matches(WRONG_INTEGER_FORMAT_PATTERN)) {
 			errors.rejectValue(OPERATIONS_LIMIT_FIELD, MessageValidation.WRONG_FORMAT, MessageValidation.STARTS_WITH_ZERO);
-		} else if (!limits.getEnteredMoneyLimit().trim().matches(HUGE_INTEGER_PATTERN)) {
+		} else if (!limits.getEnteredOperationsLimit().trim().matches(HUGE_INTEGER_PATTERN)) {
 			errors.rejectValue(OPERATIONS_LIMIT_FIELD, MessageValidation.WRONG_FORMAT, MessageValidation.HUGE_VALUE);
+		} else {
 			Integer operationsLimit = Integer.valueOf(limits.getEnteredOperationsLimit().trim());
 			if (operationsLimit < 1) {
 				errors.rejectValue(OPERATIONS_LIMIT_FIELD, MessageValidation.LESS_MIN_VALUE, MessageValidation.MIN_VALUE);
