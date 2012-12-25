@@ -37,7 +37,7 @@
 				<div class="clearfix alert alert-error ">У Вас нет карт. Вы не можете создать автоплатеж. Свяжитесь с оператором банка.</div>
 			</c:when>
 			<c:otherwise>
-				<form:form id="form" method="post" class="form span10"
+				<form:form id="form" name="form" method="post" class="form span10"
 					modelAttribute="payment">
 					<s:bind path="*">
 						<c:if test="${status.error}">
@@ -88,8 +88,8 @@
 					</div>
 					<div class="control-group">
 						<div class="controls">
-							<a href="<c:url value='/autopayment/list'/>" class="btn btn-danger">Отменить</a>
-							<input type="submit" class="btn btn-success" value="Дальше"/>
+							<a href="<c:url value='/autopayment/list'/>" class="btn btn-danger" >Отменить</a>
+							<input type="submit" class="btn btn-success" value="Дальше" onclick="this.disabled=true;document.form.submit();"/>
 						</div>
 					</div>
 				</form:form>

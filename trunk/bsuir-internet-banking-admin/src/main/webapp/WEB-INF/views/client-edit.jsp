@@ -9,7 +9,7 @@
 </c:if>
 <div id="formsContent">
 	<div class="span12 well">
-		<form:form id="form" method="post" class="form-horizontal"
+		<form:form id="form" method="post" class="form-horizontal" name="form"
 			modelAttribute="client">
 			<div class="control-group">
 				<h4>Edit client information</h4>
@@ -148,8 +148,8 @@
 			</div>
 			<div class="control-group">
 				<div class="controls">
-					<button type="submit" class="btn btn-success">Submit</button>
-					<a class="btn btn-danger pull-right" href="<c:url value="/client/delete/${client.id}"/>">Delete client</a>
+					<button type="submit" class="btn btn-success" onclick="this.disabled=true;document.form.submit();">Submit</button>
+					<a class="btn btn-danger pull-right" onclick="return confirm('Are you sure you want to delete client?')" href="<c:url value="/client/delete/${client.id}"/>">Delete client</a>
 				</div>
 			</div>
 

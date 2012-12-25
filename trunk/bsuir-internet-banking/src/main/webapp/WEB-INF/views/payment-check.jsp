@@ -119,6 +119,7 @@
 								<a
 									href="<c:url value='/erip/pay/${payment.erip.id}'/>"
 									class="btn btn-warning">Назад</a>
+									
 							</c:if>
 							<button type="submit" onclick="this.disabled=true;document.form.submit();" class="btn btn-success">Принять</button>
 						</div>

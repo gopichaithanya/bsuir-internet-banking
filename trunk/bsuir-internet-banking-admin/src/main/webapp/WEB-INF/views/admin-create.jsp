@@ -7,7 +7,7 @@
 <body>
 </c:if>
 <div id="formsContent">
-	<form:form id="form" method="post" class="form span5 well"
+	<form:form id="form" name="form" method="post" class="form span5 well"
 		modelAttribute="admin">
 		<div class="control-group">
 			<h4>Please enter administrator information</h4>
@@ -65,7 +65,7 @@
 		</div>
 		<div class="control-group">
 			<div class="controls">
-				<button type="submit" class="btn">Submit</button>
+				<button type="submit" onclick="this.disabled=true;document.form.submit();" class="btn">Submit</button>
 			</div>
 		</div>
 	</form:form>

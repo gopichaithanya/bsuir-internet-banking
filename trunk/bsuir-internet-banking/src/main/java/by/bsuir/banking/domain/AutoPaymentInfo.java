@@ -16,7 +16,7 @@ public class AutoPaymentInfo {
 	private String cardNumber;
 	private Integer dayOfMonth;
 	private MoneyWrapper amount;
-	//private boolean saved = false;
+	private boolean saved = false;
 	private Integer savedId;
 
 	
@@ -157,6 +157,14 @@ public class AutoPaymentInfo {
 
 	public void setSavedId(Integer savedId) {
 		this.savedId = savedId;
+	}
+
+	public boolean isSaved() {
+		return saved;
+	}
+
+	public void setSaved(boolean saved) {
+		this.saved = saved;
 	}
 
 }

@@ -7,7 +7,7 @@
 <body>
 </c:if>
 <div id="formsContent">
-	<form:form id="form" method="post" class="form span5 well"
+	<form:form id="form" method="post" class="form span5 well" name="form"
 		modelAttribute="operator">
 		<div class="control-group">
 			<h4>View/edit operator information</h4>
@@ -65,8 +65,8 @@
 		</div>
 		<div class="control-group">
 			<div class="controls">
-				<button type="submit" class="btn">Submit</button>
-				<a class="btn btn-danger" href="<c:url value="/operator/delete/${operator.id}"/>">Delete</a>
+				<button type="submit" class="btn" onclick="this.disabled=true;document.form.submit();">Submit</button>
+				<a class="btn btn-danger" onclick="return confirm('Are you sure you want to delete operator?')" href="<c:url value="/operator/delete/${operator.id}"/>">Delete</a>
 			</div>
 		</div>
 	</form:form>

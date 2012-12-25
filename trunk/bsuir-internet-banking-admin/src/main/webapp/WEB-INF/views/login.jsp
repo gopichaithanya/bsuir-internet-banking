@@ -7,7 +7,7 @@
 <body>
 </c:if>
 <div id="formsContent">
-	<form:form id="form" method="post" class="form span5 well" modelAttribute="userInfo">
+	<form:form id="form" method="post" name="form" class="form span5 well" modelAttribute="userInfo">
 		<div class="control-group">
 			<h4>Please enter username and password</h4>
 			<br>
@@ -41,7 +41,7 @@
 		</div>
 		<div class="control-group">
 			<div class="controls">
-				<button type="submit" class="btn">Sign in</button>
+				<button type="submit" class="btn" onclick="this.disabled=true;document.form.submit();">Sign in</button>
 			</div>
 		</div>
 	</form:form>

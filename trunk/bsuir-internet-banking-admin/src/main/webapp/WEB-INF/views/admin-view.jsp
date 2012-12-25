@@ -33,7 +33,7 @@
 				</dl>
 				<div id="adminButtons">
 					<a href="<c:url value="/admin/edit/${admin.id}" />" class="btn">Edit</a>
-					<a href="<c:url value="/admin/delete/${admin.id}" />" class="btn">Delete</a>
+					<a href="<c:url value="/admin/delete/${admin.id}" />" onclick="return confirm('Are you sure you want to delete administrator?')" class="btn">Delete</a>
 				</div>
 			</c:when>
 		</c:choose>

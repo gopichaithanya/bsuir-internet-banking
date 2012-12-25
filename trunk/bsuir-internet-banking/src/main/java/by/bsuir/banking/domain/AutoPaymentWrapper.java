@@ -6,8 +6,6 @@ import by.bsuir.banking.proxy.internetbanking.ObjectFactory;
 
 
 /**
- * Class is only for list of autopayments!!!!
- * For creating/updating autopayment use AutoPaymentInfo
  * @author Katherine
  *
  */

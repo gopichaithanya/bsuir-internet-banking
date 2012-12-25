@@ -29,7 +29,7 @@
 			</c:when>
 			<c:otherwise>
 				<h4>Выбор карт</h4>
-				<form:form id="form" method="post" class="form span10"
+				<form:form id="form" name="form" method="post" class="form span10"
 					modelAttribute="transfer">
 					<s:bind path="*">
 						<c:if test="${status.error}">
@@ -59,7 +59,7 @@
 					<div class="control-group">
 						<div class="controls">
 							<a href="<c:url value='/main'/>" class="btn">Отмена</a>
-							<button type="submit" class="btn">Дальше</button>
+							<button type="submit" onclick="this.disabled=true;document.form.submit();" class="btn">Дальше</button>
 						</div>
 					</div>
 

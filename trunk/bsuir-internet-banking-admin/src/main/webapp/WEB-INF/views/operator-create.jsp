@@ -7,7 +7,7 @@
 <body>
 </c:if>
 <div id="formsContent">
-	<form:form id="form" method="post" class="form span5 well"
+	<form:form id="form" method="post" name="form" class="form span5 well"
 		modelAttribute="operator">
 		<div class="control-group">
 			<h4>Please enter operator information</h4>
@@ -65,7 +65,7 @@
 		</div>
 		<div class="control-group">
 			<div class="controls">
-				<button type="submit" class="btn">Submit</button>
+				<button type="submit" class="btn" onclick="this.disabled=true;document.form.submit();">Submit</button>
 			</div>
 		</div>
 	</form:form>

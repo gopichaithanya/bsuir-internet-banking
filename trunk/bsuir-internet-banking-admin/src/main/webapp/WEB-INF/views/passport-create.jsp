@@ -8,7 +8,7 @@
 </c:if>
 <div id="formsContent">
 <div class="span6 well">
-	<form:form id="form" method="post" class="form"
+	<form:form id="form" method="post" class="form" name="form"
 		modelAttribute="passport">
 		<div class="control-group">
 			<h4>Please enter client's passport data</h4>
@@ -80,7 +80,7 @@
 		</div>
 		<div class="control-group">
 			<div class="controls">
-				<button type="submit" class="btn">Submit</button>
+				<button type="submit" class="btn" onclick="this.disabled=true;document.form.submit();">Submit</button>
 			</div>
 		</div>
 	</form:form>
