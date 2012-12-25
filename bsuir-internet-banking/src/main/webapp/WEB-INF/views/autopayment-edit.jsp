@@ -17,27 +17,27 @@
 				class="divider">/</span></li>
 				
 				<c:if test="${ not empty payment.legalPerson}">
-					<li class="active"><c:choose><c:when test="${!payment.saved}">Создать</c:when><c:otherwise>Редактировать</c:otherwise></c:choose> автоплатеж - ${payment.legalPerson.name}</li>
+					<li class="active">Редактировать автоплатеж - ${payment.legalPerson.name}</li>
 				</c:if>
 				<c:if test="${ not empty payment.erip}">
-					<li class="active"><c:choose><c:when test="${!payment.saved}">Создать</c:when><c:otherwise>Редактировать</c:otherwise></c:choose> автоплатеж - ${payment.erip.name}</li>
+					<li class="active">Редактировать автоплатеж - ${payment.erip.name}</li>
 				</c:if>
 		</ul>
 	</div>
 	<br>
 	<div id="ratesInfo" class="span8">
 		<c:if test="${ not empty payment.legalPerson}">
-			<h4>Проверить автоплатеж: ${payment.legalPerson.category.name.value} - ${payment.legalPerson.name}</h4>
+			<h4>Редактировать автоплатеж: ${payment.legalPerson.category.name.value} - ${payment.legalPerson.name}</h4>
 		</c:if>
 		<c:if test="${ not empty payment.erip}">
-			<h4>Проверить автоплатеж в системе Расчет: ${payment.erip.region.name.value} - ${payment.erip.city.name.value} - ${payment.erip.name}</h4>
+			<h4>Редактировать автоплатеж в системе Расчет: ${payment.erip.region.name.value} - ${payment.erip.city.name.value} - ${payment.erip.name}</h4>
 		</c:if>
 		<c:choose>
 			<c:when test="${fn:length(cardSelect) == 0}">
 				<div class="clearfix alert alert-error ">У Вас нет карт. Вы не можете создать автоплатеж. Свяжитесь с оператором банка.</div>
 			</c:when>
 			<c:otherwise>
-				<form:form id="form" method="post" class="form span10"
+				<form:form id="form" name="form" method="post" class="form span10"
 					modelAttribute="payment">
 					<s:bind path="*">
 						<c:if test="${status.error}">
@@ -46,28 +46,35 @@
 					</s:bind>
 					
 					<div class="control-group">
-						<form:label class="control-label" path="displayCard">
-							<strong>С карты:</strong>
-							<div class="controls">${payment.displayCard}</div>
-						</form:label>
-					</div>
-					<div class="control-group">
-						<form:label class="control-label" path="infoString"> 
-						<strong>${payment.infoLabel}</strong> <form:errors path="infoString" />
+						<form:label class="control-label" path="cardNumber"> 
+						<strong>С карты:</strong> 
+						<form:errors path="cardNumber" />
 						</form:label>
 						<div class="controls">
-							<form:input readonly="true" path="infoString"  />
+							<form:select  path="cardNumber" 
+							style="width:400px;" items="${cardSelect}"
+								itemLabel="displayValue" itemValue="cardNumber"></form:select>
 							
 						</div>
 					</div>
 					<div class="control-group">
-						<form:label class="control-label" path="amount.amount"> 
-						<strong>Сумма</strong> <form:errors path="amount.amount" />
+						<form:label class="control-label" path="infoString"> 
+						<strong>${payment.infoLabel}</strong> 
+						<form:errors path="infoString" class="bankingError" />
 						</form:label>
 						<div class="controls">
-							<form:input required="required" readonly="true" path="amount.amount" />
+							<form:input required="required" path="infoString"  />
+							
+						</div>
+					</div>
+					<div class="control-group">
+						<form:label class="control-label" path="amount.enteredAmount"> 
+						<strong>Сумма</strong>
+						</form:label>
+						<div class="controls">
+							<form:input required="required" path="amount.enteredAmount" />
 							<span>(BYR)</span>
-							<form:errors path="amount.amount"/>
+							<form:errors path="amount.enteredAmount" class="bankingError" />
 						</div>
 					</div>
 					<div class="control-group">
@@ -75,15 +82,14 @@
 						<strong>Оплачивать каждое</strong> 
 						</form:label>
 						<div class="controls">
-							<form:input class="input-mini" readonly="true"  path="dayOfMonth" />
+							<form:select  path="dayOfMonth"  items="${days}" class="input-mini"></form:select>
 						<strong> число месяца:</strong>				
 						</div>
 					</div>
 					<div class="control-group">
 						<div class="controls">
 							<a href="<c:url value='/autopayment/list'/>" class="btn btn-danger">Отменить</a>
-							<!-- BACK BUTTON -->
-							<input type="submit" class="btn btn-success" value="Дальше"/>
+							<input type="submit" class="btn btn-success" value="Дальше" onclick="this.disabled=true;document.form.submit();"/>
 						</div>
 					</div>
 				</form:form>

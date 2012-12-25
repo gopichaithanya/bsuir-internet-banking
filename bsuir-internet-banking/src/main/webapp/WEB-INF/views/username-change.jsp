@@ -14,7 +14,7 @@
 			
 		</ul>
 	</div>
-	<form:form id="form" method="post" class="form span5" modelAttribute="changeusername">
+	<form:form id="form" method="post" name="form" class="form span5" modelAttribute="changeusername">
 		<div class="control-group">
 			<h4>Заполните форму</h4>
 			<br>
@@ -58,7 +58,7 @@
 		</div>
 		<div class="control-group">
 			<div class="controls">
-				<button type="submit" class="btn">Принять</button>
+				<button type="submit" class="btn" onclick="this.disabled=true;document.form.submit();">Принять</button>
 			</div>
 		</div>
 	</form:form>

@@ -66,7 +66,7 @@ import by.bsuir.banking.proxy.internetbanking.LegalPersonCategory;
 import by.bsuir.banking.proxy.internetbanking.ObjectFactory;
 import by.bsuir.banking.proxy.internetbanking.Region;
 import by.bsuir.banking.proxy.internetbanking.Service;
-import by.bsuir.banking.validator.AutoPaymentValidator;
+import by.bsuir.banking.validator.AutoPaymentValidator;  
 
 @Controller
 @RequestMapping("/autopayment/create")
@@ -446,6 +446,6 @@ public class CreateAutoPaymentController extends EntityController {
 		}
 
 		attrs.addFlashAttribute("success", "Автоплатеж был успешно создан");
-		return "redirect:/main";
+		return "redirect:/autopayment/list";
 	}
 }

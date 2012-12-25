@@ -36,7 +36,7 @@
 				<div class="clearfix alert alert-error ">У Вас нет карт. Вы не можете провести платеж. Свяжитесь с оператором банка.</div>
 			</c:when>
 			<c:otherwise>
-				<form:form id="form" method="post" class="form span10"
+				<form:form id="form" name="form" method="post" class="form span10"
 					modelAttribute="payment">
 					<s:bind path="*">
 						<c:if test="${status.error}">
@@ -78,7 +78,7 @@
 					<div class="control-group">
 						<div class="controls">
 							<a href="<c:url value='/payment/list'/>" class="btn btn-danger">Отменить</a>
-							<input type="submit" class="btn btn-success" value="Дальше"/>
+							<input type="submit" onclick="this.disabled=true;document.form.submit();" class="btn btn-success" value="Дальше"/>
 						</div>
 					</div>
 					<c:if test="${payment.saved}"><form:hidden path="savedId"/> </c:if>

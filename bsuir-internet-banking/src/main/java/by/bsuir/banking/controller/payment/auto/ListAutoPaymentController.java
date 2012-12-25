@@ -16,15 +16,11 @@ import by.bsuir.banking.admin.utils.MessageConstants;
 import by.bsuir.banking.admin.utils.PaymentUtil;
 import by.bsuir.banking.admin.utils.ServiceProvider;
 import by.bsuir.banking.controller.login.EntityController;
-import by.bsuir.banking.domain.AutoPaymentInfo;
 import by.bsuir.banking.domain.AutoPaymentWrapper;
 import by.bsuir.banking.domain.CardWrapper;
-import by.bsuir.banking.domain.ClientWrapper;
 import by.bsuir.banking.domain.EripWrapper;
 import by.bsuir.banking.domain.LegalPersonWrapper;
 import by.bsuir.banking.proxy.internetbanking.AutoPayment;
-import by.bsuir.banking.proxy.internetbanking.Card;
-import by.bsuir.banking.proxy.internetbanking.Client;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingService;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetAllLegalPersonsAuthorizationFaultFaultFaultMessage;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetAllLegalPersonsDomainFaultFaultFaultMessage;
@@ -36,8 +32,6 @@ import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetCardsAut
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetCardsDomainFaultFaultFaultMessage;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetCitiesForRegionAuthorizationFaultFaultFaultMessage;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetCitiesForRegionDomainFaultFaultFaultMessage;
-import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetClientAuthorizationFaultFaultFaultMessage;
-import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetClientDomainFaultFaultFaultMessage;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetServicesForCityAuthorizationFaultFaultFaultMessage;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetServicesForCityDomainFaultFaultFaultMessage;
 

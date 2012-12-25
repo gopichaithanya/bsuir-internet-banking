@@ -59,7 +59,6 @@ import by.bsuir.banking.proxy.internetbanking.IInternetBankingServicePayERIPDoma
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceUpdateSavedPaymentAuthorizationFaultFaultFaultMessage;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceUpdateSavedPaymentDomainFaultFaultFaultMessage;
 import by.bsuir.banking.validator.EripPaymentValidator;
-import by.bsuir.banking.validator.PaymentValidator;
 
 @Controller
 @RequestMapping("/erip/pay/{paymentId}")
@@ -182,7 +181,6 @@ public class EripController extends EntityController {
 			Model model) throws IOException {
 		eripPaymentValidator.validate(payment, result);
 		if (result.hasErrors()) {
-			model.addAttribute("error", "На форме есть ошибки");
 			return VIEW_NAME;
 		} else {
 			payment.getAmount().setAmount(

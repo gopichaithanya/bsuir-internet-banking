@@ -83,14 +83,11 @@
 		<div class="row-fluid">
 				<c:if test="${empty account_card.card}">
 					<a class="btn btn-info"
-						href="<c:url value="/client/edit/${client.id}" />">Create card</a>
+						href="<c:url value="/card/create" />">Create card</a>
 				</c:if>
-				<a class="btn btn-info"
-					href="<c:url value="/account/${client.id}/list" />">View
-					Accounts</a>
 					<c:if test="${hasCard}"> 
 					<a class="btn btn-danger pull-right"
-					href="<c:url value="/client/delete/${client.id}" />">Delete
+					href="<c:url value="/card/delete/${account_card.cardId}" />">Delete
 					card</a>
 					</c:if>
 			</div>

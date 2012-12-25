@@ -7,7 +7,7 @@
 <body>
 </c:if>
 <div id="formsContent">
-	<form:form id="form" method="post" class="form span5 well"
+	<form:form id="form" method="post" name="form" class="form span5 well"
 		modelAttribute="admin">
 		<div class="control-group">
 			<h4>View/edit administrator information</h4>
@@ -65,8 +65,8 @@
 		</div>
 		<div class="control-group">
 			<div class="controls">
-				<button type="submit" class="btn">Submit</button>
-				<a class="btn btn-danger" href="<c:url value="/admin/delete/${admin.id}"/>">Delete</a>
+				<button type="submit" class="btn" onclick="this.disabled=true;document.form.submit();">Submit</button>
+				<a class="btn btn-danger" onclick="return confirm('Are you sure you want to delete administrator?')" href="<c:url value="/admin/delete/${admin.id}"/>">Delete</a>
 			</div>
 		</div>
 	</form:form>

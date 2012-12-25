@@ -74,7 +74,7 @@
 			<a class="btn btn-info" href="<c:url value="/client/edit/${client.id}" />">Edit</a>
 			<a class="btn btn-info" href="<c:url value="/account/${client.id}/list" />">View Accounts</a>
 			<a class="btn btn-success" href="<c:url value="/account/${client.id}/open" />">Open Account</a>
-			<a class="btn btn-danger pull-right" href="<c:url value="/client/delete/${client.id}" />">Delete client</a>
+			<a class="btn btn-danger pull-right" onclick="return confirm('Are you sure you want to delete client?')" href="<c:url value="/client/delete/${client.id}" />">Delete client</a>
 		</div>
 	</div>
 	<!-- <div class="span6 well">

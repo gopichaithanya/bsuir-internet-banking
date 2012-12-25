@@ -7,7 +7,7 @@
 <body>
 </c:if>
 <div id="formsContent">
-	<form:form id="form" method="post" class="form span8 well"
+	<form:form id="form" name="form" method="post" class="form span8 well"
 		modelAttribute="account_card">
 		<div class="control-group">
 			<h4>Open account for ${client.firstName} ${client.middleName} ${client.lastName}</h4>
@@ -44,7 +44,7 @@
 		<!-- code for expiration date -->
 		<div class="control-group">
 			<div class="controls">
-				<button type="submit" class="btn">Submit</button>
+				<button type="submit" onclick="this.disabled=true;document.form.submit();" class="btn">Submit</button>
 			</div>
 		</div>
 	</form:form>

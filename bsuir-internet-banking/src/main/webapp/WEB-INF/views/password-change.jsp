@@ -14,7 +14,7 @@
 			
 		</ul>
 	</div>
-	<form:form id="form" method="post" class="form span5" modelAttribute="changepassword">
+	<form:form id="form" name="form" method="post" class="form span5" modelAttribute="changepassword">
 		<div class="control-group">
 			<h4>Заполните форму</h4>
 			<br>
@@ -28,7 +28,7 @@
 		</div>
 		<div id="divOrigPassword" class="control-group">
 			<div class="controls">
-				<form:input path="originalPassword" autocomplete="off" id="inputOrigPassword"
+				<form:password path="originalPassword" autocomplete="off" id="inputOrigPassword"
 					placeholder="Текущий пароль" required="required" />
 				<form:errors class="help-inline error bankingError" path="originalPassword" />
 			</div>
@@ -58,7 +58,7 @@
 		</div>
 		<div class="control-group">
 			<div class="controls">
-				<button type="submit" class="btn">Принять</button>
+				<button type="submit" onclick="this.disabled=true;document.form.submit();" class="btn">Принять</button>
 			</div>
 		</div>
 	</form:form>

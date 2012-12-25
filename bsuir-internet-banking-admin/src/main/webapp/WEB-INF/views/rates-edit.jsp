@@ -8,7 +8,7 @@
 <body>
 </c:if>
 <div id="content">
-	<form:form id="form" method="post" class="form span5"
+	<form:form id="form" method="post" class="form span5" name="form"
 		modelAttribute="rates">
 		<div id="ratesInfo">
 			<s:bind path="*">
@@ -64,7 +64,7 @@
 			</table>
 			<div class="control-group">
 				<div class="controls">
-					<button type="submit" class="btn">Submit</button>
+					<button type="submit" class="btn" onclick="this.disabled=true;document.form.submit();">Submit</button>
 				</div>
 			</div>
 		</div>

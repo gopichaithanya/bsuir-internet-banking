@@ -8,7 +8,7 @@
 </c:if>
 <div id="formsContent">
 	<div class="span6 well">
-		<form:form id="form1" method="post" class="form" action=""
+		<form:form id="form1" method="post" name="form" class="form" 
 			modelAttribute="client">
 			<div class="control-group">
 				<h4>Please enter client information</h4>
@@ -76,7 +76,7 @@
 		</div>
 			<div class="control-group">
 				<div class="controls">
-					<button type="submit" class="btn">Next</button>
+					<button type="submit" class="btn" onclick="this.disabled=true;document.form.submit();">Next</button>
 				</div>
 			</div>
 		</form:form>
