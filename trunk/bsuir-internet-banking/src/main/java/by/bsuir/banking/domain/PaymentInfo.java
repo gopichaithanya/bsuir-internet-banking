@@ -142,4 +142,15 @@ public class PaymentInfo {
 		this.savedId = savedId;
 	}
 
+	public String getHelpLabel() {
+		if (legalPerson != null) {
+			return PaymentUtil.getHelpLabelForCategory(legalPerson.getCategoryId());
+		}
+		if(erip != null){
+			return PaymentUtil.getHelpLabelForErip(erip.getId());
+		}
+		return null;
+	}
+
+
 }

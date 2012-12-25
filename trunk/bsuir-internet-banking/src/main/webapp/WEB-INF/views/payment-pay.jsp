@@ -58,7 +58,7 @@
 					</div>
 					<div class="control-group">
 						<form:label class="control-label" path="infoString"> 
-						<strong>${payment.infoLabel}</strong> 
+						<strong>${payment.infoLabel}</strong><strong>${payment.helpLabel}</strong> 
 						</form:label>
 						<div class="controls">
 							<form:input required="required" path="infoString" autocomplete="off"  />

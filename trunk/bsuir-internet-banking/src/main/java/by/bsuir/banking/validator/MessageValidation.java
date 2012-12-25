@@ -29,7 +29,7 @@ public class MessageValidation {
 	public static final String STARTS_WITH_ZERO = "Значение суммы платежа не может начинатся с нуля";
 	public static final String WRONG_INTEGER_FORMAT = "Может содержать только целые числа без знаков +/-";
 	public static final String MIN_VALUE = "Минимальное значение 1";
-	public static final String MAX_AMOUNT = "Максимальное значение 20 000 000";
+	public static final String MAX_AMOUNT = "Максимальное значение 20 000 000 бел. рублей (или эквивалентной суммы в другой валюте)";
 	public static final String MAX_VALUE = "Максимальное значение 20";
 	public static final String WRONG_USERNAME = "Имя пользователя должно содержать не менее 3 и не более 15 символов(только латинские буквы, цифры, знак _ или -)";
 	public static final String DO_NOT_MATCH_USERNAMES = "Новое и подтвержденное имя пользователя не совпадают";

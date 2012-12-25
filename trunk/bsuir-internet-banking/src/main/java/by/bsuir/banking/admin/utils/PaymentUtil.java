@@ -53,19 +53,19 @@ public class PaymentUtil {
 		String label = "";
 		switch (categoryId) {
 		case 5:
-			label = "Номер договора. Не менее 6 цифр";
+			label = "Номер договора";
 			break;
 		case 2:
-			label = "Номер телефона. В формате yyyxxxxxxx, где y - код";
+			label = "Номер телефона";
 			break;
 		case 3:
-			label = "Номер контракта. Не менее 8 цифр";
+			label = "Номер контракта";
 			break;
 		case 4:
-			label = "Номер заказа билета. Не менее 6 цифр";
+			label = "Номер заказа билета";
 			break;
 		case 6:
-			label = "Номер телефона. В формате yyyxxxxx, где y - код";
+			label = "Номер телефона";
 			break;
 		case 7:
 		case 8:
@@ -73,6 +73,37 @@ public class PaymentUtil {
 		case 10:
 		case 11:
 			label = "Лицевой счет";
+			break;
+		default:
+			break;
+		}
+		return label;
+	}
+	
+	public static String getHelpLabelForCategory(Integer categoryId) {
+		String label = "";
+		switch (categoryId) {
+		case 5:
+			label = ". Не менее 6 цифр.";
+			break;
+		case 2:
+			label = ". В формате yyyxxxxxxx, где y - код.";
+			break;
+		case 3:
+			label = ". Не менее 8 цифр.";
+			break;
+		case 4:
+			label = ". Не менее 6 цифр.";
+			break;
+		case 6:
+			label = ". В формате yyyxxxxx, где y - код.";
+			break;
+		case 7:
+		case 8:
+		case 9:
+		case 10:
+		case 11:
+			label = ". Не менее 9 цифр.";
 			break;
 		default:
 			break;
@@ -238,6 +269,41 @@ public class PaymentUtil {
 
 	}
 
+	public static String getHelpLabelForErip(Integer integer) {
+		String label = "";
+		switch (integer) {
+		case 4:
+			label = ". Не менее 6 цифр.";
+			break;
+		case 1:
+		case 2:
+		case 3:
+		case 5:
+		case 6:
+			label = ". В формате yyyxxxxxxx, где y - код.";
+			break;
+		case 7:
+			label = ". Не менее 8 цифр.";
+			break;
+		case 8:
+			label = ". Не менее 6 цифр.";
+			break;
+		case 9:
+			label = ". В формате yyyxxxxx, где y - код.";
+			break;
+		case 10:
+		case 11:
+		case 12:
+		case 13:
+		case 14:
+			label = ". Не менее 9 цифр.";
+			break;
+		default:
+			break;
+		}
+		return label;
+
+	}
 	public static String formInformationErip(PaymentInfo payment) {
 		String info = payment.getErip().getId() + "."
 				+ payment.getErip().getRegion().getName().getValue() + ","

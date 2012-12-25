@@ -9,17 +9,26 @@ import java.util.List;
 import by.bsuir.banking.domain.CardTypeWrapper;
 import by.bsuir.banking.domain.CardWrapper;
 import by.bsuir.banking.domain.CurrencyTypeWrapper;
+import by.bsuir.banking.domain.SellRateWrapper;
 import by.bsuir.banking.proxy.internetbanking.ArrayOfCardType;
 import by.bsuir.banking.proxy.internetbanking.ArrayOfCurrencyType;
 import by.bsuir.banking.proxy.internetbanking.Card;
 import by.bsuir.banking.proxy.internetbanking.CardType;
 import by.bsuir.banking.proxy.internetbanking.CurrencyType;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingService;
+import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetAccountByIdAuthorizationFaultFaultFaultMessage;
+import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetAccountByIdDomainFaultFaultFaultMessage;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetAllCardTypesAuthorizationFaultFaultFaultMessage;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetAllCardTypesDomainFaultFaultFaultMessage;
+import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetBallanceAuthorizationFaultFaultFaultMessage;
+import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetBallanceDomainFaultFaultFaultMessage;
+import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetCardForClientAuthorizationFaultFaultFaultMessage;
+import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetCardForClientDomainFaultFaultFaultMessage;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetCardsAuthorizationFaultFaultFaultMessage;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetCardsDomainFaultFaultFaultMessage;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetCurrencyTypesDomainFaultFaultFaultMessage;
+import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetSellCurrencyRatesDomainFaultFaultFaultMessage;
+import by.bsuir.banking.proxy.internetbanking.SellCurrencyRate;
 
 public class CardUtil {
 
@@ -44,6 +53,18 @@ public class CardUtil {
 	public static BigDecimal getMoneyLimit(CardTypeWrapper cardTypeWrapper) {
 		// TODO generate limit based on card type and currency type
 		return new BigDecimal("100000");
+	}
+	
+	public static BigDecimal getMaxMoneyLimit(Integer cardId, String securityToken) throws IInternetBankingServiceGetBallanceAuthorizationFaultFaultFaultMessage, IInternetBankingServiceGetBallanceDomainFaultFaultFaultMessage, IInternetBankingServiceGetCardForClientAuthorizationFaultFaultFaultMessage, IInternetBankingServiceGetCardForClientDomainFaultFaultFaultMessage, IInternetBankingServiceGetSellCurrencyRatesDomainFaultFaultFaultMessage  {
+		BigDecimal sellRate = BigDecimal.ONE;
+		Integer id = service.getBallance(service.getCardForClient(cardId, securityToken).getAccountId(), securityToken).getCurrencyTypeId();
+			for(SellCurrencyRate rate: service.getSellCurrencyRates().getSellCurrencyRate()){
+				SellRateWrapper wrapper = new SellRateWrapper(rate);
+				if (wrapper.getCurrencyType().getId().equals(id)){
+					sellRate = wrapper.getRate();
+				}
+			}
+		return new BigDecimal("20000000").divide(sellRate, 4);
 	}
 
 	public static CardTypeWrapper getCardType(Integer cardTypeId,
