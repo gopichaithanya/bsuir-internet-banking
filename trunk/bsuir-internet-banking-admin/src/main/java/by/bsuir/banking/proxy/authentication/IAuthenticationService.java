@@ -29,8 +29,8 @@ public interface IAuthenticationService {
      * @param password
      * @return
      *     returns by.bsuir.banking.proxy.authentication.AuthenticationCredential
-     * @throws IAuthenticationServiceAuthenticateDomainFaultFaultFaultMessage
      * @throws IAuthenticationServiceAuthenticateAuthenticationFaultFaultFaultMessage
+     * @throws IAuthenticationServiceAuthenticateDomainFaultFaultFaultMessage
      */
     @WebMethod(operationName = "Authenticate", action = "http://tempuri.org/IAuthenticationService/Authenticate")
     @WebResult(name = "AuthenticateResult", targetNamespace = "http://tempuri.org/")

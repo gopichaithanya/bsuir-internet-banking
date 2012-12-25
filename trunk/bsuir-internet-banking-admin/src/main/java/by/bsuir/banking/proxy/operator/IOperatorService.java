@@ -29,8 +29,8 @@ public interface IOperatorService {
      * @param clientId
      * @return
      *     returns by.bsuir.banking.proxy.operator.Client
-     * @throws IOperatorServiceGetClientAuthorizationFaultFaultFaultMessage
      * @throws IOperatorServiceGetClientDomainFaultFaultFaultMessage
+     * @throws IOperatorServiceGetClientAuthorizationFaultFaultFaultMessage
      */
     @WebMethod(operationName = "GetClient", action = "http://tempuri.org/IOperatorService/GetClient")
     @WebResult(name = "GetClientResult", targetNamespace = "http://tempuri.org/")
@@ -50,8 +50,8 @@ public interface IOperatorService {
      * @param securityToken
      * @return
      *     returns java.lang.Integer
-     * @throws IOperatorServiceCreateClientAuthorizationFaultFaultFaultMessage
      * @throws IOperatorServiceCreateClientDomainFaultFaultFaultMessage
+     * @throws IOperatorServiceCreateClientAuthorizationFaultFaultFaultMessage
      */
     @WebMethod(operationName = "CreateClient", action = "http://tempuri.org/IOperatorService/CreateClient")
     @WebResult(name = "CreateClientResult", targetNamespace = "http://tempuri.org/")
@@ -87,8 +87,8 @@ public interface IOperatorService {
      * 
      * @param securityToken
      * @param clientId
-     * @throws IOperatorServiceDeleteClientDomainFaultFaultFaultMessage
      * @throws IOperatorServiceDeleteClientAuthorizationFaultFaultFaultMessage
+     * @throws IOperatorServiceDeleteClientDomainFaultFaultFaultMessage
      */
     @WebMethod(operationName = "DeleteClient", action = "http://tempuri.org/IOperatorService/DeleteClient")
     @RequestWrapper(localName = "DeleteClient", targetNamespace = "http://tempuri.org/", className = "by.bsuir.banking.proxy.operator.DeleteClient")
@@ -151,8 +151,8 @@ public interface IOperatorService {
      * @param firstName
      * @return
      *     returns by.bsuir.banking.proxy.operator.ArrayOfClient
-     * @throws IOperatorServiceGetClientsByNameDomainFaultFaultFaultMessage
      * @throws IOperatorServiceGetClientsByNameAuthorizationFaultFaultFaultMessage
+     * @throws IOperatorServiceGetClientsByNameDomainFaultFaultFaultMessage
      */
     @WebMethod(operationName = "GetClientsByName", action = "http://tempuri.org/IOperatorService/GetClientsByName")
     @WebResult(name = "GetClientsByNameResult", targetNamespace = "http://tempuri.org/")

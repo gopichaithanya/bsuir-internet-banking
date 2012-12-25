@@ -29,8 +29,8 @@ public interface IInternetBankingService {
      * @param securityToken
      * @return
      *     returns by.bsuir.banking.proxy.internetbanking.ArrayOfSavedPayment
-     * @throws IInternetBankingServiceGetAllSavedPaymentsDomainFaultFaultFaultMessage
      * @throws IInternetBankingServiceGetAllSavedPaymentsAuthorizationFaultFaultFaultMessage
+     * @throws IInternetBankingServiceGetAllSavedPaymentsDomainFaultFaultFaultMessage
      */
     @WebMethod(operationName = "GetAllSavedPayments", action = "http://tempuri.org/IInternetBankingService/GetAllSavedPayments")
     @WebResult(name = "GetAllSavedPaymentsResult", targetNamespace = "http://tempuri.org/")
@@ -68,8 +68,8 @@ public interface IInternetBankingService {
      * @param securityToken
      * @return
      *     returns by.bsuir.banking.proxy.internetbanking.ArrayOfRegion
-     * @throws IInternetBankingServiceGetAllRegionsAuthorizationFaultFaultFaultMessage
      * @throws IInternetBankingServiceGetAllRegionsDomainFaultFaultFaultMessage
+     * @throws IInternetBankingServiceGetAllRegionsAuthorizationFaultFaultFaultMessage
      */
     @WebMethod(operationName = "GetAllRegions", action = "http://tempuri.org/IInternetBankingService/GetAllRegions")
     @WebResult(name = "GetAllRegionsResult", targetNamespace = "http://tempuri.org/")
@@ -131,8 +131,8 @@ public interface IInternetBankingService {
      * @param cardNumber
      * @return
      *     returns java.lang.String
-     * @throws IInternetBankingServicePayERIPDomainFaultFaultFaultMessage
      * @throws IInternetBankingServicePayERIPAuthorizationFaultFaultFaultMessage
+     * @throws IInternetBankingServicePayERIPDomainFaultFaultFaultMessage
      */
     @WebMethod(operationName = "PayERIP", action = "http://tempuri.org/IInternetBankingService/PayERIP")
     @WebResult(name = "PayERIPResult", targetNamespace = "http://tempuri.org/")
@@ -156,8 +156,8 @@ public interface IInternetBankingService {
      * @param autoPayment
      * @return
      *     returns java.lang.Integer
-     * @throws IInternetBankingServiceCreateAutoPaymentAuthorizationFaultFaultFaultMessage
      * @throws IInternetBankingServiceCreateAutoPaymentDomainFaultFaultFaultMessage
+     * @throws IInternetBankingServiceCreateAutoPaymentAuthorizationFaultFaultFaultMessage
      */
     @WebMethod(operationName = "CreateAutoPayment", action = "http://tempuri.org/IInternetBankingService/CreateAutoPayment")
     @WebResult(name = "CreateAutoPaymentResult", targetNamespace = "http://tempuri.org/")
@@ -193,8 +193,8 @@ public interface IInternetBankingService {
      * 
      * @param autoPaymentId
      * @param securityToken
-     * @throws IInternetBankingServiceDeleteAutoPaymentDomainFaultFaultFaultMessage
      * @throws IInternetBankingServiceDeleteAutoPaymentAuthorizationFaultFaultFaultMessage
+     * @throws IInternetBankingServiceDeleteAutoPaymentDomainFaultFaultFaultMessage
      */
     @WebMethod(operationName = "DeleteAutoPayment", action = "http://tempuri.org/IInternetBankingService/DeleteAutoPayment")
     @RequestWrapper(localName = "DeleteAutoPayment", targetNamespace = "http://tempuri.org/", className = "by.bsuir.banking.proxy.internetbanking.DeleteAutoPayment")
@@ -233,8 +233,8 @@ public interface IInternetBankingService {
      * @param securityToken
      * @return
      *     returns by.bsuir.banking.proxy.internetbanking.ArrayOfAutoPayment
-     * @throws IInternetBankingServiceGetAutoPaymentsForClientAuthorizationFaultFaultFaultMessage
      * @throws IInternetBankingServiceGetAutoPaymentsForClientDomainFaultFaultFaultMessage
+     * @throws IInternetBankingServiceGetAutoPaymentsForClientAuthorizationFaultFaultFaultMessage
      */
     @WebMethod(operationName = "GetAutoPaymentsForClient", action = "http://tempuri.org/IInternetBankingService/GetAutoPaymentsForClient")
     @WebResult(name = "GetAutoPaymentsForClientResult", targetNamespace = "http://tempuri.org/")
@@ -294,8 +294,8 @@ public interface IInternetBankingService {
      * @param securityToken
      * @return
      *     returns by.bsuir.banking.proxy.internetbanking.Account
-     * @throws IInternetBankingServiceGetAccountByIdAuthorizationFaultFaultFaultMessage
      * @throws IInternetBankingServiceGetAccountByIdDomainFaultFaultFaultMessage
+     * @throws IInternetBankingServiceGetAccountByIdAuthorizationFaultFaultFaultMessage
      */
     @WebMethod(operationName = "GetAccountById", action = "http://tempuri.org/IInternetBankingService/GetAccountById")
     @WebResult(name = "GetAccountByIdResult", targetNamespace = "http://tempuri.org/")
@@ -315,8 +315,8 @@ public interface IInternetBankingService {
      * @param account
      * @return
      *     returns java.lang.Integer
-     * @throws IInternetBankingServiceOpenAccountAuthorizationFaultFaultFaultMessage
      * @throws IInternetBankingServiceOpenAccountDomainFaultFaultFaultMessage
+     * @throws IInternetBankingServiceOpenAccountAuthorizationFaultFaultFaultMessage
      */
     @WebMethod(operationName = "OpenAccount", action = "http://tempuri.org/IInternetBankingService/OpenAccount")
     @WebResult(name = "OpenAccountResult", targetNamespace = "http://tempuri.org/")
@@ -334,8 +334,8 @@ public interface IInternetBankingService {
      * 
      * @param accountId
      * @param securityToken
-     * @throws IInternetBankingServiceCloseAccountAuthorizationFaultFaultFaultMessage
      * @throws IInternetBankingServiceCloseAccountDomainFaultFaultFaultMessage
+     * @throws IInternetBankingServiceCloseAccountAuthorizationFaultFaultFaultMessage
      */
     @WebMethod(operationName = "CloseAccount", action = "http://tempuri.org/IInternetBankingService/CloseAccount")
     @RequestWrapper(localName = "CloseAccount", targetNamespace = "http://tempuri.org/", className = "by.bsuir.banking.proxy.internetbanking.CloseAccount")
@@ -453,8 +453,8 @@ public interface IInternetBankingService {
      * @param clientId
      * @return
      *     returns by.bsuir.banking.proxy.internetbanking.ArrayOfAccount
-     * @throws IInternetBankingServiceGetAccountsForClientDomainFaultFaultFaultMessage
      * @throws IInternetBankingServiceGetAccountsForClientAuthorizationFaultFaultFaultMessage
+     * @throws IInternetBankingServiceGetAccountsForClientDomainFaultFaultFaultMessage
      */
     @WebMethod(operationName = "GetAccountsForClient", action = "http://tempuri.org/IInternetBankingService/GetAccountsForClient")
     @WebResult(name = "GetAccountsForClientResult", targetNamespace = "http://tempuri.org/")
@@ -495,8 +495,8 @@ public interface IInternetBankingService {
      * @param securityToken
      * @return
      *     returns by.bsuir.banking.proxy.internetbanking.Card
-     * @throws IInternetBankingServiceGetCardForAccountDomainFaultFaultFaultMessage
      * @throws IInternetBankingServiceGetCardForAccountAuthorizationFaultFaultFaultMessage
+     * @throws IInternetBankingServiceGetCardForAccountDomainFaultFaultFaultMessage
      */
     @WebMethod(operationName = "GetCardForAccount", action = "http://tempuri.org/IInternetBankingService/GetCardForAccount")
     @WebResult(name = "GetCardForAccountResult", targetNamespace = "http://tempuri.org/")
@@ -534,8 +534,8 @@ public interface IInternetBankingService {
      * @param securityToken
      * @return
      *     returns by.bsuir.banking.proxy.internetbanking.Card
-     * @throws IInternetBankingServiceGetCardForClientAuthorizationFaultFaultFaultMessage
      * @throws IInternetBankingServiceGetCardForClientDomainFaultFaultFaultMessage
+     * @throws IInternetBankingServiceGetCardForClientAuthorizationFaultFaultFaultMessage
      */
     @WebMethod(operationName = "GetCardForClient", action = "http://tempuri.org/IInternetBankingService/GetCardForClient")
     @WebResult(name = "GetCardForClientResult", targetNamespace = "http://tempuri.org/")
@@ -573,8 +573,8 @@ public interface IInternetBankingService {
      * @param securityToken
      * @return
      *     returns by.bsuir.banking.proxy.internetbanking.Money
-     * @throws IInternetBankingServiceGetBallanceAuthorizationFaultFaultFaultMessage
      * @throws IInternetBankingServiceGetBallanceDomainFaultFaultFaultMessage
+     * @throws IInternetBankingServiceGetBallanceAuthorizationFaultFaultFaultMessage
      */
     @WebMethod(operationName = "GetBallance", action = "http://tempuri.org/IInternetBankingService/GetBallance")
     @WebResult(name = "GetBallanceResult", targetNamespace = "http://tempuri.org/")
@@ -618,8 +618,8 @@ public interface IInternetBankingService {
      * @param count
      * @param securityToken
      * @param secretWord
-     * @throws IInternetBankingServiceSetOperationLimitDomainFaultFaultFaultMessage
      * @throws IInternetBankingServiceSetOperationLimitAuthorizationFaultFaultFaultMessage
+     * @throws IInternetBankingServiceSetOperationLimitDomainFaultFaultFaultMessage
      */
     @WebMethod(operationName = "SetOperationLimit", action = "http://tempuri.org/IInternetBankingService/SetOperationLimit")
     @RequestWrapper(localName = "SetOperationLimit", targetNamespace = "http://tempuri.org/", className = "by.bsuir.banking.proxy.internetbanking.SetOperationLimit")
@@ -736,8 +736,8 @@ public interface IInternetBankingService {
      * 
      * @param securityToken
      * @param sellCurrencyRates
-     * @throws IInternetBankingServiceUpdateSellCurrencyRatesDomainFaultFaultFaultMessage
      * @throws IInternetBankingServiceUpdateSellCurrencyRatesAuthorizationFaultFaultFaultMessage
+     * @throws IInternetBankingServiceUpdateSellCurrencyRatesDomainFaultFaultFaultMessage
      */
     @WebMethod(operationName = "UpdateSellCurrencyRates", action = "http://tempuri.org/IInternetBankingService/UpdateSellCurrencyRates")
     @RequestWrapper(localName = "UpdateSellCurrencyRates", targetNamespace = "http://tempuri.org/", className = "by.bsuir.banking.proxy.internetbanking.UpdateSellCurrencyRates")
@@ -806,8 +806,8 @@ public interface IInternetBankingService {
      * 
      * @param cardId
      * @param securityToken
-     * @throws IInternetBankingServiceLockCardByIdDomainFaultFaultFaultMessage
      * @throws IInternetBankingServiceLockCardByIdAuthorizationFaultFaultFaultMessage
+     * @throws IInternetBankingServiceLockCardByIdDomainFaultFaultFaultMessage
      */
     @WebMethod(operationName = "LockCardById", action = "http://tempuri.org/IInternetBankingService/LockCardById")
     @RequestWrapper(localName = "LockCardById", targetNamespace = "http://tempuri.org/", className = "by.bsuir.banking.proxy.internetbanking.LockCardById")
@@ -824,8 +824,8 @@ public interface IInternetBankingService {
      * 
      * @param cardId
      * @param securityToken
-     * @throws IInternetBankingServiceUnlockCardByIdDomainFaultFaultFaultMessage
      * @throws IInternetBankingServiceUnlockCardByIdAuthorizationFaultFaultFaultMessage
+     * @throws IInternetBankingServiceUnlockCardByIdDomainFaultFaultFaultMessage
      */
     @WebMethod(operationName = "UnlockCardById", action = "http://tempuri.org/IInternetBankingService/UnlockCardById")
     @RequestWrapper(localName = "UnlockCardById", targetNamespace = "http://tempuri.org/", className = "by.bsuir.banking.proxy.internetbanking.UnlockCardById")
@@ -873,8 +873,8 @@ public interface IInternetBankingService {
      * @param securityToken
      * @return
      *     returns by.bsuir.banking.proxy.internetbanking.ArrayOfLegalPersonCategory
-     * @throws IInternetBankingServiceGetAllLegalPersonCategoriesAuthorizationFaultFaultFaultMessage
      * @throws IInternetBankingServiceGetAllLegalPersonCategoriesDomainFaultFaultFaultMessage
+     * @throws IInternetBankingServiceGetAllLegalPersonCategoriesAuthorizationFaultFaultFaultMessage
      */
     @WebMethod(operationName = "GetAllLegalPersonCategories", action = "http://tempuri.org/IInternetBankingService/GetAllLegalPersonCategories")
     @WebResult(name = "GetAllLegalPersonCategoriesResult", targetNamespace = "http://tempuri.org/")
@@ -913,8 +913,8 @@ public interface IInternetBankingService {
      * @param securityToken
      * @return
      *     returns by.bsuir.banking.proxy.internetbanking.ArrayOfLegalPerson
-     * @throws IInternetBankingServiceGetLegalPersonsForCategoryDomainFaultFaultFaultMessage
      * @throws IInternetBankingServiceGetLegalPersonsForCategoryAuthorizationFaultFaultFaultMessage
+     * @throws IInternetBankingServiceGetLegalPersonsForCategoryDomainFaultFaultFaultMessage
      */
     @WebMethod(operationName = "GetLegalPersonsForCategory", action = "http://tempuri.org/IInternetBankingService/GetLegalPersonsForCategory")
     @WebResult(name = "GetLegalPersonsForCategoryResult", targetNamespace = "http://tempuri.org/")
@@ -990,8 +990,8 @@ public interface IInternetBankingService {
      * @param cardNumber
      * @return
      *     returns java.lang.String
-     * @throws IInternetBankingServiceExecuteTransferDomainFaultFaultFaultMessage
      * @throws IInternetBankingServiceExecuteTransferAuthorizationFaultFaultFaultMessage
+     * @throws IInternetBankingServiceExecuteTransferDomainFaultFaultFaultMessage
      */
     @WebMethod(operationName = "ExecuteTransfer", action = "http://tempuri.org/IInternetBankingService/ExecuteTransfer")
     @WebResult(name = "ExecuteTransferResult", targetNamespace = "http://tempuri.org/")
@@ -1044,8 +1044,8 @@ public interface IInternetBankingService {
      * @param dateTimeFrom
      * @return
      *     returns by.bsuir.banking.proxy.internetbanking.ArrayOfTransfer
-     * @throws IInternetBankingServiceGetPeriodTransfersForCardDomainFaultFaultFaultMessage
      * @throws IInternetBankingServiceGetPeriodTransfersForCardAuthorizationFaultFaultFaultMessage
+     * @throws IInternetBankingServiceGetPeriodTransfersForCardDomainFaultFaultFaultMessage
      */
     @WebMethod(operationName = "GetPeriodTransfersForCard", action = "http://tempuri.org/IInternetBankingService/GetPeriodTransfersForCard")
     @WebResult(name = "GetPeriodTransfersForCardResult", targetNamespace = "http://tempuri.org/")
@@ -1069,8 +1069,8 @@ public interface IInternetBankingService {
      * @param savedPayment
      * @return
      *     returns java.lang.Integer
-     * @throws IInternetBankingServiceCreateSavedPaymentDomainFaultFaultFaultMessage
      * @throws IInternetBankingServiceCreateSavedPaymentAuthorizationFaultFaultFaultMessage
+     * @throws IInternetBankingServiceCreateSavedPaymentDomainFaultFaultFaultMessage
      */
     @WebMethod(operationName = "CreateSavedPayment", action = "http://tempuri.org/IInternetBankingService/CreateSavedPayment")
     @WebResult(name = "CreateSavedPaymentResult", targetNamespace = "http://tempuri.org/")
@@ -1088,8 +1088,8 @@ public interface IInternetBankingService {
      * 
      * @param securityToken
      * @param savedPayment
-     * @throws IInternetBankingServiceUpdateSavedPaymentDomainFaultFaultFaultMessage
      * @throws IInternetBankingServiceUpdateSavedPaymentAuthorizationFaultFaultFaultMessage
+     * @throws IInternetBankingServiceUpdateSavedPaymentDomainFaultFaultFaultMessage
      */
     @WebMethod(operationName = "UpdateSavedPayment", action = "http://tempuri.org/IInternetBankingService/UpdateSavedPayment")
     @RequestWrapper(localName = "UpdateSavedPayment", targetNamespace = "http://tempuri.org/", className = "by.bsuir.banking.proxy.internetbanking.UpdateSavedPayment")
