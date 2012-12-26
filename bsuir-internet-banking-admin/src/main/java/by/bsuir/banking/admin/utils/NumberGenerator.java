@@ -30,7 +30,7 @@ public class NumberGenerator {
 		if(cardTypeName.equalsIgnoreCase("JCB")){
 			return generateJCBNumber();
 		}
-		String firstPart = "0" + BANK_ID + generateString(rand, characters, 9);
+		String firstPart = "9" + BANK_ID + generateString(rand, characters, 9);
 		return  firstPart + generateCardContorlKey(firstPart); //0 for now
 	}
 
@@ -69,7 +69,11 @@ public class NumberGenerator {
 				sum_odd = Character.getNumericValue(firstPart.charAt(i));
 			}
 		}
-		return String.valueOf(10 - ((sum_even + sum_odd) % 10));
+		String val = String.valueOf(10 - ((sum_even + sum_odd) % 10));
+		if(val.length() > 1){
+			return "0";
+		}
+		return val;
 	}
 
 

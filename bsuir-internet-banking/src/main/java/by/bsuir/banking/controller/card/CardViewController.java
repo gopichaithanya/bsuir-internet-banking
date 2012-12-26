@@ -21,7 +21,7 @@ import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetBallance
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetCardForClientAuthorizationFaultFaultFaultMessage;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetCardForClientDomainFaultFaultFaultMessage;
 
-
+ 
 @Controller
 @RequestMapping("/card/{cardId}/view")
 @SessionAttributes()

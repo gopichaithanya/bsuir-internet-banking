@@ -1,4 +1,4 @@
- package by.bsuir.banking.domain;
+package by.bsuir.banking.domain;
 
 import java.math.BigDecimal;
 

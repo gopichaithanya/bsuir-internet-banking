@@ -99,7 +99,7 @@ public class LoginController extends EntityController{
 			}
 			 Client client = ServiceProvider.getInternetBankingService().getClient(credential.getSecurityToken().getValue());
 			
-			user.setLasDate(credential.getLastDateTime().toGregorianCalendar().getTime());
+			user.setLasDate(credential.getLastDateTime().toGregorianCalendar().getTime()); 
 			user.setName(client.getFirstName().getValue() + " " + client.getLastName().getValue());
 			user.setSecurityToken(credential.getSecurityToken().getValue());
 			

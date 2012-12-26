@@ -65,14 +65,7 @@ public class PaymentUtil {
 			label = "Номер заказа билета";
 			break;
 		case 6:
-			label = "Номер телефона";
-			break;
-		case 7:
-		case 8:
-		case 9:
-		case 10:
-		case 11:
-			label = "Лицевой счет";
+			label= "Номер кошелька";
 			break;
 		default:
 			break;
@@ -247,21 +240,29 @@ public class PaymentUtil {
 			label = "Номер телефона";
 			break;
 		case 7:
-			label = "Номер контракта";
-			break;
-		case 8:
-			label = "Номер заказа билета";
-			break;
-		case 9:
 			label = "Номер телефона";
 			break;
+		case 8:
+		case 9:
 		case 10:
 		case 11:
 		case 12:
-		case 13:
-		case 14:
 			label = "Лицевой счет";
 			break;
+		case 13:
+		case 14:
+			label="Номер заказа";
+			break;
+		case 15:
+			label="Номер страхового договора";
+			break;
+		case 16:
+		case 17:
+			label="Номер заказа билета";
+			break;
+		case 18:
+		case 19:
+			label="Номер договора";
 		default:
 			break;
 		}
