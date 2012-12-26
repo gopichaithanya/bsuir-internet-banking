@@ -49,6 +49,9 @@ public class LimitsValidator implements Validator {
 			errors.rejectValue(MONEY_LIMIT_FIELD, MessageValidation.WRONG_FORMAT, MessageValidation.HUGE_VALUE);
 		} else {
 			BigDecimal moneyLimit = BigDecimal.valueOf(Double.valueOf(limits.getEnteredMoneyLimit().trim()));
+			if (limits.getCurrencyTypeId() != null){
+				maxMoneyLimit = getMoneyLimit(limits.getCurrencyTypeId());
+			}
 			if (moneyLimit.compareTo(BigDecimal.ONE) < 0) {
 				errors.rejectValue(MONEY_LIMIT_FIELD, MessageValidation.LESS_MIN_VALUE, MessageValidation.MIN_VALUE);
 			} else if (moneyLimit.compareTo(maxMoneyLimit) > 0) {
@@ -75,6 +78,28 @@ public class LimitsValidator implements Validator {
 				errors.rejectValue(OPERATIONS_LIMIT_FIELD, MessageValidation.MORE_MAX_VALUE, MessageValidation.MAX_VALUE);
 			}
 		}
+	}
+	
+	private BigDecimal getMoneyLimit(Integer currencyTypeId) {
+		// TODO generate limit based on card type and currency type
+		BigDecimal sum = null;
+		switch (currencyTypeId) {
+		case 1://BYR
+			sum = new BigDecimal("20000000");
+			break;
+		case 2://USD
+			sum = new BigDecimal("2000");
+			break;
+		case 3://EUR
+			sum=new BigDecimal("2000");
+			break;
+		case 4://RUR
+			sum=new BigDecimal("60000");
+			break;
+		default:
+			break;
+		}
+		return sum;
 	}
 
 }

@@ -11,6 +11,7 @@ public class LimitsWrapper {
 	private String enteredOperationsLimit;
 	@NotEmpty(message="Нужно ввести секретное слово")
 	private String secretWord;
+	private Integer CurrencyTypeId;
 
 	public BigDecimal getMoneyLimit() {
 		return moneyLimit;
@@ -53,6 +54,14 @@ public class LimitsWrapper {
 
 	public void setEnteredOperationsLimit(String enteredOperationsLimit) {
 		this.enteredOperationsLimit = enteredOperationsLimit;
+	}
+
+	public Integer getCurrencyTypeId() {
+		return CurrencyTypeId;
+	}
+
+	public void setCurrencyTypeId(Integer currencyTypeId) {
+		CurrencyTypeId = currencyTypeId;
 	}
 	
 	

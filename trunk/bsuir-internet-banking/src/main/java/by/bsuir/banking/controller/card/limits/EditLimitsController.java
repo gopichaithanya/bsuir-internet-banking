@@ -64,11 +64,13 @@ public class EditLimitsController extends EntityController {
 		try {
 			Card card = service.getCardForClient(cardId, securityToken);
 			Money ballance = service.getBallance(cardId, securityToken);
+			MoneyWrapper moneyWrapper = new MoneyWrapper(ballance);
 			CardSelectInfo cardinfo = new CardSelectInfo(new CardWrapper(card),
-					new MoneyWrapper(ballance));
+					moneyWrapper);
 			LimitsWrapper limits = new LimitsWrapper();
 			limits.setMoneyLimit(card.getMoneyLimit());
 			limits.setOperationsLimit(card.getOperationsLimit());
+			limits.setCurrencyTypeId(moneyWrapper.getCurrencyTypeId());
 			model.addAttribute("limits", limits);
 			model.addAttribute("info", cardinfo);
 		} catch (IInternetBankingServiceGetCardForClientAuthorizationFaultFaultFaultMessage e) {
@@ -99,6 +101,7 @@ public class EditLimitsController extends EntityController {
 			Card card = service.getCardForClient(cardId, securityToken);
 			CardWrapper wrapper = new CardWrapper(card);
 			Money ballance = service.getBallance(cardId, securityToken);
+			
 			if (!wrapper.getSecretWord().equals(limits.getSecretWord())) {
 				result.reject("LimitsError",
 						"Вы ввели неправильное секретное слово");

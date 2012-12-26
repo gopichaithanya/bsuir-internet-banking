@@ -14,7 +14,7 @@ public class MessageValidation {
 	public static final String WRONG_FORMAT = "wrongFormat";
 	public static final String WRONG_BIRTHDATE = "wrongBirhdate";
 	public static final String NEGATIVE_OR_ZERO_VALUE = "negativeValue";
-	public static final String HUGE_NUMBER = "hugeNumber";
+	public static final String HUGE_VALUE = "hugeNumber";
 	public static final String MORE_MAX_VALUE = "maxValue";
 	
 	public static final String EMPTY_FIELD = "Пустое поле";
@@ -25,7 +25,7 @@ public class MessageValidation {
 	public static final String WRONG_CONTRACT_FORMAT = "Неверный номер договора";
 	public static final String NOT_EXIST = "Не существует данного номера";
 	public static final String WRONG_NUMBER_FORMAT = "Неверный формат. Поле суммы может содержать только числа, без знаков +/-";
-	public static final String HUGE_VALUE = "Слишком большое значение";
+	public static final String HUGE_NUMBER = "Слишком большое значение";
 	public static final String STARTS_WITH_ZERO = "Значение суммы платежа не может начинатся с нуля";
 	public static final String WRONG_INTEGER_FORMAT = "Может содержать только целые числа без знаков +/-";
 	public static final String MIN_VALUE = "Минимальное значение 1";

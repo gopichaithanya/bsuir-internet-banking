@@ -35,7 +35,7 @@
 						Middle Name <form:errors path="middleName" />
 			</form:label> --%>
 			<div class="controls">
-				<form:input path="dateOfExpiry" id="inputDateOfExpiry"
+				<form:input path="dateOfExpiry" id="inputDateOfExpiry" readonly="true"
 					placeholder="Date of expiry (dd/mm/yyyy)" />
 				<form:errors class="help-inline" path="dateOfExpiry">
 						<c:forEach items="${messages}" var="message" begin="1">
@@ -49,7 +49,7 @@
 						Last Name <form:errors path="lastName" />
 			</form:label> --%>
 			<div class="controls">
-				<form:input path="dateOfIssue" id="inputDateOfIssue"
+				<form:input path="dateOfIssue" id="inputDateOfIssue" readonly="true"
 					placeholder="Date of issue (mm/dd/yyyy)" />
 				<form:errors class="help-inline" path="dateOfIssue">
 						<c:forEach items="${messages}" var="message" begin="1">
