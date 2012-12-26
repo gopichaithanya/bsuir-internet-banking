@@ -24,9 +24,9 @@
 						Username 
 			</form:label> --%>
 			<div class="controls">
-				<form:input path="amount" autocomplete="off" id="inputUsername"
-					placeholder="Amount" />(${amount.currencyType})
-				<form:errors class="help-inline error" path="amount" />
+				<form:input path="enteredAmount" autocomplete="off"
+					placeholder="enteredAmount" />(${amount.currencyType})
+				<form:errors class="help-inline error" path="enteredAmount" />
 			</div>
 		</div>
 		<div class="control-group">

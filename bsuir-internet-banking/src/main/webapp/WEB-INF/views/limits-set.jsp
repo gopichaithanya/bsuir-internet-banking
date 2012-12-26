@@ -39,7 +39,7 @@
 			</form:label>
 			<div class="controls">
 				<form:input path="enteredMoneyLimit" autocomplete="off"
-					placeholder="" required="true" />
+					placeholder="" />
 				<span class="help-inline">(${info.currencyType})</span>
 				<form:errors class="help-inline error bankingError"
 					path="enteredMoneyLimit" />
@@ -51,7 +51,7 @@
 			</form:label>
 			<div class="controls">
 				<form:input path="enteredOperationsLimit" autocomplete="off"
-					placeholder="" required="true" />
+					placeholder=""  />
 				<form:errors class="help-inline error bankingError"
 					path="enteredOperationsLimit" />
 			</div>

@@ -18,9 +18,10 @@
 	rel="stylesheet" type="text/css" />
 <link href="<c:url value="/resources/css/main.css" />" rel="stylesheet"
 	type="text/css" />
-<link href="<c:url value="/resources/css/datepicker.css" />"
+<%-- <link href="<c:url value="/resources/css/jquery-ui.css" />"
 	rel="stylesheet" type="text/css" />
-
+ --%>
+ 
 <style type="text/css">
 body {
 	padding-top: 60px;
@@ -113,22 +114,22 @@ body {
 	<!-- Placed at the end of the document so the pages load faster -->
 	<script type="text/javascript"
 		src="<c:url value="/resources/js/jquery-1.8.0-min.js" />"></script>
-	<script type="text/javascript"
-		src="<c:url value="/resources/js/bootstrap.js" />"></script>
+	<%-- <script type="text/javascript"
+		src="<c:url value="/resources/js/bootstrap.js" />"></script> 
 	<script type="text/javascript"
 		src="<c:url value="/resources/js/demo.js" />"></script>
 	<script type="text/javascript"
 		src="<c:url value="/resources/js/json2.js" />"></script>
 	<script type="text/javascript"
-		src="<c:url value="/resources/js/date.format.js" />"></script>
-		<script type="text/javascript"
-		src="<c:url value="/resources/js/bootstrap-datepicker.js" />"></script>
-	<script>
+		src="<c:url value="/resources/js/date.format.js" />"></script>--%>
+		 <script type="text/javascript"
+		src="<c:url value="/resources/js/jquery-ui.js" />"></script>
+	<script> 
 		$(function() {
 			$('#inputBirthdayDate').datepicker({
 				dateFormat : "dd/mm/yy",
 				showOn : 'button',
-				buttonImage : "images/calendar.gif",
+				buttonImage : "/resources/img/calendar.gif",
 				buttonImageOnly : true,
 				minDate : '-120Y',
 				maxDate : '-18Y',

@@ -1,8 +1,11 @@
 package by.bsuir.banking.admin.controller.account;
 
+import java.math.BigDecimal;
+
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,6 +21,7 @@ import by.bsuir.banking.admin.domain.AccountCardWrapper;
 import by.bsuir.banking.admin.domain.MoneyWrapper;
 import by.bsuir.banking.admin.utils.MessageConstants;
 import by.bsuir.banking.admin.utils.ServiceProvider;
+import by.bsuir.banking.admin.validation.MoneyValidator;
 import by.bsuir.banking.proxy.internetbanking.Account;
 import by.bsuir.banking.proxy.internetbanking.Card;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingService;
@@ -35,6 +39,8 @@ import by.bsuir.banking.proxy.internetbanking.Money;
 public class ReplenishAccountController extends EntityController {
 	private static String VIEW_NAME = "account-replenish";
 	private IInternetBankingService service;
+	@Autowired
+	private MoneyValidator moneyValidator;
 
 	public ReplenishAccountController() {
 		service = ServiceProvider.getInternetBankingInstance();
@@ -89,9 +95,11 @@ public class ReplenishAccountController extends EntityController {
 			@PathVariable("accountId") Integer accountId, Model model,
 			@Valid @ModelAttribute("amount") MoneyWrapper amount,
 			BindingResult result) {
+		moneyValidator.validate(amount, result);
 		if (result.hasErrors()) {
 			return VIEW_NAME;
 		}
+		amount.setAmount(BigDecimal.valueOf(Double.valueOf(amount.getEnteredAmount().trim())));
 		try {
 			service.replenishAccount(accountId, amount.getMoney(), getSecurityToken(session));
 		} catch (IInternetBankingServiceReplenishAccountAuthorizationFaultFaultFaultMessage e) {

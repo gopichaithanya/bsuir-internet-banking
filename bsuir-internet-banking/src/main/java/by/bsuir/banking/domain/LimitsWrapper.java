@@ -18,6 +18,7 @@ public class LimitsWrapper {
 
 	public void setMoneyLimit(BigDecimal moneyLimit) {
 		this.moneyLimit = moneyLimit;
+		enteredMoneyLimit = (moneyLimit == null) ? null : moneyLimit.toString();
 	}
 
 	public Integer getOperationsLimit() {
@@ -26,6 +27,7 @@ public class LimitsWrapper {
 
 	public void setOperationsLimit(Integer operationsLimit) {
 		this.operationsLimit = operationsLimit;
+		enteredOperationsLimit = (operationsLimit == null) ? null : operationsLimit.toString();
 	}
 
 	public String getSecretWord() {
