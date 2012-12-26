@@ -46,7 +46,7 @@ public class LimitsValidator implements Validator {
 		} else if (limits.getEnteredMoneyLimit().trim().matches(WRONG_DECIMAL_FORMAT_PATTERN)) {
 			errors.rejectValue(MONEY_LIMIT_FIELD, MessageValidation.WRONG_FORMAT, MessageValidation.STARTS_WITH_ZERO);
 		} else if (!limits.getEnteredMoneyLimit().trim().matches(HUGE_DECIMAL_PATTERN)) {
-			errors.rejectValue(MONEY_LIMIT_FIELD, MessageValidation.WRONG_FORMAT, MessageValidation.HUGE_VALUE);
+			errors.rejectValue(MONEY_LIMIT_FIELD, MessageValidation.WRONG_FORMAT, MessageValidation.HUGE_NUMBER);
 		} else {
 			BigDecimal moneyLimit = BigDecimal.valueOf(Double.valueOf(limits.getEnteredMoneyLimit().trim()));
 			if (limits.getCurrencyTypeId() != null){
@@ -69,7 +69,7 @@ public class LimitsValidator implements Validator {
 		} else if (limits.getEnteredOperationsLimit().trim().matches(WRONG_INTEGER_FORMAT_PATTERN)) {
 			errors.rejectValue(OPERATIONS_LIMIT_FIELD, MessageValidation.WRONG_FORMAT, MessageValidation.STARTS_WITH_ZERO);
 		} else if (!limits.getEnteredOperationsLimit().trim().matches(HUGE_INTEGER_PATTERN)) {
-			errors.rejectValue(OPERATIONS_LIMIT_FIELD, MessageValidation.WRONG_FORMAT, MessageValidation.HUGE_VALUE);
+			errors.rejectValue(OPERATIONS_LIMIT_FIELD, MessageValidation.WRONG_FORMAT, MessageValidation.HUGE_NUMBER);
 		} else {
 			Integer operationsLimit = Integer.valueOf(limits.getEnteredOperationsLimit().trim());
 			if (operationsLimit < 1) {
