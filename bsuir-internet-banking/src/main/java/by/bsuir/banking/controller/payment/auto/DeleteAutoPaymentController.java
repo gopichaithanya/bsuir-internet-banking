@@ -1,4 +1,4 @@
- package by.bsuir.banking.controller.payment.auto;
+package by.bsuir.banking.controller.payment.auto;
 
 import javax.servlet.http.HttpSession;
 

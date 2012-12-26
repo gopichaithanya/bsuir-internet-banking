@@ -83,7 +83,7 @@ public class ChangePasswordController extends EntityController {
 			IAuthenticationService authService = ServiceProvider
 					.getAuthenticationService();
 			AuthenticationCredential credential = authService.authenticate(username, wrapper.getPassword());
-			user.setPassword(wrapper.getPassword());
+			user.setPassword(wrapper.getPassword()); 
 			user.setRole(credential.getRole().getValue());
 			if (!user.getRole().equals(MessageConstants.CLIENT_ROLE)) {
 				result.reject("logonError",

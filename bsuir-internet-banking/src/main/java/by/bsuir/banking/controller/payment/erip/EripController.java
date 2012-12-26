@@ -1,4 +1,4 @@
- package by.bsuir.banking.controller.payment.erip;
+package by.bsuir.banking.controller.payment.erip;
 
 import java.io.IOException;
 import java.math.BigDecimal;

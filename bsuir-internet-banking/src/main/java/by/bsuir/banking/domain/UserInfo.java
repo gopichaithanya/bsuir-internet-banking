@@ -1,5 +1,7 @@
 package by.bsuir.banking.domain;
 
+import java.util.Date;
+
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -41,6 +43,8 @@ public class UserInfo {
 
 	private String name;
 	
+	private Date lasDate;
+	
 	public String getUsername(){
 		return username;
 	}
@@ -79,6 +83,14 @@ public class UserInfo {
 	
 	public void setName(String value){
 		name = value;
+	}
+
+	public Date getLasDate() {
+		return lasDate;
+	}
+
+	public void setLasDate(Date lasDate) {
+		this.lasDate = lasDate;
 	}
 	
 

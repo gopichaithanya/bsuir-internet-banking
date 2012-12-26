@@ -1,4 +1,4 @@
- package by.bsuir.banking.domain;
+package by.bsuir.banking.domain;
 
 import by.bsuir.banking.admin.utils.InformationParser;
 import by.bsuir.banking.proxy.internetbanking.AutoPayment;
