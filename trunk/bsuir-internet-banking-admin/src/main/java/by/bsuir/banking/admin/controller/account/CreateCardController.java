@@ -5,6 +5,7 @@ import javax.validation.Valid;
 import javax.xml.datatype.DatatypeConfigurationException;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -23,6 +24,7 @@ import by.bsuir.banking.admin.utils.CardUtil;
 import by.bsuir.banking.admin.utils.MessageConstants;
 import by.bsuir.banking.admin.utils.NumberGenerator;
 import by.bsuir.banking.admin.utils.ServiceProvider;
+import by.bsuir.banking.admin.validation.SecretWordValidator;
 import by.bsuir.banking.proxy.internetbanking.Account;
 import by.bsuir.banking.proxy.internetbanking.Card;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingService;
@@ -53,7 +55,9 @@ import by.bsuir.banking.proxy.operator.OperatorService;
 public class CreateCardController extends EntityController {
 	private static Logger logger = Logger.getLogger(ListAccountController.class);
 	private static IInternetBankingService service;
-	private static final String VIEW_NAME = "card-create"; 
+	private static final String VIEW_NAME = "card-create";
+	@Autowired
+	private SecretWordValidator secretWordValidator;
 	
 	public CreateCardController(){
 		service = ServiceProvider.getInternetBankingInstance();
@@ -116,12 +120,13 @@ public class CreateCardController extends EntityController {
 	public String submitForm(@PathVariable("accountId") Integer accountId, HttpSession session,RedirectAttributes attrs,
 			Model model, @PathVariable("clientId") Integer clientId, @Valid @ModelAttribute("account_card") AccountCardWrapper wrapper,
 			BindingResult result){
+		secretWordValidator.validate(wrapper, result);
 		if(result.hasErrors()){
 			return VIEW_NAME;
 		}
 		String securityToken = getSecurityToken(session);
 		try {
-			
+		
 		wrapper.getCard().setAccountId(wrapper.getAccountId());
 		CardTypeWrapper cardType = CardUtil.getCardType(
 				wrapper.getCardTypeId(), securityToken);
