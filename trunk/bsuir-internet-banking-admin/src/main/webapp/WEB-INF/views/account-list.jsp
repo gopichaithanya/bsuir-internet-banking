@@ -45,8 +45,8 @@
 						<c:forEach begin="0" end="${fn:length(accountlist)-1}"
 							varStatus="loop">
 
-							<tr <c:if test="${not accountlist[loop.index].hasCard}"> class="error"</c:if>
-								<c:if test="${accountlist[loop.index].hasCard and accountlist[loop.index].expired}"> class="warning"</c:if>>
+							<tr >
+								
 								<td>${loop.index + 1}</td>
 								<td><a
 											href="<c:url value='/account/${clientId}/view/${accountlist[loop.index].accountId }' />">${accountlist[loop.index].accountNumber}</a></td>

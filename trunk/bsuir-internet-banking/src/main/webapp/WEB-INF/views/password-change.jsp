@@ -51,7 +51,7 @@
 						Password 
 			</form:label> --%>
 			<div class="controls">
-				<form:password path="confirmPassword" id="inputConfirm"
+				<form:password path="confirmPassword" id="inputConfirm" autocomplete="off"
 					placeholder="Подтвердите пароль" required="required" />
 				<form:errors class="help-inline bankingError" path="confirmPassword" />
 			</div>

@@ -48,7 +48,7 @@ public class EditLimitsController extends EntityController {
 	private static IInternetBankingService service;
 	private final static String VIEW_NAME = "limits-set";
 	@Autowired
-	private LimitsValidator limitsValidator;
+	private LimitsValidator limitsValidator; 
 
 	public EditLimitsController() {
 		service = ServiceProvider.getInternetBankingService();

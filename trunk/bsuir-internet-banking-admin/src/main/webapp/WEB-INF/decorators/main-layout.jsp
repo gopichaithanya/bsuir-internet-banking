@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.opensymphony.com/sitemesh/decorator"
 	prefix="decorator"%>
@@ -13,12 +13,13 @@
 <meta name="author" content="">
 <link href="<c:url value="/resources/css/bootstrap_spacelab.min.css" />"
 	rel="stylesheet" type="text/css" />
-<link href="<c:url value="/resources/css/jquery-ui-1.9.2.custom.min.css" />"
+<link
+	href="<c:url value="/resources/css/jquery-ui-1.9.2.custom.min.css" />"
 	rel="stylesheet" type="text/css" />
 <link href="<c:url value="/resources/css/main.css" />" rel="stylesheet"
 	type="text/css" />
-	<link href="<c:url value="/resources/css/datepicker.css" />" rel="stylesheet"
-	type="text/css" />
+<link href="<c:url value="/resources/css/datepicker.css" />"
+	rel="stylesheet" type="text/css" />
 
 <style type="text/css">
 body {
@@ -82,6 +83,18 @@ body {
 			<div class="span9">
 				<div class="row-fluid">
 					<div class="span12">
+						<c:if test="${not empty success}">
+							<div class="alert ">
+								<button type="button" class="close" data-dismiss="alert">x</button>
+								${success}
+							</div>
+						</c:if>
+						<c:if test="${not empty error}">
+							<div class="alert alert-error">
+								<button type="button" class="close" data-dismiss="alert">x</button>
+								${error}
+							</div>
+						</c:if>
 						<decorator:body />
 					</div>
 				</div>
@@ -97,56 +110,59 @@ body {
 		<c:import url="/WEB-INF/views/tags/footer.jsp" />
 	</footer>
 
-<!-- Placed at the end of the document so the pages load faster -->
+	<!-- Placed at the end of the document so the pages load faster -->
 	<script type="text/javascript"
 		src="<c:url value="/resources/js/jquery-1.8.0-min.js" />"></script>
-	<%--<script type="text/javascript"
+	<script type="text/javascript"
 		src="<c:url value="/resources/js/bootstrap.js" />"></script>
 	<script type="text/javascript"
 		src="<c:url value="/resources/js/demo.js" />"></script>
 	<script type="text/javascript"
- --%>
+		src="<c:url value="/resources/js/json2.js" />"></script>
 	<script type="text/javascript"
-	src="<c:url value="/resources/js/jquery-ui.js" />"></script>
-	
-		<script type="text/javascript" src="<c:url value="http://code.jquery.com/jquery-latest.js" />"></script>
-		<script type="text/javascript" src="<c:url value="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" />"></script> 
-		
+		src="<c:url value="/resources/js/date.format.js" />"></script>
+		<script type="text/javascript"
+		src="<c:url value="/resources/js/bootstrap-datepicker.js" />"></script>
 	<script>
-		$(function(){
-			$('#inputBirthdayDate').datepicker( { dateFormat: "dd/mm/yy",
-				showOn: 'button',
-				buttonImage: "images/calendar.gif",
-	            buttonImageOnly: true,
-				minDate: '-120Y',
-				maxDate: '-18Y',
-				changeMonth: true, 
-				changeYear: true});
-			$('#inputDateOfExpiry').datepicker( { dateFormat: "dd/mm/yy",
-				showOn: 'button',
-				buttonImage: "/resources/img/calendar.gif",
-	            buttonImageOnly: true,
-				minDate: '+1M',
-				maxDate: '+50Y',
-				changeMonth: true, 
-				changeYear: true});
-			$('#inputDateOfIssue').datepicker( { dateFormat: "dd/mm/yy",
-				showOn: 'button',
-				buttonImage: "/resources/img/calendar.gif",
-	            buttonImageOnly: true,
-				minDate: '-50Y',
-				maxDate: '+0D',
-				changeMonth: true, 
-				changeYear: true});
-			
+		$(function() {
+			$('#inputBirthdayDate').datepicker({
+				dateFormat : "dd/mm/yy",
+				showOn : 'button',
+				buttonImage : "images/calendar.gif",
+				buttonImageOnly : true,
+				minDate : '-120Y',
+				maxDate : '-18Y',
+				changeMonth : true,
+				changeYear : true
+			});
+			$('#inputDateOfExpiry').datepicker({
+				dateFormat : "dd/mm/yy",
+				showOn : 'button',
+				buttonImage : "/resources/img/calendar.gif",
+				buttonImageOnly : true,
+				minDate : '+1M',
+				maxDate : '+50Y',
+				changeMonth : true,
+				changeYear : true
+			});
+			$('#inputDateOfIssue').datepicker({
+				dateFormat : "dd/mm/yy",
+				showOn : 'button',
+				buttonImage : "/resources/img/calendar.gif",
+				buttonImageOnly : true,
+				minDate : '-50Y',
+				maxDate : '+0D',
+				changeMonth : true,
+				changeYear : true
+			});
 
 		});
 	</script>
 	<script type="text/javascript">
-      $(document).ready(function() {
-      $("#form1").validate();
-      });
-    </script>
-	
+		$(document).ready(function() {
+			$("#form1").validate();
+		});
+	</script>
+
 </body>
 </html>

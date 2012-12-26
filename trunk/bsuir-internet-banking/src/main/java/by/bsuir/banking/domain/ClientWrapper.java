@@ -167,6 +167,14 @@ public class ClientWrapper {
 		return client.getId();
 	}
 	
+	public boolean isLocked(){
+		return client.isIsLocked();
+	}
+	
+	public void setLocked(boolean value){
+		client.setIsLocked(value);
+	}
+	
 //	/**
 //	 * Getting passport (wrapper)
 //	 * @return

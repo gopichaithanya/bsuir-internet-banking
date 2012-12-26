@@ -1,4 +1,4 @@
-package by.bsuir.banking.controller.login;
+ package by.bsuir.banking.controller.login;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -90,7 +90,6 @@ public class LoginController extends EntityController{
 					user.getPassword());
 			user.setRole(credential.getRole().getValue());
 			if(!user.getRole().equals(MessageConstants.CLIENT_ROLE)){
-				System.out.println("OOPS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 				result.reject("logonError", "Имя пользователя и/или пароль неверны");
 				AdminUtils.logInfo(logger, MessageConstants.USER_AUTH_FAILED_CLIENT);
 				return VIEW_NAME;

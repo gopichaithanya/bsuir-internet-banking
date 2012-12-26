@@ -47,6 +47,11 @@
 						<th>Лимит по операциям (в сутки)</th>
 						<td>${card.operationsLimit}</td>
 					</tr>
+					<c:if test="${card.expired}">
+						<tr class="error">
+						<td colspan="2"><strong>Срок годности карты истек: операции по карте запрещены</strong></td>
+						</tr>
+					</c:if>
 					<c:if test="${card.locked}">
 						<tr class="error">
 						<td colspan="2"><strong>Карта заблокированна: операции по карте запрещены</strong></td>
@@ -59,7 +64,7 @@
 		<div class="row-fluid">
 			<table>
 				<tr><c:choose>
-				<c:when test="${not card.locked}">
+				<c:when test="${!card.locked and !card.expired}">
 					<td><a
 						href="<c:url value='/card/${card.cardId}/limits/set' />"
 						class="btn btn-small btn-primary">Установить лимиты</a></td>
@@ -73,7 +78,7 @@
 								</form>
 							</td>
 							</c:when>
-							<c:otherwise>
+							<c:when test="${!card.expired}">
 							<td>
 								<form action="<c:url value='/card/${card.cardId}/unlock' />"
 									style="padding: 0; margin: 0" method="post">
@@ -81,7 +86,7 @@
 										value="Разблокировать карту" />
 								</form>
 								</td>
-							</c:otherwise>
+							</c:when>
 						</c:choose>
 				</tr>
 			</table>

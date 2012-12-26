@@ -1,4 +1,4 @@
-package by.bsuir.banking.controller.transfer;
+ package by.bsuir.banking.controller.transfer;
 
 import java.io.IOException;
 import java.math.BigDecimal;
