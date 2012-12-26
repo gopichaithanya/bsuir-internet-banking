@@ -52,7 +52,7 @@ public class EripPaymentValidator implements Validator {
 		} else {
 			switch (erip.getErip().getId()) {
 			case 4:
-				// label = "Номер договора";
+				//label = ". Не менее 6 цифр.";
 				if (!erip.getInfoString().trim().matches(PROVIDER_CONTRACT_NUMBER_PATTERN)){
 					errors.rejectValue(INFO_STRING_FIELD, MessageValidation.WRONG_FORMAT, MessageValidation.WRONG_CONTRACT_FORMAT);
 				}
@@ -62,43 +62,58 @@ public class EripPaymentValidator implements Validator {
 			case 3:
 			case 5:
 			case 6:
-				// label = "Номер телефона";
+				//label = ". В формате yyyxxxxxxx, где y - код.";
 				if (!erip.getInfoString().trim().matches(MOBILE_PHONE_NUMBER_PATTERN)){
 					errors.rejectValue(INFO_STRING_FIELD, MessageValidation.WRONG_FORMAT, MessageValidation.WRONG_PHONE_NUMBER_FORMAT);
 				}
 				break;
 			case 7:
-				// label = "Номер контракта";
-				if (!erip.getInfoString().trim().matches(CONTRACT_NUMBER_PATTERN)){
-					errors.rejectValue(INFO_STRING_FIELD, MessageValidation.WRONG_FORMAT, MessageValidation.WRONG_CONTRACT_FORMAT);
-				}
-
-				break;
-			case 8:
-				// label = "Номер заказа билета";
-				if (!erip.getInfoString().trim().matches(PROVIDER_CONTRACT_NUMBER_PATTERN)){
-					errors.rejectValue(INFO_STRING_FIELD, MessageValidation.WRONG_FORMAT, MessageValidation.WRONG_CONTRACT_FORMAT);
-				}
-				break;
-			case 9:
-				// label = "Номер телефона";
+				//label = ". В формате yyyxxxxx, где y - код.";
 				if (!erip.getInfoString().trim().matches(HOME_PHONE_NUMBER_PATTERN)){
 					errors.rejectValue(INFO_STRING_FIELD, MessageValidation.WRONG_FORMAT, MessageValidation.WRONG_PHONE_NUMBER_FORMAT);
 				}
 				break;
+			case 8:
+			case 9:
 			case 10:
 			case 11:
 			case 12:
-			case 13:
-			case 14:
-				// label = "Лицевой счет";
+				//label = ". Не менее 9 цифр.";
 				if (!erip.getInfoString().trim().matches(PERSANAL_ACCOUNT_PATTERN)){
 					errors.rejectValue(INFO_STRING_FIELD, MessageValidation.WRONG_FORMAT, MessageValidation.WRONG_PERSONAL_ACCOUNT_FORMAT);
+				}
+				break;
+			case 13:
+			case 14:
+				//label = ". Не менее 6 цифр.";
+				if (!erip.getInfoString().trim().matches(PROVIDER_CONTRACT_NUMBER_PATTERN)){
+					errors.rejectValue(INFO_STRING_FIELD, MessageValidation.WRONG_FORMAT, MessageValidation.WRONG_CONTRACT_FORMAT);
+				}
+				break;
+			case 15:
+				//label = ". Не менее 9 цифр.";
+				if (!erip.getInfoString().trim().matches(PERSANAL_ACCOUNT_PATTERN)){
+					errors.rejectValue(INFO_STRING_FIELD, MessageValidation.WRONG_FORMAT, MessageValidation.WRONG_PERSONAL_ACCOUNT_FORMAT);
+				}
+				break;
+			case 16:
+			case 17:
+				//label = ". Не менее 6 цифр.";
+				if (!erip.getInfoString().trim().matches(PROVIDER_CONTRACT_NUMBER_PATTERN)){
+					errors.rejectValue(INFO_STRING_FIELD, MessageValidation.WRONG_FORMAT, MessageValidation.WRONG_CONTRACT_FORMAT);
+				}
+				break;
+			case 18:
+			case 19:
+				//label = ". Не менее 8 цифр.";
+				if (!erip.getInfoString().trim().matches(PROVIDER_CONTRACT_NUMBER_PATTERN)){
+					errors.rejectValue(INFO_STRING_FIELD, MessageValidation.WRONG_FORMAT, MessageValidation.WRONG_CONTRACT_FORMAT);
 				}
 				break;
 			default:
 				break;
 			}
+			
 		}
 		try {
 			errors.pushNestedPath("amount");

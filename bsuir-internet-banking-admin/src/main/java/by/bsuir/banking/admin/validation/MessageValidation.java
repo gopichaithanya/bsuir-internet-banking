@@ -29,6 +29,7 @@ public class MessageValidation {
 	public static final String STARTS_WITH_ZERO = "cannot starts with zero";
 	public static final String WRONG_SECRET_WORD = "must be 3-20 letters. without numbers and whitespaces";
 	public static final String WRONG_NAME = "must contain only letters without whitespaces";
+	public static final String WRONG_AUTHORITY = "must contain only letters and symbol - ";
 	
 	
 

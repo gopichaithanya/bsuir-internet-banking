@@ -52,9 +52,9 @@
 							<td>
 								<div class="control-group">
 									<div class="controls" style="width: 50px">
-										<form:input path="sellRates[${i}].rate" id="inputSellRate"
+										<form:input path="sellRates[${i}].amount" id="inputSellRate"
 											style="width:50px" />
-										<form:errors path="sellRates[${i}].rate" />
+										<form:errors path="sellRates[${i}].amount" />
 									</div>
 								</div>
 							</td>
