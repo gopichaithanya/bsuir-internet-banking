@@ -89,7 +89,7 @@ public class LoginController extends EntityController{
 			IAuthenticationService service = ServiceProvider.getAuthenticationService();
 			AuthenticationCredential credential = service.authenticate(user.getUsername(),
 					user.getPassword());
-			IInternetBankingService intS = ServiceProvider.getInternetBankingService();
+			
 			
 			user.setRole(credential.getRole().getValue());
 			if(!user.getRole().equals(MessageConstants.CLIENT_ROLE)){
@@ -99,7 +99,7 @@ public class LoginController extends EntityController{
 			}
 			 Client client = ServiceProvider.getInternetBankingService().getClient(credential.getSecurityToken().getValue());
 			
-			user.setLasDate(client.getLastAuthorizationDateTime().toGregorianCalendar().getTime());
+			user.setLasDate(credential.getLastDateTime().toGregorianCalendar().getTime());
 			user.setName(client.getFirstName().getValue() + " " + client.getLastName().getValue());
 			user.setSecurityToken(credential.getSecurityToken().getValue());
 			
