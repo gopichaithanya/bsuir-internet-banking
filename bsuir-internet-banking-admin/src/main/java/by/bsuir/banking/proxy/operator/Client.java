@@ -27,6 +27,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="FirstName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="Id" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element name="IsLocked" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element name="LastAuthorizationDateTime" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *         &lt;element name="LastName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="Login" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="MiddleName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
@@ -51,6 +52,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "firstName",
     "id",
     "isLocked",
+    "lastAuthorizationDateTime",
     "lastName",
     "login",
     "middleName",
@@ -75,6 +77,9 @@ public class Client {
     protected Integer id;
     @XmlElement(name = "IsLocked")
     protected Boolean isLocked;
+    @XmlElement(name = "LastAuthorizationDateTime")
+    @XmlSchemaType(name = "dateTime")
+    protected XMLGregorianCalendar lastAuthorizationDateTime;
     @XmlElementRef(name = "LastName", namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", type = JAXBElement.class)
     protected JAXBElement<String> lastName;
     @XmlElementRef(name = "Login", namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", type = JAXBElement.class)
@@ -234,6 +239,30 @@ public class Client {
      */
     public void setIsLocked(Boolean value) {
         this.isLocked = value;
+    }
+
+    /**
+     * Gets the value of the lastAuthorizationDateTime property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public XMLGregorianCalendar getLastAuthorizationDateTime() {
+        return lastAuthorizationDateTime;
+    }
+
+    /**
+     * Sets the value of the lastAuthorizationDateTime property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public void setLastAuthorizationDateTime(XMLGregorianCalendar value) {
+        this.lastAuthorizationDateTime = value;
     }
 
     /**

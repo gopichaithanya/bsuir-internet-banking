@@ -28,7 +28,6 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _GetOperatorByIdResponseGetOperatorByIdResult_QNAME = new QName("http://tempuri.org/", "GetOperatorByIdResult");
     private final static QName _AnyURI_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "anyURI");
     private final static QName _DateTime_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "dateTime");
     private final static QName _Char_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "char");
@@ -56,242 +55,27 @@ public class ObjectFactory {
     private final static QName _ArrayOfOperator_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", "ArrayOfOperator");
     private final static QName _UnsignedLong_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "unsignedLong");
     private final static QName _DomainFault_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.Services.Interfaces.FaultContracts", "DomainFault");
-    private final static QName _UpdateAdministratorSecurityToken_QNAME = new QName("http://tempuri.org/", "securityToken");
-    private final static QName _UpdateAdministratorUpdatedAdministrator_QNAME = new QName("http://tempuri.org/", "updatedAdministrator");
-    private final static QName _CreateNewOperatorNewOperator_QNAME = new QName("http://tempuri.org/", "newOperator");
-    private final static QName _DomainFaultMessage_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.Services.Interfaces.FaultContracts", "Message");
-    private final static QName _CreateNewAdministratorNewAdministrator_QNAME = new QName("http://tempuri.org/", "newAdministrator");
+    private final static QName _GetOperatorByIdResponseGetOperatorByIdResult_QNAME = new QName("http://tempuri.org/", "GetOperatorByIdResult");
     private final static QName _GetAdministratorByIdResponseGetAdministratorByIdResult_QNAME = new QName("http://tempuri.org/", "GetAdministratorByIdResult");
-    private final static QName _GetAllOperatorsResponseGetAllOperatorsResult_QNAME = new QName("http://tempuri.org/", "GetAllOperatorsResult");
-    private final static QName _GetAllAdministratorsResponseGetAllAdministratorsResult_QNAME = new QName("http://tempuri.org/", "GetAllAdministratorsResult");
+    private final static QName _AuthorizationFaultMessage_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.Services.Interfaces.FaultContracts", "Message");
+    private final static QName _CreateNewOperatorSecurityToken_QNAME = new QName("http://tempuri.org/", "securityToken");
+    private final static QName _CreateNewOperatorNewOperator_QNAME = new QName("http://tempuri.org/", "newOperator");
+    private final static QName _CreateNewAdministratorNewAdministrator_QNAME = new QName("http://tempuri.org/", "newAdministrator");
     private final static QName _AdministratorMiddleName_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", "MiddleName");
     private final static QName _AdministratorLogin_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", "Login");
     private final static QName _AdministratorPassword_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", "Password");
     private final static QName _AdministratorFirstName_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", "FirstName");
     private final static QName _AdministratorLastName_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", "LastName");
     private final static QName _UpdateOperatorUpdatedOperator_QNAME = new QName("http://tempuri.org/", "updatedOperator");
+    private final static QName _GetAllOperatorsResponseGetAllOperatorsResult_QNAME = new QName("http://tempuri.org/", "GetAllOperatorsResult");
+    private final static QName _UpdateAdministratorUpdatedAdministrator_QNAME = new QName("http://tempuri.org/", "updatedAdministrator");
+    private final static QName _GetAllAdministratorsResponseGetAllAdministratorsResult_QNAME = new QName("http://tempuri.org/", "GetAllAdministratorsResult");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: by.bsuir.banking.proxy.administration
      * 
      */
     public ObjectFactory() {
-    }
-
-    /**
-     * Create an instance of {@link CreateNewOperator }
-     * 
-     */
-    public CreateNewOperator createCreateNewOperator() {
-        return new CreateNewOperator();
-    }
-
-    /**
-     * Create an instance of {@link UpdateAdministrator }
-     * 
-     */
-    public UpdateAdministrator createUpdateAdministrator() {
-        return new UpdateAdministrator();
-    }
-
-    /**
-     * Create an instance of {@link CreateNewAdministratorResponse }
-     * 
-     */
-    public CreateNewAdministratorResponse createCreateNewAdministratorResponse() {
-        return new CreateNewAdministratorResponse();
-    }
-
-    /**
-     * Create an instance of {@link GetAdministratorById }
-     * 
-     */
-    public GetAdministratorById createGetAdministratorById() {
-        return new GetAdministratorById();
-    }
-
-    /**
-     * Create an instance of {@link RemoveOperatorResponse }
-     * 
-     */
-    public RemoveOperatorResponse createRemoveOperatorResponse() {
-        return new RemoveOperatorResponse();
-    }
-
-    /**
-     * Create an instance of {@link GetAllOperatorsResponse }
-     * 
-     */
-    public GetAllOperatorsResponse createGetAllOperatorsResponse() {
-        return new GetAllOperatorsResponse();
-    }
-
-    /**
-     * Create an instance of {@link GetAllAdministratorsResponse }
-     * 
-     */
-    public GetAllAdministratorsResponse createGetAllAdministratorsResponse() {
-        return new GetAllAdministratorsResponse();
-    }
-
-    /**
-     * Create an instance of {@link Administrator }
-     * 
-     */
-    public Administrator createAdministrator() {
-        return new Administrator();
-    }
-
-    /**
-     * Create an instance of {@link RemoveAdministratorResponse }
-     * 
-     */
-    public RemoveAdministratorResponse createRemoveAdministratorResponse() {
-        return new RemoveAdministratorResponse();
-    }
-
-    /**
-     * Create an instance of {@link UpdateOperator }
-     * 
-     */
-    public UpdateOperator createUpdateOperator() {
-        return new UpdateOperator();
-    }
-
-    /**
-     * Create an instance of {@link GetAdministratorsCountResponse }
-     * 
-     */
-    public GetAdministratorsCountResponse createGetAdministratorsCountResponse() {
-        return new GetAdministratorsCountResponse();
-    }
-
-    /**
-     * Create an instance of {@link GetOperatorsCount }
-     * 
-     */
-    public GetOperatorsCount createGetOperatorsCount() {
-        return new GetOperatorsCount();
-    }
-
-    /**
-     * Create an instance of {@link ArrayOfAdministrator }
-     * 
-     */
-    public ArrayOfAdministrator createArrayOfAdministrator() {
-        return new ArrayOfAdministrator();
-    }
-
-    /**
-     * Create an instance of {@link RemoveAdministrator }
-     * 
-     */
-    public RemoveAdministrator createRemoveAdministrator() {
-        return new RemoveAdministrator();
-    }
-
-    /**
-     * Create an instance of {@link GetOperatorById }
-     * 
-     */
-    public GetOperatorById createGetOperatorById() {
-        return new GetOperatorById();
-    }
-
-    /**
-     * Create an instance of {@link CreateNewOperatorResponse }
-     * 
-     */
-    public CreateNewOperatorResponse createCreateNewOperatorResponse() {
-        return new CreateNewOperatorResponse();
-    }
-
-    /**
-     * Create an instance of {@link GetOperatorByIdResponse }
-     * 
-     */
-    public GetOperatorByIdResponse createGetOperatorByIdResponse() {
-        return new GetOperatorByIdResponse();
-    }
-
-    /**
-     * Create an instance of {@link DomainFault }
-     * 
-     */
-    public DomainFault createDomainFault() {
-        return new DomainFault();
-    }
-
-    /**
-     * Create an instance of {@link UpdateOperatorResponse }
-     * 
-     */
-    public UpdateOperatorResponse createUpdateOperatorResponse() {
-        return new UpdateOperatorResponse();
-    }
-
-    /**
-     * Create an instance of {@link CreateNewAdministrator }
-     * 
-     */
-    public CreateNewAdministrator createCreateNewAdministrator() {
-        return new CreateNewAdministrator();
-    }
-
-    /**
-     * Create an instance of {@link GetAllAdministrators }
-     * 
-     */
-    public GetAllAdministrators createGetAllAdministrators() {
-        return new GetAllAdministrators();
-    }
-
-    /**
-     * Create an instance of {@link GetOperatorsCountResponse }
-     * 
-     */
-    public GetOperatorsCountResponse createGetOperatorsCountResponse() {
-        return new GetOperatorsCountResponse();
-    }
-
-    /**
-     * Create an instance of {@link GetAdministratorsCount }
-     * 
-     */
-    public GetAdministratorsCount createGetAdministratorsCount() {
-        return new GetAdministratorsCount();
-    }
-
-    /**
-     * Create an instance of {@link RemoveOperator }
-     * 
-     */
-    public RemoveOperator createRemoveOperator() {
-        return new RemoveOperator();
-    }
-
-    /**
-     * Create an instance of {@link GetAdministratorByIdResponse }
-     * 
-     */
-    public GetAdministratorByIdResponse createGetAdministratorByIdResponse() {
-        return new GetAdministratorByIdResponse();
-    }
-
-    /**
-     * Create an instance of {@link ArrayOfOperator }
-     * 
-     */
-    public ArrayOfOperator createArrayOfOperator() {
-        return new ArrayOfOperator();
-    }
-
-    /**
-     * Create an instance of {@link Operator }
-     * 
-     */
-    public Operator createOperator() {
-        return new Operator();
     }
 
     /**
@@ -303,11 +87,99 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetAllOperators }
+     * Create an instance of {@link CreateNewAdministratorResponse }
      * 
      */
-    public GetAllOperators createGetAllOperators() {
-        return new GetAllOperators();
+    public CreateNewAdministratorResponse createCreateNewAdministratorResponse() {
+        return new CreateNewAdministratorResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetAllAdministrators }
+     * 
+     */
+    public GetAllAdministrators createGetAllAdministrators() {
+        return new GetAllAdministrators();
+    }
+
+    /**
+     * Create an instance of {@link GetAdministratorsCountResponse }
+     * 
+     */
+    public GetAdministratorsCountResponse createGetAdministratorsCountResponse() {
+        return new GetAdministratorsCountResponse();
+    }
+
+    /**
+     * Create an instance of {@link UpdateOperatorResponse }
+     * 
+     */
+    public UpdateOperatorResponse createUpdateOperatorResponse() {
+        return new UpdateOperatorResponse();
+    }
+
+    /**
+     * Create an instance of {@link RemoveAdministratorResponse }
+     * 
+     */
+    public RemoveAdministratorResponse createRemoveAdministratorResponse() {
+        return new RemoveAdministratorResponse();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfOperator }
+     * 
+     */
+    public ArrayOfOperator createArrayOfOperator() {
+        return new ArrayOfOperator();
+    }
+
+    /**
+     * Create an instance of {@link UpdateOperator }
+     * 
+     */
+    public UpdateOperator createUpdateOperator() {
+        return new UpdateOperator();
+    }
+
+    /**
+     * Create an instance of {@link GetAdministratorById }
+     * 
+     */
+    public GetAdministratorById createGetAdministratorById() {
+        return new GetAdministratorById();
+    }
+
+    /**
+     * Create an instance of {@link GetOperatorsCountResponse }
+     * 
+     */
+    public GetOperatorsCountResponse createGetOperatorsCountResponse() {
+        return new GetOperatorsCountResponse();
+    }
+
+    /**
+     * Create an instance of {@link DomainFault }
+     * 
+     */
+    public DomainFault createDomainFault() {
+        return new DomainFault();
+    }
+
+    /**
+     * Create an instance of {@link GetOperatorByIdResponse }
+     * 
+     */
+    public GetOperatorByIdResponse createGetOperatorByIdResponse() {
+        return new GetOperatorByIdResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetAdministratorByIdResponse }
+     * 
+     */
+    public GetAdministratorByIdResponse createGetAdministratorByIdResponse() {
+        return new GetAdministratorByIdResponse();
     }
 
     /**
@@ -319,12 +191,131 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Operator }{@code >}}
+     * Create an instance of {@link CreateNewOperator }
      * 
      */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "GetOperatorByIdResult", scope = GetOperatorByIdResponse.class)
-    public JAXBElement<Operator> createGetOperatorByIdResponseGetOperatorByIdResult(Operator value) {
-        return new JAXBElement<Operator>(_GetOperatorByIdResponseGetOperatorByIdResult_QNAME, Operator.class, GetOperatorByIdResponse.class, value);
+    public CreateNewOperator createCreateNewOperator() {
+        return new CreateNewOperator();
+    }
+
+    /**
+     * Create an instance of {@link GetOperatorById }
+     * 
+     */
+    public GetOperatorById createGetOperatorById() {
+        return new GetOperatorById();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfAdministrator }
+     * 
+     */
+    public ArrayOfAdministrator createArrayOfAdministrator() {
+        return new ArrayOfAdministrator();
+    }
+
+    /**
+     * Create an instance of {@link CreateNewOperatorResponse }
+     * 
+     */
+    public CreateNewOperatorResponse createCreateNewOperatorResponse() {
+        return new CreateNewOperatorResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetAdministratorsCount }
+     * 
+     */
+    public GetAdministratorsCount createGetAdministratorsCount() {
+        return new GetAdministratorsCount();
+    }
+
+    /**
+     * Create an instance of {@link CreateNewAdministrator }
+     * 
+     */
+    public CreateNewAdministrator createCreateNewAdministrator() {
+        return new CreateNewAdministrator();
+    }
+
+    /**
+     * Create an instance of {@link GetOperatorsCount }
+     * 
+     */
+    public GetOperatorsCount createGetOperatorsCount() {
+        return new GetOperatorsCount();
+    }
+
+    /**
+     * Create an instance of {@link RemoveAdministrator }
+     * 
+     */
+    public RemoveAdministrator createRemoveAdministrator() {
+        return new RemoveAdministrator();
+    }
+
+    /**
+     * Create an instance of {@link GetAllOperators }
+     * 
+     */
+    public GetAllOperators createGetAllOperators() {
+        return new GetAllOperators();
+    }
+
+    /**
+     * Create an instance of {@link Administrator }
+     * 
+     */
+    public Administrator createAdministrator() {
+        return new Administrator();
+    }
+
+    /**
+     * Create an instance of {@link GetAllOperatorsResponse }
+     * 
+     */
+    public GetAllOperatorsResponse createGetAllOperatorsResponse() {
+        return new GetAllOperatorsResponse();
+    }
+
+    /**
+     * Create an instance of {@link RemoveOperator }
+     * 
+     */
+    public RemoveOperator createRemoveOperator() {
+        return new RemoveOperator();
+    }
+
+    /**
+     * Create an instance of {@link UpdateAdministrator }
+     * 
+     */
+    public UpdateAdministrator createUpdateAdministrator() {
+        return new UpdateAdministrator();
+    }
+
+    /**
+     * Create an instance of {@link RemoveOperatorResponse }
+     * 
+     */
+    public RemoveOperatorResponse createRemoveOperatorResponse() {
+        return new RemoveOperatorResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetAllAdministratorsResponse }
+     * 
+     */
+    public GetAllAdministratorsResponse createGetAllAdministratorsResponse() {
+        return new GetAllAdministratorsResponse();
+    }
+
+    /**
+     * Create an instance of {@link Operator }
+     * 
+     */
+    public Operator createOperator() {
+        return new Operator();
     }
 
     /**
@@ -571,21 +562,30 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Operator }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = UpdateAdministrator.class)
-    public JAXBElement<String> createUpdateAdministratorSecurityToken(String value) {
-        return new JAXBElement<String>(_UpdateAdministratorSecurityToken_QNAME, String.class, UpdateAdministrator.class, value);
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "GetOperatorByIdResult", scope = GetOperatorByIdResponse.class)
+    public JAXBElement<Operator> createGetOperatorByIdResponseGetOperatorByIdResult(Operator value) {
+        return new JAXBElement<Operator>(_GetOperatorByIdResponseGetOperatorByIdResult_QNAME, Operator.class, GetOperatorByIdResponse.class, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Administrator }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "updatedAdministrator", scope = UpdateAdministrator.class)
-    public JAXBElement<Administrator> createUpdateAdministratorUpdatedAdministrator(Administrator value) {
-        return new JAXBElement<Administrator>(_UpdateAdministratorUpdatedAdministrator_QNAME, Administrator.class, UpdateAdministrator.class, value);
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "GetAdministratorByIdResult", scope = GetAdministratorByIdResponse.class)
+    public JAXBElement<Administrator> createGetAdministratorByIdResponseGetAdministratorByIdResult(Administrator value) {
+        return new JAXBElement<Administrator>(_GetAdministratorByIdResponseGetAdministratorByIdResult_QNAME, Administrator.class, GetAdministratorByIdResponse.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.Services.Interfaces.FaultContracts", name = "Message", scope = AuthorizationFault.class)
+    public JAXBElement<String> createAuthorizationFaultMessage(String value) {
+        return new JAXBElement<String>(_AuthorizationFaultMessage_QNAME, String.class, AuthorizationFault.class, value);
     }
 
     /**
@@ -594,7 +594,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = CreateNewOperator.class)
     public JAXBElement<String> createCreateNewOperatorSecurityToken(String value) {
-        return new JAXBElement<String>(_UpdateAdministratorSecurityToken_QNAME, String.class, CreateNewOperator.class, value);
+        return new JAXBElement<String>(_CreateNewOperatorSecurityToken_QNAME, String.class, CreateNewOperator.class, value);
     }
 
     /**
@@ -610,9 +610,27 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.Services.Interfaces.FaultContracts", name = "Message", scope = DomainFault.class)
-    public JAXBElement<String> createDomainFaultMessage(String value) {
-        return new JAXBElement<String>(_DomainFaultMessage_QNAME, String.class, DomainFault.class, value);
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = GetAllAdministrators.class)
+    public JAXBElement<String> createGetAllAdministratorsSecurityToken(String value) {
+        return new JAXBElement<String>(_CreateNewOperatorSecurityToken_QNAME, String.class, GetAllAdministrators.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = GetOperatorById.class)
+    public JAXBElement<String> createGetOperatorByIdSecurityToken(String value) {
+        return new JAXBElement<String>(_CreateNewOperatorSecurityToken_QNAME, String.class, GetOperatorById.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = GetAdministratorsCount.class)
+    public JAXBElement<String> createGetAdministratorsCountSecurityToken(String value) {
+        return new JAXBElement<String>(_CreateNewOperatorSecurityToken_QNAME, String.class, GetAdministratorsCount.class, value);
     }
 
     /**
@@ -621,7 +639,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = CreateNewAdministrator.class)
     public JAXBElement<String> createCreateNewAdministratorSecurityToken(String value) {
-        return new JAXBElement<String>(_UpdateAdministratorSecurityToken_QNAME, String.class, CreateNewAdministrator.class, value);
+        return new JAXBElement<String>(_CreateNewOperatorSecurityToken_QNAME, String.class, CreateNewAdministrator.class, value);
     }
 
     /**
@@ -637,63 +655,27 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = GetAllAdministrators.class)
-    public JAXBElement<String> createGetAllAdministratorsSecurityToken(String value) {
-        return new JAXBElement<String>(_UpdateAdministratorSecurityToken_QNAME, String.class, GetAllAdministrators.class, value);
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = GetOperatorsCount.class)
+    public JAXBElement<String> createGetOperatorsCountSecurityToken(String value) {
+        return new JAXBElement<String>(_CreateNewOperatorSecurityToken_QNAME, String.class, GetOperatorsCount.class, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = GetAdministratorById.class)
-    public JAXBElement<String> createGetAdministratorByIdSecurityToken(String value) {
-        return new JAXBElement<String>(_UpdateAdministratorSecurityToken_QNAME, String.class, GetAdministratorById.class, value);
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = RemoveAdministrator.class)
+    public JAXBElement<String> createRemoveAdministratorSecurityToken(String value) {
+        return new JAXBElement<String>(_CreateNewOperatorSecurityToken_QNAME, String.class, RemoveAdministrator.class, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = GetAdministratorsCount.class)
-    public JAXBElement<String> createGetAdministratorsCountSecurityToken(String value) {
-        return new JAXBElement<String>(_UpdateAdministratorSecurityToken_QNAME, String.class, GetAdministratorsCount.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = RemoveOperator.class)
-    public JAXBElement<String> createRemoveOperatorSecurityToken(String value) {
-        return new JAXBElement<String>(_UpdateAdministratorSecurityToken_QNAME, String.class, RemoveOperator.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Administrator }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "GetAdministratorByIdResult", scope = GetAdministratorByIdResponse.class)
-    public JAXBElement<Administrator> createGetAdministratorByIdResponseGetAdministratorByIdResult(Administrator value) {
-        return new JAXBElement<Administrator>(_GetAdministratorByIdResponseGetAdministratorByIdResult_QNAME, Administrator.class, GetAdministratorByIdResponse.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfOperator }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "GetAllOperatorsResult", scope = GetAllOperatorsResponse.class)
-    public JAXBElement<ArrayOfOperator> createGetAllOperatorsResponseGetAllOperatorsResult(ArrayOfOperator value) {
-        return new JAXBElement<ArrayOfOperator>(_GetAllOperatorsResponseGetAllOperatorsResult_QNAME, ArrayOfOperator.class, GetAllOperatorsResponse.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfAdministrator }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "GetAllAdministratorsResult", scope = GetAllAdministratorsResponse.class)
-    public JAXBElement<ArrayOfAdministrator> createGetAllAdministratorsResponseGetAllAdministratorsResult(ArrayOfAdministrator value) {
-        return new JAXBElement<ArrayOfAdministrator>(_GetAllAdministratorsResponseGetAllAdministratorsResult_QNAME, ArrayOfAdministrator.class, GetAllAdministratorsResponse.class, value);
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = GetAllOperators.class)
+    public JAXBElement<String> createGetAllOperatorsSecurityToken(String value) {
+        return new JAXBElement<String>(_CreateNewOperatorSecurityToken_QNAME, String.class, GetAllOperators.class, value);
     }
 
     /**
@@ -747,7 +729,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = UpdateOperator.class)
     public JAXBElement<String> createUpdateOperatorSecurityToken(String value) {
-        return new JAXBElement<String>(_UpdateAdministratorSecurityToken_QNAME, String.class, UpdateOperator.class, value);
+        return new JAXBElement<String>(_CreateNewOperatorSecurityToken_QNAME, String.class, UpdateOperator.class, value);
     }
 
     /**
@@ -757,6 +739,60 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://tempuri.org/", name = "updatedOperator", scope = UpdateOperator.class)
     public JAXBElement<Operator> createUpdateOperatorUpdatedOperator(Operator value) {
         return new JAXBElement<Operator>(_UpdateOperatorUpdatedOperator_QNAME, Operator.class, UpdateOperator.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = GetAdministratorById.class)
+    public JAXBElement<String> createGetAdministratorByIdSecurityToken(String value) {
+        return new JAXBElement<String>(_CreateNewOperatorSecurityToken_QNAME, String.class, GetAdministratorById.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfOperator }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "GetAllOperatorsResult", scope = GetAllOperatorsResponse.class)
+    public JAXBElement<ArrayOfOperator> createGetAllOperatorsResponseGetAllOperatorsResult(ArrayOfOperator value) {
+        return new JAXBElement<ArrayOfOperator>(_GetAllOperatorsResponseGetAllOperatorsResult_QNAME, ArrayOfOperator.class, GetAllOperatorsResponse.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = UpdateAdministrator.class)
+    public JAXBElement<String> createUpdateAdministratorSecurityToken(String value) {
+        return new JAXBElement<String>(_CreateNewOperatorSecurityToken_QNAME, String.class, UpdateAdministrator.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Administrator }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "updatedAdministrator", scope = UpdateAdministrator.class)
+    public JAXBElement<Administrator> createUpdateAdministratorUpdatedAdministrator(Administrator value) {
+        return new JAXBElement<Administrator>(_UpdateAdministratorUpdatedAdministrator_QNAME, Administrator.class, UpdateAdministrator.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = RemoveOperator.class)
+    public JAXBElement<String> createRemoveOperatorSecurityToken(String value) {
+        return new JAXBElement<String>(_CreateNewOperatorSecurityToken_QNAME, String.class, RemoveOperator.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.Services.Interfaces.FaultContracts", name = "Message", scope = DomainFault.class)
+    public JAXBElement<String> createDomainFaultMessage(String value) {
+        return new JAXBElement<String>(_AuthorizationFaultMessage_QNAME, String.class, DomainFault.class, value);
     }
 
     /**
@@ -805,48 +841,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfAdministrator }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = GetAllOperators.class)
-    public JAXBElement<String> createGetAllOperatorsSecurityToken(String value) {
-        return new JAXBElement<String>(_UpdateAdministratorSecurityToken_QNAME, String.class, GetAllOperators.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = GetOperatorsCount.class)
-    public JAXBElement<String> createGetOperatorsCountSecurityToken(String value) {
-        return new JAXBElement<String>(_UpdateAdministratorSecurityToken_QNAME, String.class, GetOperatorsCount.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = RemoveAdministrator.class)
-    public JAXBElement<String> createRemoveAdministratorSecurityToken(String value) {
-        return new JAXBElement<String>(_UpdateAdministratorSecurityToken_QNAME, String.class, RemoveAdministrator.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "securityToken", scope = GetOperatorById.class)
-    public JAXBElement<String> createGetOperatorByIdSecurityToken(String value) {
-        return new JAXBElement<String>(_UpdateAdministratorSecurityToken_QNAME, String.class, GetOperatorById.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.Services.Interfaces.FaultContracts", name = "Message", scope = AuthorizationFault.class)
-    public JAXBElement<String> createAuthorizationFaultMessage(String value) {
-        return new JAXBElement<String>(_DomainFaultMessage_QNAME, String.class, AuthorizationFault.class, value);
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "GetAllAdministratorsResult", scope = GetAllAdministratorsResponse.class)
+    public JAXBElement<ArrayOfAdministrator> createGetAllAdministratorsResponseGetAllAdministratorsResult(ArrayOfAdministrator value) {
+        return new JAXBElement<ArrayOfAdministrator>(_GetAllAdministratorsResponseGetAllAdministratorsResult_QNAME, ArrayOfAdministrator.class, GetAllAdministratorsResponse.class, value);
     }
 
 }
