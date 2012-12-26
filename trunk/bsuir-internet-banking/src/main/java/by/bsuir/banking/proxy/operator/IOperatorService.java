@@ -1,4 +1,4 @@
-
+ 
 package by.bsuir.banking.proxy.operator;
 
 import javax.jws.WebMethod;

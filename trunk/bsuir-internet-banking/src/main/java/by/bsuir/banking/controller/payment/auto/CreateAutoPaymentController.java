@@ -1,4 +1,4 @@
- package by.bsuir.banking.controller.payment.auto;
+package by.bsuir.banking.controller.payment.auto;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;

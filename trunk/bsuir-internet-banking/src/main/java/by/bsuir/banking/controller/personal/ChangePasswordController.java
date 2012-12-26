@@ -1,4 +1,4 @@
-package by.bsuir.banking.controller.personal;
+ package by.bsuir.banking.controller.personal;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;

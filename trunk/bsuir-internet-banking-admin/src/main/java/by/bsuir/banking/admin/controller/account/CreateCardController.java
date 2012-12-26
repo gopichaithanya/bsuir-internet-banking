@@ -58,7 +58,7 @@ public class CreateCardController extends EntityController {
 	private static final String VIEW_NAME = "card-create";
 	@Autowired
 	private SecretWordValidator secretWordValidator;
-	
+	 
 	public CreateCardController(){
 		service = ServiceProvider.getInternetBankingInstance();
 	}

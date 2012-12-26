@@ -1,4 +1,4 @@
-package by.bsuir.banking.validator;
+ package by.bsuir.banking.validator;
 
 import java.math.BigDecimal;
 

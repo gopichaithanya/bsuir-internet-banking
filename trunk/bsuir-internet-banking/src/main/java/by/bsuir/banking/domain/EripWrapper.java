@@ -1,4 +1,4 @@
-package by.bsuir.banking.domain;
+ package by.bsuir.banking.domain;
 
 import by.bsuir.banking.proxy.internetbanking.City;
 import by.bsuir.banking.proxy.internetbanking.ObjectFactory;
