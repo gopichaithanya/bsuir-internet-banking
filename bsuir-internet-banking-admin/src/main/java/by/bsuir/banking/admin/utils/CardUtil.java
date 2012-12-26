@@ -31,14 +31,34 @@ public class CardUtil {
 		return calendar.getTime();
 	}
 
-	public static Integer getOperationsLimit(CardTypeWrapper cardTypeWrapper) {
-		// TODO generate limit based on card type
-		return 10;
+	public static Integer getOperationsLimit(Integer currencyTypeId) {
+		// TODO generate limit based on currency type
+		if(currencyTypeId != 1){
+			return 10;
+		}
+		return 20;
 	}
 
-	public static BigDecimal getMoneyLimit(CardTypeWrapper cardTypeWrapper) {
+	public static BigDecimal getMoneyLimit(Integer currencyTypeId) {
 		// TODO generate limit based on card type and currency type
-		return new BigDecimal("100000");
+		BigDecimal sum = null;
+		switch (currencyTypeId) {
+		case 1://BYR
+			sum = new BigDecimal("10000000");
+			break;
+		case 2://USD
+			sum = new BigDecimal("1000");
+			break;
+		case 3://EUR
+			sum=new BigDecimal("1000");
+			break;
+		case 4://RUR
+			sum=new BigDecimal("30000");
+			break;
+		default:
+			break;
+		}
+		return sum;
 	}
 
 	public static CardTypeWrapper getCardType(Integer cardTypeId, String securityToken) throws IInternetBankingServiceGetAllCardTypesAuthorizationFaultFaultFaultMessage, IInternetBankingServiceGetAllCardTypesDomainFaultFaultFaultMessage {

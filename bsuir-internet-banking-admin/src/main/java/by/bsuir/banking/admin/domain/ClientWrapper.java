@@ -215,4 +215,12 @@ public class ClientWrapper {
 	public void setEmail(String value){
 		client.setEmail(factory.createClientEmail(value));
 	}
+	
+	public boolean isLocked(){
+		return client.isIsLocked();
+	}
+	
+	public void setLocked(boolean value){
+		client.setIsLocked(value);
+	}
 }

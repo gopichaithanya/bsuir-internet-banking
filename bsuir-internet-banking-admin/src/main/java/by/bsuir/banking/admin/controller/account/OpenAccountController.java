@@ -142,9 +142,9 @@ public class OpenAccountController extends EntityController {
 			accountCard.setExpirationDate(CardUtil.getExpirationDate());
 			// TODO set money and operation limits based on card type
 			accountCard.setOperationsLimit(CardUtil
-					.getOperationsLimit(accountCard.getCardType()));
+					.getOperationsLimit(accountCard.getCurrencyTypeId()));
 			accountCard.setMoneyLimit(CardUtil.getMoneyLimit(accountCard
-					.getCardType()));
+					.getCurrencyTypeId()));
 			accountCard.setCVV2(NumberGenerator.generateCVV2());
 			cardId = service.createCard(accountCard.getCard(), securityToken);
 		} catch (IInternetBankingServiceCreateCardAuthorizationFaultFaultFaultMessage e) {

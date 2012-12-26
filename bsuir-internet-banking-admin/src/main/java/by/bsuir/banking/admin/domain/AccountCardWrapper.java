@@ -33,12 +33,18 @@ public class AccountCardWrapper {
 	}
 	
 	
+	
+	
 	public Account getAccount(){
 		return account;
 	}
 	
 	public Card getCard(){
 		return card;
+	}
+	
+	public void setCard(Card value){
+		card = value;
 	}
 	
 	/*
@@ -121,11 +127,8 @@ public class AccountCardWrapper {
 		return card.getId();
 	}
 	
-	public Boolean isIsLocked(){
-		return card.isIsLocked();
-	}
 	
-	public void setIsLocked(Boolean value){
+	public void setLocked(Boolean value){
 		card.setIsLocked(value);
 	}
 	
@@ -205,5 +208,10 @@ public class AccountCardWrapper {
 		
 		return (card != null);
 	}
+	
+	public boolean isLocked(){
+		return card.isIsLocked();
+	}
+	
 	
 }

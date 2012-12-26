@@ -8,8 +8,12 @@
 <body>
 </c:if>
 <div id="formsContent">
-	<div class="span8 well">
+	<div class="span10 well">
+	<c:if test="${client.locked}">
+						<div class="alert">Client's user account has been locked.</div>
+					</c:if>
 		<div class="row-fluid">
+		
 			<div class="span6">
 				<h4>Client Info</h4>
 
@@ -67,13 +71,18 @@
 						<td><fmt:formatDate pattern="MM/dd/yyyy"
 								value="${client.passport.dateOfExpiry}" /></td>
 					</tr>
+					
 				</table>
 			</div>
+			
 		</div>
 		<div class="row-fluid">
 			<a class="btn btn-info" href="<c:url value="/client/edit/${client.id}" />">Edit</a>
 			<a class="btn btn-info" href="<c:url value="/account/${client.id}/list" />">View Accounts</a>
 			<a class="btn btn-success" href="<c:url value="/account/${client.id}/open" />">Open Account</a>
+			<c:if test="${client.locked}">
+				<a href="<c:url value='/client/unlock/${client.id}' /> " class="btn btn-primary">Unlock client</a>
+			</c:if>
 			<a class="btn btn-danger pull-right" onclick="return confirm('Are you sure you want to delete client?')" href="<c:url value="/client/delete/${client.id}" />">Delete client</a>
 		</div>
 	</div>

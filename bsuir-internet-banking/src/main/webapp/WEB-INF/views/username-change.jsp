@@ -51,9 +51,9 @@
 		</div>
 		<div id="divConfirm" class="control-group">
 			<div class="controls">
-				<form:password path="confirmUsername" id="inputConfirm"
+				<form:input path="confirmUsername" id="inputConfirm" autocomplete="off"
 					placeholder="Подтвердите имя пользователя" required="required" />
-				<form:errors class="help-inline bankingError" path="confirmUsername" />
+				<form:input class="help-inline bankingError" path="confirmUsername" />
 			</div>
 		</div>
 		<div class="control-group">
