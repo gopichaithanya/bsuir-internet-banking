@@ -14,11 +14,18 @@ public class PaymentValidator implements Validator {
 	private final MoneyValidator moneyValidator;
 	private static final String INFO_STRING_FIELD = "infoString";
 	private static final String MOBILE_PHONE_NUMBER_PATTERN = "[0-9]{3}[0-9]{7}";
-	private static final String HOME_PHONE_NUMBER_PATTERN = "[0-9]{3}[0-9]{5,6}";
+//	private static final String HOME_PHONE_NUMBER_PATTERN = "[0-9]{3}[0-9]{5,6}";
 	private static final String CONTRACT_NUMBER_PATTERN = "[0-9]{8,13}";
 	private static final String PROVIDER_CONTRACT_NUMBER_PATTERN = "[0-9]{6,13}";
 	private static final String WRONG_NUMBER_PATTERN = "0{1,}";
-	private static final String PERSANAL_ACCOUNT_PATTERN = "[0-3]{9,13}";
+//	private static final String PERSANAL_ACCOUNT_PATTERN = "[0-3]{9,13}";
+	private static final String WEB_WALLET_PATTERN = "[ZREUBGzreubg]{1}[0-9]{12}";
+//	WMZ Ч средства эквивалентные долларам —Ўј
+//	WMR Ч средства эквивалентные –оссийским рубл€м
+//	WME Ч средства эквивалентные евро
+//	WMU Ч средства эквивалентные гривнам ”краины.
+//	WMB Ч средства эквивалентные белорусским рубл€м.
+//	WMG Ч средства эквивалентные золоту.
 
 	@Autowired
 	public PaymentValidator(MoneyValidator moneyValidator) {
@@ -98,23 +105,10 @@ public class PaymentValidator implements Validator {
 			case 6:
 				// "Ќомер телефона"
 				if (!payment.getInfoString().trim()
-						.matches(HOME_PHONE_NUMBER_PATTERN)) {
+						.matches(WEB_WALLET_PATTERN)) {
 					errors.rejectValue(INFO_STRING_FIELD,
 							MessageValidation.WRONG_FORMAT,
-							MessageValidation.WRONG_PHONE_NUMBER_FORMAT);
-				}
-				break;
-			case 7:
-			case 8:
-			case 9:
-			case 10:
-			case 11:
-				// "Ћицевой счет"
-				if (!payment.getInfoString().trim()
-						.matches(PERSANAL_ACCOUNT_PATTERN)) {
-					errors.rejectValue(INFO_STRING_FIELD,
-							MessageValidation.WRONG_FORMAT,
-							MessageValidation.WRONG_PERSONAL_ACCOUNT_FORMAT);
+							MessageValidation.WRONG_WEB_WALLET_NUMBER);
 				}
 				break;
 			default:

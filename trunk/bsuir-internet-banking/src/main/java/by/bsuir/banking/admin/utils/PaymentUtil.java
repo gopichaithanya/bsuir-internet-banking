@@ -89,14 +89,7 @@ public class PaymentUtil {
 			label = ". Не менее 6 цифр.";
 			break;
 		case 6:
-			label = ". В формате yyyxxxxx, где y - код.";
-			break;
-		case 7:
-		case 8:
-		case 9:
-		case 10:
-		case 11:
-			label = ". Не менее 9 цифр.";
+			label = ". Первая буква и 12 цифр.";
 			break;
 		default:
 			break;
@@ -284,20 +277,29 @@ public class PaymentUtil {
 			label = ". В формате yyyxxxxxxx, где y - код.";
 			break;
 		case 7:
-			label = ". Не менее 8 цифр.";
-			break;
-		case 8:
-			label = ". Не менее 6 цифр.";
-			break;
-		case 9:
 			label = ". В формате yyyxxxxx, где y - код.";
 			break;
+		case 8:
+		case 9:
 		case 10:
 		case 11:
 		case 12:
+			label = ". Не менее 9 цифр.";
+			break;
 		case 13:
 		case 14:
+			label = ". Не менее 6 цифр.";
+			break;
+		case 15:
 			label = ". Не менее 9 цифр.";
+			break;
+		case 16:
+		case 17:
+			label = ". Не менее 6 цифр.";
+			break;
+		case 18:
+		case 19:
+			label = ". Не менее 8 цифр.";
 			break;
 		default:
 			break;

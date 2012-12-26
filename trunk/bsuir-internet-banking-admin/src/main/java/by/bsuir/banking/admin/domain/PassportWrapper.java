@@ -106,7 +106,7 @@ public class PassportWrapper {
 	 * Getting number
 	 * @return
 	 */
-	@NotEmpty
+
 	public String getNumber(){
 		return (passport.getNumber() == null) ? null : passport.getNumber().getValue();
 	}
@@ -123,7 +123,6 @@ public class PassportWrapper {
 	 * Getting seria
 	 * @return
 	 */
-	@NotEmpty
 	public String getSeria(){
 		return (passport.getSeria() == null) ? null : passport.getSeria().getValue();
 	}

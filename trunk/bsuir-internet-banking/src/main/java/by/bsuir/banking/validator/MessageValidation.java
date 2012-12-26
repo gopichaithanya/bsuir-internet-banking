@@ -35,7 +35,8 @@ public class MessageValidation {
 	public static final String DO_NOT_MATCH_USERNAMES = "Новое и подтвержденное имя пользователя не совпадают";
 	public static final String WRONG_PASSWORD = "Пароль должен содержать не менее 6 и не более 20, среди которых должна быть ОБЯЗАТЕЛЬНО хотя бы одна цифра и заглавная буква";
 	public static final String DO_NOT_MATCH_PASSWORD = "Новый пароль и подтвержденный пароль не совпадают";
-	public static final String WRONG_PERSONAL_ACCOUNT_FORMAT = "Неверный номер лицевого счета(9-13 цифр)";
+	public static final String WRONG_PERSONAL_ACCOUNT_FORMAT = "Неверный номер(9-13 цифр)";
+	public static final String WRONG_WEB_WALLET_NUMBER = "Неверный номер веб-кошелька(первая латинская буква и 12 цифр)";
 	
 
 }
