@@ -1,4 +1,4 @@
- package by.bsuir.banking.controller.currency;
+  package by.bsuir.banking.controller.currency;
 
 import java.io.IOException;
 import java.util.ArrayList;

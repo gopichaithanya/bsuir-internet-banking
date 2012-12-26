@@ -22,6 +22,7 @@ import by.bsuir.banking.proxy.authentication.IAuthenticationService;
 import by.bsuir.banking.proxy.authentication.IAuthenticationServiceAuthenticateAuthenticationFaultFaultFaultMessage;
 import by.bsuir.banking.proxy.authentication.IAuthenticationServiceAuthenticateDomainFaultFaultFaultMessage;
 import by.bsuir.banking.proxy.internetbanking.Client;
+import by.bsuir.banking.proxy.internetbanking.IInternetBankingService;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetClientAuthorizationFaultFaultFaultMessage;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetClientDomainFaultFaultFaultMessage;
 
@@ -88,14 +89,17 @@ public class LoginController extends EntityController{
 			IAuthenticationService service = ServiceProvider.getAuthenticationService();
 			AuthenticationCredential credential = service.authenticate(user.getUsername(),
 					user.getPassword());
+			IInternetBankingService intS = ServiceProvider.getInternetBankingService();
+			
 			user.setRole(credential.getRole().getValue());
 			if(!user.getRole().equals(MessageConstants.CLIENT_ROLE)){
 				result.reject("logonError", "Имя пользователя и/или пароль неверны");
 				AdminUtils.logInfo(logger, MessageConstants.USER_AUTH_FAILED_CLIENT);
 				return VIEW_NAME;
 			}
-			Client client = ServiceProvider.getInternetBankingService().getClient(credential.getSecurityToken().getValue());
+			 Client client = ServiceProvider.getInternetBankingService().getClient(credential.getSecurityToken().getValue());
 			
+			user.setLasDate(client.getLastAuthorizationDateTime().toGregorianCalendar().getTime());
 			user.setName(client.getFirstName().getValue() + " " + client.getLastName().getValue());
 			user.setSecurityToken(credential.getSecurityToken().getValue());
 			

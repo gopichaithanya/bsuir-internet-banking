@@ -90,7 +90,7 @@ public class ChangeLoginController extends EntityController {
 			AuthenticationCredential credential = authService.authenticate(
 					wrapper.getUsername(), password);
 			user.setRole(credential.getRole().getValue());
-			user.setUsername(wrapper.getUsername());
+			user.setUsername(wrapper.getUsername()); 
 			if (!user.getRole().equals(MessageConstants.CLIENT_ROLE)) {
 				result.reject("logonError",
 						"Имя пользователя и/или пароль неверны");

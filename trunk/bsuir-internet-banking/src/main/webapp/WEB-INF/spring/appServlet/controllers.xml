@@ -15,6 +15,7 @@
 	<!-- <mvc:view-controller path="/" view-name="home" /> -->
 	<mvc:view-controller path="/auth/failed" view-name="authorization-error"/>
 	<mvc:view-controller path="/getstarted" view-name="getstarted" />
+	<mvc:view-controller path="/guide" view-name="guide" />
 	<mvc:view-controller path="/errors-validations"
 		view-name="errors-validations" />
 	

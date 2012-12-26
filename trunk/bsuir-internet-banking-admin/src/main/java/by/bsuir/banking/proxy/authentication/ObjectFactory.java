@@ -52,12 +52,12 @@ public class ObjectFactory {
     private final static QName _Boolean_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "boolean");
     private final static QName _AuthenticationFault_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.Services.Interfaces.FaultContracts", "AuthenticationFault");
     private final static QName _DomainFault_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.Services.Interfaces.FaultContracts", "DomainFault");
-    private final static QName _AuthenticationFaultMessage_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.Services.Interfaces.FaultContracts", "Message");
-    private final static QName _AuthenticatePassword_QNAME = new QName("http://tempuri.org/", "password");
-    private final static QName _AuthenticateLogin_QNAME = new QName("http://tempuri.org/", "login");
     private final static QName _AuthenticationCredentialSecurityToken_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", "SecurityToken");
     private final static QName _AuthenticationCredentialRole_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", "Role");
     private final static QName _AuthenticateResponseAuthenticateResult_QNAME = new QName("http://tempuri.org/", "AuthenticateResult");
+    private final static QName _AuthenticatePassword_QNAME = new QName("http://tempuri.org/", "password");
+    private final static QName _AuthenticateLogin_QNAME = new QName("http://tempuri.org/", "login");
+    private final static QName _DomainFaultMessage_QNAME = new QName("http://schemas.datacontract.org/2004/07/InternetBanking.Services.Interfaces.FaultContracts", "Message");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: by.bsuir.banking.proxy.authentication
@@ -67,11 +67,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link AuthenticationFault }
+     * Create an instance of {@link AuthenticationCredential }
      * 
      */
-    public AuthenticationFault createAuthenticationFault() {
-        return new AuthenticationFault();
+    public AuthenticationCredential createAuthenticationCredential() {
+        return new AuthenticationCredential();
+    }
+
+    /**
+     * Create an instance of {@link AuthenticateResponse }
+     * 
+     */
+    public AuthenticateResponse createAuthenticateResponse() {
+        return new AuthenticateResponse();
     }
 
     /**
@@ -91,19 +99,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link AuthenticationCredential }
+     * Create an instance of {@link AuthenticationFault }
      * 
      */
-    public AuthenticationCredential createAuthenticationCredential() {
-        return new AuthenticationCredential();
-    }
-
-    /**
-     * Create an instance of {@link AuthenticateResponse }
-     * 
-     */
-    public AuthenticateResponse createAuthenticateResponse() {
-        return new AuthenticateResponse();
+    public AuthenticationFault createAuthenticationFault() {
+        return new AuthenticationFault();
     }
 
     /**
@@ -326,9 +326,27 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.Services.Interfaces.FaultContracts", name = "Message", scope = AuthenticationFault.class)
-    public JAXBElement<String> createAuthenticationFaultMessage(String value) {
-        return new JAXBElement<String>(_AuthenticationFaultMessage_QNAME, String.class, AuthenticationFault.class, value);
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", name = "SecurityToken", scope = AuthenticationCredential.class)
+    public JAXBElement<String> createAuthenticationCredentialSecurityToken(String value) {
+        return new JAXBElement<String>(_AuthenticationCredentialSecurityToken_QNAME, String.class, AuthenticationCredential.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", name = "Role", scope = AuthenticationCredential.class)
+    public JAXBElement<String> createAuthenticationCredentialRole(String value) {
+        return new JAXBElement<String>(_AuthenticationCredentialRole_QNAME, String.class, AuthenticationCredential.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AuthenticationCredential }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "AuthenticateResult", scope = AuthenticateResponse.class)
+    public JAXBElement<AuthenticationCredential> createAuthenticateResponseAuthenticateResult(AuthenticationCredential value) {
+        return new JAXBElement<AuthenticationCredential>(_AuthenticateResponseAuthenticateResult_QNAME, AuthenticationCredential.class, AuthenticateResponse.class, value);
     }
 
     /**
@@ -353,36 +371,18 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", name = "SecurityToken", scope = AuthenticationCredential.class)
-    public JAXBElement<String> createAuthenticationCredentialSecurityToken(String value) {
-        return new JAXBElement<String>(_AuthenticationCredentialSecurityToken_QNAME, String.class, AuthenticationCredential.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.DAL.Model", name = "Role", scope = AuthenticationCredential.class)
-    public JAXBElement<String> createAuthenticationCredentialRole(String value) {
-        return new JAXBElement<String>(_AuthenticationCredentialRole_QNAME, String.class, AuthenticationCredential.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
     @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.Services.Interfaces.FaultContracts", name = "Message", scope = DomainFault.class)
     public JAXBElement<String> createDomainFaultMessage(String value) {
-        return new JAXBElement<String>(_AuthenticationFaultMessage_QNAME, String.class, DomainFault.class, value);
+        return new JAXBElement<String>(_DomainFaultMessage_QNAME, String.class, DomainFault.class, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AuthenticationCredential }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "AuthenticateResult", scope = AuthenticateResponse.class)
-    public JAXBElement<AuthenticationCredential> createAuthenticateResponseAuthenticateResult(AuthenticationCredential value) {
-        return new JAXBElement<AuthenticationCredential>(_AuthenticateResponseAuthenticateResult_QNAME, AuthenticationCredential.class, AuthenticateResponse.class, value);
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/InternetBanking.Services.Interfaces.FaultContracts", name = "Message", scope = AuthenticationFault.class)
+    public JAXBElement<String> createAuthenticationFaultMessage(String value) {
+        return new JAXBElement<String>(_DomainFaultMessage_QNAME, String.class, AuthenticationFault.class, value);
     }
 
 }

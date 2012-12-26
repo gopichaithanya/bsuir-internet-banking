@@ -1,4 +1,4 @@
- package by.bsuir.banking.controller.payment;
+package by.bsuir.banking.controller.payment;
 
 import java.util.ArrayList;
 import java.util.HashMap;
