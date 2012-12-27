@@ -129,7 +129,7 @@ body {
 			$('#inputBirthdayDate').datepicker({
 				dateFormat : "dd/mm/yy",
 				showOn : 'button',
-				buttonImage : "/resources/img/calendar.gif",
+				buttonImage : "<c:url value='/resources/img/calendar.gif' />",
 				buttonImageOnly : true,
 				minDate : '-120Y',
 				maxDate : '-18Y',
@@ -139,7 +139,7 @@ body {
 			$('#inputDateOfExpiry').datepicker({
 				dateFormat : "dd/mm/yy",
 				showOn : 'button',
-				buttonImage : "/resources/img/calendar.gif",
+				buttonImage : "<c:url value='/resources/img/calendar.gif' />",
 				buttonImageOnly : true,
 				minDate : '+1M',
 				maxDate : '+50Y',
@@ -149,7 +149,7 @@ body {
 			$('#inputDateOfIssue').datepicker({
 				dateFormat : "dd/mm/yy",
 				showOn : 'button',
-				buttonImage : "/resources/img/calendar.gif",
+				buttonImage : "<c:url value='/resources/img/calendar.gif' />",
 				buttonImageOnly : true,
 				minDate : '-50Y',
 				maxDate : '+0D',

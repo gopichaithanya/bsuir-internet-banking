@@ -95,8 +95,8 @@ public class EditLimitsController extends EntityController {
 		if (result.hasErrors()) {
 			return VIEW_NAME;
 		}
-		limits.setMoneyLimit(BigDecimal.valueOf(Double.valueOf(limits.getEnteredMoneyLimit().trim())));
-		limits.setOperationsLimit(Integer.valueOf(limits.getEnteredOperationsLimit().trim()));
+		limits.setMoneyLimit(BigDecimal.valueOf(Double.valueOf(limits.getEnteredMoneyLimit().replace(',', '.').trim())));
+		limits.setOperationsLimit(Integer.valueOf(limits.getEnteredOperationsLimit().replace(',', '.').trim()));
 		try {
 			Card card = service.getCardForClient(cardId, securityToken);
 			CardWrapper wrapper = new CardWrapper(card);

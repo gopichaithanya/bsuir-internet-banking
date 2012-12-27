@@ -8,13 +8,13 @@
 <body>
 </c:if>
 <div id="content">
-	<form:form id="form" method="post" class="form span5" name="form"
+	<form:form id="form" method="post" class="form span10" name="form"
 		modelAttribute="rates">
 		<div id="ratesInfo">
 			<s:bind path="*">
 				<c:if test="${status.error}">
 					<div id="message" class="alert alert-error">
-						<div>Form has errors</div>
+						<div>${status.errorMessage }</div>
 
 					</div>
 
@@ -33,9 +33,9 @@
 							<th>${rates.purchaseRates[i].currencyType.shortName}</th>
 							<td>
 								<div class="control-group">
-									<div class="controls" style="width: 50px">
+									<div class="controls">
 										<form:input path="purchaseRates[${i}].amount"
-											id="inputPurchaseRate" style="width:50px" />
+											id="inputPurchaseRate" class="input-small" />
 										<form:errors path="purchaseRates[${i}].amount" />
 											<%--<c:forEach items="${messages}" var="message" begin="100" >
 											 <c:when test="${fn:startsWith(message,'Failed') == true}">
@@ -51,9 +51,9 @@
 							</td>
 							<td>
 								<div class="control-group">
-									<div class="controls" style="width: 50px">
+									<div class="controls">
 										<form:input path="sellRates[${i}].amount" id="inputSellRate"
-											style="width:50px" />
+											class="input-small" />
 										<form:errors path="sellRates[${i}].amount" />
 									</div>
 								</div>

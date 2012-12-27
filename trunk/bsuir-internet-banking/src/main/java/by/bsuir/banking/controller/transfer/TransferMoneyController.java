@@ -41,7 +41,7 @@ import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetBallance
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetCardsAuthorizationFaultFaultFaultMessage;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetCardsDomainFaultFaultFaultMessage;
 import by.bsuir.banking.proxy.internetbanking.IInternetBankingServiceGetCurrencyTypesDomainFaultFaultFaultMessage;
-import by.bsuir.banking.validator.MoneyValidator;
+import by.bsuir.banking.validator.TransferValidator;
 
 /**
  * Controller for transfer between client's cards
@@ -60,7 +60,8 @@ public class TransferMoneyController extends EntityController {
 	private final static String VIEW_NAME_STEP_1 = "transfer-step-1";
 	private final static String VIEW_NAME_STEP_2 = "transfer-step-2";
 	@Autowired
-	MoneyValidator moneyValidator;
+	private TransferValidator transferValidator;
+
 
 	public TransferMoneyController() {
 		service = ServiceProvider.getInternetBankingService(); 
@@ -191,11 +192,11 @@ public class TransferMoneyController extends EntityController {
 			@ModelAttribute("cardSelect") List<CardSelectInfo> cardSelect, Model model, HttpSession session,
 			HttpServletRequest request, HttpServletResponse response,
 			RedirectAttributes attrs) throws IOException{
-		moneyValidator.validate(transfer.getAmount(), result);
+		transferValidator.validate(transfer, result);
 		if(result.hasErrors()){
 			return VIEW_NAME_STEP_2;
 		}
-		transfer.getAmount().setAmount(BigDecimal.valueOf(Double.valueOf(transfer.getAmount().getEnteredAmount())));
+		transfer.getAmount().setAmount(BigDecimal.valueOf(Double.valueOf(transfer.getAmount().getEnteredAmount().trim().replace(',', '.'))));
 		try {
 			//lets name currencyTypeIds
 			List<CurrencyTypeWrapper> currrencies = CardUtil.getCurrencyTypes();
@@ -204,7 +205,29 @@ public class TransferMoneyController extends EntityController {
 					transfer.getAmount().setCurrencyTypeId(cur.getCurrencyType().getId());
 				}
 			}
-			service.executeTransfer(transfer.getSenderCardNumber(), transfer.getReceiverCardNumber(), transfer.getAmount().getMoney(), getSecurityToken(session));
+			String resp = service.executeTransfer(transfer.getSenderCardNumber(), transfer.getReceiverCardNumber(), transfer.getAmount().getMoney(), getSecurityToken(session));
+			if (resp.equals("Failure")) {
+				result.reject("paymentError",
+						"Перевод не может быть проведен. Проверьте правильность введенных данных");
+
+				return VIEW_NAME_STEP_2;
+			}
+			if (resp.equals("OperationsLimit")) {
+				result.reject("paymentError",
+						"Перевод не может быть проведен. Вы превисили лимит по расходным операциям");
+				return VIEW_NAME_STEP_2;
+			}
+			if (resp.equals("MoneyLimit")) {
+				result.reject(
+						"paymentError",
+						"Перевод не может быть проведен. Вы превисили лимит по сумме на расходные операции");
+				return VIEW_NAME_STEP_2;
+			}
+			if (resp.equals("Balance")) {
+				result.reject("paymentError",
+						"Перевод не может быть проведен. На карте недостаточно средств");
+				return VIEW_NAME_STEP_2;
+			}
 		} catch (IInternetBankingServiceExecuteTransferAuthorizationFaultFaultFaultMessage e) {
 			response.sendRedirect(request.getContextPath() + MessageConstants.AUTH_FAILED_VIEW);
 		} catch (IInternetBankingServiceExecuteTransferDomainFaultFaultFaultMessage e) {

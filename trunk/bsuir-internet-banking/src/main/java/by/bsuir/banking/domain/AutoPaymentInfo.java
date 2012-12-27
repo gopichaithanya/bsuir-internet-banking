@@ -11,7 +11,6 @@ public class AutoPaymentInfo {
 	private EripWrapper erip = null;
 	private ClientWrapper client;
 	private String displayCard;
-	@NotEmpty
 	private String infoString;
 	private String cardNumber;
 	private Integer dayOfMonth;

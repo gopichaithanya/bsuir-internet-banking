@@ -99,7 +99,7 @@ public class ReplenishAccountController extends EntityController {
 		if (result.hasErrors()) {
 			return VIEW_NAME;
 		}
-		amount.setAmount(BigDecimal.valueOf(Double.valueOf(amount.getEnteredAmount().trim())));
+		amount.setAmount(BigDecimal.valueOf(Double.valueOf(amount.getEnteredAmount().replace(',', '.').trim())));
 		try {
 			service.replenishAccount(accountId, amount.getMoney(), getSecurityToken(session));
 		} catch (IInternetBankingServiceReplenishAccountAuthorizationFaultFaultFaultMessage e) {

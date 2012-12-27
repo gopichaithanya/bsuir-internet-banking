@@ -25,7 +25,7 @@
 			</form:label> --%>
 			<div class="controls">
 				<form:input path="enteredAmount" autocomplete="off"
-					placeholder="enteredAmount" />(${amount.currencyType})
+					placeholder="Amount" />(${amount.currencyType})
 				<form:errors class="help-inline error" path="enteredAmount" />
 			</div>
 		</div>

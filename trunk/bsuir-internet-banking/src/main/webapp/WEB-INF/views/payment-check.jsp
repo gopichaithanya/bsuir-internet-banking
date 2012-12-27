@@ -77,13 +77,13 @@
 						</div>
 					</div>
 					<div class="control-group">
-						<form:label class="control-label" path="amount.amount">
+						<form:label class="control-label" path="amount.enteredAmount">
 							<strong>Сумма</strong>
-							<form:errors path="amount.amount" />
+							<form:errors path="amount.enteredAmount" />
 						</form:label>
 						<div class="controls">
 							<form:input readonly="true" required="required"
-								path="amount.amount" />
+								path="amount.enteredAmount" />
 							<span>(BYR)</span>
 
 						</div>

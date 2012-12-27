@@ -28,7 +28,7 @@
 		</div>
 		<div class="control-group">
 			<div class="controls">
-				<form:input path="password" id="inputPassword"
+				<form:password path="password" id="inputPassword"
 					placeholder="Password" />
 				<form:errors class="help-inline" path="password" />
 			</div>

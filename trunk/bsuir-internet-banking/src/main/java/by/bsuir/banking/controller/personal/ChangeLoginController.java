@@ -52,14 +52,15 @@ public class ChangeLoginController extends EntityController {
 		service = ServiceProvider.getInternetBankingService();
 	}
 
-	@ModelAttribute("changeusername")
+	/*@ModelAttribute("changeusername")
 	public ChangeUsernameWrapper createModel() {
 		return new ChangeUsernameWrapper();
-	}
+	}*/
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String createForm(Model model, HttpSession session) {
-
+		ChangeUsernameWrapper wrapper = new ChangeUsernameWrapper();
+		model.addAttribute("changeusername", wrapper);
 		return VIEW_NAME;
 	}
 

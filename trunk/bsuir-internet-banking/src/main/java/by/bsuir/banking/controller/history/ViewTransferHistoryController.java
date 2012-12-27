@@ -75,6 +75,7 @@ public class ViewTransferHistoryController extends EntityController {
 			}
 			Collections.sort(transfers);
 			Collections.reverse(transfers);
+			System.out.println("!!!!!!!!!!!!!!!!!!"+transfers.size());
 			model.addAttribute("transfers", transfers);
 			
 		} catch (IInternetBankingServiceGetPeriodTransfersForCardAuthorizationFaultFaultFaultMessage e) {

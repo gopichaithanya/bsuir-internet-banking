@@ -34,7 +34,7 @@ import javax.xml.bind.annotation.XmlType;
     "id",
     "name"
 })
-public class LegalPersonCategory {
+public class LegalPersonCategory implements Comparable<LegalPersonCategory>{
 
     @XmlElement(name = "Id")
     protected Integer id;
@@ -88,5 +88,10 @@ public class LegalPersonCategory {
     public void setName(JAXBElement<String> value) {
         this.name = ((JAXBElement<String> ) value);
     }
+
+	@Override
+	public int compareTo(LegalPersonCategory o) {
+		return this.getId().compareTo(o.getId());
+	}
 
 }

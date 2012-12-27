@@ -17,7 +17,7 @@ public class MessageValidation {
 	
 	public static final String EMPTY_FIELD = "must not be empty";
 	public static final String NEGATIVE_FIELD = "must be positive";
-	public static final String WRONG_PHONE_NUMBER_FORMAT = "wrong format. must be (xxx)xxxxxxx";
+	public static final String WRONG_PHONE_NUMBER_FORMAT = "wrong format. must be xxxxxxxxxx";
 	public static final String WRONG_PASSPORT_NUMBER = "wrong format. must be only 7 numbers";
 	public static final String WRONG_PASSPORT_SERIA = "wrong format. must be only 2 letters";
 	public static final String WRONG_EMAIL_ADDRESS_FORMAT = "wrong format";
@@ -30,6 +30,7 @@ public class MessageValidation {
 	public static final String WRONG_SECRET_WORD = "must be 3-20 letters. without numbers and whitespaces";
 	public static final String WRONG_NAME = "must contain only letters without whitespaces";
 	public static final String WRONG_AUTHORITY = "must contain only letters and symbol - ";
+	public static final String WRONG_MONEY_FORMAT = "must contain only numbers without +/-";
 	
 	
 

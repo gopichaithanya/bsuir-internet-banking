@@ -34,7 +34,7 @@ import javax.xml.bind.annotation.XmlType;
     "id",
     "name"
 })
-public class Region {
+public class Region implements Comparable<Region>{
 
     @XmlElement(name = "Id")
     protected Integer id;
@@ -88,5 +88,10 @@ public class Region {
     public void setName(JAXBElement<String> value) {
         this.name = ((JAXBElement<String> ) value);
     }
+
+	@Override
+	public int compareTo(Region o) {
+		return getId().compareTo(o.getId());
+	}
 
 }

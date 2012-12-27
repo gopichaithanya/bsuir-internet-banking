@@ -1,9 +1,9 @@
  package by.bsuir.banking.controller.payment;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 import javax.servlet.http.HttpSession;
 
@@ -53,8 +53,8 @@ public class PaymentsTreeController extends EntityController {
 	@RequestMapping(method = RequestMethod.GET)
 	public String createTree(HttpSession session, Model model) {
 		String securityToken = getSecurityToken(session);
-		Map<LegalPersonCategory, List<LegalPerson>> categories = new HashMap<LegalPersonCategory, List<LegalPerson>>();
-		Map<Region,Map<City,List<Service>>> eripPayments = new HashMap<Region, Map<City,List<Service>>>();
+		Map<LegalPersonCategory, List<LegalPerson>> categories = new TreeMap<LegalPersonCategory, List<LegalPerson>>();
+		Map<Region,Map<City,List<Service>>> eripPayments = new TreeMap<Region, Map<City,List<Service>>>();
 		
 		try { 
 			//regular payments
@@ -73,9 +73,10 @@ public class PaymentsTreeController extends EntityController {
 				}
 			}
 			
+			
 			//erip payments
 			for(Region region:service.getAllRegions(securityToken).getRegion()){
-				Map<City,List<Service>> cities = new HashMap<City, List<Service>>();
+				Map<City,List<Service>> cities = new TreeMap<City, List<Service>>();
 				for(City city:service.getCitiesForRegion(region.getId(), securityToken).getCity()){
 					List<Service> services = service.getServicesForCity(city.getId(), securityToken).getService();
 					cities.put(city, services);

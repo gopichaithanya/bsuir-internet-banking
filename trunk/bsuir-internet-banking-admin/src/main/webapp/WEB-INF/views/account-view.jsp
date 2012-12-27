@@ -92,16 +92,17 @@
 
 		</div>
 		<div class="row-fluid">
-		<input type="submit" class="btn" value="Close account"
-						onclick="if (confirm('Are you sure you want to close account?')==true){this.disabled=true;document.form1.submit();}" />
+		<form class="form form-inline pull-right" name="form1" method="post"
+					action="<c:url value='/account/${client.id }/close/${account_card.accountId }' />">
+				<input type="submit" class="btn" value="Close account"
+						onclick="if (confirm('Are you sure you want to close account?')==true){this.disabled=true;document.form1.submit();}" />	
+				</form>
+		
 			<c:if test="${!hasCard}">
 				<a class="btn btn-primary" style="float: left;"
 					href="<c:url value="/account/${client.id}/card/${account_card.accountId}/create" />">Create
 					card</a>
-				<form class="form form-inline pull-right" name="form1" method="post"
-					action="<c:url value='/account/${client.id }/close/${account_card.accountId }' />">
-					
-				</form>
+				
 			</c:if>
 			<c:if test="${hasCard}">
 				<c:choose>

@@ -1,7 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@ page session="false"%>
 <c:if test="${!ajaxRequest}">
 	<html>
 <body>
@@ -16,7 +15,7 @@
 		
 		<s:bind path="*">
 			<c:if test="${status.error}">
-				<div id="message" class="alert alert-error">Form has errors</div>
+				<div id="message" class="alert alert-error">${status.errorMessage }</div>
 			</c:if>
 		</s:bind>
 		<div class="control-group">
@@ -28,7 +27,7 @@
 		</div>
 		<div class="control-group">
 			<div class="controls">
-				<form:input path="password" id="inputPassword"
+				<form:password path="password" id="inputPassword"
 					placeholder="Password" />
 				<form:errors class="help-inline" path="password" />
 			</div>
@@ -63,12 +62,14 @@
 				<form:errors class="help-inline" path="lastName" />
 			</div>
 		</div>
+		<c:if test="${user.username != admin.login}" >
 		<div class="control-group">
 			<div class="controls">
 				<button type="submit" class="btn" onclick="this.disabled=true;document.form.submit();">Submit</button>
 				<a class="btn btn-danger" onclick="return confirm('Are you sure you want to delete administrator?')" href="<c:url value="/admin/delete/${admin.id}"/>">Delete</a>
 			</div>
 		</div>
+		</c:if>
 	</form:form>
 	
 	<script type="text/javascript">

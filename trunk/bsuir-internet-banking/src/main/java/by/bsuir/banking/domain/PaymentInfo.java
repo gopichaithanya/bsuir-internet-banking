@@ -1,7 +1,5 @@
 package by.bsuir.banking.domain;
 
-import org.hibernate.validator.constraints.NotEmpty;
-
 import by.bsuir.banking.admin.utils.PaymentUtil;
 
 /**
@@ -22,7 +20,6 @@ public class PaymentInfo {
 	private boolean toSave;
 	private Integer savedId;
 
-	@NotEmpty
 	private String infoString;
 	private MoneyWrapper amount;
 

@@ -36,8 +36,8 @@
 						Last Name <form:errors path="lastName" />
 			</form:label> --%>
 			<div class="controls">
-				<form:input path="secretWord" id="inputSecretWord"
-					placeholder="Secret Word" />
+				<form:password path="secretWord" id="inputSecretWord"
+					placeholder="Secret Word" autocomplete="off"/>
 				<form:errors class="help-inline" path="secretWord" />
 			</div>
 		</div>

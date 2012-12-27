@@ -111,7 +111,7 @@ public class EditAutoPymentController extends EntityController {
 			}
 			info.setSaved(true);
 			info.setAmount(autopayment.getAmount());
-			info.setCardNumber(card.getHiddenNumber());
+			info.setCardNumber(card.getCardNumber());
 			info.setClient(client);
 			info.setDayOfMonth(autopayment.getDayOfMonth());
 			info.setInfoString(InformationParser.getInfoString(autopayment.getInformation()));
