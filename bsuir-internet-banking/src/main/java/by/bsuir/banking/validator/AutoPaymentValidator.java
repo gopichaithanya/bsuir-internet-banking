@@ -18,7 +18,8 @@ public class AutoPaymentValidator implements Validator {
 	private static final String CONTRACT_NUMBER_PATTERN = "[0-9]{8,13}";
 	private static final String PROVIDER_CONTRACT_NUMBER_PATTERN = "[0-9]{6,13}";
 	private static final String WRONG_NUMBER_PATTERN = "0{1,}";
-	private static final String PERSANAL_ACCOUNT_PATTERN = "[0-3]{9,13}";
+	private static final String PERSANAL_ACCOUNT_PATTERN = "[0-9]{9,13}";
+	private static final String WEB_WALLET_PATTERN = "[ZREUBGzreubg]{1}[0-9]{12}";
 	
 	@Autowired
 	public AutoPaymentValidator(MoneyValidator moneyValidator) {
@@ -56,12 +57,9 @@ public class AutoPaymentValidator implements Validator {
 			if (autopayment.getErip() != null) {
 				switch (autopayment.getErip().getId()) {
 				case 4:
-					// label = "Номер договора";
-					if (!autopayment.getInfoString().trim()
-							.matches(PROVIDER_CONTRACT_NUMBER_PATTERN)) {
-						errors.rejectValue(INFO_STRING_FIELD,
-								MessageValidation.WRONG_FORMAT,
-								MessageValidation.WRONG_CONTRACT_FORMAT);
+					//label = ". Не менее 6 цифр.";
+					if (!autopayment.getInfoString().trim().matches(PROVIDER_CONTRACT_NUMBER_PATTERN)){
+						errors.rejectValue(INFO_STRING_FIELD, MessageValidation.WRONG_FORMAT, MessageValidation.WRONG_CONTRACT_FORMAT);
 					}
 					break;
 				case 1:
@@ -69,60 +67,61 @@ public class AutoPaymentValidator implements Validator {
 				case 3:
 				case 5:
 				case 6:
-					// label = "Номер телефона";
-					if (!autopayment.getInfoString().trim()
-							.matches(MOBILE_PHONE_NUMBER_PATTERN)) {
-						errors.rejectValue(INFO_STRING_FIELD,
-								MessageValidation.WRONG_FORMAT,
-								MessageValidation.WRONG_PHONE_NUMBER_FORMAT);
+					//label = ". В формате yyyxxxxxxx, где y - код.";
+					if (!autopayment.getInfoString().trim().matches(MOBILE_PHONE_NUMBER_PATTERN)){
+						errors.rejectValue(INFO_STRING_FIELD, MessageValidation.WRONG_FORMAT, MessageValidation.WRONG_PHONE_NUMBER_FORMAT);
 					}
 					break;
 				case 7:
-					// label = "Номер контракта";
-					if (!autopayment.getInfoString().trim()
-							.matches(CONTRACT_NUMBER_PATTERN)) {
-						errors.rejectValue(INFO_STRING_FIELD,
-								MessageValidation.WRONG_FORMAT,
-								MessageValidation.WRONG_CONTRACT_FORMAT);
+					//label = ". В формате yyyxxxxx, где y - код.";
+					if (!autopayment.getInfoString().trim().matches(HOME_PHONE_NUMBER_PATTERN)){
+						errors.rejectValue(INFO_STRING_FIELD, MessageValidation.WRONG_FORMAT, MessageValidation.WRONG_HOME_PHONE_NUMBER_FORMAT);
 					}
-
 					break;
 				case 8:
-					// label = "Номер заказа билета";
-					if (!autopayment.getInfoString().trim()
-							.matches(PROVIDER_CONTRACT_NUMBER_PATTERN)) {
-						errors.rejectValue(INFO_STRING_FIELD,
-								MessageValidation.WRONG_FORMAT,
-								MessageValidation.WRONG_CONTRACT_FORMAT);
-					}
-					break;
 				case 9:
-					// label = "Номер телефона";
-					if (!autopayment.getInfoString().trim()
-							.matches(HOME_PHONE_NUMBER_PATTERN)) {
-						errors.rejectValue(INFO_STRING_FIELD,
-								MessageValidation.WRONG_FORMAT,
-								MessageValidation.WRONG_PHONE_NUMBER_FORMAT);
-					}
-					break;
 				case 10:
 				case 11:
 				case 12:
+					//label = ". Не менее 9 цифр.";
+					if (!autopayment.getInfoString().trim().matches(PERSANAL_ACCOUNT_PATTERN)){
+						errors.rejectValue(INFO_STRING_FIELD, MessageValidation.WRONG_FORMAT, MessageValidation.WRONG_PERSONAL_ACCOUNT_FORMAT);
+					}
+					break;
 				case 13:
 				case 14:
-					// label = "Лицевой счет";
-					if (!autopayment.getInfoString().trim()
-							.matches(PERSANAL_ACCOUNT_PATTERN)) {
-						errors.rejectValue(INFO_STRING_FIELD,
-								MessageValidation.WRONG_FORMAT,
-								MessageValidation.WRONG_PERSONAL_ACCOUNT_FORMAT);
+					//label = ". Не менее 6 цифр.";
+					if (!autopayment.getInfoString().trim().matches(PROVIDER_CONTRACT_NUMBER_PATTERN)){
+						errors.rejectValue(INFO_STRING_FIELD, MessageValidation.WRONG_FORMAT, MessageValidation.WRONG_CONTRACT_FORMAT);
+					}
+					break;
+				case 15:
+					//label = ". Не менее 9 цифр.";
+					if (!autopayment.getInfoString().trim().matches(PERSANAL_ACCOUNT_PATTERN)){
+						errors.rejectValue(INFO_STRING_FIELD, MessageValidation.WRONG_FORMAT, MessageValidation.WRONG_PERSONAL_ACCOUNT_FORMAT);
+					}
+					break;
+				case 16:
+				case 17:
+					//label = ". Не менее 6 цифр.";
+					if (!autopayment.getInfoString().trim().matches(PROVIDER_CONTRACT_NUMBER_PATTERN)){
+						errors.rejectValue(INFO_STRING_FIELD, MessageValidation.WRONG_FORMAT, MessageValidation.WRONG_CONTRACT_FORMAT);
+					}
+					break;
+				case 18:
+				case 19:
+					//label = ". Не менее 8 цифр.";
+					if (!autopayment.getInfoString().trim().matches(CONTRACT_NUMBER_PATTERN)){
+						errors.rejectValue(INFO_STRING_FIELD, MessageValidation.WRONG_FORMAT, MessageValidation.WRONG_CONTRACT_FORMAT);
 					}
 					break;
 				default:
 					break;
 				}
+				
 			} else {
 				switch (autopayment.getLegalPerson().getCategoryId()) {
+				
 				case 2:
 					// "Номер телефона"
 					if (!autopayment.getInfoString().trim()
@@ -162,28 +161,16 @@ public class AutoPaymentValidator implements Validator {
 				case 6:
 					// "Номер телефона"
 					if (!autopayment.getInfoString().trim()
-							.matches(HOME_PHONE_NUMBER_PATTERN)) {
+							.matches(WEB_WALLET_PATTERN)) {
 						errors.rejectValue(INFO_STRING_FIELD,
 								MessageValidation.WRONG_FORMAT,
-								MessageValidation.WRONG_PHONE_NUMBER_FORMAT);
-					}
-					break;
-				case 7:
-				case 8:
-				case 9:
-				case 10:
-				case 11:
-					// "Лицевой счет"
-					if (!autopayment.getInfoString().trim()
-							.matches(PERSANAL_ACCOUNT_PATTERN)) {
-						errors.rejectValue(INFO_STRING_FIELD,
-								MessageValidation.WRONG_FORMAT,
-								MessageValidation.WRONG_PERSONAL_ACCOUNT_FORMAT);
+								MessageValidation.WRONG_WEB_WALLET_NUMBER);
 					}
 					break;
 				default:
 					break;
 				}
+				
 			}
 		}
 		try {
