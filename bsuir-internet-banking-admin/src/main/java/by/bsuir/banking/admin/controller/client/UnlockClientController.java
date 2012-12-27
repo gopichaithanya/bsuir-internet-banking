@@ -45,6 +45,9 @@ public class UnlockClientController extends EntityController {
 			}
 			String login = new BigInteger(50, random).toString(32);
 		    String password = new BigInteger(50, random).toString(32);
+		    attrs.addFlashAttribute("newLogin", login);
+		    attrs.addFlashAttribute("newPassword", password);
+			
 			wrapper.setLogin(login);
 			wrapper.setPassword(password);
 			service.unlockClient(clientId, login, password, securityToken);

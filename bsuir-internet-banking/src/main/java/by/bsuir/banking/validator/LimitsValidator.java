@@ -6,9 +6,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
-import by.bsuir.banking.domain.CardWrapper;
 import by.bsuir.banking.domain.LimitsWrapper;
-import by.bsuir.banking.domain.MoneyWrapper;
 
 @Component
 public class LimitsValidator implements Validator {
@@ -17,7 +15,7 @@ public class LimitsValidator implements Validator {
 	private static final String OPERATIONS_LIMIT_FIELD = "enteredOperationsLimit";
 	private static final String DECIMAL_PATTERN = "[0-9]+((\\.|\\,)?[0-9]+)?";
 	private static final String INTEGER_PATTERN = "[0-9]+";
-	private static final String HUGE_DECIMAL_PATTERN = "[0-9]{1,7}((\\.|\\,){1}[0-9]+){0,}";
+	private static final String HUGE_DECIMAL_PATTERN = "[0-9]{1,8}((\\.|\\,){1}[0-9]+){0,}";
 	private static final String HUGE_INTEGER_PATTERN = "[0-9]{1,7}";
 	
 	private static final String WRONG_DECIMAL_FORMAT_PATTERN = "0{1}0+[1-9]?((\\.|\\,)?[0-9]+)?"; //contains first number == 0
@@ -48,7 +46,7 @@ public class LimitsValidator implements Validator {
 		} else if (!limits.getEnteredMoneyLimit().trim().matches(HUGE_DECIMAL_PATTERN)) {
 			errors.rejectValue(MONEY_LIMIT_FIELD, MessageValidation.WRONG_FORMAT, MessageValidation.HUGE_NUMBER);
 		} else {
-			BigDecimal moneyLimit = BigDecimal.valueOf(Double.valueOf(limits.getEnteredMoneyLimit().trim()));
+			BigDecimal moneyLimit = BigDecimal.valueOf(Double.valueOf(limits.getEnteredMoneyLimit().replace(',', '.').trim()));
 			if (limits.getCurrencyTypeId() != null){
 				maxMoneyLimit = getMoneyLimit(limits.getCurrencyTypeId());
 			}

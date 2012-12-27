@@ -31,7 +31,7 @@
 				<th>Статус</th>
 			</tr>
 			<tr>
-			<c:if test="${not empty trasfers}">
+			<c:if test="${not empty transfers}">
 				<c:forEach begin="0" end="${fn:length(transfers)-1}"
 					varStatus="loop">
 					<tr>

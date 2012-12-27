@@ -20,6 +20,8 @@
 	<br>
 	<div id="ratesInfo" class="span11">
 		<h4>Сохраненные платежи</h4>
+		<c:choose>
+		<c:when test="${fn:length(savedpayments) > 0}">
 		<table class="table table-hover table-condensed">
 			<tr>
 				<th>#</th>
@@ -52,6 +54,13 @@
 				</c:forEach>
 			</tr>
 		</table>
+		</c:when>
+		<c:otherwise>
+			<div class="alert">
+			У Вас нет сохраненных платежей.
+			</div>
+		</c:otherwise>
+		</c:choose>
 	</div>
 	<script type="text/javascript">
 		$(document).ready(

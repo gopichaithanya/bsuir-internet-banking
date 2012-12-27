@@ -12,6 +12,12 @@
 	<c:if test="${client.locked}">
 						<div class="alert">Client's user account has been locked.</div>
 					</c:if>
+					<c:if test="${not empty newLogin }">
+					<strong>New login:</strong> ${newLogin}
+					</c:if>
+					<c:if test="${not empty newPassword }">
+					<strong>New password:</strong> ${newPassword}
+					</c:if>
 		<div class="row-fluid">
 		
 			<div class="span6">

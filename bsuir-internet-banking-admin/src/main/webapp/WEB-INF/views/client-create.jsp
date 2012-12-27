@@ -17,7 +17,7 @@
 
 			<s:bind path="*">
 				<c:if test="${status.error}">
-					<div id="message" class="alert alert-error">Form has errors</div>
+					<div id="message" class="alert alert-error">${status.errorMessage}</div>
 				</c:if>
 			</s:bind>
 			<div class="control-group">

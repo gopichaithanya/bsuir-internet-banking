@@ -14,11 +14,11 @@ public class EripPaymentValidator implements Validator {
 	private final MoneyValidator moneyValidator;
 	private static final String INFO_STRING_FIELD = "infoString";
 	private static final String MOBILE_PHONE_NUMBER_PATTERN = "[0-9]{3}[0-9]{7}";
-	private static final String HOME_PHONE_NUMBER_PATTERN = "[0-9]{3}[0-9]{5,6}";
+	private static final String HOME_PHONE_NUMBER_PATTERN = "[0-9]{3}[0-9]{5,7}";
 	private static final String CONTRACT_NUMBER_PATTERN = "[0-9]{8,13}";
 	private static final String PROVIDER_CONTRACT_NUMBER_PATTERN = "[0-9]{6,13}";
 	private static final String WRONG_NUMBER_PATTERN = "0{1,}";
-	private static final String PERSANAL_ACCOUNT_PATTERN = "[0-3]{9,13}";
+	private static final String PERSANAL_ACCOUNT_PATTERN = "[0-9]{9,13}";
 
 	@Autowired
 	public EripPaymentValidator(MoneyValidator moneyValidator) {
@@ -70,7 +70,7 @@ public class EripPaymentValidator implements Validator {
 			case 7:
 				//label = ". В формате yyyxxxxx, где y - код.";
 				if (!erip.getInfoString().trim().matches(HOME_PHONE_NUMBER_PATTERN)){
-					errors.rejectValue(INFO_STRING_FIELD, MessageValidation.WRONG_FORMAT, MessageValidation.WRONG_PHONE_NUMBER_FORMAT);
+					errors.rejectValue(INFO_STRING_FIELD, MessageValidation.WRONG_FORMAT, MessageValidation.WRONG_HOME_PHONE_NUMBER_FORMAT);
 				}
 				break;
 			case 8:
@@ -106,7 +106,7 @@ public class EripPaymentValidator implements Validator {
 			case 18:
 			case 19:
 				//label = ". Не менее 8 цифр.";
-				if (!erip.getInfoString().trim().matches(PROVIDER_CONTRACT_NUMBER_PATTERN)){
+				if (!erip.getInfoString().trim().matches(CONTRACT_NUMBER_PATTERN)){
 					errors.rejectValue(INFO_STRING_FIELD, MessageValidation.WRONG_FORMAT, MessageValidation.WRONG_CONTRACT_FORMAT);
 				}
 				break;

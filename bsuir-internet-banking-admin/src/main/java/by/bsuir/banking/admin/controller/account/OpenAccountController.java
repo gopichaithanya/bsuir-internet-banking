@@ -57,13 +57,13 @@ public class OpenAccountController extends EntityController {
 
 	public OpenAccountController() {
 		service = ServiceProvider.getInternetBankingInstance();
-		AdminUtils.logInfo(logger, MessageConstants.CARD_SERVICE_CREATED);
+		AdminUtils.logInfo(logger, MessageConstants.CARD_SERVICE_CREATED); 
 	}
 
-	@ModelAttribute("account_card")
+	/*@ModelAttribute("account_card")
 	public AccountCardWrapper createModel() {
 		return new AccountCardWrapper();
-	}
+	}*/
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String createForm(@PathVariable("id") Integer id, Model model,
@@ -76,6 +76,8 @@ public class OpenAccountController extends EntityController {
 			IOperatorService operatorService = new OperatorService()
 					.getBasicHttpBindingIOperatorService();
 			Client client = operatorService.getClient(id, securityToken);
+			AccountCardWrapper wrapper = new AccountCardWrapper();
+			model.addAttribute("account_card", wrapper);
 			model.addAttribute("client", new ClientWrapper(client));
 		} catch (IInternetBankingServiceGetCurrencyTypesDomainFaultFaultFaultMessage e) {
 			// TODO Auto-generated catch block

@@ -2,7 +2,7 @@ package by.bsuir.banking.controller.payment.auto;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.TreeMap;
 import java.util.List;
 import java.util.Map;
 
@@ -86,8 +86,8 @@ public class CreateAutoPaymentController extends EntityController {
 	@RequestMapping(method = RequestMethod.GET)
 	public String createTree(HttpSession session, Model model) {
 		String securityToken = getSecurityToken(session);
-		Map<LegalPersonCategory, List<LegalPerson>> categories = new HashMap<LegalPersonCategory, List<LegalPerson>>();
-		Map<Region, Map<City, List<Service>>> eripPayments = new HashMap<Region, Map<City, List<Service>>>();
+		Map<LegalPersonCategory, List<LegalPerson>> categories = new TreeMap<LegalPersonCategory, List<LegalPerson>>();
+		Map<Region, Map<City, List<Service>>> eripPayments = new TreeMap<Region, Map<City, List<Service>>>();
 
 		try {
 			// regular payments
@@ -109,7 +109,7 @@ public class CreateAutoPaymentController extends EntityController {
 			// erip payments
 			for (Region region : service.getAllRegions(securityToken)
 					.getRegion()) {
-				Map<City, List<Service>> cities = new HashMap<City, List<Service>>();
+				Map<City, List<Service>> cities = new TreeMap<City, List<Service>>();
 				for (City city : service.getCitiesForRegion(region.getId(),
 						securityToken).getCity()) {
 					List<Service> services = service.getServicesForCity(
@@ -295,12 +295,13 @@ public class CreateAutoPaymentController extends EntityController {
 			if (type.equals("payment")) {
 				// create regular payment
 				SavedPaymentWrapper spWrapper = PaymentUtil.getSavedPaymentById(savedId, securityToken);
-				System.out.println("!!!!!!!!!!!!!!!!!!!!" + spWrapper.getLegalPersonId());
 				LegalPersonWrapper lpWrapper =PaymentUtil.getLegalPersonByAccountId(spWrapper.getLegalAccountId(), securityToken);
 				wrapper = new AutoPaymentInfo(new ClientWrapper(client),
 						lpWrapper);
 				wrapper.setAmount(spWrapper.getAmount());
-				wrapper.setCardNumber(spWrapper.getCardNumber());
+				CardWrapper card = CardUtil.getCardByAccountId(spWrapper.getAccountId(), securityToken);
+				wrapper.setCardNumber(card.getCardNumber());
+				System.out.println("!!!!!!!!!!!!!!!!!!!!!!"+wrapper.getCardNumber());
 				wrapper.setInfoString(InformationParser.getInfoString(spWrapper.getInformation()));
 				wrapper.setSavedId(savedId);
 			} else if (type.equals("erip")) {

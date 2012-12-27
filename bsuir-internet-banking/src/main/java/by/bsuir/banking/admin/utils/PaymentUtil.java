@@ -277,7 +277,7 @@ public class PaymentUtil {
 			label = ". В формате yyyxxxxxxx, где y - код.";
 			break;
 		case 7:
-			label = ". В формате yyyxxxxx, где y - код.";
+			label = ". В формате yyyxxxxx[xx], где y - код.";
 			break;
 		case 8:
 		case 9:

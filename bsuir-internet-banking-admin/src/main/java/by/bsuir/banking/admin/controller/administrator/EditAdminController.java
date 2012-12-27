@@ -19,6 +19,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import by.bsuir.banking.admin.controller.EntityController;
 import by.bsuir.banking.admin.domain.AdministratorWrapper;
+import by.bsuir.banking.admin.domain.UserInfo;
 import by.bsuir.banking.admin.utils.AdminUtils;
 import by.bsuir.banking.admin.utils.MessageConstants;
 import by.bsuir.banking.admin.utils.ServiceProvider;
@@ -94,17 +95,17 @@ public class EditAdminController extends EntityController {
 		}
 		String securityToken = getSecurityToken(session);
 		try {
-			System.out.println("Admin id: " + admin.getAdministrator().getId());
 			service.updateAdministrator(admin.getAdministrator(), securityToken);
+			
 			AdminUtils.logInfo(logger, MessageConstants.OBJECT_INSTANCE_SAVED, MessageConstants.OPERATOR_ENTITY);
 			return "redirect:/admin/list";
 		} catch (IAdministrationServiceUpdateAdministratorAuthorizationFaultFaultFaultMessage e) {
 			AdminUtils.logDebug(logger, MessageConstants.AUTHORIZATION_ERROR);
-			result.reject(e.getMessage());
+			result.reject("editAdminError",e.getMessage());
 			return "redirect:" + MessageConstants.AUTH_FAILED_VIEW;
 		} catch (IAdministrationServiceUpdateAdministratorDomainFaultFaultFaultMessage e) {
 			AdminUtils.logDebug(logger, MessageConstants.OBJECT_SAVING_FAILED_ON_SERVER, MessageConstants.ADMIN_ENTITY);
-			result.reject(e.getMessage());
+			result.reject("editAdminError",e.getMessage());
 			return VIEW_NAME;
 		}
 		

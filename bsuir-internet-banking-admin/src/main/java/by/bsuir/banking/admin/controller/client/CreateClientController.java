@@ -118,7 +118,8 @@ public class CreateClientController extends EntityController {
 	@RequestMapping(value={"/passport"}, method=RequestMethod.POST)
 	public String passportSubmit(@ModelAttribute("client") ClientWrapper client, @Valid @ModelAttribute("passport") PassportWrapper passport, BindingResult result,
 			@ModelAttribute("ajaxRequest") boolean ajaxRequest, Model model,
-			RedirectAttributes redirectAttrs, HttpSession session){
+			RedirectAttributes redirectAttrs, HttpSession session,
+			RedirectAttributes attrs){
 		passportValidator.validate(passport, result);
 		if(result.hasErrors()){
 			AdminUtils.logDebug(logger, MessageConstants.FORM_VALIDATION_ERROR, MessageConstants.PASSPORT_ENTITY);
@@ -129,6 +130,8 @@ public class CreateClientController extends EntityController {
 		//generating login and password
 		String login = new BigInteger(50, random).toString(32);
 	    String password = new BigInteger(50, random).toString(32);
+	    attrs.addFlashAttribute("newLogin", login);
+	    attrs.addFlashAttribute("newPassword", password);
 		client.setLogin(login);
 		client.setPassword(password);
 		Integer id = 0;

@@ -33,7 +33,7 @@ public class CardUtil {
 
 	public static Integer getOperationsLimit(Integer currencyTypeId) {
 		// TODO generate limit based on currency type
-		if(currencyTypeId != 1){
+		if (currencyTypeId != 1) {
 			return 10;
 		}
 		return 20;
@@ -43,17 +43,17 @@ public class CardUtil {
 		// TODO generate limit based on card type and currency type
 		BigDecimal sum = null;
 		switch (currencyTypeId) {
-		case 1://BYR
+		case 1:// BYR
 			sum = new BigDecimal("10000000");
 			break;
-		case 2://USD
+		case 2:// USD
 			sum = new BigDecimal("1000");
 			break;
-		case 3://EUR
-			sum=new BigDecimal("1000");
+		case 3:// EUR
+			sum = new BigDecimal("1000");
 			break;
-		case 4://RUR
-			sum=new BigDecimal("30000");
+		case 4:// RUR
+			sum = new BigDecimal("30000");
 			break;
 		default:
 			break;
@@ -61,9 +61,12 @@ public class CardUtil {
 		return sum;
 	}
 
-	public static CardTypeWrapper getCardType(Integer cardTypeId, String securityToken) throws IInternetBankingServiceGetAllCardTypesAuthorizationFaultFaultFaultMessage, IInternetBankingServiceGetAllCardTypesDomainFaultFaultFaultMessage {
-		for(CardTypeWrapper wrapper: getCardTypes(securityToken)){
-			if(wrapper.getId() == cardTypeId){
+	public static CardTypeWrapper getCardType(Integer cardTypeId,
+			String securityToken)
+			throws IInternetBankingServiceGetAllCardTypesAuthorizationFaultFaultFaultMessage,
+			IInternetBankingServiceGetAllCardTypesDomainFaultFaultFaultMessage {
+		for (CardTypeWrapper wrapper : getCardTypes(securityToken)) {
+			if (wrapper.getId() == cardTypeId) {
 				return wrapper;
 			}
 		}
@@ -73,30 +76,28 @@ public class CardUtil {
 	public static List<CardTypeWrapper> getCardTypes(String securityToken)
 			throws IInternetBankingServiceGetAllCardTypesAuthorizationFaultFaultFaultMessage,
 			IInternetBankingServiceGetAllCardTypesDomainFaultFaultFaultMessage {
-		if (cardTypes == null || cardTypes.size() == 0) {
-			cardTypes = new ArrayList<CardTypeWrapper>();
-			ArrayOfCardType cardArr = service.getAllCardTypes(securityToken);
-			for (CardType cardType : cardArr.getCardType()) {
-				cardTypes.add(new CardTypeWrapper(cardType));
-			}
+		cardTypes = new ArrayList<CardTypeWrapper>();
+		ArrayOfCardType cardArr = service.getAllCardTypes(securityToken);
+		for (CardType cardType : cardArr.getCardType()) {
+			cardTypes.add(new CardTypeWrapper(cardType));
 		}
 		return cardTypes;
 	}
 
 	public static List<CurrencyTypeWrapper> getCurrencyTypes()
 			throws IInternetBankingServiceGetCurrencyTypesDomainFaultFaultFaultMessage {
-		if (currencyTypes == null || currencyTypes.size() == 0) {
-			currencyTypes = new ArrayList<CurrencyTypeWrapper>();
-			ArrayOfCurrencyType curArr = service.getCurrencyTypes();
-			for (CurrencyType curType : curArr.getCurrencyType()) {
-				currencyTypes.add(new CurrencyTypeWrapper(curType));
-			}
+		currencyTypes = new ArrayList<CurrencyTypeWrapper>();
+		ArrayOfCurrencyType curArr = service.getCurrencyTypes();
+		for (CurrencyType curType : curArr.getCurrencyType()) {
+			currencyTypes.add(new CurrencyTypeWrapper(curType));
 		}
+
 		return currencyTypes;
 	}
-	
-	public static String changeCardNumber(String cardNumber){
-		return cardNumber.substring(0, 4) + "XXXXXXXX" + cardNumber.substring(12, 16);
+
+	public static String changeCardNumber(String cardNumber) {
+		return cardNumber.substring(0, 4) + "XXXXXXXX"
+				+ cardNumber.substring(12, 16);
 	}
 
 }
