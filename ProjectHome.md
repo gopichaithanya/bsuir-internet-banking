@@ -1,0 +1,1 @@
+This project is a training project. Introduction in bank system
